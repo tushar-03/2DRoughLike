@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Roughlike.Core;
 
 namespace Roughlike.Player
@@ -60,3 +60,4 @@ namespace Roughlike.Player
         }
     }
 }
+

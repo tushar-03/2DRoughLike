@@ -1,7 +1,7 @@
 ﻿{
   "name": "Roughlike.Combat",
   "rootNamespace": "Roughlike.Combat",
-  "references": ["Roughlike.Utils", "Roughlike.Core"],
+  "references": ["Roughlike.Utils", "Roughlike.Core", "Roughlike.Player", "Unity.Cinemachine"],
   "includePlatforms": [],
   "excludePlatforms": [],
   "allowUnsafeCode": false,
@@ -12,3 +12,4 @@
   "versionDefines": [],
   "noEngineReferences": false
 }
+

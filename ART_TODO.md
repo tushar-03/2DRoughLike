@@ -15,4 +15,7 @@ All art sits behind prefab / Sprite Library / ScriptableObject slots so replacem
 | Player body (`Assets/Art/Placeholder/PlayerBody.png`) | 128x256 px, pivot bottom-centre, 160 PPU | Procedural capsule with outline. Replace with rigged bell-ringer apprentice (2D Animation); keep pivot at feet, 1.6 units tall | High |
 | Graybox square (`Assets/Art/Placeholder/Square.png`) | 64x64 px | White tile tinted per surface. Replace with biome tilesets and RuleTiles | High |
 | Ladder, one-way platform, moving platform visuals | n/a | Currently tinted squares; need ornate props per biome | Medium |
+| Enemy sprites (`EnemyGrunt.png` 144x240, `EnemyShooter.png` 112x240, `Dummy.png`) | 160 PPU, pivot feet | Light base tinted per `EnemyDefinition`. Need real designs and rigs per archetype | High |
+| Combat VFX (slash crescent, hit spark, projectile, telegraph box) | runtime generated | `Utils/ProceduralSprites`. Replace with flipbook slashes, bold hit bursts, glowing projectile trails; keep the telegraph shape language | High |
+| Hit flash / outline shader | n/a | Currently a sprite colour lerp. Shader Graph hit flash + outline (M5) | Medium |
 | Player animation set | n/a | Idle, run, jump, fall, land, roll, ladder, ledge hang/climb, wall slide. Currently procedural squash and stretch only | High |

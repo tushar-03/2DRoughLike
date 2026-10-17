@@ -44,6 +44,16 @@ namespace Roughlike.Player
         public MovementAbilities Abilities { get => abilities; set => abilities = value; }
         public bool Grounded => State == PlayerState.Grounded;
 
+        /// <summary>The intent read this tick (before any control lock). Combat reads this after the controller ticks.</summary>
+        public PlayerIntent LastIntent { get; private set; }
+        public bool IsControlLocked => _controlLock > 0f;
+        public int ExtraRollsAvailable => _airRollsLeft;
+
+        /// <summary>Scales run speed while an action (attack, block) is in progress. 1 = normal.</summary>
+        public float MoveSpeedScale { get; set; } = 1f;
+        /// <summary>When true the facing direction does not follow input (during attack windups and swings).</summary>
+        public bool FacingLocked { get; set; }
+
         // ---- hooks (audio / VFX / combat subscribe) ----
         public event Action<PlayerState, PlayerState> StateChanged;
         public event Action Jumped;
@@ -63,7 +73,7 @@ namespace Roughlike.Player
         bool _jumpHeld;
 
         // timers
-        float _coyote, _jumpBuffer, _rollBuffer, _rollCooldown, _dropTimer, _wallLock;
+        float _coyote, _jumpBuffer, _rollBuffer, _rollCooldown, _dropTimer, _wallLock, _controlLock;
         float _ladderCooldown, _ledgeCooldown;
         int _airJumpsLeft, _airRollsLeft;
 
@@ -124,6 +134,32 @@ namespace Roughlike.Player
         }
 
         // =====================================================================
+        // External forces (combat)
+        // =====================================================================
+
+        /// <summary>Adds to the current velocity (attack lunges, shield pushback).</summary>
+        public void AddImpulse(Vector2 impulse) => _vel += impulse;
+
+        /// <summary>
+        /// Knocks the player back and removes control for <paramref name="lockTime"/> seconds.
+        /// Breaks out of rolls, ladders and ledges.
+        /// </summary>
+        public void ApplyHitReaction(Vector2 knockback, float lockTime)
+        {
+            if (State == PlayerState.Rolling) EndRoll(false);
+            else if (State == PlayerState.Ladder) ExitLadder(PlayerState.Airborne);
+            else if (State == PlayerState.LedgeHang || State == PlayerState.LedgeClimb) SetState(PlayerState.Airborne);
+            else if (State == PlayerState.WallSlide) SetState(PlayerState.Airborne);
+
+            _vel = knockback;
+            _coyote = 0f;
+            _controlLock = Mathf.Max(_controlLock, lockTime);
+            _jumpBuffer = 0f;
+            _rollBuffer = 0f;
+            if (knockback.y > 0.1f && State == PlayerState.Grounded) SetState(PlayerState.Airborne);
+        }
+
+        // =====================================================================
         // Tick
         // =====================================================================
 
@@ -134,6 +170,12 @@ namespace Roughlike.Player
             if (dt <= 0f) return;
 
             PlayerIntent intent = _source != null ? _source.Read() : default;
+            LastIntent = intent;
+            if (_controlLock > 0f)
+            {
+                _controlLock -= dt;
+                intent = default; // stunned: input ignored
+            }
             _moveX = Mathf.Abs(intent.Move.x) < config.stickDeadzone ? 0f : Mathf.Sign(intent.Move.x);
             _jumpHeld = intent.JumpHeld;
 
@@ -163,7 +205,7 @@ namespace Roughlike.Player
             _ledgeCooldown = Mathf.Max(0f, _ledgeCooldown - dt);
             if (State != PlayerState.Grounded) _coyote = Mathf.Max(0f, _coyote - dt);
 
-            if (_moveX != 0f && (State == PlayerState.Grounded || State == PlayerState.Airborne) && _wallLock <= 0f)
+            if (_moveX != 0f && !FacingLocked && (State == PlayerState.Grounded || State == PlayerState.Airborne) && _wallLock <= 0f)
                 Facing = (int)_moveX;
         }
 
@@ -194,7 +236,7 @@ namespace Roughlike.Player
             if (TryStartRoll(intent)) { TickRolling(intent, dt); return; }
             if (TryEnterLadder(intent)) { TickLadder(intent, dt); return; }
 
-            _vel.x = Accelerate(_vel.x, _moveX * config.runSpeed, config.groundAcceleration,
+            _vel.x = Accelerate(_vel.x, _moveX * config.runSpeed * MoveSpeedScale, config.groundAcceleration,
                 config.groundDeceleration, config.groundTurnAcceleration, dt);
             Step(dt, 1f, intent, true);
         }
@@ -207,7 +249,7 @@ namespace Roughlike.Player
         {
             if (_wallLock <= 0f)
             {
-                _vel.x = Accelerate(_vel.x, _moveX * config.runSpeed, config.airAcceleration,
+                _vel.x = Accelerate(_vel.x, _moveX * config.runSpeed * MoveSpeedScale, config.airAcceleration,
                     config.airDeceleration, config.airAcceleration, dt);
             }
 
@@ -617,4 +659,5 @@ namespace Roughlike.Player
         }
     }
 }
+
 

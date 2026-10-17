@@ -22,6 +22,8 @@ Engine: Unity 6000.5.6f1, URP 2D Renderer. Singleplayer only. PC (Windows), 60 F
 ## Architecture
 - Folders under `Assets/`: Art, Audio, Prefabs, Data, Shaders, Scenes, Scripts/{Core,Player,Combat,Enemies,Items,Rooms,Meta,UI,Audio,Utils}, Tests/{EditMode,PlayMode}.
 - One asmdef per Scripts folder, namespace `Roughlike.<Module>`. Dependency direction: Utils <- Core <- everything else. Feature modules do not reference each other directly; they talk via the Core event bus and shared interfaces in Core. (Add references deliberately when a milestone needs them.)
+- Allowed dependencies: Utils <- Core (incl. the generic KinematicMotor2D, EventBus, layers) <- Player <- Combat <- Enemies. Modules talk through `EventBus<T>` events (hits, swings, parries, enemy deaths); presentation systems subscribe, gameplay never calls them.
+- Weapon slots: each slot has its own button (Dead Cells model), which is the instant swap. Shields live in a slot like any weapon: tap = parry window, hold = block.
 - Composition and events over inheritance, no god classes, minimal singletons.
 - All tuning values in the Inspector or ScriptableObjects; all items/weapons/skills/mutations are ScriptableObjects.
 - Planned core modules: event bus, object pooling, stat/modifier system, health/damage, status effects, seeded RNG, level generator, versioned JSON save with backup, game state machine (Boot, Menu, Hub, Run, Death, Victory), settings service.

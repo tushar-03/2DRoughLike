@@ -45,6 +45,9 @@ namespace Roughlike.Player
             controller.RollStarted -= OnRollStart;
         }
 
+        /// <summary>Adds a one-off squash/stretch impulse (combat uses this for attack anticipation and impacts).</summary>
+        public void Punch(Vector2 squash) => _squash = squash;
+
         void OnJump() => _squash = new Vector2(0.78f, 1.28f);
 
         void OnLand(float impact)

@@ -13,6 +13,8 @@ namespace Roughlike.Player
         InputAction _move;
         InputAction _jump;
         InputAction _roll;
+        InputAction _attack1;
+        InputAction _attack2;
 
         public InputActionMap Actions => _map;
 
@@ -42,6 +44,17 @@ namespace Roughlike.Player
             _roll.AddBinding("<Keyboard>/l");
             _roll.AddBinding("<Gamepad>/buttonEast");
             _roll.AddBinding("<Gamepad>/rightShoulder");
+
+            // Weapon slots: each slot has its own button (tap to attack, hold for a shield).
+            _attack1 = _map.AddAction("Attack1", InputActionType.Button);
+            _attack1.AddBinding("<Keyboard>/j");
+            _attack1.AddBinding("<Mouse>/leftButton");
+            _attack1.AddBinding("<Gamepad>/buttonWest");
+
+            _attack2 = _map.AddAction("Attack2", InputActionType.Button);
+            _attack2.AddBinding("<Keyboard>/k");
+            _attack2.AddBinding("<Mouse>/rightButton");
+            _attack2.AddBinding("<Gamepad>/buttonNorth");
         }
 
         void OnEnable() => _map?.Enable();
@@ -55,7 +68,11 @@ namespace Roughlike.Player
                 Move = _move.ReadValue<Vector2>(),
                 JumpPressed = _jump.WasPressedThisFrame(),
                 JumpHeld = _jump.IsPressed(),
-                RollPressed = _roll.WasPressedThisFrame()
+                RollPressed = _roll.WasPressedThisFrame(),
+                Attack1Pressed = _attack1.WasPressedThisFrame(),
+                Attack1Held = _attack1.IsPressed(),
+                Attack2Pressed = _attack2.WasPressedThisFrame(),
+                Attack2Held = _attack2.IsPressed()
             };
         }
     }

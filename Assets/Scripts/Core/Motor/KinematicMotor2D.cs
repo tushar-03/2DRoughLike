@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using Roughlike.Core;
 
-namespace Roughlike.Player
+namespace Roughlike.Core
 {
     /// <summary>
     /// Kinematic character motor for 2D platformers. Moves a transform by casting rays from the
@@ -295,5 +294,6 @@ namespace Roughlike.Player
         }
     }
 }
+
 
 

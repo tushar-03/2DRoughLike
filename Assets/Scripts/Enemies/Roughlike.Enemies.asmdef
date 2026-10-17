@@ -1,7 +1,7 @@
 ﻿{
   "name": "Roughlike.Enemies",
   "rootNamespace": "Roughlike.Enemies",
-  "references": ["Roughlike.Utils", "Roughlike.Core"],
+  "references": ["Roughlike.Utils", "Roughlike.Core", "Roughlike.Combat", "Roughlike.Player", "Unity.InputSystem"],
   "includePlatforms": [],
   "excludePlatforms": [],
   "allowUnsafeCode": false,
@@ -12,3 +12,5 @@
   "versionDefines": [],
   "noEngineReferences": false
 }
+
+

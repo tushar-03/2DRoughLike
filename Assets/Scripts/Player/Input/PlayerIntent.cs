@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Roughlike.Player
 {
@@ -9,6 +9,10 @@ namespace Roughlike.Player
         public bool JumpPressed;
         public bool JumpHeld;
         public bool RollPressed;
+        public bool Attack1Pressed;
+        public bool Attack1Held;
+        public bool Attack2Pressed;
+        public bool Attack2Held;
 
         public bool DownHeld(float threshold = 0.5f) => Move.y < -threshold;
         public bool UpHeld(float threshold = 0.5f) => Move.y > threshold;
@@ -21,3 +25,4 @@ namespace Roughlike.Player
         PlayerIntent Read();
     }
 }
+
