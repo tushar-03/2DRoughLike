@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Roughlike.Core;
@@ -20,6 +20,7 @@ namespace Roughlike.Combat
 
         readonly List<IHitFilter> _filters = new List<IHitFilter>();
         Collider2D _collider;
+        StatusEffects _status;
 
         public Team Team => team;
         public float Max => maxHealth;
@@ -75,6 +76,37 @@ namespace Roughlike.Combat
             Current = Mathf.Min(maxHealth, Current + amount);
         }
 
+        /// <summary>Changes max health (gear, scrolls). Optionally scales current health to keep the same fraction.</summary>
+        public void SetMax(float newMax, bool keepFraction = true)
+        {
+            newMax = Mathf.Max(1f, newMax);
+            float fraction = maxHealth <= 0f ? 1f : Current / maxHealth;
+            maxHealth = newMax;
+            Current = keepFraction ? Mathf.Min(newMax, Mathf.Max(IsDead ? 0f : 1f, fraction * newMax)) : Mathf.Min(Current, newMax);
+        }
+
+        /// <summary>
+        /// Damage over time (burn, poison, bleed). Skips the filter chain so shields and i-frames do not stop it;
+        /// still reports through <see cref="HitTaken"/> and the event bus so numbers and kill credit work.
+        /// </summary>
+        public void ApplyDot(float amount, Team source)
+        {
+            if (IsDead || amount <= 0f) return;
+            Current = Mathf.Max(0f, Current - amount);
+            bool killed = Current <= 0f;
+
+            var info = new DamageInfo { Amount = amount, SourceTeam = source, Tags = DamageTags.Dot, HitPoint = Center };
+            var report = new HitReport { Target = this, Result = HitResult.Hit, Amount = amount, Info = info, Position = Center, Killed = killed };
+            HitTaken?.Invoke(report);
+            EventBus<HitEvent>.Raise(new HitEvent { Report = report });
+
+            if (killed)
+            {
+                IsDead = true;
+                Died?.Invoke();
+            }
+        }
+
         public void AddFilter(IHitFilter filter)
         {
             if (_filters.Contains(filter)) return;
@@ -118,6 +150,13 @@ namespace Roughlike.Combat
             HitTaken?.Invoke(report);
             EventBus<HitEvent>.Raise(new HitEvent { Report = report });
 
+            // status proc (burn, poison...) when the hit actually landed
+            if (applied > 0f && !killed && info.OnHitStatus != StatusType.None && UnityEngine.Random.value < info.StatusChance)
+            {
+                if (_status == null) _status = GetComponent<StatusEffects>();
+                if (_status != null) _status.Apply(info.OnHitStatus, info.StatusDuration, info.StatusPotency <= 0f ? 1f : info.StatusPotency, info.SourceTeam);
+            }
+
             if (killed)
             {
                 IsDead = true;
@@ -127,3 +166,4 @@ namespace Roughlike.Combat
         }
     }
 }
+

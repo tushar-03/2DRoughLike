@@ -15,6 +15,8 @@ MonoBehaviour:
   displayName: Rusted Dagger
   kind: 0
   tint: {r: 0.75, g: 0.9, b: 1, a: 1}
+  affinity: 2
+  description: Quick and light. Three fast jabs, the last a flurry.
   steps:
   - name: Jab
     damage: 7

@@ -4,7 +4,11 @@ A fast, fluid **2D action-platformer roguelite** built in Unity 6. Gameplay foll
 
 You are a bell-ringer's apprentice who died sealing a sunken cathedral-city. Each death returns you to a lantern-lit boathouse. The tone is melancholy but warm, with dry humour from a ferryman and an archivist.
 
-> **Status: in active development. The game is a playable graybox with placeholder art.** Movement, combat and level generation are built and tested; the Hades-style visuals, loot, hub and story arrive in later milestones (see the [roadmap](#roadmap)).
+> **Status: in active development. The game is a playable graybox with placeholder art.** Movement, combat, level generation and loot are built and tested; the Hades-style visuals, more enemies, the hub and the story arrive in later milestones (see the [roadmap](#roadmap)).
+
+| HUD, loot and item card (M4) | Shop menu (M4) |
+|---|---|
+| ![HUD and loot](docs/images/m4-hud-and-loot.png) | ![Shop](docs/images/m4-shop.png) |
 
 | Wall-jump shaft (M1) | Generated run with minimap (M3) |
 |---|---|
@@ -31,6 +35,13 @@ You are a bell-ringer's apprentice who died sealing a sunken cathedral-city. Eac
 - Every connection is verified passable with the base movement kit. Difficulty ramps toward the exit.
 - Run flow: permadeath, end screens, retry the same seed or start a new one, fog-of-war minimap.
 
+**Loot and builds (M4)**
+- **Three scroll colours** (Ember, Brine, Moss) level up the weapons and skills that share their colour, and add health.
+- **Rarity, tiers and affixes**: Common to Legendary items with random affixes (crit, attack speed, on-hit burn / poison / bleed / slow / stun, cooldowns, health ...), upgradable tiers, and **cursed items** that trade a bad affix for extra power.
+- **Gear slots**: one amulet and one outfit, picked up from chests and shops. **Two skill slots** (grenades, a turret, traps) with cooldowns. **Mutations**: three passive perks chosen at altars (heal on kill, parry riposte, momentum, a second wind ...).
+- **Status effects** (burn, poison, bleed, slow, stun, weaken), a **health flask**, a **merchant** in every level, treasure chests, and gold and Cells drops.
+- A full **uGUI HUD** and menus with keyboard, mouse and gamepad navigation. Permadeath resets everything.
+
 ## Requirements
 
 - **Unity 6000.5.6f1** (Unity 6), Universal Render Pipeline with the 2D Renderer
@@ -44,7 +55,8 @@ You are a bell-ringer's apprentice who died sealing a sunken cathedral-city. Eac
 
 | Scene | What it is |
 |---|---|
-| `M3_Run.unity` | **Start here.** A generated run: explore, fight, reach the exit |
+| `M4_LootRun.unity` | **Start here.** A generated run with loot, a merchant, mutation altars, skills and the full HUD |
+| `M3_Run.unity` | A generated run without loot: explore, fight, reach the exit |
 | `M2_CombatArena.unity` | Combat sandbox: dummy, grunt, spitter, weapon swapping |
 | `M1_Graybox.unity` | Movement course: slopes, ladders, ledges, roll tunnel, wall-jump shaft, moving platforms |
 
@@ -59,6 +71,9 @@ The scenes can be rebuilt from the menu `Roughlike > Build` (hand-tuned data ass
 | Roll (also in the air) | L / Left Shift | B / right shoulder |
 | Weapon slot 1 (sword) | J / left mouse | X |
 | Weapon slot 2 (shield: tap = parry, hold = block) | K / right mouse | Y |
+| Skill 1 / Skill 2 | U / I | Left / right trigger |
+| Interact (pick up, open, buy) | E | Left shoulder |
+| Health flask | Q | Right stick click |
 | Climb ladder / use exit door | Up / Down | Up / Down |
 | Drop through a one-way platform | Down + Jump | Down + A |
 | Wall jump (needs the rune) | Hold toward a wall, tap Jump | same |
@@ -68,7 +83,8 @@ Gamepad bindings are implemented but have not been tested on hardware yet.
 **Dev keys**
 - M1: `F1` hide HUD, `F2` double jump, `F3` wall jump, `R` reset.
 - M2: `F4`/`F5` cycle weapons, `F6` spawn grunt, `F7` spawn spitter, `F8` god mode.
-- M3: `F9` new random run, `F10` retry this seed, `F11` seed box, `F12` reveal the whole map.
+- M3/M4: `F9` new random run, `F10` retry this seed, `F11` seed box, `F12` reveal the whole map.
+- Menus: stick / D-pad / arrows to move, South / Enter to confirm, East / Esc to cancel.
 
 ## Seeds
 
@@ -79,14 +95,16 @@ Every run has a seed shown at the top of the screen. Press `F11` to type one in.
 ```
 Assets/
   Scripts/
-    Core/      layers, seeded RNG, seed codes, event bus, the kinematic motor
+    Core/      layers, seeded RNG, seed codes, event bus, stat sheet, the kinematic motor
     Player/    movement controller, input, camera target, presentation
     Combat/    health and hit filters, weapons, shield/parry, feedback (hitstop, shake, VFX)
     Enemies/   enemy definitions, AI state machine, factory, sandbox overlay
+    Items/     rarity, affixes, loot roller, inventory, player stats, skills, pickups, shops, altars
     Rooms/     level generator, room builder, run manager, run HUD
+    UI/        uGUI HUD, toasts, shop / altar / replace menus
     Utils/     object pool, procedural sprites
     Editor/    scene and asset builders
-  Data/        ScriptableObjects: movement config, weapons, enemies, biomes
+  Data/        ScriptableObjects: movement config, weapons, skills, gear, affixes, mutations, enemies, biomes
   Tests/       EditMode and PlayMode tests
   Scenes/      M1, M2 and M3 scenes
 DESIGN.md      pillars, decisions and architecture
@@ -94,11 +112,11 @@ PROGRESS.md    milestone log with how-to-test checklists
 ART_TODO.md    every placeholder asset, with sizes and style notes
 ```
 
-Modules are separate assemblies (`Roughlike.*`) with a one-way dependency direction (Utils, Core, Player, Combat, Enemies, Rooms) and communicate through a typed event bus. Everything tunable lives in ScriptableObjects or the Inspector. See [DESIGN.md](DESIGN.md).
+Modules are separate assemblies (`Roughlike.*`) with a one-way dependency direction (Utils, Core, Player, Combat, Enemies, Items, Rooms, UI) and communicate through a typed event bus. Everything tunable lives in ScriptableObjects or the Inspector. See [DESIGN.md](DESIGN.md).
 
 ## Tests
 
-44 PlayMode tests and 9 EditMode tests cover movement feel (jump height, roll distance, coyote time, wall-jump chains), combat (combos, parry, block, i-frames, telegraph timing), level generation (determinism and structural validity across 1000 seeds) and run flow.
+88 PlayMode tests and 25 EditMode tests cover movement feel (jump height, roll distance, coyote time, wall-jump chains), combat (combos, parry, block, i-frames, telegraph timing), level generation (determinism and structural validity across 1000 seeds), loot (rarity, affixes, curses, shops), status effects, skills, mutations, run flow and the UI menus.
 
 Run them in the Unity Test Runner (`Window > General > Test Runner`), or from the command line with the Unity CLI:
 
@@ -118,8 +136,8 @@ All art is currently procedurally generated placeholders (a stylised vector look
 | M1 Movement prototype | done |
 | M2 Combat prototype | done |
 | M3 Level generation | done |
-| M4 Loot and stats: scrolls, rarity and affixes, skills, mutations, amulets and outfits, shops, gold | next |
-| M5 Hades-style visual slice (biome 1) | planned |
+| M4 Loot and stats: scrolls, rarity and affixes, skills, mutations, amulets and outfits, shops, gold | done |
+| M5 Hades-style visual slice (biome 1), animation, and more enemy types | next |
 | M6 Content expansion, special rooms, challenge doors | planned |
 | M7 Boss and a complete first biome | planned |
 | M8 Meta-progression: hub, Cells, blueprints, runes, save/load, story dialogue | planned |

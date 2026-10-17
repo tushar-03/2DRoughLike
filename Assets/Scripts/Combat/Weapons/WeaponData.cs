@@ -71,6 +71,10 @@ namespace Roughlike.Combat
         public WeaponKind kind = WeaponKind.Melee;
         [Tooltip("Slash trail and hit spark tint.")]
         public Color tint = Color.white;
+        [Tooltip("Which scroll stats scale this weapon's damage. None means weakly scaled by all of them.")]
+        public Roughlike.Core.StatColor affinity = Roughlike.Core.StatColor.None;
+        [TextArea, Tooltip("Flavour text shown in item cards.")]
+        public string description;
 
         [Header("Melee")]
         public AttackStep[] steps = { new AttackStep() };

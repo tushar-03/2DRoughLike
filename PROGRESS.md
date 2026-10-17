@@ -101,5 +101,46 @@ Built and verified: 44 PlayMode + 9 EditMode tests pass (including a 1000-seed s
 - Camera is not confined to rooms yet. Per-room camera bounds and room transitions come with the visual pass (M5).
 - Doors do not lock yet; challenge doors, shops and secret rooms arrive in M6.
 
+## M4 - Loot and stats (awaiting review)
+Built and verified: 88 PlayMode + 25 EditMode tests pass (stats, loot rolling, status effects, skills, pickups, shops, mutations, UI menus, loot in generated levels); the M4 scene was smoke-tested live in Play Mode (HUD, item cards, shop, altar and replace menus driven through their buttons). Console clean.
+
+**Stats and scaling**
+- `StatSheet` (Core): base value, flat, additive % and multiplicative % modifiers, removed together by source; clamped to sane ranges. Stats: max health, damage dealt/taken, move speed, attack speed, crit chance/damage, gold find, health and gold per kill, parry window, skill cooldown rate.
+- **Scroll stats** in three colours: **Ember** (red), **Brine** (cyan) and **Moss** (green). Each scroll is +1 level and +8 max health. Weapons and skills have a colour affinity and gain +12% damage per level in each of their colours (multi-colour items use every colour; colourless items scale weakly with all).
+- `PlayerStats` feeds everything (scrolls, gear, mutations) into the sheet and pushes the result to health, movement and combat through `IPlayerModifiers`. Combat has no dependency on the item system.
+
+**Items** (rarity Common/Rare/Epic/Legendary, tiers 1-4, affixes, curses)
+- Data-driven ScriptableObjects, one source of truth in `DefaultContent` saved as assets by the builder: 6 weapons (dagger, sword, hammer, boathook reach weapon, tower shield, buckler), 4 skills, 6 amulets, 5 outfits, 24 affixes (damage, crit, on-hit burn/poison/bleed/slow/stun, cooldown, health, speed, gold, heal on kill ...) and 8 mutations.
+- `LootRoller` is fully seeded. Rarity improves toward the exit, chests skew rare, and rare+ items can be **cursed** (a bad affix, one extra good affix and +20% power). Every roll is deterministic per seed.
+- **Amulet and outfit slots**: pick-ups auto-equip and drop the replaced piece. Weapons and skills fill empty slots or open a **replace-slot menu**.
+
+**Combat additions**: crits, attack speed, damage-taken scaling, parry-window scaling, and **status effects** (Burn, Poison, Bleed, Slow, Stun, Weaken) that tick through `StatusEffects`, bypass shields and i-frames, tint the sprite and credit kills.
+
+**Skills** (two slots, cooldown bar on the HUD): Powder Keg (grenade, burn), Bell Turret (auto-fires for 9s), Snare Trap (stuns), Venom Flask (poison grenade). Damage scales with scrolls, rarity, tier and affixes.
+
+**Mutations** (3 slots, chosen at altars): stat mutations plus Bloodletter (heal on kill), Counterstrike (2.5x swing after a perfect parry), Momentum (stacking damage on kills) and Second Wind (survive one lethal hit per run).
+
+**World**
+- Generated levels now have exactly one **merchant** (dead-end branch, or a main-path room as fallback), **treasure chests** with pre-rolled loot (seeded), and up to three **mutation altars** on the main path (at 25%, 50% and 75% progress). Enemies drop gold (and rare Cells); clearing a room can drop a scroll (seeded per room).
+- **Shop**: 3 items (weapon, skill, gear), a scroll, a flask refill and two weapon upgrades. Cancelling the replace dialog refunds the gold.
+- **Flask**: 2 charges, heals 45% of max health, refills in shops.
+- **Run flow**: permadeath wipes gold, scrolls, mutations, gear and flask and restores the starting loadout (sword, shield, apprentice robes). The exit door banks your Cells; dying loses them.
+
+**UI (uGUI, generated in code, controller-ready)**: HUD (health with damage lag, flask pips, mutations, gold and Cells, scroll levels, weapon and skill slots with rarity borders and cooldowns, interaction prompt with an item card, toasts); shop, mutation altar and replace-slot menus that pause the game, stack, and navigate with keyboard, mouse or gamepad (stick/D-pad, South confirm, East/Esc cancel).
+
+### How to test M4
+1. Open `Assets/Scenes/M4_LootRun.unity` and press Play.
+2. Fight your way right. Enemies drop gold that flies to you; clear a room for a chance at a scroll (walk into it). Top-right shows gold, Cells and your Ember / Brine / Moss levels.
+3. **Altar** (purple, glowing): press E, pick one of three mutations. **Chest** (dead-end rooms): E to open, then E on the item that drops; the card shows rarity, stats and curses (red).
+4. **Shop** (a dead-end branch, marked SALVAGE): E to open, spend gold on items, scrolls, upgrades and a flask refill. Buy a weapon to see the replace-slot menu.
+5. Skills on U and I, flask on Q. Weapons J/K as before.
+6. Die on purpose: gold, scrolls, mutations and gear reset on the next run (R / T).
+7. Tests: PlayMode (88) and EditMode (25) in the Test Runner.
+
+### Notes
+- Cells are counted per run and shown on the end screen ("banked" at the exit, "lost" on death); they are saved and spent in M8.
+- Status effects Shock, Freeze and Oil-and-fire, and more weapon types (bows, whips, throwables, magic) arrive with M6.
+- Item icons, the HUD and the menus are placeholder shapes and plain text; they get a full art pass in M5.
+
 ## Next
-M4 - Loot and stats: scroll stats, rarity and affixes, skills, mutations, amulet and outfit slots with pickup items, shops, gold.
+M5 - Hades-style visual slice (biome 1) plus new enemy types.

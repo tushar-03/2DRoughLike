@@ -1,9 +1,10 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using Roughlike.Combat;
 using Roughlike.Core;
 using Roughlike.Enemies;
+using Roughlike.Items;
 using Roughlike.Player;
 using Roughlike.Rooms;
 
@@ -159,6 +160,7 @@ namespace Roughlike.Tests.PlayMode
             Physics2D.SyncTransforms();
             var pc = PlayerFactory.Build(_cfg, PlayerFactory.InputKind.Scripted, null, Vector2.zero);
             PlayerCombatSetup.Attach(pc, _weapon, _weapon);
+            PlayerItemsSetup.Attach(pc);
             pc.autoTick = false;
             _spawned.Add(pc.gameObject);
 
@@ -221,6 +223,135 @@ namespace Roughlike.Tests.PlayMode
             Assert.AreEqual(2, run.Stats.Kills);
         }
 
+        // ------------------------------------------------------------------ loot in levels
+
+        LootDatabase UseLoot()
+        {
+            var db = DefaultContent.CreateDatabase();
+            _biome.loot = db;
+            _owned.Add(db);
+            return db;
+        }
+
+        [Test]
+        public void LevelsContainOneShopChestsForTreasureRoomsAndMutationAltars()
+        {
+            UseLoot();
+            for (uint seed = 300; seed < 320; seed++)
+            {
+                LevelLayout layout = LevelGenerator.Generate(seed, _biome.generator);
+                BuiltLevel level = LevelBuilder.Build(layout, _biome, true);
+
+                int treasureRooms = layout.Cells.FindAll(c => c.Role == RoomRole.Treasure).Count;
+                Assert.AreEqual(1, level.Shops.Count, $"seed {seed}");
+                Assert.AreEqual(treasureRooms, level.Chests.Count, $"seed {seed}");
+                Assert.That(level.Altars.Count, Is.InRange(1, LevelBuilder.AltarProgress.Length), $"seed {seed}");
+                foreach (var altar in level.Altars) Assert.AreEqual(3, altar.Choices.Count);
+                foreach (var chest in level.Chests) Assert.IsNotNull(chest.Contents);
+
+                // an altar sits on the main path, away from the entrance and the exit
+                foreach (var altar in level.Altars)
+                {
+                    var cell = ChunkMetrics.CellAt(altar.transform.position + Vector3.up);
+                    var c = layout.Get(cell);
+                    Assert.IsTrue(c.OnMainPath && c.Role == RoomRole.Combat, $"seed {seed}");
+                }
+                DestroyLevel(level);
+            }
+        }
+
+        [Test]
+        public void LootPlacementIsDeterministicPerSeed()
+        {
+            UseLoot();
+            string Describe(uint seed)
+            {
+                BuiltLevel level = LevelBuilder.Build(LevelGenerator.Generate(seed, _biome.generator), _biome, false);
+                var parts = new List<string>();
+                foreach (var c in level.Chests) parts.Add("chest:" + c.Contents.DisplayName + c.Contents.Rarity);
+                foreach (var s in level.Shops) foreach (var o in s.Stock.Offers) parts.Add("shop:" + o.Kind + (o.Item != null ? o.Item.DisplayName : o.Colour.ToString()));
+                foreach (var a in level.Altars) foreach (var m in a.Choices) parts.Add("altar:" + m.displayName);
+                DestroyLevel(level);
+                return string.Join("|", parts);
+            }
+            Assert.AreEqual(Describe(901), Describe(901));
+            Assert.AreNotEqual(Describe(901), Describe(902));
+        }
+
+        [Test]
+        public void ClearingARoomRaisesTheRoomClearedEventOnce()
+        {
+            UseLoot();
+            LevelLayout layout = LevelGenerator.Generate(77, _biome.generator);
+            BuiltLevel level = LevelBuilder.Build(layout, _biome, true);
+            var events = new List<RoomClearedEvent>();
+            System.Action<RoomClearedEvent> on = e => events.Add(e);
+            EventBus<RoomClearedEvent>.Subscribe(on);
+            try
+            {
+                var tracker = level.Trackers.Find(t => t.Alive >= 1);
+                Assert.IsNotNull(tracker);
+                int index = tracker.Cell.Index;
+                var victims = level.Enemies.FindAll(e => e.GetComponentInParent<RoomClearTracker>() == tracker);
+                Assert.AreEqual(tracker.Alive, victims.Count);
+
+                for (int i = 0; i < victims.Count; i++)
+                {
+                    Assert.AreEqual(0, events.Count, "not cleared until the last enemy dies");
+                    victims[i].GetComponent<Health>().TakeHit(new DamageInfo { Amount = 9999f, SourceTeam = Team.Player });
+                }
+                Assert.AreEqual(1, events.Count);
+                Assert.AreEqual(index, events[0].CellIndex);
+                Assert.IsTrue(tracker.Cleared);
+            }
+            finally { EventBus<RoomClearedEvent>.Unsubscribe(on); DestroyLevel(level); }
+        }
+
+        [Test]
+        public void RunsBankCellsAtTheExitAndLoseThemOnDeath()
+        {
+            UseLoot();
+            var (run, pc, health, defense) = MakeRun();
+            var inv = pc.GetComponent<PlayerInventory>();
+
+            run.StartRun(31);
+            inv.AddCells(4);
+            inv.AddGold(120);
+            run.Level.Exit.Trigger();
+            Assert.AreEqual(RunState.Complete, run.State);
+            Assert.AreEqual(4, run.Stats.Cells);
+            Assert.IsTrue(run.Stats.CellsBanked, "the exit door banks Cells");
+            Assert.AreEqual(120, run.Stats.Gold);
+
+            run.StartRun(31);
+            Assert.AreEqual(0, inv.Cells, "a new run starts empty");
+            Assert.AreEqual(0, inv.Gold);
+            inv.AddCells(2);
+            defense.Tick(5f);
+            health.TakeHit(new DamageInfo { Amount = 9999f, SourceTeam = Team.Enemy });
+            Assert.AreEqual(RunState.Dead, run.State);
+            Assert.AreEqual(2, run.Stats.Cells);
+            Assert.IsFalse(run.Stats.CellsBanked, "unbanked Cells are lost on death");
+        }
+
+        [Test]
+        public void NewRunsResetTheInventoryAndGiveTheStartingLoadout()
+        {
+            var db = UseLoot();
+            var (run, pc, health, defense) = MakeRun();
+            var inv = pc.GetComponent<PlayerInventory>();
+
+            run.StartRun(5);
+            Assert.AreEqual(db.startingWeapon1, inv.Weapons[0].Weapon);
+            inv.AddScroll(Roughlike.Core.StatColor.Moss);
+            inv.AddMutation(db.mutations[0]);
+
+            run.StartRun(6);
+            Assert.AreEqual(0, inv.TotalScrolls);
+            Assert.AreEqual(0, inv.Mutations.Count);
+            Assert.AreEqual(2, inv.FlaskCharges);
+        }
+
         [Test]
         public void TypedSeedTextStartsTheMatchingRun()
         {
@@ -233,3 +364,4 @@ namespace Roughlike.Tests.PlayMode
         }
     }
 }
+

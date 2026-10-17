@@ -50,6 +50,7 @@ namespace Roughlike.Combat
         {
             EventBus<HitEvent>.Subscribe(OnHit);
             EventBus<SwingEvent>.Subscribe(OnSwing);
+            EventBus<ExplosionEvent>.Subscribe(OnExplosion);
             ApplySettings();
         }
 
@@ -57,7 +58,16 @@ namespace Roughlike.Combat
         {
             EventBus<HitEvent>.Unsubscribe(OnHit);
             EventBus<SwingEvent>.Unsubscribe(OnSwing);
+            EventBus<ExplosionEvent>.Unsubscribe(OnExplosion);
             HitStop.Cancel();
+        }
+
+        void OnExplosion(ExplosionEvent e)
+        {
+            Spark(e.Position, e.Radius * 1.8f, e.Colour);
+            Spark(e.Position + new Vector2(0.3f, 0.2f), e.Radius, Color.white);
+            ScreenShake.Shake(0.45f, Vector2.up);
+            HitStop.Request(0.05f);
         }
 
         void OnValidate() => ApplySettings();
@@ -81,6 +91,14 @@ namespace Roughlike.Combat
             if (r.Result == HitResult.Ignored) return;
 
             bool playerHurt = r.Target.Team == Team.Player;
+
+            // damage over time: a small number only, no spark, hitstop or shake
+            if ((r.Info.Tags & DamageTags.Dot) != 0)
+            {
+                Number(r.Position + Vector2.up * 0.5f, Mathf.Max(1, Mathf.RoundToInt(r.Amount)).ToString(),
+                    new Color(1f, 0.6f, 0.25f), 0.14f, 0.5f);
+                return;
+            }
             Vector2 dir = r.Info.Knockback.sqrMagnitude > 0.01f ? r.Info.Knockback.normalized : Vector2.right;
 
             switch (r.Result)

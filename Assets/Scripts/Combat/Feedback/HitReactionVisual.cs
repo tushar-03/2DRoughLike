@@ -48,6 +48,11 @@ namespace Roughlike.Combat
             if (sprite != null) { sprite.color = _base; sprite.transform.localScale = _baseScale; }
         }
 
+        Color _statusTint = Color.clear;
+
+        /// <summary>Tint for an active status effect (burn, poison...). Pass Color.clear to remove.</summary>
+        public void SetStatusTint(Color tint) => _statusTint = tint;
+
         public void SetBaseColour(Color c) { _base = c; if (sprite != null) sprite.color = c; }
         public void Blink(float duration) => _blink = Mathf.Max(_blink, duration);
 
@@ -77,6 +82,11 @@ namespace Roughlike.Combat
             float dt = Time.deltaTime;
 
             Color c = _base;
+            if (_statusTint.a > 0f)
+            {
+                float pulse = 0.5f + 0.5f * Mathf.Sin(Time.time * 10f);
+                c = Color.Lerp(c, _statusTint, 0.3f + 0.15f * pulse);
+            }
             if (_warning > 0f)
             {
                 float pulse = 0.5f + 0.5f * Mathf.Sin(Time.time * 28f);

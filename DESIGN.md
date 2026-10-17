@@ -33,6 +33,13 @@ Engine: Unity 6000.5.6f1, URP 2D Renderer. Singleplayer only. PC (Windows), 60 F
 - Determinism rule: all procedural code uses `SeededRng`; sub-systems use `Fork(salt)` so changing one never shifts another. Seeds are shareable codes (`SeedCode`).
 - Rooms are procedural graybox now; hand-authored chunk prefabs plug in through `RoomChunk` markers.
 
+## Loot and stats (M4)
+- Stats are a `StatSheet` of modifiers (flat, additive %, multiplicative %). Scroll colours are Ember (red), Brine (cyan), Moss (green); weapons and skills carry colour affinities and scale +12% per scroll level in those colours.
+- Items are instances of data assets with a rolled rarity (Common to Legendary), tier (1-4) and affixes; weapon and skill affixes are local to the item, gear affixes are global. Cursed items trade a bad affix for extra power.
+- Combat reaches the item system only through `IPlayerModifiers` (per-weapon damage, crit, status procs, speed). Items, shops, altars and pickups talk to the HUD through events (`ToastEvent`, `InteractPromptEvent`, `OpenShopEvent`, `ReplaceItemRequest`, ...); the UI module is the only one that knows about menus.
+- Dependency chain is now Utils <- Core <- Player <- Combat <- Enemies <- Items <- Rooms <- UI.
+- Rule for ScriptableObjects and MonoBehaviours that go into assets or prefabs: one class per file, file named after the class (Unity needs it).
+
 ## Milestones
 M0 Setup · M1 Movement · M2 Combat · M3 Level gen · M4 Loot/stats · M5 Visual slice · M6 Content · M7 Boss/biome 1 · M8 Meta/hub/story · M9 Biomes 2-3 · M10 Polish.
 Review stop after each.

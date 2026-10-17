@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17eaa9fb0ad48754cb57f92726c0f32e, type: 3}
+  m_Name: Boathook
+  m_EditorClassIdentifier: Roughlike.Combat::Roughlike.Combat.WeaponData
+  displayName: Boathook
+  kind: 0
+  tint: {r: 0.7, g: 1, b: 0.8, a: 1}
+  affinity: 6
+  description: Long reach. Keep your distance and poke.
+  steps:
+  - name: Poke
+    damage: 10
+    windup: 0.08
+    active: 0.07
+    recovery: 0.16
+    chainFraction: 0.35
+    hitOffset: {x: 1.5, y: 0.9}
+    hitSize: {x: 2.8, y: 0.7}
+    knockback: {x: 4, y: 1}
+    stagger: 6
+    hitStop: 0.04
+    shake: 0.14
+    lunge: 1.5
+    moveScale: 0.5
+  - name: Poke
+    damage: 10
+    windup: 0.08
+    active: 0.07
+    recovery: 0.16
+    chainFraction: 0.35
+    hitOffset: {x: 1.5, y: 0.9}
+    hitSize: {x: 2.8, y: 0.7}
+    knockback: {x: 4, y: 1}
+    stagger: 6
+    hitStop: 0.04
+    shake: 0.14
+    lunge: 1.5
+    moveScale: 0.5
+  - name: Hook
+    damage: 16
+    windup: 0.12
+    active: 0.09
+    recovery: 0.3
+    chainFraction: 0.45
+    hitOffset: {x: 1.7, y: 0.9}
+    hitSize: {x: 3.2, y: 0.9}
+    knockback: {x: 8, y: 2}
+    stagger: 14
+    hitStop: 0.07
+    shake: 0.25
+    lunge: 2.5
+    moveScale: 0.4
+  comboResetTime: 0.45
+  shield:
+    parryWindow: 0.18
+    blockDamageReduction: 0.85
+    moveScale: 0.4
+    parryStun: 1.2
+    parryInvulnerability: 0.35
+    blockPushback: 4
+    parryHitStop: 0.12
+    parryShake: 0.5
+    lowerTime: 0.08

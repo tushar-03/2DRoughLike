@@ -1,7 +1,7 @@
 ﻿{
   "name": "Roughlike.Tests.EditMode",
   "rootNamespace": "Roughlike.Tests.EditMode",
-  "references": ["Roughlike.Utils", "Roughlike.Core", "Roughlike.Player", "Roughlike.Combat", "Roughlike.Enemies", "Roughlike.Items", "Roughlike.Rooms", "Roughlike.Meta", "Roughlike.UI", "Roughlike.Audio", "Unity.Cinemachine", "UnityEngine.TestRunner", "UnityEditor.TestRunner"],
+  "references": ["Roughlike.Utils", "Roughlike.Core", "Roughlike.Player", "Roughlike.Combat", "Roughlike.Enemies", "Roughlike.Items", "Roughlike.Rooms", "Roughlike.Meta", "Roughlike.UI", "Roughlike.Audio", "Unity.Cinemachine", "UnityEngine.UI", "UnityEngine.TestRunner", "UnityEditor.TestRunner"],
   "includePlatforms": ["Editor"],
   "excludePlatforms": [],
   "allowUnsafeCode": false,
@@ -12,4 +12,5 @@
   "versionDefines": [],
   "noEngineReferences": false
 }
+
 

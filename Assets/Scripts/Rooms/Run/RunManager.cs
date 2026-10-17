@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using Roughlike.Combat;
 using Roughlike.Core;
 using Roughlike.Enemies;
+using Roughlike.Items;
 using Roughlike.Player;
 
 namespace Roughlike.Rooms
@@ -17,6 +18,10 @@ namespace Roughlike.Rooms
         public float Time;
         public float DamageTaken;
         public int RoomsVisited;
+        public int Gold;
+        /// <summary>Cells carried at the end of the run. Banked (kept) only when the biome is cleared; lost on death.</summary>
+        public int Cells;
+        public bool CellsBanked;
     }
 
     /// <summary>
@@ -37,6 +42,8 @@ namespace Roughlike.Rooms
         Health _health;
         PlayerCombat _combat;
         PlayerDefense _defense;
+        PlayerInventory _inventory;
+        [SerializeField] LootDirector lootDirector;
         SpriteRenderer _playerSprite;
         float _endTimer;
 
@@ -54,11 +61,14 @@ namespace Roughlike.Rooms
 
         public event Action<RunState> StateChanged;
 
-        public void Bind(BiomeData biomeData, PlayerController p, Unity.Cinemachine.CinemachineCamera camera = null)
+        public PlayerInventory Inventory => _inventory;
+
+        public void Bind(BiomeData biomeData, PlayerController p, Unity.Cinemachine.CinemachineCamera camera = null, LootDirector director = null)
         {
             biome = biomeData;
             player = p;
             vcam = camera;
+            lootDirector = director;
         }
 
         void Awake() { CachePlayer(); }
@@ -69,6 +79,7 @@ namespace Roughlike.Rooms
             _health = player.GetComponent<Health>();
             _combat = player.GetComponent<PlayerCombat>();
             _defense = player.GetComponent<PlayerDefense>();
+            _inventory = player.GetComponent<PlayerInventory>();
             _playerSprite = player.GetComponentInChildren<SpriteRenderer>();
         }
 
@@ -136,7 +147,11 @@ namespace Roughlike.Rooms
             Stats.RoomsVisited = 1;
             _endTimer = 0f;
 
-            // fresh player: full health, base kit, no weapons mid-swing
+            // permadeath: a fresh inventory and starting loadout, then full health on top of its stats
+            if (_inventory != null) _inventory.ResetForRun(biome.loot);
+            if (lootDirector != null) lootDirector.BeginRun(seed);
+            var status = player.GetComponent<StatusEffects>();
+            if (status != null) status.ClearAll();
             _health.ResetToFull();
             player.ResetTo(Level.PlayerSpawn);
             player.Abilities = MovementAbilities.None;
@@ -146,6 +161,7 @@ namespace Roughlike.Rooms
             if (vcam != null) vcam.PreviousStateIsValid = false;   // snap the camera instead of panning across the map
 
             SetState(RunState.Running);
+            EventBus<RunStartedEvent>.Raise(new RunStartedEvent { Seed = seed });
         }
 
         void SetState(RunState next)
@@ -162,9 +178,18 @@ namespace Roughlike.Rooms
             if (_playerSprite != null) _playerSprite.enabled = active;
         }
 
+        void CaptureCurrency(bool bank)
+        {
+            if (_inventory == null) return;
+            Stats.Gold = _inventory.Gold;
+            Stats.Cells = _inventory.Cells;
+            Stats.CellsBanked = bank;
+        }
+
         void OnPlayerDied()
         {
             if (State != RunState.Running) return;
+            CaptureCurrency(false);   // unbanked Cells are lost on death
             _endTimer = 0f;
             SetPlayerActive(false);
             SetState(RunState.Dead);
@@ -173,6 +198,7 @@ namespace Roughlike.Rooms
         void OnExitReached()
         {
             if (State != RunState.Running) return;
+            CaptureCurrency(true);    // the exit door banks your Cells
             _endTimer = 0f;
             SetPlayerActive(false);
             SetState(RunState.Complete);
@@ -223,6 +249,7 @@ namespace Roughlike.Rooms
             if (cell == CurrentRoom || !Layout.Contains(cell)) return;
             CurrentRoom = cell;
             if (Visited.Add(cell)) Stats.RoomsVisited++;
+            if (lootDirector != null && Layout.TryGet(cell, out var c)) lootDirector.Progress = c.Progress;
         }
 
         void OnDestroy()
@@ -231,5 +258,7 @@ namespace Roughlike.Rooms
         }
     }
 }
+
+
 
 

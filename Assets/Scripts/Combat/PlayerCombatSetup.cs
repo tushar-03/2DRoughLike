@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Roughlike.Player;
 
 namespace Roughlike.Combat
@@ -14,6 +14,7 @@ namespace Roughlike.Combat
 
             var health = go.AddComponent<Health>();
             health.Initialize(Team.Player, maxHealth);
+            go.AddComponent<StatusEffects>();
             go.AddComponent<PlayerDefense>();
             var combat = go.AddComponent<PlayerCombat>();
             SetWeapons(combat, slot1, slot2);
@@ -37,3 +38,4 @@ namespace Roughlike.Combat
         }
     }
 }
+

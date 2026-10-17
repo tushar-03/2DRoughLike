@@ -51,6 +51,8 @@ namespace Roughlike.Player
 
         /// <summary>Scales run speed while an action (attack, block) is in progress. 1 = normal.</summary>
         public float MoveSpeedScale { get; set; } = 1f;
+        /// <summary>Permanent run-speed multiplier from stats (gear, mutations) and statuses. 1 = normal.</summary>
+        public float SpeedBonus { get; set; } = 1f;
         /// <summary>When true the facing direction does not follow input (during attack windups and swings).</summary>
         public bool FacingLocked { get; set; }
 
@@ -239,7 +241,7 @@ namespace Roughlike.Player
             if (TryStartRoll(intent)) { TickRolling(intent, dt); return; }
             if (TryEnterLadder(intent)) { TickLadder(intent, dt); return; }
 
-            _vel.x = Accelerate(_vel.x, _moveX * config.runSpeed * MoveSpeedScale, config.groundAcceleration,
+            _vel.x = Accelerate(_vel.x, _moveX * config.runSpeed * MoveSpeedScale * SpeedBonus, config.groundAcceleration,
                 config.groundDeceleration, config.groundTurnAcceleration, dt);
             Step(dt, 1f, intent, true);
         }
@@ -252,7 +254,7 @@ namespace Roughlike.Player
         {
             if (_wallLock <= 0f)
             {
-                _vel.x = Accelerate(_vel.x, _moveX * config.runSpeed * MoveSpeedScale, config.airAcceleration,
+                _vel.x = Accelerate(_vel.x, _moveX * config.runSpeed * MoveSpeedScale * SpeedBonus, config.airAcceleration,
                     config.airDeceleration, config.airAcceleration, dt);
             }
 
@@ -717,5 +719,6 @@ namespace Roughlike.Player
         }
     }
 }
+
 
 

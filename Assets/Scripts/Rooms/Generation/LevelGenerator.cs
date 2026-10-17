@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Roughlike.Core;
@@ -21,8 +21,8 @@ namespace Roughlike.Rooms
         public float verticalChance = 0.35f;
 
         [Header("Branches (optional dead-end paths)")]
-        public int minBranches = 1;
-        public int maxBranches = 2;
+        public int minBranches = 2;
+        public int maxBranches = 3;
         public int minBranchLength = 1;
         public int maxBranchLength = 3;
 
@@ -109,6 +109,7 @@ namespace Roughlike.Rooms
 
             // Branches: dead ends off the main path, ending in a Treasure room.
             int branchCount = rng.Range(s.minBranches, s.maxBranches + 1);
+            bool shopAssigned = false;
             var dirs = new List<Vector2Int> { Vector2Int.right, Vector2Int.left, Vector2Int.up, Vector2Int.down };
             for (int b = 0; b < branchCount; b++)
             {
@@ -149,17 +150,23 @@ namespace Roughlike.Rooms
                         Vector2Int prev = anchor;
                         for (int k = 0; k < branch.Count; k++)
                         {
-                            roles[branch[k]] = k == branch.Count - 1 ? RoomRole.Treasure : RoomRole.Combat;
+                            // the first branch ends at the merchant, later ones at treasure
+                            RoomRole endRole = shopAssigned ? RoomRole.Treasure : RoomRole.Shop;
+                            roles[branch[k]] = k == branch.Count - 1 ? endRole : RoomRole.Combat;
                             progress[branch[k]] = progress[anchor];
                             edges.Add((prev, branch[k]));
                             prev = branch[k];
                         }
+                        shopAssigned = true;
                         placed = true;
                         break;
                     }
                     if (placed) break;
                 }
             }
+
+            // every level has a merchant: if no branch could be placed, a room on the main path becomes the shop
+            if (!shopAssigned && path.Count >= 3) roles[path[path.Count / 2]] = RoomRole.Shop;
 
             // Cells and masks from edges.
             var masks = new Dictionary<Vector2Int, Openings>();
@@ -182,7 +189,7 @@ namespace Roughlike.Rooms
             foreach (var pos in ordered)
             {
                 RoomRole role = roles[pos];
-                bool plain = role == RoomRole.Start || role == RoomRole.Exit;
+                bool plain = role != RoomRole.Combat;
                 var cell = new LevelCell
                 {
                     Pos = pos,
@@ -223,3 +230,4 @@ namespace Roughlike.Rooms
         }
     }
 }
+

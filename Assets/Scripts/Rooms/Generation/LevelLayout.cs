@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
@@ -20,8 +20,10 @@ namespace Roughlike.Rooms
         Start,
         Exit,
         Combat,
-        /// <summary>Dead-end branch reward room (loot arrives in M4).</summary>
-        Treasure
+        /// <summary>Dead-end branch reward room with a chest.</summary>
+        Treasure,
+        /// <summary>A merchant: spend gold on items, upgrades, scrolls and flask refills.</summary>
+        Shop
     }
 
     /// <summary>One room on the generator grid. Plain data, no Unity objects, so layouts can be tested and visualised cheaply.</summary>
@@ -105,3 +107,4 @@ namespace Roughlike.Rooms
         }
     }
 }
+

@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee1ab12c8f3f03c439b3d0562224255c, type: 3}
+  m_Name: LootDatabase
+  m_EditorClassIdentifier: Roughlike.Items::Roughlike.Items.LootDatabase
+  weapons:
+  - {fileID: 11400000, guid: f95b6fe96d0f598438abe4bd16e69262, type: 2}
+  - {fileID: 11400000, guid: e6a7800316360b648af553b684e5a0a1, type: 2}
+  - {fileID: 11400000, guid: 25838f189f3a2fc4f9719b86a5f2ce59, type: 2}
+  - {fileID: 11400000, guid: 5bc25c3daa706174cb3096b65902cbdb, type: 2}
+  - {fileID: 11400000, guid: 50df0fe6c359efa409d60f604019b49d, type: 2}
+  - {fileID: 11400000, guid: 7ee09ad5900ed4e4fb3fe3d95922c41d, type: 2}
+  skills:
+  - {fileID: 11400000, guid: 9879e572de7d7b54ba4cf0fb4ca0c216, type: 2}
+  - {fileID: 11400000, guid: a56d72b940f770c4b8666020fd2e0f50, type: 2}
+  - {fileID: 11400000, guid: 225f7d24c92e9c1458c31a54104be073, type: 2}
+  - {fileID: 11400000, guid: 1749e9b52c03fb44b912799212401c64, type: 2}
+  amulets:
+  - {fileID: 11400000, guid: f577d03ec88b823489d4dfa40e96d948, type: 2}
+  - {fileID: 11400000, guid: 1d658d2320b68684680883ed37d952ce, type: 2}
+  - {fileID: 11400000, guid: c61bcf6f1cc4f894a8d5754e9622422b, type: 2}
+  - {fileID: 11400000, guid: febfc900b8bc1e1458d0353a140637e7, type: 2}
+  - {fileID: 11400000, guid: b53b26c78868f4741b0d836f84bc7a35, type: 2}
+  - {fileID: 11400000, guid: a39ad686785193b42a1fb3709015ba4f, type: 2}
+  outfits:
+  - {fileID: 11400000, guid: 39dd090d26cff634fbb160ff29a79bb5, type: 2}
+  - {fileID: 11400000, guid: 335a536363a5bf5478abb6d8937495b5, type: 2}
+  - {fileID: 11400000, guid: 217a2efb49601454c980cf2c03c76733, type: 2}
+  - {fileID: 11400000, guid: ad4845a90e81257498060ab5352b12f6, type: 2}
+  - {fileID: 11400000, guid: b7f0681eeb9310c4ca4cbfb7f19e09fb, type: 2}
+  affixes:
+  - {fileID: 11400000, guid: 13b7cb23c2a965340b26b7afddd3a1ac, type: 2}
+  - {fileID: 11400000, guid: 0862e49ee5eed7c4398e2a29dc7b933a, type: 2}
+  - {fileID: 11400000, guid: 9986699cf520dd8469109774960a2d53, type: 2}
+  - {fileID: 11400000, guid: 5fbfc00874ce41d40b26702645e49468, type: 2}
+  - {fileID: 11400000, guid: 4aef6ed8244308a4e96c0b37728daaaf, type: 2}
+  - {fileID: 11400000, guid: 77fd77166ef94da458715599ddf10449, type: 2}
+  - {fileID: 11400000, guid: 0054a5bb8cde5bd4283d2f91f95a586c, type: 2}
+  - {fileID: 11400000, guid: 97db0fd6d816716479814e2a5fbb30ba, type: 2}
+  - {fileID: 11400000, guid: 14860cddc52b0924fbab891994114156, type: 2}
+  - {fileID: 11400000, guid: 0085472c970211b48a009c2e3fe044ab, type: 2}
+  - {fileID: 11400000, guid: 68121d29577d1cb4dadbee4b3ab2761c, type: 2}
+  - {fileID: 11400000, guid: 81e22cd8762f8e24793146622d5b4ae3, type: 2}
+  - {fileID: 11400000, guid: 6cca917ee3a0a604e960e1009f3d52ab, type: 2}
+  - {fileID: 11400000, guid: 1805722e20adf924b965d4d3597b5098, type: 2}
+  - {fileID: 11400000, guid: e3a23246008d8f04c95a21ccae1e656d, type: 2}
+  - {fileID: 11400000, guid: 68789f08a68e39c4b981997b43cb5ed0, type: 2}
+  - {fileID: 11400000, guid: d909f851fc3b1e84081b047dd2947bff, type: 2}
+  - {fileID: 11400000, guid: 80a0e1de6821a304ca31cdc891bef124, type: 2}
+  - {fileID: 11400000, guid: b6312a76b0b3f9a4992a8186b2856c7d, type: 2}
+  - {fileID: 11400000, guid: f24a167a329ce144c8569cec44a35953, type: 2}
+  - {fileID: 11400000, guid: dc9019d4a23194243864c0d1bef00dbe, type: 2}
+  - {fileID: 11400000, guid: 267372b0cab9ef64f9c4f321471c2f28, type: 2}
+  - {fileID: 11400000, guid: 3c20d9024fa628e4fb50a5918b35ec8d, type: 2}
+  - {fileID: 11400000, guid: 402cc784cd623b648b2cb28772d65206, type: 2}
+  mutations:
+  - {fileID: 11400000, guid: a8548ea6575768140a23703d144b55e9, type: 2}
+  - {fileID: 11400000, guid: f3085a9f9aa9d03429f3b9293018a17f, type: 2}
+  - {fileID: 11400000, guid: 62cbaaffbb21fa64bbdfdaaef1370e37, type: 2}
+  - {fileID: 11400000, guid: 036bbb35969849e479ba5a43d82001c5, type: 2}
+  - {fileID: 11400000, guid: 6c5463027975a7d44a5f88acd56f8882, type: 2}
+  - {fileID: 11400000, guid: 04c6c9d6f19e28448b76241ffeba7753, type: 2}
+  - {fileID: 11400000, guid: a0d3e71879906e54298a658a4401b80c, type: 2}
+  - {fileID: 11400000, guid: 4b6f3e1d55d1d2a46b81e541e3541e30, type: 2}
+  startingWeapon1: {fileID: 11400000, guid: e6a7800316360b648af553b684e5a0a1, type: 2}
+  startingWeapon2: {fileID: 11400000, guid: 50df0fe6c359efa409d60f604019b49d, type: 2}
+  startingOutfit: {fileID: 11400000, guid: 39dd090d26cff634fbb160ff29a79bb5, type: 2}
+  curseChance: 0.08

@@ -28,6 +28,7 @@ namespace Roughlike.Enemies
 
             var health = go.AddComponent<Health>();
             health.Initialize(Team.Enemy, def.maxHealth);
+            go.AddComponent<StatusEffects>();
 
             // visuals: root (flipped by facing) -> sprite (squash, flash)
             var visualRoot = new GameObject("Visual").transform;
@@ -87,6 +88,7 @@ namespace Roughlike.Enemies
 
             var health = go.AddComponent<Health>();
             health.Initialize(Team.Enemy, 100000f);
+            go.AddComponent<StatusEffects>();
 
             var spriteGo = new GameObject("Sprite");
             spriteGo.transform.SetParent(go.transform, false);

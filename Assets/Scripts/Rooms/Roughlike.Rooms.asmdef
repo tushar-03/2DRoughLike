@@ -1,7 +1,7 @@
 ﻿{
   "name": "Roughlike.Rooms",
   "rootNamespace": "Roughlike.Rooms",
-  "references": ["Roughlike.Utils", "Roughlike.Core", "Roughlike.Player", "Roughlike.Combat", "Roughlike.Enemies", "Unity.InputSystem", "Unity.Cinemachine"],
+  "references": ["Roughlike.Utils", "Roughlike.Core", "Roughlike.Player", "Roughlike.Combat", "Roughlike.Enemies", "Roughlike.Items", "Unity.InputSystem", "Unity.Cinemachine"],
   "includePlatforms": [],
   "excludePlatforms": [],
   "allowUnsafeCode": false,
@@ -12,5 +12,6 @@
   "versionDefines": [],
   "noEngineReferences": false
 }
+
 
 

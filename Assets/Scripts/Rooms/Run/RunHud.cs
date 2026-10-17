@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using Roughlike.Combat;
 using Roughlike.Core;
@@ -38,7 +38,7 @@ namespace Roughlike.Rooms
             _big ??= new GUIStyle(GUI.skin.label) { fontSize = 34, fontStyle = FontStyle.Bold, alignment = TextAnchor.MiddleCenter, normal = { textColor = Color.white } };
 
             DrawTopBar();
-            DrawMinimap(10f, 70f);
+            DrawMinimap(10f, 160f);
             if (_showSeedBox) DrawSeedBox();
             if (run.EndScreenVisible) DrawEndScreen();
         }
@@ -133,6 +133,7 @@ namespace Roughlike.Rooms
                 $"Rooms explored  {s.RoomsVisited} / {run.Layout.Cells.Count}\n" +
                 $"Enemies slain  {s.Kills}\n" +
                 $"Damage taken  {s.DamageTaken:0}\n" +
+                "Gold  " + s.Gold + "     Cells  " + s.Cells + (s.CellsBanked ? " (banked)" : " (lost)") + "\n" +
                 $"Time  {(int)s.Time / 60}:{(int)s.Time % 60:00}";
             GUI.Label(new Rect(panel.x + 90, panel.y + 80, panel.width - 120, 130), summary, _label);
 
@@ -145,3 +146,4 @@ namespace Roughlike.Rooms
 #endif
     }
 }
+

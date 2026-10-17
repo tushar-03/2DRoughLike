@@ -89,7 +89,7 @@ namespace Roughlike.Rooms
             }
 
             // interior variants (only in rooms without vertical openings, which already have their own geometry)
-            bool plain = cell.Role == RoomRole.Start || cell.Role == RoomRole.Exit;
+            bool plain = cell.Role != RoomRole.Combat;
             int variant = vertical || plain ? VariantFlat : cell.Variant;
             switch (variant)
             {

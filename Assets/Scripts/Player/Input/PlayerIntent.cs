@@ -13,6 +13,10 @@ namespace Roughlike.Player
         public bool Attack1Held;
         public bool Attack2Pressed;
         public bool Attack2Held;
+        public bool Skill1Pressed;
+        public bool Skill2Pressed;
+        public bool InteractPressed;
+        public bool FlaskPressed;
 
         public bool DownHeld(float threshold = 0.5f) => Move.y < -threshold;
         public bool UpHeld(float threshold = 0.5f) => Move.y > threshold;

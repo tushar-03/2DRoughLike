@@ -25,6 +25,7 @@ MonoBehaviour:
     minBranchLength: 1
     maxBranchLength: 3
     variantCount: 4
+  loot: {fileID: 11400000, guid: d269542f687b9df4fbb2022483bfc6f0, type: 2}
   enemyPool:
   - {fileID: 11400000, guid: 5ecbd5e680ec8974a90d3a95eba2447d, type: 2}
   - {fileID: 11400000, guid: de7140fa076e3a34cb2b8b77f4ee77be, type: 2}

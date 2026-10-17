@@ -40,8 +40,13 @@ namespace Roughlike.Combat
         [SerializeField] bool showHitboxes;
         [Tooltip("Run from Update. Tests turn this off and call Tick(dt) themselves.")]
         public bool autoTick = true;
-        /// <summary>Global damage scaling (scroll stats, mutations; M4).</summary>
+        /// <summary>Global damage scaling applied on top of the weapon's own modifiers.</summary>
         public float DamageMultiplier { get; set; } = 1f;
+        /// <summary>Supplies per-weapon damage, crit, status procs and speed from the item system. Neutral when null.</summary>
+        public IPlayerModifiers Modifiers { get; set; }
+        /// <summary>Multiplies the damage of the next swing, then resets (parry riposte mutation).</summary>
+        public float PendingHitMultiplier { get; set; } = 1f;
+        float _swingBonus = 1f;
 
         PlayerController _pc;
         Health _health;
@@ -151,7 +156,7 @@ namespace Roughlike.Combat
             if (_bufferTimer <= 0f) _buffered = -1;
 
             TickShield(intent, dt);
-            TickAttack(dt);
+            TickAttack(dt * (Modifiers != null ? Modifiers.AttackSpeed : 1f));
             ApplyMovementOverrides();
         }
 
@@ -266,6 +271,8 @@ namespace Roughlike.Combat
             _phase = AttackPhase.Active;
             _phaseTimer = 0f;
             _hitSet.Clear();
+            _swingBonus = PendingHitMultiplier;
+            PendingHitMultiplier = 1f;
 
             _pc.AddImpulse(new Vector2(_pc.Facing * step.lunge, 0f));
             if (_visual != null) _visual.Punch(new Vector2(0.88f, 1.12f));
@@ -288,17 +295,27 @@ namespace Roughlike.Combat
             Vector2 centre = HitCentre(step);
             if (showHitboxes) MeleeStrike.DrawDebug(centre, step.hitSize, Color.red);
 
+            WeaponMods mods = Modifiers != null ? Modifiers.GetWeaponMods(_slot) : WeaponMods.Neutral;
+            float amount = step.damage * DamageMultiplier * mods.DamageMultiplier * _swingBonus;
+            bool crit = mods.CritChance > 0f && UnityEngine.Random.value < mods.CritChance;
+            if (crit) amount *= mods.CritMultiplier;
+
             var info = new DamageInfo
             {
-                Amount = step.damage * DamageMultiplier,
+                Amount = amount,
                 SourceTeam = Team.Player,
                 Attacker = this,
                 SourcePosition = transform.position,
                 Knockback = new Vector2(step.knockback.x * _pc.Facing, step.knockback.y),
                 Stagger = step.stagger,
-                HitStop = step.hitStop,
-                Shake = step.shake,
-                Tags = DamageTags.Melee
+                HitStop = step.hitStop * (crit ? 1.5f : 1f),
+                Shake = step.shake * (crit ? 1.4f : 1f),
+                Tags = DamageTags.Melee,
+                IsCrit = crit,
+                OnHitStatus = mods.Status,
+                StatusChance = mods.StatusChance,
+                StatusDuration = mods.StatusDuration,
+                StatusPotency = mods.StatusPotency
             };
 
             MeleeStrike.Strike(centre, step.hitSize, _targetMask, info, _hitSet, (h, r) => StrikeLanded?.Invoke(h, r));
@@ -341,7 +358,8 @@ namespace Roughlike.Combat
                 case ShieldPhase.Parry:
                     _shieldTimer += dt;
                     if (!held) BeginLowering();
-                    else if (_shieldTimer >= _shieldWeapon.shield.parryWindow) _shieldPhase = ShieldPhase.Block;
+                    else if (_shieldTimer >= _shieldWeapon.shield.parryWindow * (Modifiers != null ? Modifiers.ParryWindowMultiplier : 1f))
+                        _shieldPhase = ShieldPhase.Block;
                     break;
 
                 case ShieldPhase.Block:

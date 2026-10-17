@@ -143,11 +143,16 @@ namespace Roughlike.Tests.EditMode
                 Assert.IsTrue(reached.Contains(l.Exit.Pos), ctx);
 
                 // exactly one start and one exit; treasure rooms are dead ends off the main path
-                int starts = 0, exits = 0;
+                int starts = 0, exits = 0, shops = 0;
                 foreach (var c in l.Cells)
                 {
                     if (c.Role == RoomRole.Start) starts++;
                     if (c.Role == RoomRole.Exit) exits++;
+                    if (c.Role == RoomRole.Shop)
+                    {
+                        shops++;
+                        Assert.IsTrue(c.OnMainPath || ((int)c.Mask & ((int)c.Mask - 1)) == 0, ctx + " shop must be a dead end or on the main path");
+                    }
                     if (c.Role == RoomRole.Treasure)
                     {
                         Assert.IsFalse(c.OnMainPath, ctx);
@@ -158,6 +163,7 @@ namespace Roughlike.Tests.EditMode
                 }
                 Assert.AreEqual(1, starts, ctx);
                 Assert.AreEqual(1, exits, ctx);
+                Assert.AreEqual(1, shops, ctx + " every level has exactly one merchant");
             }
         }
 
@@ -170,7 +176,7 @@ namespace Roughlike.Tests.EditMode
                 LevelLayout l = LevelGenerator.Generate(seed, Settings);
                 foreach (var c in l.Cells)
                 {
-                    if (c.Role == RoomRole.Treasure) { withBranch++; break; }
+                    if (!c.OnMainPath) { withBranch++; break; }
                 }
                 foreach (var c in l.Cells)
                 {

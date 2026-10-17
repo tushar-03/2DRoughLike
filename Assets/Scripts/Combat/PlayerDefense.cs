@@ -62,7 +62,11 @@ namespace Roughlike.Combat
         }
 
         public HitResult Filter(ref DamageInfo info)
-            => IsInvulnerable ? HitResult.Ignored : HitResult.Hit;
+        {
+            if (IsInvulnerable) return HitResult.Ignored;
+            if (_combat != null && _combat.Modifiers != null) info.Amount *= _combat.Modifiers.DamageTakenMultiplier;
+            return HitResult.Hit;
+        }
 
         void OnHitTaken(HitReport report)
         {

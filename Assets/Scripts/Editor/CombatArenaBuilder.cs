@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using Roughlike.Combat;
 using Roughlike.Core;
 using Roughlike.Enemies;
+using Roughlike.Items;
 using Roughlike.Player;
 
 namespace Roughlike.Editor
@@ -98,49 +99,9 @@ namespace Roughlike.Editor
                 lunge = lunge, moveScale = moveScale
             };
 
-        static WeaponData MakeDagger()
-        {
-            var w = ScriptableObject.CreateInstance<WeaponData>();
-            w.displayName = "Rusted Dagger";
-            w.kind = WeaponKind.Melee;
-            w.tint = new Color(0.75f, 0.9f, 1f);
-            w.comboResetTime = 0.4f;
-            w.steps = new[]
-            {
-                Step("Jab", 7f, 0.03f, 0.06f, 0.10f, 0.3f, new Vector2(0.75f, 0.85f), new Vector2(1.3f, 1.0f), new Vector2(3f, 1.5f), 5f, 0.035f, 0.12f, 3.5f, 0.6f),
-                Step("Jab", 7f, 0.03f, 0.06f, 0.10f, 0.3f, new Vector2(0.75f, 0.85f), new Vector2(1.3f, 1.0f), new Vector2(3f, 1.5f), 5f, 0.035f, 0.12f, 3.5f, 0.6f),
-                Step("Flurry", 11f, 0.05f, 0.07f, 0.22f, 0.45f, new Vector2(0.85f, 0.85f), new Vector2(1.6f, 1.1f), new Vector2(6f, 3f), 9f, 0.06f, 0.22f, 5f, 0.5f)
-            };
-            return w;
-        }
-
-        static WeaponData MakeSword()
-        {
-            var w = ScriptableObject.CreateInstance<WeaponData>();
-            w.displayName = "Bellringer's Sword";
-            w.kind = WeaponKind.Melee;
-            w.tint = new Color(1f, 0.9f, 0.55f);
-            w.comboResetTime = 0.5f;
-            w.steps = new[]
-            {
-                Step("Slash", 14f, 0.09f, 0.08f, 0.20f, 0.4f, new Vector2(1.0f, 0.9f), new Vector2(1.9f, 1.3f), new Vector2(5f, 2f), 9f, 0.06f, 0.20f, 3f, 0.35f),
-                Step("Backslash", 14f, 0.08f, 0.08f, 0.22f, 0.4f, new Vector2(1.0f, 0.9f), new Vector2(1.9f, 1.3f), new Vector2(5f, 2f), 9f, 0.06f, 0.20f, 3f, 0.35f),
-                Step("Cleave", 24f, 0.14f, 0.10f, 0.38f, 0.5f, new Vector2(1.1f, 0.95f), new Vector2(2.3f, 1.5f), new Vector2(9f, 5f), 20f, 0.10f, 0.40f, 5f, 0.3f)
-            };
-            return w;
-        }
-
-        static WeaponData MakeShield()
-        {
-            var w = ScriptableObject.CreateInstance<WeaponData>();
-            w.displayName = "Tower Shield";
-            w.kind = WeaponKind.Shield;
-            w.tint = new Color(0.7f, 0.85f, 1f);
-            w.steps = new AttackStep[0];
-            w.shield = new ShieldSettings { lowerTime = 0.2f };
-            return w;
-        }
-
+        static WeaponData MakeDagger() => DefaultContent.Dagger();
+        static WeaponData MakeSword() => DefaultContent.Sword();
+        static WeaponData MakeShield() => DefaultContent.Shield();
         static EnemyDefinition MakeGrunt()
         {
             var e = ScriptableObject.CreateInstance<EnemyDefinition>();
@@ -293,4 +254,5 @@ namespace Roughlike.Editor
         }
     }
 }
+
 

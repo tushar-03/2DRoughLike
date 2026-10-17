@@ -11,6 +11,10 @@ namespace Roughlike.Rooms
 
         public GeneratorSettings generator = new GeneratorSettings();
 
+        [Header("Loot")]
+        [Tooltip("Items, skills, gear, affixes and mutations for chests, shops and altars. Leave empty for a loot-free level.")]
+        public Roughlike.Items.LootDatabase loot;
+
         [Header("Population")]
         public EnemyDefinition[] enemyPool;
         [Tooltip("Enemies in a combat room at the start of the level.")]

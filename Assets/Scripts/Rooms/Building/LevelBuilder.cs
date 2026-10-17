@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Roughlike.Combat;
 using Roughlike.Core;
 using Roughlike.Enemies;
+using Roughlike.Items;
 using Roughlike.Utils;
 
 namespace Roughlike.Rooms
@@ -13,6 +15,10 @@ namespace Roughlike.Rooms
         public LevelLayout Layout;
         public readonly Dictionary<Vector2Int, RoomChunk> Chunks = new Dictionary<Vector2Int, RoomChunk>();
         public readonly List<EnemyController> Enemies = new List<EnemyController>();
+        public readonly List<RoomClearTracker> Trackers = new List<RoomClearTracker>();
+        public readonly List<MutationAltar> Altars = new List<MutationAltar>();
+        public readonly List<LootChest> Chests = new List<LootChest>();
+        public readonly List<ShopStand> Shops = new List<ShopStand>();
         public Vector2 PlayerSpawn;
         public ExitDoor Exit;
 
@@ -26,15 +32,21 @@ namespace Roughlike.Rooms
     }
 
     /// <summary>
-    /// Turns a <see cref="LevelLayout"/> into scene objects: rooms, enemies, the exit door and treasure markers.
-    /// Population is deterministic: each room draws from its own fork of the run seed.
+    /// Turns a <see cref="LevelLayout"/> into scene objects: rooms, enemies, the exit door, shops, chests and mutation
+    /// altars. Population is deterministic: each room draws from its own fork of the run seed.
     /// </summary>
     public static class LevelBuilder
     {
+        /// <summary>Progress points along the main path where a mutation altar appears.</summary>
+        public static readonly float[] AltarProgress = { 0.25f, 0.5f, 0.75f };
+
         public static BuiltLevel Build(LevelLayout layout, BiomeData biome, bool spawnEnemies = true)
         {
             var built = new BuiltLevel { Layout = layout, Root = new GameObject($"Level {layout.Seed}") };
             var masterRng = new SeededRng(layout.Seed);
+            LootDatabase loot = biome.loot;
+
+            HashSet<int> altarCells = loot != null ? PickAltarCells(layout) : new HashSet<int>();
 
             foreach (var cell in layout.Cells)
             {
@@ -50,23 +62,78 @@ namespace Roughlike.Rooms
                         built.Exit = ExitDoor.Create(chunk.transform, chunk.ExitAnchor, biome.accent);
                         break;
                     case RoomRole.Treasure:
-                        CreateTreasureMarker(chunk);
+                        if (loot != null) PlaceChest(masterRng.Fork(4000 + cell.Index), loot, cell, chunk, built);
+                        else CreateTreasureMarker(chunk);
+                        break;
+                    case RoomRole.Shop:
+                        if (loot != null) PlaceShop(masterRng.Fork(3000 + cell.Index), loot, cell, chunk, built);
                         break;
                 }
 
-                if (spawnEnemies && cell.Role == RoomRole.Combat) SpawnEnemies(masterRng.Fork(1000 + cell.Index), cell, chunk, biome, built);
+                bool hasAltar = altarCells.Contains(cell.Index);
+                if (hasAltar) PlaceAltar(masterRng.Fork(5000 + cell.Index), loot, chunk, built);
+
+                if (spawnEnemies && cell.Role == RoomRole.Combat)
+                    SpawnEnemies(masterRng.Fork(1000 + cell.Index), cell, chunk, biome, built, hasAltar ? chunk.ExitAnchor : (Vector2?)null);
             }
             return built;
         }
 
-        static void SpawnEnemies(SeededRng rng, LevelCell cell, RoomChunk chunk, BiomeData biome, BuiltLevel built)
+        /// <summary>One main-path combat room per altar threshold (the first one at or past it).</summary>
+        static HashSet<int> PickAltarCells(LevelLayout layout)
+        {
+            var picked = new HashSet<int>();
+            foreach (float threshold in AltarProgress)
+            {
+                foreach (var c in layout.Cells)
+                {
+                    if (!c.OnMainPath || c.Role != RoomRole.Combat || picked.Contains(c.Index)) continue;
+                    if (c.Progress < threshold) continue;
+                    picked.Add(c.Index);
+                    break;
+                }
+            }
+            return picked;
+        }
+
+        static void PlaceChest(SeededRng rng, LootDatabase loot, LevelCell cell, RoomChunk chunk, BuiltLevel built)
+        {
+            ItemInstance contents = LootRoller.Roll(loot, rng, cell.Progress, null, 0.6f);
+            var chest = LootFactory.SpawnChest(chunk.LootAnchor, contents);
+            chest.transform.SetParent(chunk.transform, true);
+            built.Chests.Add(chest);
+        }
+
+        static void PlaceShop(SeededRng rng, LootDatabase loot, LevelCell cell, RoomChunk chunk, BuiltLevel built)
+        {
+            var stock = ShopStock.Generate(loot, rng, cell.Progress);
+            var shop = LootFactory.SpawnShop(chunk.LootAnchor, stock);
+            shop.transform.SetParent(chunk.transform, true);
+            built.Shops.Add(shop);
+        }
+
+        static void PlaceAltar(SeededRng rng, LootDatabase loot, RoomChunk chunk, BuiltLevel built)
+        {
+            var choices = LootRoller.RollMutationChoices(loot, rng, 3, null);
+            if (choices.Count == 0) return;
+            var altar = LootFactory.SpawnAltar(chunk.ExitAnchor, choices);
+            altar.transform.SetParent(chunk.transform, true);
+            built.Altars.Add(altar);
+        }
+
+        static void SpawnEnemies(SeededRng rng, LevelCell cell, RoomChunk chunk, BiomeData biome, BuiltLevel built, Vector2? keepClear)
         {
             if (biome.enemyPool == null || biome.enemyPool.Length == 0) return;
 
             int count = Mathf.RoundToInt(Mathf.Lerp(biome.minEnemies, biome.maxEnemies, cell.Progress));
             var spots = new List<Vector2>(chunk.EnemySpawns);
+            if (keepClear.HasValue) spots.RemoveAll(p => Mathf.Abs(p.x - keepClear.Value.x) < 3f);
             rng.Shuffle(spots);
             count = Mathf.Min(count, spots.Count);
+
+            var tracker = chunk.gameObject.AddComponent<RoomClearTracker>();
+            tracker.Init(cell, chunk);
+            built.Trackers.Add(tracker);
 
             for (int i = 0; i < count; i++)
             {
@@ -74,41 +141,17 @@ namespace Roughlike.Rooms
                 EnemyController e = EnemyFactory.Build(def, spots[i] + Vector2.up * 0.05f);
                 e.transform.SetParent(chunk.transform, true);
                 built.Enemies.Add(e);
+                tracker.Register(e.GetComponent<Health>());
             }
         }
 
+        /// <summary>Marker used only when a biome has no loot database.</summary>
         static void CreateTreasureMarker(RoomChunk chunk)
         {
-            var go = new GameObject("Treasure (loot arrives in M4)");
+            var go = new GameObject("Treasure");
             go.transform.SetParent(chunk.transform, false);
             go.transform.position = chunk.LootAnchor;
-
-            var body = new GameObject("Chest");
-            body.transform.SetParent(go.transform, false);
-            body.transform.localPosition = new Vector3(0f, 0.45f, 0f);
-            body.transform.localScale = new Vector3(1.3f, 0.9f, 1f);
-            var sr = body.AddComponent<SpriteRenderer>();
-            sr.sprite = ProceduralSprites.Square; sr.sortingOrder = 3;
-            sr.color = new Color(0.9f, 0.7f, 0.25f);
-
-            var lid = new GameObject("Lid");
-            lid.transform.SetParent(go.transform, false);
-            lid.transform.localPosition = new Vector3(0f, 1.0f, 0f);
-            lid.transform.localScale = new Vector3(1.4f, 0.25f, 1f);
-            var lsr = lid.AddComponent<SpriteRenderer>();
-            lsr.sprite = ProceduralSprites.Square; lsr.sortingOrder = 4;
-            lsr.color = new Color(0.65f, 0.45f, 0.15f);
-
-            var label = new GameObject("Label");
-            label.transform.SetParent(go.transform, false);
-            label.transform.localPosition = new Vector3(0f, 2.2f, 0f);
-            var tm = label.AddComponent<TextMesh>();
-            var font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            tm.font = font; tm.fontSize = 48; tm.characterSize = 0.1f; tm.anchor = TextAnchor.MiddleCenter;
-            tm.text = "TREASURE"; tm.color = new Color(1f, 0.9f, 0.5f, 0.9f);
-            label.GetComponent<MeshRenderer>().sharedMaterial = font.material;
-            label.GetComponent<MeshRenderer>().sortingOrder = 6;
+            LootFactory.Label(go.transform, "TREASURE", new Color(1f, 0.9f, 0.5f, 0.9f), 0.1f, new Vector3(0f, 2.2f, 0f));
         }
     }
 }
-

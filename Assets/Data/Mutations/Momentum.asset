@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2cbd112aa96bc4eacb8ce0e12a0518, type: 3}
+  m_Name: Momentum
+  m_EditorClassIdentifier: Roughlike.Items::Roughlike.Items.MutationData
+  displayName: Momentum
+  description: Each kill grants +8% damage for 5 seconds (stacks to 5).
+  tint: {r: 1, g: 0.6, b: 0.2, a: 1}
+  modifiers: []
+  effect: 3
+  effectValue: 0.08

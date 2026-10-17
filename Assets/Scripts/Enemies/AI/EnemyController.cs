@@ -32,6 +32,7 @@ namespace Roughlike.Enemies
         Health _health;
         TelegraphIndicator _telegraph;
         HitReactionVisual _react;
+        StatusEffects _status;
         Transform _visualRoot;
 
         Vector2 _vel;
@@ -63,6 +64,7 @@ namespace Roughlike.Enemies
         {
             _motor = GetComponent<KinematicMotor2D>();
             _health = GetComponent<Health>();
+            _status = GetComponent<StatusEffects>();
             _home = transform.position;
         }
 
@@ -98,6 +100,10 @@ namespace Roughlike.Enemies
             _poise = Mathf.Max(0f, _poise - 8f * dt);
             _stateTimer += dt;
 
+            // stun status: act like a stagger for as long as it lasts
+            if (_status != null && _status.IsStunned && State != EnemyState.Stagger)
+                EnterStagger(_status.StunRemaining);
+
             float desiredVx = 0f;
 
             switch (State)
@@ -110,6 +116,7 @@ namespace Roughlike.Enemies
                 case EnemyState.Stagger: TickStagger(); break;
             }
 
+            if (_status != null) desiredVx *= _status.SpeedMultiplier;
             Move(desiredVx, dt);
         }
 

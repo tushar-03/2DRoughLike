@@ -31,6 +31,13 @@ namespace Roughlike.Combat
         void OnHit(HitReport r)
         {
             if (r.Amount <= 0f) return;
+            if ((r.Info.Tags & DamageTags.Dot) != 0)
+            {
+                // damage over time counts toward the total but is not a "hit"
+                _total += r.Amount;
+                _health.ResetToFull();
+                return;
+            }
             if (_hits == 0) _firstHitTime = Time.time;
             _hits++;
             _total += r.Amount;

@@ -20,4 +20,9 @@ All art sits behind prefab / Sprite Library / ScriptableObject slots so replacem
 | Hit flash / outline shader | n/a | Currently a sprite colour lerp. Shader Graph hit flash + outline (M5) | Medium |
 | Room geometry (floors, walls, platforms, backdrops) | 30x18 unit rooms | Tinted blocks from `BiomeData` palette. Replace with tilemaps/RuleTiles, ornate trim, layered parallax backdrops per biome; keep door height 6 and shaft width 6 | High |
 | Exit door, treasure chest, rune shrine | n/a | Tinted blocks with labels. Need ornate props with glow | Medium |
+| Item icons (weapons, skills, amulets, outfits) | 128x128 px, one per base item | Currently tinted shapes (`UiKit.FillIcon`). Rarity frames and glow come from the art pass | High |
+| HUD, shop, altar and replace-slot menus | 1920x1080 reference | Plain panels and the built-in font. Need ornate mythic frames, bold typography, glowing rarity colours; keep the layout and navigation | High |
+| Mutation, status effect and scroll icons | 64x64 px | Coloured squares with letters. Need icons per mutation, status and scroll colour | Medium |
+| Pickup props (chest, merchant, altar, scrolls, coins, Cells) | n/a | Shapes with labels. Need animated props | Medium |
+| Skill entities (grenade, turret, trap) | n/a | Shapes. Need animated, readable props with explosion flipbooks | Medium |
 | Player animation set | n/a | Idle, run, jump, fall, land, roll, ladder, ledge hang/climb, wall slide. Currently procedural squash and stretch only | High |

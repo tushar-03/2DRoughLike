@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17eaa9fb0ad48754cb57f92726c0f32e, type: 3}
+  m_Name: TideHammer
+  m_EditorClassIdentifier: Roughlike.Combat::Roughlike.Combat.WeaponData
+  displayName: Tide Hammer
+  kind: 0
+  tint: {r: 1, g: 0.55, b: 0.35, a: 1}
+  affinity: 1
+  description: Slow, heavy, and it staggers everything it touches.
+  steps:
+  - name: Smash
+    damage: 30
+    windup: 0.28
+    active: 0.1
+    recovery: 0.5
+    chainFraction: 0.55
+    hitOffset: {x: 1.1, y: 0.8}
+    hitSize: {x: 2, y: 1.6}
+    knockback: {x: 10, y: 6}
+    stagger: 35
+    hitStop: 0.14
+    shake: 0.55
+    lunge: 2
+    moveScale: 0.2
+  - name: Slam
+    damage: 46
+    windup: 0.4
+    active: 0.12
+    recovery: 0.7
+    chainFraction: 0.6
+    hitOffset: {x: 1.2, y: 0.8}
+    hitSize: {x: 2.4, y: 1.8}
+    knockback: {x: 12, y: 8}
+    stagger: 50
+    hitStop: 0.18
+    shake: 0.7
+    lunge: 2
+    moveScale: 0.15
+  comboResetTime: 0.6
+  shield:
+    parryWindow: 0.18
+    blockDamageReduction: 0.85
+    moveScale: 0.4
+    parryStun: 1.2
+    parryInvulnerability: 0.35
+    blockPushback: 4
+    parryHitStop: 0.12
+    parryShake: 0.5
+    lowerTime: 0.08

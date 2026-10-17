@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2cbd112aa96bc4eacb8ce0e12a0518, type: 3}
+  m_Name: Bloodletter
+  m_EditorClassIdentifier: Roughlike.Items::Roughlike.Items.MutationData
+  displayName: Bloodletter
+  description: Heal 3 health on every kill.
+  tint: {r: 0.9, g: 0.2, b: 0.3, a: 1}
+  modifiers: []
+  effect: 1
+  effectValue: 3

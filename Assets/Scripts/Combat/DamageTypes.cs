@@ -13,7 +13,26 @@ namespace Roughlike.Combat
         Projectile = 1 << 1,
         Unblockable = 1 << 2,
         Unparryable = 1 << 3,
-        Hazard = 1 << 4
+        Hazard = 1 << 4,
+        /// <summary>Damage over time: bypasses filters (i-frames, shields) and shows as a small number.</summary>
+        Dot = 1 << 5
+    }
+
+    public enum StatusType
+    {
+        None,
+        /// <summary>Fire damage over time.</summary>
+        Burn,
+        /// <summary>Slow, long damage over time.</summary>
+        Poison,
+        /// <summary>Damage over time.</summary>
+        Bleed,
+        /// <summary>Reduced movement speed.</summary>
+        Slow,
+        /// <summary>Cannot act.</summary>
+        Stun,
+        /// <summary>Takes extra damage.</summary>
+        Weaken
     }
 
     public enum HitResult
@@ -61,6 +80,13 @@ namespace Roughlike.Combat
         public float Shake;
         public DamageTags Tags;
         public bool IsCrit;
+
+        [Header("Status proc")]
+        public StatusType OnHitStatus;
+        /// <summary>0..1 chance to apply <see cref="OnHitStatus"/> when this hit lands for damage.</summary>
+        public float StatusChance;
+        public float StatusDuration;
+        public float StatusPotency;
     }
 
     /// <summary>What happened when a hit landed. Raised on the victim and on the global event bus.</summary>
