@@ -304,14 +304,15 @@ namespace Roughlike.UI
 
         void ConfirmThenStart(uint seed)
         {
-            if (!RunSave.Exists) { StartNew(seed); return; }
+            System.Action pick = () => _modals.OpenDifficulty(d => StartNew(seed, d));
+            if (!RunSave.Exists) { pick(); return; }
             _modals.OpenConfirm("Start a new run?", "You have a saved run. Starting a new one will erase it.",
-                "Start new run", "Keep my run", () => StartNew(seed));
+                "Start new run", "Keep my run", pick);
         }
 
-        static void StartNew(uint seed)
+        static void StartNew(uint seed, Difficulty difficulty)
         {
-            GameSession.StartNew(seed);
+            GameSession.StartNew(seed, difficulty);
             ModalManager.LoadScene(GameSession.GameplayScene);
         }
 

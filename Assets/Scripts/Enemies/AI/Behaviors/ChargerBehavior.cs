@@ -21,12 +21,12 @@ namespace Roughlike.Enemies
                 return Vector2.zero;
             }
             if (dist < 2.2f) return Vector2.zero;
-            return new Vector2(WalkToward(dir, D.chaseSpeed), 0f);
+            return new Vector2(WalkToward(dir, E.Spd(D.chaseSpeed)), 0f);
         }
 
         public override TelegraphSpec Telegraph()
         {
-            float length = Mathf.Min(D.chargeSpeed * D.activeTime, 12f);
+            float length = Mathf.Min(E.Spd(D.chargeSpeed) * D.activeTime, 12f);
             return new TelegraphSpec
             {
                 Centre = E.Position + new Vector2(E.Facing * (length * 0.5f + D.size.x * 0.4f), D.size.y * 0.45f),
@@ -52,7 +52,7 @@ namespace Roughlike.Enemies
                 E.EndAttack();                           // a drop ahead: pull up rather than run off it
                 return Vector2.zero;
             }
-            return new Vector2(_dir * D.chargeSpeed, 0f);
+            return new Vector2(_dir * E.Spd(D.chargeSpeed), 0f);
         }
     }
 }

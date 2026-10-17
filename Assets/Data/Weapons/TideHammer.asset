@@ -17,6 +17,8 @@ MonoBehaviour:
   tint: {r: 1, g: 0.55, b: 0.35, a: 1}
   affinity: 1
   description: Slow, heavy, and it staggers everything it touches.
+  sprite: {fileID: 21300000, guid: 431f469550ca00b45b27bd9963b642f5, type: 3}
+  heldScale: 1.1
   steps:
   - name: Smash
     damage: 30

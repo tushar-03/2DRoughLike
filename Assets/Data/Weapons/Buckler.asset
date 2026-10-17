@@ -17,6 +17,8 @@ MonoBehaviour:
   tint: {r: 0.85, g: 0.95, b: 1, a: 1}
   affinity: 2
   description: A generous parry window, but it barely blocks.
+  sprite: {fileID: 21300000, guid: 94f913113b378fc48a12966750e2351b, type: 3}
+  heldScale: 1.15
   steps: []
   comboResetTime: 0.45
   shield:

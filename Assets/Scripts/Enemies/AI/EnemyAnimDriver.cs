@@ -34,7 +34,7 @@ namespace Roughlike.Enemies
                     break;
 
                 case EnemyState.Telegraph:
-                    _anim.Scrub(Pick("telegraph", "idle"), Mathf.Clamp01(_enemy.StateTime / Mathf.Max(0.01f, d.telegraphTime)));
+                    _anim.Scrub(Pick("telegraph", "idle"), Mathf.Clamp01(_enemy.StateTime / Mathf.Max(0.01f, _enemy.TelegraphTime)));
                     break;
 
                 case EnemyState.Attack:

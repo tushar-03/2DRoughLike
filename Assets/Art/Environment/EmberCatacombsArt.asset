@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EmberCatacombsArt
   m_EditorClassIdentifier: Roughlike.Utils::Roughlike.Utils.EnvironmentArt
   wall: {fileID: 21300000, guid: 7b5401614bb014f4c95328c69f369975, type: 3}
+  rock: {fileID: 21300000, guid: f8ad4f162fa14ee44a0774008aaf25a7, type: 3}
   floorTrim: {fileID: 21300000, guid: e4906057c9fabbc459bd8fdd89f950c9, type: 3}
   platform: {fileID: 21300000, guid: a3fc1a5dc9abd6847ae0cf00a707140d, type: 3}
   backdrop:
@@ -37,6 +38,27 @@ MonoBehaviour:
     yOffset: 0
     tint: {r: 1, g: 1, b: 1, a: 1}
     sortingOrder: -40
+  - name: Lanterns
+    sprite: {fileID: 21300000, guid: 125dbde0b815f4149a7d44c18079d593, type: 3}
+    follow: 0.55
+    followY: 0.7
+    yOffset: 0
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sortingOrder: -35
+  - name: Foreground rubble
+    sprite: {fileID: 21300000, guid: d6546612f046dff449f17c30f72d39ae, type: 3}
+    follow: -0.35
+    followY: 1
+    yOffset: 5.3
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sortingOrder: 60
+  - name: Foreground roots and chains
+    sprite: {fileID: 21300000, guid: e63c5a3bd3dc2784596e64888cdc1254, type: 3}
+    follow: -0.5
+    followY: 1
+    yOffset: -5.1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sortingOrder: 61
   ambient: {r: 0.42, g: 0.46, b: 0.62, a: 1}
   ambientIntensity: 0.7
   playerLight: {r: 1, g: 0.82, b: 0.55, a: 1}
@@ -47,5 +69,7 @@ MonoBehaviour:
   colourFilter: {r: 1, g: 0.97, b: 0.94, a: 1}
   saturation: 14
   contrast: 12
+  moteColour: {r: 0.65, g: 0.9, b: 1, a: 0.55}
+  moteCount: 34
   props: {fileID: 11400000, guid: 39fe8fd0c8aeb9b4aa80cda8393fde40, type: 2}
   worldProps: {fileID: 11400000, guid: 7cc86d3be8583f642ab99f843ec351bb, type: 2}

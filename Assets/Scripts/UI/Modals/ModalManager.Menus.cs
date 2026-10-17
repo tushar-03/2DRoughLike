@@ -27,6 +27,33 @@ namespace Roughlike.UI
             Focus(w, view.FirstSelectable);
         }
 
+        /// <summary>The difficulty picker shown when a new game starts. Remembers the last choice and focuses it.</summary>
+        public void OpenDifficulty(Action<Difficulty> onPick)
+        {
+            var w = Push("Choose your difficulty", new Vector2(900f, 780f), () => Pop(), out RectTransform content);
+
+            var hint = UiKit.Label(content, "Hint", "You can pick a different one for every run.", 24, UiKit.Muted, TextAnchor.MiddleCenter);
+            UiKit.Place(hint.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -66f), new Vector2(-40f, 32f));
+
+            int remembered = Mathf.Clamp(SettingsService.Current.difficulty, 0, 3);
+            Selectable focus = null;
+            for (int i = 0; i < 4; i++)
+            {
+                var d = (Difficulty)i;
+                var b = MenuKit.ListButton(content, DifficultyService.Name(d), DifficultyService.Description(d), new Vector2(780f, 124f), () =>
+                {
+                    Pop();
+                    SettingsService.Current.difficulty = (int)d;
+                    SettingsService.NotifyChanged(true);
+                    onPick?.Invoke(d);
+                }, 36);
+                b.gameObject.name = DifficultyService.Name(d);
+                UiKit.Place((RectTransform)b.transform, new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -112f - i * 138f), new Vector2(780f, 124f));
+                if (i == remembered) focus = b;
+            }
+            Focus(w, focus);
+        }
+
         /// <summary>A yes/no question. Cancel (Esc / B) answers no.</summary>
         public void OpenConfirm(string title, string message, string yes, string no, Action onYes, Action onNo = null)
         {

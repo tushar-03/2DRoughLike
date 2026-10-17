@@ -15,6 +15,7 @@ namespace Roughlike.Rooms
     public sealed class RunStats
     {
         public int Kills;
+        public int Bosses;
         public float Time;
         public float DamageTaken;
         public int RoomsVisited;
@@ -33,6 +34,8 @@ namespace Roughlike.Rooms
     public class RunManager : MonoBehaviour
     {
         [SerializeField] BiomeData biome;
+        [Tooltip("The levels of a full run, in order. Empty means the single biome above.")]
+        [SerializeField] BiomeData[] biomes;
         [SerializeField] PlayerController player;
         [SerializeField] float deathScreenDelay = 1.2f;
         [SerializeField] Unity.Cinemachine.CinemachineCamera vcam;
@@ -48,6 +51,14 @@ namespace Roughlike.Rooms
         float _endTimer;
 
         public BiomeData Biome => biome;
+        /// <summary>0 for the first level; each biome cleared moves it up.</summary>
+        public int LevelIndex { get; private set; }
+        public int LevelCount => biomes != null && biomes.Length > 0 ? biomes.Length : 1;
+        public Difficulty Difficulty => DifficultyService.Current;
+
+        /// <summary>The seed of a given level of a run: the first level uses the run seed itself.</summary>
+        public static uint LevelSeed(uint runSeed, int levelIndex)
+            => levelIndex <= 0 ? runSeed : SeedCode.Hash(runSeed + "-level-" + levelIndex);
         public bool AutoStart { get => autoStart; set => autoStart = value; }
         public RunState State { get; private set; } = RunState.Idle;
         public uint Seed { get; private set; }
@@ -65,9 +76,16 @@ namespace Roughlike.Rooms
 
         public PlayerInventory Inventory => _inventory;
 
+        public void Bind(BiomeData[] levels, PlayerController p, Unity.Cinemachine.CinemachineCamera camera = null, LootDirector director = null)
+        {
+            Bind(levels != null && levels.Length > 0 ? levels[0] : null, p, camera, director);
+            biomes = levels;
+        }
+
         public void Bind(BiomeData biomeData, PlayerController p, Unity.Cinemachine.CinemachineCamera camera = null, LootDirector director = null)
         {
             biome = biomeData;
+            biomes = null;
             player = p;
             vcam = camera;
             lootDirector = director;
@@ -94,6 +112,7 @@ namespace Roughlike.Rooms
                 _health.HitTaken += OnPlayerHit;
             }
             EventBus<EnemyDiedEvent>.Subscribe(OnEnemyDied);
+            EventBus<BossDefeatedEvent>.Subscribe(OnBossDefeated);
         }
 
         void OnDisable()
@@ -104,6 +123,7 @@ namespace Roughlike.Rooms
                 _health.HitTaken -= OnPlayerHit;
             }
             EventBus<EnemyDiedEvent>.Unsubscribe(OnEnemyDied);
+            EventBus<BossDefeatedEvent>.Unsubscribe(OnBossDefeated);
         }
 
         void Start()
@@ -120,6 +140,7 @@ namespace Roughlike.Rooms
             }
             if (mode == SessionMode.NewRun)
             {
+                DifficultyService.Current = GameSession.Difficulty;
                 StartRun(requestedSeed != 0 ? requestedSeed : RandomSeed());
                 return;
             }
@@ -171,9 +192,10 @@ namespace Roughlike.Rooms
             HitStop.Cancel();
 
             Seed = seed;
-            Layout = LevelGenerator.Generate(seed, biome.generator);
-            Level = LevelBuilder.Build(Layout, biome);
-            Level.Exit.Activated += OnExitReached;
+            LevelIndex = restore != null ? Mathf.Clamp(restore.levelIndex, 0, LevelCount - 1) : 0;
+            if (restore != null) DifficultyService.Current = (Difficulty)Mathf.Clamp(restore.difficulty, 0, 3);
+            if (biomes != null && biomes.Length > 0) biome = biomes[LevelIndex];
+            BuildCurrentLevel();
             if (biome.art != null && _atmosphere == null) _atmosphere = LevelAtmosphere.Create(biome.art, player.transform);
 
             Stats = new RunStats();
@@ -182,6 +204,7 @@ namespace Roughlike.Rooms
             Visited.Add(CurrentRoom);
             Stats.RoomsVisited = 1;
             _endTimer = 0f;
+            if (lootDirector != null) lootDirector.Loot = biome.loot;
 
             // permadeath: a fresh inventory and starting loadout, then full health on top of its stats
             if (_inventory != null) _inventory.ResetForRun(biome.loot);
@@ -234,9 +257,48 @@ namespace Roughlike.Rooms
             SetState(RunState.Dead);
         }
 
+        /// <summary>Generates and builds the current biome's level from the run seed.</summary>
+        void BuildCurrentLevel()
+        {
+            Layout = LevelGenerator.Generate(LevelSeed(Seed, LevelIndex), biome.generator);
+            Level = LevelBuilder.Build(Layout, biome, true, LevelIndex);
+            Level.Exit.Activated += OnExitReached;
+            if (biome.art != null)
+            {
+                if (_atmosphere != null) Destroy(_atmosphere.gameObject);
+                _atmosphere = LevelAtmosphere.Create(biome.art, player.transform);
+            }
+        }
+
+        /// <summary>The boss is down and the portal taken: on to the next biome, keeping everything you carry.</summary>
+        void AdvanceLevel()
+        {
+            LevelIndex++;
+            biome = biomes[LevelIndex];
+            Level?.Destroy();
+            HitStop.Cancel();
+            BuildCurrentLevel();
+
+            Visited.Clear();
+            CurrentRoom = Layout.Start.Pos;
+            Visited.Add(CurrentRoom);
+            Stats.RoomsVisited++;
+            if (lootDirector != null) { lootDirector.BeginRun(LevelSeed(Seed, LevelIndex)); lootDirector.Loot = biome.loot; }
+
+            var status = player.GetComponent<StatusEffects>();
+            if (status != null) status.ClearAll();
+            _health.Heal(_health.Max * 0.4f);
+            player.ResetTo(Level.PlayerSpawn);
+            if (_defense != null) _defense.GrantInvulnerability(1.5f);
+            if (vcam != null) vcam.PreviousStateIsValid = false;
+            EventBus<ToastEvent>.Raise(new ToastEvent { Text = biome.displayName, Colour = new Color(1f, 0.85f, 0.5f) });
+            SaveNow();
+        }
+
         void OnExitReached()
         {
             if (State != RunState.Running) return;
+            if (LevelIndex + 1 < LevelCount) { AdvanceLevel(); return; }
             CaptureCurrency(true);    // the exit door banks your Cells
             RunSave.Delete();
             _endTimer = 0f;
@@ -252,6 +314,11 @@ namespace Roughlike.Rooms
         void OnEnemyDied(EnemyDiedEvent e)
         {
             if (State == RunState.Running) Stats.Kills++;
+        }
+
+        void OnBossDefeated(BossDefeatedEvent e)
+        {
+            if (State == RunState.Running) Stats.Bosses++;
         }
 
         // =====================================================================

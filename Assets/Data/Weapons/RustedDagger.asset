@@ -17,6 +17,8 @@ MonoBehaviour:
   tint: {r: 0.75, g: 0.9, b: 1, a: 1}
   affinity: 2
   description: Quick and light. Three fast jabs, the last a flurry.
+  sprite: {fileID: 21300000, guid: 9026f94686fbcdd4fae8b9f4900da634, type: 3}
+  heldScale: 1.2
   steps:
   - name: Jab
     damage: 7

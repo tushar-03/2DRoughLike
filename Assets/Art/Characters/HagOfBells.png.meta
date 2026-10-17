@@ -1,0 +1,728 @@
+fileFormatVersion: 2
+guid: 4e783c8bb7640ee428fb0755736e7fc7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -480778426138384403
+    second: HagOfBells_0
+  - first:
+      213: -3446484700092932630
+    second: HagOfBells_1
+  - first:
+      213: 7926079420530431383
+    second: HagOfBells_2
+  - first:
+      213: -8471372234010589885
+    second: HagOfBells_3
+  - first:
+      213: 2482568018194286731
+    second: HagOfBells_4
+  - first:
+      213: -2489818650773345960
+    second: HagOfBells_5
+  - first:
+      213: -2669400180268134536
+    second: HagOfBells_6
+  - first:
+      213: -7255462046018802766
+    second: HagOfBells_7
+  - first:
+      213: -5626079876911078235
+    second: HagOfBells_8
+  - first:
+      213: 2840528613471669077
+    second: HagOfBells_9
+  - first:
+      213: -7137531907268967588
+    second: HagOfBells_10
+  - first:
+      213: -4455127423514926240
+    second: HagOfBells_11
+  - first:
+      213: -903680735828102571
+    second: HagOfBells_12
+  - first:
+      213: -5145592931205533150
+    second: HagOfBells_13
+  - first:
+      213: -819336176961047694
+    second: HagOfBells_14
+  - first:
+      213: 2108557272286531474
+    second: HagOfBells_15
+  - first:
+      213: -7285787428678502677
+    second: HagOfBells_16
+  - first:
+      213: 3142579621621339758
+    second: HagOfBells_17
+  - first:
+      213: 8955871376219041839
+    second: HagOfBells_18
+  - first:
+      213: 7961515610882155041
+    second: HagOfBells_19
+  - first:
+      213: 279932897398614375
+    second: HagOfBells_20
+  - first:
+      213: -4966087524629976226
+    second: HagOfBells_21
+  - first:
+      213: -373896031666603494
+    second: HagOfBells_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HagOfBells_0
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 2258
+        width: 270
+        height: 462
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de7a956919ee359f0800000000000000
+      internalID: -480778426138384403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_1
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 2258
+        width: 262
+        height: 462
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aed542fec60ab20d0800000000000000
+      internalID: -3446484700092932630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_2
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 2258
+        width: 262
+        height: 462
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79510422d371ffd60800000000000000
+      internalID: 7926079420530431383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_3
+      rect:
+        serializedVersion: 2
+        x: 1781
+        y: 2258
+        width: 270
+        height: 462
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34501bf16d3af6a80800000000000000
+      internalID: -8471372234010589885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_4
+      rect:
+        serializedVersion: 2
+        x: 2323
+        y: 2258
+        width: 278
+        height: 462
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b884737957ad37220800000000000000
+      internalID: 2482568018194286731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_5
+      rect:
+        serializedVersion: 2
+        x: 2867
+        y: 2258
+        width: 278
+        height: 462
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8592385f023627dd0800000000000000
+      internalID: -2489818650773345960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_6
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 1714
+        width: 282
+        height: 463
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87f01cbdda264fad0800000000000000
+      internalID: -2669400180268134536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_7
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 1714
+        width: 263
+        height: 463
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bb68b1d5bb6f4b90800000000000000
+      internalID: -7255462046018802766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_8
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 1714
+        width: 255
+        height: 463
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a4edb209262ce1b0800000000000000
+      internalID: -5626079876911078235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_9
+      rect:
+        serializedVersion: 2
+        x: 1780
+        y: 1714
+        width: 263
+        height: 463
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55bcf4469b59b6720800000000000000
+      internalID: 2840528613471669077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_10
+      rect:
+        serializedVersion: 2
+        x: 2318
+        y: 1714
+        width: 288
+        height: 463
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c53873eeb8462fc90800000000000000
+      internalID: -7137531907268967588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_11
+      rect:
+        serializedVersion: 2
+        x: 2859
+        y: 1714
+        width: 310
+        height: 463
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 063aa4c66353c22c0800000000000000
+      internalID: -4455127423514926240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_12
+      rect:
+        serializedVersion: 2
+        x: 3406
+        y: 1714
+        width: 315
+        height: 463
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5523a9e982b7573f0800000000000000
+      internalID: -903680735828102571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_13
+      rect:
+        serializedVersion: 2
+        x: 3956
+        y: 1714
+        width: 301
+        height: 463
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 222bbb8dd7e2798b0800000000000000
+      internalID: -5145592931205533150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_14
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 1170
+        width: 216
+        height: 463
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2733c9c861221a4f0800000000000000
+      internalID: -819336176961047694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_15
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 1175
+        width: 218
+        height: 458
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29f8433eaa9134d10800000000000000
+      internalID: 2108557272286531474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_16
+      rect:
+        serializedVersion: 2
+        x: 1228
+        y: 1185
+        width: 190
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be67c947feea3ea90800000000000000
+      internalID: -7285787428678502677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_17
+      rect:
+        serializedVersion: 2
+        x: 1765
+        y: 1196
+        width: 220
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e661f19048fac9b20800000000000000
+      internalID: 3142579621621339758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_18
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 652
+        width: 219
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f20ff910195a94c70800000000000000
+      internalID: 8955871376219041839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_19
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 656
+        width: 191
+        height: 433
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 122ab54244cfc7e60800000000000000
+      internalID: 7961515610882155041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_20
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 656
+        width: 191
+        height: 433
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 769e36eac7582e300800000000000000
+      internalID: 279932897398614375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_21
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 82
+        width: 291
+        height: 463
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5b6ee235b9e41bb0800000000000000
+      internalID: -4966087524629976226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HagOfBells_22
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 82
+        width: 296
+        height: 463
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1a75994a87afcaf0800000000000000
+      internalID: -373896031666603494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      HagOfBells_0: -480778426138384403
+      HagOfBells_1: -3446484700092932630
+      HagOfBells_10: -7137531907268967588
+      HagOfBells_11: -4455127423514926240
+      HagOfBells_12: -903680735828102571
+      HagOfBells_13: -5145592931205533150
+      HagOfBells_14: -819336176961047694
+      HagOfBells_15: 2108557272286531474
+      HagOfBells_16: -7285787428678502677
+      HagOfBells_17: 3142579621621339758
+      HagOfBells_18: 8955871376219041839
+      HagOfBells_19: 7961515610882155041
+      HagOfBells_2: 7926079420530431383
+      HagOfBells_20: 279932897398614375
+      HagOfBells_21: -4966087524629976226
+      HagOfBells_22: -373896031666603494
+      HagOfBells_3: -8471372234010589885
+      HagOfBells_4: 2482568018194286731
+      HagOfBells_5: -2489818650773345960
+      HagOfBells_6: -2669400180268134536
+      HagOfBells_7: -7255462046018802766
+      HagOfBells_8: -5626079876911078235
+      HagOfBells_9: 2840528613471669077
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

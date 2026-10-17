@@ -207,5 +207,50 @@ Built and verified: 122 PlayMode + 38 EditMode tests pass; the scene was played 
 - The traversal check is conservative but not a full physics bot; a real playthrough is still the final word.
 - iPhone: no vibration API in Safari (touch tick only). Touch layout was verified in the editor and in a desktop browser; it has not been tried on a physical phone.
 
+## M5.2 - Difficulty, a second biome, bosses, grounded world, polish (awaiting review)
+**Fixed**
+- **Chest weapon "stuck".** Swapping a weapon dropped the old one on the exact spot of the new one, so it became the nearest thing to interact with and the next press swapped them straight back. Replaced items now land 2.6 units to the side and cannot be grabbed for 1.2 seconds.
+- **Settings menu layout.** The Gameplay tab had grown past the window and hid rows behind the buttons. The rows now live in a scrolling list with the focused row kept in view (gamepad and keyboard), shorter labels, and a darker backdrop on the title screen.
+- **Floating world.** `TerrainFill` packs dark rock into every empty grid cell around and between rooms, so floors read as ground.
+
+**Added**
+- **Haptics** for jump and attack (hit and parry already existed).
+- **Dotted telegraphs** (`TelegraphIndicator`): perimeter dots for boxes, a single dotted line for lasers, a dotted ring with an inner sweep for explosions; they light from the attacker's side and flash white at the moment of impact.
+- **Difficulty** (`DifficultyService`, `EnemyScaling`): Story, Normal, Hard, Nightmare, chosen in a picker on New Game (remembered, stored in the run save). Scales enemy health, damage, speed, telegraph time, cooldown, extra enemies per room and gold. Depth in the level and the biome add more. The default is tougher than before and rooms hold more enemies.
+- **Multi-biome runs**: `RunManager` takes a list of biomes; the boss portal advances to the next one (keeping gear, healing 40%); saves store level index and difficulty; the last biome ends the run.
+- **Ashen Promenade**: second palette (rust basalt, orange lichen), sunset sky with a huge sun, ruined towers and gates, beams and chains, warm lighting.
+- **Bosses** (`BossController`, `BossBrain`, `WitchBrain`, `WardenBrain`, `BossEncounter`, `BossHealthBar`): attack coroutines with dotted telegraphs, phases at 66% and 33%, stun on parry, a sealed arena, a camera that frames the whole room, a health bar with phase ticks, big payout. Art: `HagOfBells` and `RustWarden`, painted at 1.7x.
+- The boss room is always a flat dead end entered from the side (`GeneratorSettings.horizontalFinish`).
+
+### How to test M5.2
+1. New Game, pick a difficulty (try Nightmare for a shock). Compare the number of enemies and how fast they strike.
+2. Open a shop chest weapon swap: the old weapon lands beside you and waits a moment.
+3. Settings > Gameplay scrolls with the stick or arrow keys.
+4. Reach the end of the first world: the room seals, the Hag fights, the portal takes you to the second world, then the Warden.
+5. Dev shortcut while playing: nothing needed; or use the probes in `AgentScripts` (not committed).
+
+### Notes
+- Boss numbers are a first pass (Hag 1000 health, Warden 1400, before difficulty); expect tuning after real play.
+- The second world reuses the first world's enemy roster; its own bestiary is the natural next step.
+
+## M5.3 - Depth, grounded torches, weapon art (awaiting review)
+**Added**
+- **Parallax planes**: `BackdropLayer.follow` may now be negative (a foreground plane that moves against the camera faster than the world). Both biomes gained a mid-distance plane (lanterns / floating ruins) and two foreground planes (bottom rubble or weeds, top roots or banners, drawn above the action). `ParallaxBackdrop` also spawns drifting motes (dust, embers) at several depths.
+- **Torch posts**: `RoomDecor` builds a stone post from the floor to each wall torch.
+- **Weapon art**: `WeaponArt` paints European arms with the cel painter (one routine for item sprites and for weapons baked into enemy sheets). `WeaponArtBuilder` writes `Assets/Art/Weapons/*.png` and assigns `WeaponData.sprite` / `heldScale` (it runs as part of the item content build).
+- **Held gear**: the player sheet no longer has a sword baked in. It stores per-frame `Anchor`s (hand position, blade angle, shield pose); `HeldGear` draws the equipped melee weapon and shield from those anchors, so every weapon follows every pose. A lowered shield is carried on the back.
+- **Icons**: `UiKit.FillIcon` shows the weapon sprite (blades laid diagonally) in HUD slots, item cards, shop rows; dropped items use the art too.
+- Enemies: the Shell Guard carries a heater shield, the Eel Archer's bow is redrawn as a recurve with a grip and nocked arrow, daggers, maces and clubs are redrawn.
+
+### How to test M5.3
+1. Walk through a level: far planes barely move, the rubble/roots in front slide past quickly, motes drift.
+2. Look at the torches: they stand on posts.
+3. Swing the sword (J): the blade follows the animation. Hold K to block: the shield comes up in front. Swap a weapon at a chest and watch the sprite change.
+4. Check the HUD slots, a chest item card and the shop list for weapon icons.
+
+### Notes
+- Weapon art is generated like all other art (see ART_TODO); final art replaces the PNGs and keeps the pivot at the grip (shield: centre).
+- Only the starting weapons are painted; a new `WeaponData` without a sprite falls back to the old placeholder shapes and shows nothing in the hand.
+
 ## Next
 M6 - content expansion: more weapons, special rooms and challenge doors, more mutations and status effects.

@@ -75,6 +75,10 @@ namespace Roughlike.Combat
         public Roughlike.Core.StatColor affinity = Roughlike.Core.StatColor.None;
         [TextArea, Tooltip("Flavour text shown in item cards.")]
         public string description;
+        [Tooltip("Painted art. Melee: blade pointing up, pivot at the grip. Shield: face on, pivot at the centre. Used in the hand, in inventory and on the ground.")]
+        public Sprite sprite;
+        [Tooltip("Size of the sprite when carried (1 = as painted).")]
+        public float heldScale = 1f;
 
         [Header("Melee")]
         public AttackStep[] steps = { new AttackStep() };

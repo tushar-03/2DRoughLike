@@ -127,6 +127,7 @@ namespace Roughlike.Tests.PlayMode
             menu.NewGameButton.onClick.Invoke();
             FindButton("Skip it").onClick.Invoke();
             Assert.IsTrue(SettingsService.Current.tutorialSeen);
+            FindButton("Normal").onClick.Invoke();   // then the difficulty
             CollectionAssert.AreEqual(new[] { GameSession.GameplayScene }, _loaded);
         }
 
@@ -136,7 +137,12 @@ namespace Roughlike.Tests.PlayMode
             SettingsService.Current.tutorialSeen = true;
             var menu = BuildMenu();
             menu.NewGameButton.onClick.Invoke();
+            Assert.AreEqual(1, menu.Modals.Depth, "the difficulty picker");
+            Assert.AreEqual(0, _loaded.Count);
+            FindButton("Hard").onClick.Invoke();
             Assert.AreEqual(SessionMode.NewRun, GameSession.Mode);
+            Assert.AreEqual(Difficulty.Hard, GameSession.Difficulty);
+            Assert.AreEqual((int)Difficulty.Hard, SettingsService.Current.difficulty, "the choice is remembered");
             Assert.AreEqual(0u, GameSession.Seed, "random seed");
             Assert.AreEqual(1, _loaded.Count);
 
@@ -156,7 +162,9 @@ namespace Roughlike.Tests.PlayMode
 
             menu.NewGameButton.onClick.Invoke();
             FindButton("Start new run").onClick.Invoke();
+            FindButton("Nightmare").onClick.Invoke();
             Assert.AreEqual(SessionMode.NewRun, GameSession.Mode);
+            Assert.AreEqual(Difficulty.Nightmare, GameSession.Difficulty);
             Assert.AreEqual(1, _loaded.Count);
         }
 
@@ -171,6 +179,7 @@ namespace Roughlike.Tests.PlayMode
             Assert.IsNotNull(field);
             field.text = SeedCode.Encode(123456u);
             FindButton("Start run").onClick.Invoke();
+            FindButton("Normal").onClick.Invoke();
 
             Assert.AreEqual(SessionMode.NewRun, GameSession.Mode);
             Assert.AreEqual(123456u, GameSession.Seed);
@@ -181,6 +190,7 @@ namespace Roughlike.Tests.PlayMode
             menu.OnNewSeed();
             Object.FindAnyObjectByType<InputField>().text = "drowned bells";
             FindButton("Start run").onClick.Invoke();
+            FindButton("Normal").onClick.Invoke();
             SeedCode.TryParse("drowned bells", out uint expected);
             Assert.AreEqual(expected, GameSession.Seed);
         }

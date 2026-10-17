@@ -24,13 +24,20 @@ namespace Roughlike.Combat
             _combat = GetComponentInParent<PlayerCombat>();
             _health = GetComponentInParent<Health>();
             _controller = GetComponentInParent<PlayerController>();
+            if (GetComponent<HeldGear>() == null && GetComponentInParent<PlayerCombat>() != null) gameObject.AddComponent<HeldGear>();   // older scenes get it too
         }
 
         void OnEnable()
         {
             if (_combat != null) _combat.AttackStarted += OnAttack;
             if (_health != null) _health.HitTaken += OnHit;
-            if (_controller != null) _controller.RollStarted += OnRoll;
+            if (_controller != null)
+            {
+                _controller.RollStarted += OnRoll;
+                _controller.Jumped += OnJump;
+                _controller.DoubleJumped += OnJump;
+                _controller.WallJumped += OnJump;
+            }
             if (_visual != null) _visual.ClipOverride = BlockOverride;
         }
 
@@ -38,7 +45,13 @@ namespace Roughlike.Combat
         {
             if (_combat != null) _combat.AttackStarted -= OnAttack;
             if (_health != null) _health.HitTaken -= OnHit;
-            if (_controller != null) _controller.RollStarted -= OnRoll;
+            if (_controller != null)
+            {
+                _controller.RollStarted -= OnRoll;
+                _controller.Jumped -= OnJump;
+                _controller.DoubleJumped -= OnJump;
+                _controller.WallJumped -= OnJump;
+            }
             if (_visual != null && _visual.ClipOverride == (System.Func<string>)BlockOverride) _visual.ClipOverride = null;
         }
 
@@ -50,9 +63,11 @@ namespace Roughlike.Combat
         }
 
         void OnRoll() => Haptics.Play(HapticKind.Roll);
+        void OnJump() => Haptics.Play(HapticKind.Jump);
 
         void OnAttack(WeaponData weapon, AttackStep step, int index)
         {
+            Haptics.Play(HapticKind.Attack);
             if (_anim == null || !_anim.Art.Has("attack")) return;
             _anim.PlayOnce("attack", Mathf.Max(0.12f, step.windup + step.active + step.recovery * 0.7f));
         }

@@ -30,3 +30,7 @@ All art sits behind prefab / Sprite Library / ScriptableObject slots so replacem
 | Pickup props (chest, merchant, altar, scrolls, coins, Cells) | n/a | Shapes with labels. Need animated props | Medium |
 | Skill entities (grenade, turret, trap) | n/a | Shapes. Need animated, readable props with explosion flipbooks | Medium |
 | Player animation set | n/a | Idle, run, jump, fall, roll, block, attack, hurt exist. Missing: land, ladder, ledge hang/climb, wall slide (these reuse idle and fall), per-weapon attack animations | Medium |
+| Bosses (`HagOfBells.png`, `RustWarden.png`) | 544x544 frames, 160 PPU (3.4 units), pivot feet | Painted at 1.7x with the same painter: idle, walk, telegraph, attack, hurt. Replace with authored boss art; keep the clip names and the sheet within 4096 px | High |
+| Ashen Promenade tiles and backdrop (`Assets/Art/Environment/Promenade*.png`) | as the first biome | Procedural rust basalt, sunset sky, ruined towers. Needs authored art and its own enemy roster | Medium |
+| Weapon sprites (`Assets/Art/Weapons/*.png`) | Melee: blade pointing up, pivot at the grip, 160 PPU. Shields: face-on, pivot centre | Painted procedurally by `WeaponArt`. Replace with authored art, keep the orientation and pivot, then assign on the `WeaponData` asset | High |
+| Parallax planes (`Assets/Art/Environment/*Foreground*.png`, `BackdropLanterns.png`, `PromenadeIslands.png`) | 1280x768, tileable horizontally, 32 PPU | Foreground planes use negative follow and draw above the player; keep the silhouettes in the bottom and top bands | Medium |

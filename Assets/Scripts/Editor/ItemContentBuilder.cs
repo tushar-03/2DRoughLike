@@ -47,6 +47,7 @@ namespace Roughlike.Editor
             db.startingOutfit = Find(outfits, startOutfit);
             EditorUtility.SetDirty(db);
 
+            Roughlike.Editor.Art.WeaponArtBuilder.Assign();
             AssetDatabase.SaveAssets();
             Debug.Log("[Items] Item content assets built.");
             return db;

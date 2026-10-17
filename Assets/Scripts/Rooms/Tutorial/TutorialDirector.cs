@@ -285,7 +285,7 @@ namespace Roughlike.Rooms
 
         public static void StartGame()
         {
-            GameSession.StartNew();
+            GameSession.StartNew(0, (Difficulty)Mathf.Clamp(SettingsService.Current.difficulty, 0, 3));
             if (StartGameOverride != null) { StartGameOverride(); return; }
             UnityEngine.SceneManagement.SceneManager.LoadScene(GameSession.GameplayScene);
         }

@@ -21,6 +21,7 @@ namespace Roughlike.Rooms
         public readonly List<ShopStand> Shops = new List<ShopStand>();
         public Vector2 PlayerSpawn;
         public ExitDoor Exit;
+        public BossEncounter Boss;
 
         public void Destroy()
         {
@@ -40,7 +41,7 @@ namespace Roughlike.Rooms
         /// <summary>Progress points along the main path where a mutation altar appears.</summary>
         public static readonly float[] AltarProgress = { 0.25f, 0.5f, 0.75f };
 
-        public static BuiltLevel Build(LevelLayout layout, BiomeData biome, bool spawnEnemies = true)
+        public static BuiltLevel Build(LevelLayout layout, BiomeData biome, bool spawnEnemies = true, int levelIndex = 0)
         {
             WorldArt.Props = biome.art != null ? biome.art.worldProps : null;   // painted set pieces for this level, or graybox
             var built = new BuiltLevel { Layout = layout, Root = new GameObject($"Level {layout.Seed}") };
@@ -62,6 +63,12 @@ namespace Roughlike.Rooms
                         break;
                     case RoomRole.Exit:
                         built.Exit = ExitDoor.Create(chunk.transform, chunk.ExitAnchor, biome.accent);
+                        if (biome.boss != null)
+                        {
+                            // the way on stays hidden until the boss is dead
+                            built.Exit.gameObject.SetActive(false);
+                            built.Boss = BossEncounter.Create(chunk, biome, built.Exit, EnemyScaling.Create(0f, levelIndex));
+                        }
                         break;
                     case RoomRole.Treasure:
                         if (loot != null) PlaceChest(masterRng.Fork(4000 + cell.Index), loot, cell, chunk, built);
@@ -76,8 +83,9 @@ namespace Roughlike.Rooms
                 if (hasAltar) PlaceAltar(masterRng.Fork(5000 + cell.Index), loot, cell, chunk, built);
 
                 if (spawnEnemies && cell.Role == RoomRole.Combat)
-                    SpawnEnemies(masterRng.Fork(1000 + cell.Index), cell, chunk, biome, built, hasAltar ? chunk.ExitAnchor : (Vector2?)null);
+                    SpawnEnemies(masterRng.Fork(1000 + cell.Index), cell, chunk, biome, built, hasAltar ? chunk.ExitAnchor : (Vector2?)null, levelIndex);
             }
+            TerrainFill.Build(layout, built.Root.transform, biome);
             return built;
         }
 
@@ -126,11 +134,12 @@ namespace Roughlike.Rooms
             built.Altars.Add(altar);
         }
 
-        static void SpawnEnemies(SeededRng rng, LevelCell cell, RoomChunk chunk, BiomeData biome, BuiltLevel built, Vector2? keepClear)
+        static void SpawnEnemies(SeededRng rng, LevelCell cell, RoomChunk chunk, BiomeData biome, BuiltLevel built, Vector2? keepClear, int levelIndex)
         {
             if (biome.enemyPool == null || biome.enemyPool.Length == 0) return;
 
-            int count = Mathf.RoundToInt(Mathf.Lerp(biome.minEnemies, biome.maxEnemies, cell.Progress));
+            int count = Mathf.RoundToInt(Mathf.Lerp(biome.minEnemies, biome.maxEnemies, cell.Progress)) + DifficultyService.Scaling.ExtraEnemies;
+            EnemyScaling scaling = EnemyScaling.Create(cell.Progress, levelIndex);
             var spots = new List<Vector2>(chunk.EnemySpawns);
             if (keepClear.HasValue) spots.RemoveAll(p => Mathf.Abs(p.x - keepClear.Value.x) < 3f);
             rng.Shuffle(spots);
@@ -158,7 +167,7 @@ namespace Roughlike.Rooms
                     used.TryGetValue(def, out n);
                 }
                 used[def] = n + 1;
-                EnemyController e = EnemyFactory.Build(def, spots[i] + Vector2.up * 0.05f);
+                EnemyController e = EnemyFactory.Build(def, spots[i] + Vector2.up * 0.05f, true, scaling);
                 e.transform.SetParent(chunk.transform, true);
                 built.Enemies.Add(e);
                 tracker.Register(e.GetComponent<Health>());

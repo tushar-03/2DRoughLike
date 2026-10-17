@@ -5,11 +5,34 @@ namespace Roughlike.Editor.Art
     /// <summary>Procedural tiles and backdrop layers for the Ember Catacombs: cool carved stone lit by warm ember glow.</summary>
     public static class EnvironmentPainter
     {
-        static readonly Color Mortar = new Color(0.07f, 0.08f, 0.12f);
-        static readonly Color Stone = new Color(0.30f, 0.33f, 0.43f);
-        static readonly Color StoneHi = new Color(0.52f, 0.57f, 0.70f);
-        static readonly Color Moss = new Color(0.20f, 0.40f, 0.36f);
-        static readonly Color Ember = new Color(1f, 0.52f, 0.18f);
+        /// <summary>The colours a biome's tiles are painted with.</summary>
+        public struct Palette
+        {
+            public Color Mortar, Stone, StoneHi, Moss, Ember;
+
+            /// <summary>Cool carved blue-grey stone, green moss, ember mortar seams.</summary>
+            public static Palette Catacombs => new Palette
+            {
+                Mortar = new Color(0.07f, 0.08f, 0.12f), Stone = new Color(0.30f, 0.33f, 0.43f), StoneHi = new Color(0.52f, 0.57f, 0.70f),
+                Moss = new Color(0.20f, 0.40f, 0.36f), Ember = new Color(1f, 0.52f, 0.18f)
+            };
+
+            /// <summary>Rust-brown basalt, dry orange lichen, bright cracks: a ruined city at sunset.</summary>
+            public static Palette Promenade => new Palette
+            {
+                Mortar = new Color(0.09f, 0.055f, 0.06f), Stone = new Color(0.36f, 0.26f, 0.25f), StoneHi = new Color(0.72f, 0.5f, 0.40f),
+                Moss = new Color(0.62f, 0.34f, 0.14f), Ember = new Color(1f, 0.72f, 0.28f)
+            };
+        }
+
+        /// <summary>Set before painting a biome's tiles.</summary>
+        public static Palette Current = Palette.Catacombs;
+
+        static Color Mortar => Current.Mortar;
+        static Color Stone => Current.Stone;
+        static Color StoneHi => Current.StoneHi;
+        static Color Moss => Current.Moss;
+        static Color Ember => Current.Ember;
 
         // ------------------------------------------------------------------ noise (periodic so tiles repeat seamlessly)
 
@@ -324,6 +347,257 @@ namespace Roughlike.Editor.Art
             var raw = p.Render(0f, Color.black);
             for (int i = 0; i < raw.Length; i++) if (raw[i].a > 0) raw[i].a = (byte)(raw[i].a * 0.9f);
             return raw;
+        }
+
+        // ------------------------------------------------------------------ Ashen Promenade backdrops
+
+        static void Over(Color32[] dst, Color32[] src)
+        {
+            for (int i = 0; i < dst.Length; i++)
+            {
+                var c = src[i];
+                if (c.a == 0) continue;
+                float a = c.a / 255f;
+                var d = dst[i];
+                dst[i] = new Color32((byte)(c.r * a + d.r * (1 - a)), (byte)(c.g * a + d.g * (1 - a)), (byte)(c.b * a + d.b * (1 - a)), 255);
+            }
+        }
+
+        /// <summary>A huge low sun over hazy, ruined towers at the end of the day.</summary>
+        public static Color32[] BackdropFarPromenade()
+        {
+            var px = new Color32[BackW * BackH];
+            for (int y = 0; y < BackH; y++)
+            {
+                float v = y / (float)BackH;
+                Color top = new Color(0.20f, 0.08f, 0.22f), mid = new Color(0.78f, 0.28f, 0.2f), horizon = new Color(1f, 0.74f, 0.34f), floor = new Color(0.45f, 0.18f, 0.16f);
+                Color c = v > 0.55f ? Color.Lerp(mid, top, (v - 0.55f) / 0.45f)
+                        : v > 0.28f ? Color.Lerp(horizon, mid, (v - 0.28f) / 0.27f)
+                        : Color.Lerp(floor, horizon, v / 0.28f);
+                for (int x = 0; x < BackW; x++)
+                {
+                    float u = x / (float)BackW;
+                    float haze = Fbm(u * 2f, v * 3f, 4, 91);
+                    Color pc = c * (0.88f + haze * 0.3f);
+                    // the sun and its glow (kept inside the tile so the layer repeats cleanly)
+                    float dx = Mathf.Min(Mathf.Abs(x - 380f), BackW - Mathf.Abs(x - 380f)), dy = y - 0.30f * BackH;
+                    float d2 = dx * dx + dy * dy;
+                    float glow = Mathf.Exp(-d2 / (2f * 170f * 170f));
+                    pc += new Color(1f, 0.72f, 0.3f) * glow * 0.55f;
+                    if (d2 < 110f * 110f) pc = Color.Lerp(pc, new Color(1f, 0.95f, 0.7f), 0.9f);
+                    // streaky clouds
+                    float cloud = Noise(u * 6f, v * 24f, 24, 92) * Mathf.Clamp01(1f - Mathf.Abs(v - 0.62f) * 4f);
+                    if (cloud > 0.62f) pc = Color.Lerp(pc, new Color(1f, 0.6f, 0.4f), (cloud - 0.62f) * 1.4f);
+                    pc.a = 1f;
+                    px[y * BackW + x] = To32(pc);
+                }
+            }
+
+            // distant towers, dark and purple
+            var p = new Painter(BackW, BackH);
+            Mat far = Mat.Glow(new Color(0.34f, 0.14f, 0.24f));
+            for (int k = 0; k < 2; k++)
+            {
+                float o = k * 640f;
+                p.Poly(new[] { new Vector2(o + 110f, 0f), new Vector2(o + 205f, 0f), new Vector2(o + 200f, 330f), new Vector2(o + 188f, 350f), new Vector2(o + 180f, 318f), new Vector2(o + 150f, 360f), new Vector2(o + 126f, 330f), new Vector2(o + 112f, 340f) }, far);
+                p.Poly(new[] { new Vector2(o + 300f, 0f), new Vector2(o + 372f, 0f), new Vector2(o + 366f, 230f), new Vector2(o + 340f, 262f), new Vector2(o + 318f, 214f), new Vector2(o + 304f, 240f) }, far);
+                p.Poly(new[] { new Vector2(o + 470f, 0f), new Vector2(o + 560f, 0f), new Vector2(o + 548f, 290f), new Vector2(o + 520f, 306f), new Vector2(o + 498f, 270f), new Vector2(o + 474f, 300f) }, far);
+                p.Poly(new[] { new Vector2(o + 205f, 150f), new Vector2(o + 300f, 160f), new Vector2(o + 300f, 188f), new Vector2(o + 205f, 176f) }, far);       // a bridge between towers
+            }
+            Over(px, p.Render(0f, Color.black));
+            return px;
+        }
+
+        /// <summary>Ruined gate towers, broken arches and a leaning bell tower, with a few windows still lit.</summary>
+        public static Color32[] BackdropMidPromenade()
+        {
+            var p = new Painter(BackW, BackH);
+            Mat dark = Mat.Of(new Color(0.16f, 0.09f, 0.11f), new Color(0.9f, 0.5f, 0.3f), 5f);
+            Mat darker = Mat.Of(new Color(0.11f, 0.06f, 0.08f), new Color(0.6f, 0.3f, 0.2f), 4f);
+            Mat lit = Mat.Glow(new Color(1f, 0.7f, 0.3f));
+            for (int k = 0; k < 2; k++)
+            {
+                float o = k * 640f;
+                // a broken gate tower
+                p.Poly(new[] { new Vector2(o + 60f, 0f), new Vector2(o + 190f, 0f), new Vector2(o + 184f, 520f), new Vector2(o + 168f, 548f), new Vector2(o + 150f, 500f), new Vector2(o + 124f, 556f), new Vector2(o + 100f, 508f), new Vector2(o + 70f, 540f) }, dark);
+                p.Poly(new[] { new Vector2(o + 112f, 330f), new Vector2(o + 134f, 330f), new Vector2(o + 134f, 392f), new Vector2(o + 123f, 408f), new Vector2(o + 112f, 392f) }, lit);
+                p.Poly(new[] { new Vector2(o + 112f, 180f), new Vector2(o + 134f, 180f), new Vector2(o + 134f, 230f), new Vector2(o + 123f, 242f), new Vector2(o + 112f, 230f) }, lit);
+                // an arch leaning against it, half collapsed
+                p.Poly(new[] { new Vector2(o + 200f, 0f), new Vector2(o + 250f, 0f), new Vector2(o + 254f, 300f), new Vector2(o + 300f, 380f), new Vector2(o + 360f, 410f), new Vector2(o + 372f, 366f), new Vector2(o + 316f, 330f), new Vector2(o + 292f, 250f), new Vector2(o + 288f, 0f), new Vector2(o + 258f, 0f) }, darker);
+                // a leaning bell tower
+                p.Poly(new[] { new Vector2(o + 420f, 0f), new Vector2(o + 520f, 0f), new Vector2(o + 548f, 430f), new Vector2(o + 560f, 470f), new Vector2(o + 484f, 520f), new Vector2(o + 440f, 470f), new Vector2(o + 428f, 400f) }, dark);
+                p.Ellipse(new Vector2(o + 500f, 446f), 22f, 28f, 0f, Mat.Of(new Color(0.95f, 0.7f, 0.3f), Color.white, 4f));      // the bell
+                p.Poly(new[] { new Vector2(o + 458f, 250f), new Vector2(o + 482f, 250f), new Vector2(o + 484f, 306f), new Vector2(o + 470f, 322f), new Vector2(o + 456f, 306f) }, lit);
+                // fallen blocks
+                p.Poly(new[] { new Vector2(o + 372f, 0f), new Vector2(o + 410f, 52f), new Vector2(o + 448f, 30f), new Vector2(o + 440f, 0f) }, darker);
+            }
+            Color32[] raw = p.Render(0f, Color.black);
+            // sunset haze: the base of everything fades toward the warm fog
+            for (int y = 0; y < BackH; y++)
+            {
+                float fog = Mathf.Clamp01(y / 260f);
+                for (int x = 0; x < BackW; x++)
+                {
+                    var c = raw[y * BackW + x];
+                    if (c.a == 0) continue;
+                    float k = Mathf.Lerp(0.4f, 1f, fog);
+                    c.r = (byte)Mathf.Lerp(c.r, 190, (1f - k) * 0.7f); c.g = (byte)Mathf.Lerp(c.g, 100, (1f - k) * 0.7f); c.b = (byte)Mathf.Lerp(c.b, 70, (1f - k) * 0.7f);
+                    raw[y * BackW + x] = c;
+                }
+            }
+            return raw;
+        }
+
+        /// <summary>Near silhouettes: broken beams, hanging chains, torn flags and drifting rubble.</summary>
+        public static Color32[] BackdropNearPromenade()
+        {
+            var p = new Painter(BackW, BackH);
+            Mat sil = Mat.Glow(new Color(0.07f, 0.035f, 0.05f));
+            Mat flag = Mat.Of(new Color(0.42f, 0.1f, 0.08f), new Color(1f, 0.5f, 0.3f), 3f);
+            for (int k = 0; k < 2; k++)
+            {
+                float o = k * 640f;
+                p.Poly(new[] { new Vector2(o + 0f, BackH), new Vector2(o + 260f, BackH), new Vector2(o + 250f, BackH - 70f), new Vector2(o + 170f, BackH - 96f), new Vector2(o + 60f, BackH - 60f) }, sil);                      // broken beam top left
+                p.Poly(new[] { new Vector2(o + 400f, BackH), new Vector2(o + 640f, BackH), new Vector2(o + 640f, BackH - 56f), new Vector2(o + 520f, BackH - 110f), new Vector2(o + 440f, BackH - 70f) }, sil);
+                for (int j = 0; j < 7; j++) p.Capsule(new Vector2(o + 330f, BackH - 80f - j * 26f), new Vector2(o + 330f, BackH - 100f - j * 26f), 4f, sil);       // a chain
+                p.Poly(new[] { new Vector2(o + 322f, BackH - 270f), new Vector2(o + 372f, BackH - 262f), new Vector2(o + 366f, BackH - 372f), new Vector2(o + 346f, BackH - 344f), new Vector2(o + 326f, BackH - 384f) }, flag);   // a torn flag
+                p.Poly(new[] { new Vector2(o + 40f, 0f), new Vector2(o + 70f, 70f), new Vector2(o + 130f, 40f), new Vector2(o + 170f, 0f) }, sil);                                                              // rubble
+                p.Poly(new[] { new Vector2(o + 470f, 0f), new Vector2(o + 500f, 52f), new Vector2(o + 560f, 26f), new Vector2(o + 590f, 0f) }, sil);
+                p.Poly(new[] { new Vector2(o + 240f, 420f), new Vector2(o + 274f, 440f), new Vector2(o + 262f, 470f), new Vector2(o + 230f, 452f) }, sil);                                                       // floating debris
+                p.Poly(new[] { new Vector2(o + 520f, 560f), new Vector2(o + 548f, 574f), new Vector2(o + 538f, 598f), new Vector2(o + 512f, 584f) }, sil);
+            }
+            var raw = p.Render(0f, Color.black);
+            for (int i = 0; i < raw.Length; i++) if (raw[i].a > 0) raw[i].a = (byte)(raw[i].a * 0.92f);
+            return raw;
+        }
+
+        // ------------------------------------------------------------------ foreground and extra depth layers
+
+        static Mat Dark(float tone = 1f) => Mat.Glow(new Color(0.025f, 0.025f, 0.045f) * tone);
+
+        static Color32[] Fade(Color32[] raw, float alpha)
+        {
+            for (int i = 0; i < raw.Length; i++) if (raw[i].a > 0) raw[i].a = (byte)(raw[i].a * alpha);
+            return raw;
+        }
+
+        /// <summary>Catacombs foreground, bottom edge: jagged rubble and stalagmites, passing in front of the player.</summary>
+        public static Color32[] ForegroundBottomCatacombs()
+        {
+            var p = new Painter(BackW, BackH);
+            Mat rock = Dark();
+            float[] xs = { 70f, 210f, 380f, 520f, 760f, 900f, 1060f, 1190f };
+            for (int i = 0; i < xs.Length; i++)
+            {
+                float x = xs[i], h = 50f + (i * 37 % 60), w = 40f + (i * 23 % 40);
+                p.Poly(new[] { new Vector2(x - w, 0f), new Vector2(x - w * 0.3f, h * 0.7f), new Vector2(x + 4f, h), new Vector2(x + w * 0.5f, h * 0.55f), new Vector2(x + w, 0f) }, rock);
+                if (i % 2 == 0) p.Poly(new[] { new Vector2(x + w, 0f), new Vector2(x + w * 1.4f, h * 0.4f), new Vector2(x + w * 2f, 0f) }, rock);
+            }
+            p.Capsule(new Vector2(0f, 10f), new Vector2(BackW, 10f), 12f, rock);
+            return Fade(p.Render(0f, Color.black), 0.96f);
+        }
+
+        /// <summary>Catacombs foreground, top edge: hanging roots, chains and stalactites.</summary>
+        public static Color32[] ForegroundTopCatacombs()
+        {
+            var p = new Painter(BackW, BackH);
+            Mat rock = Dark();
+            Mat chain = Mat.Of(new Color(0.07f, 0.07f, 0.1f), new Color(0.3f, 0.32f, 0.45f), 3f);
+            p.Capsule(new Vector2(0f, BackH - 8f), new Vector2(BackW, BackH - 8f), 14f, rock);
+            float[] xs = { 120f, 330f, 560f, 830f, 1050f };
+            for (int i = 0; i < xs.Length; i++)
+            {
+                float x = xs[i], len = 40f + (i * 29 % 50);
+                p.Poly(new[] { new Vector2(x - 30f, BackH), new Vector2(x + 30f, BackH), new Vector2(x + 4f, BackH - len - 30f) }, rock);
+                // a hanging chain, each with a lantern or a hook
+                float cx = x + 80f;
+                for (int j = 0; j < 4 + i % 3; j++) p.Capsule(new Vector2(cx, BackH - 20f - j * 18f), new Vector2(cx, BackH - 34f - j * 18f), 3.5f, chain);
+            }
+            // roots
+            for (int i = 0; i < 6; i++)
+            {
+                float x = 40f + i * 220f;
+                p.Poly(new[] { new Vector2(x, BackH), new Vector2(x + 14f, BackH), new Vector2(x + 30f + (i % 2) * 20f, BackH - 70f - i * 5f), new Vector2(x + 20f, BackH - 96f) }, rock);
+            }
+            return Fade(p.Render(0f, Color.black), 0.94f);
+        }
+
+        /// <summary>Catacombs: small hanging lanterns drifting in the middle distance, glowing through the haze.</summary>
+        public static Color32[] BackdropLanterns()
+        {
+            var p = new Painter(BackW, BackH);
+            Mat chain = Mat.Glow(new Color(0.09f, 0.1f, 0.16f));
+            Mat glow = Mat.Glow(new Color(1f, 0.62f, 0.28f));
+            Mat halo = Mat.Glow(new Color(0.55f, 0.3f, 0.2f, 0.16f));
+            float[] xs = { 90f, 260f, 440f, 640f, 800f, 980f, 1160f };
+            for (int i = 0; i < xs.Length; i++)
+            {
+                float x = xs[i], y = 330f + (i * 53 % 330);
+                p.Capsule(new Vector2(x, BackH), new Vector2(x, y + 24f), 2f, chain);
+                p.Circle(new Vector2(x, y), 26f, halo);
+                p.Poly(new[] { new Vector2(x - 12f, y + 20f), new Vector2(x + 12f, y + 20f), new Vector2(x + 16f, y - 16f), new Vector2(x - 16f, y - 16f) }, glow);
+                p.Capsule(new Vector2(x - 18f, y + 22f), new Vector2(x + 18f, y + 22f), 3f, chain);
+            }
+            var raw = p.Render(0f, Color.black);
+            // soften: the halo is only a faint glow, the lantern itself stays crisp
+            for (int i = 0; i < raw.Length; i++) if (raw[i].a > 0) raw[i].a = (byte)(raw[i].a * 0.55f);
+            return raw;
+        }
+
+        /// <summary>Promenade foreground, bottom edge: broken fence posts, dead grass tufts and rubble.</summary>
+        public static Color32[] ForegroundBottomPromenade()
+        {
+            var p = new Painter(BackW, BackH);
+            Mat sil = Dark();
+            Mat ember = Mat.Glow(new Color(1f, 0.55f, 0.2f));
+            float[] posts = { 100f, 330f, 610f, 880f, 1130f };
+            for (int i = 0; i < posts.Length; i++)
+            {
+                float x = posts[i], h = 70f + (i * 31 % 50);
+                p.Poly(new[] { new Vector2(x - 11f, 0f), new Vector2(x + 11f, 0f), new Vector2(x + 8f, h), new Vector2(x - 2f, h + 14f), new Vector2(x - 10f, h - 8f) }, sil);
+                if (i % 2 == 0) p.Capsule(new Vector2(x, h * 0.6f), new Vector2(x + 130f, h * 0.45f), 4f, sil);
+            }
+            for (int i = 0; i < 26; i++)
+            {
+                float x = i * 50f + (i * 17 % 30), h = 26f + (i * 13 % 36);
+                p.Poly(new[] { new Vector2(x - 7f, 0f), new Vector2(x + (i % 2 == 0 ? 10f : -10f), h), new Vector2(x + 7f, 0f) }, sil);
+            }
+            for (int i = 0; i < 7; i++) p.Circle(new Vector2(60f + i * 190f, 20f + (i * 41 % 50)), 2.6f, ember);   // embers caught in the weeds
+            p.Capsule(new Vector2(0f, 8f), new Vector2(BackW, 8f), 10f, sil);
+            return Fade(p.Render(0f, Color.black), 0.97f);
+        }
+
+        /// <summary>Promenade foreground, top edge: torn banners, beams and hanging chains.</summary>
+        public static Color32[] ForegroundTopPromenade()
+        {
+            var p = new Painter(BackW, BackH);
+            Mat sil = Dark();
+            Mat flag = Mat.Of(new Color(0.18f, 0.04f, 0.04f), new Color(0.8f, 0.3f, 0.2f), 3f);
+            p.Poly(new[] { new Vector2(0f, BackH), new Vector2(BackW, BackH), new Vector2(BackW, BackH - 22f), new Vector2(900f, BackH - 34f), new Vector2(480f, BackH - 18f), new Vector2(0f, BackH - 30f) }, sil);
+            float[] xs = { 160f, 470f, 760f, 1080f };
+            for (int i = 0; i < xs.Length; i++)
+            {
+                float x = xs[i];
+                p.Poly(new[] { new Vector2(x - 24f, BackH - 20f), new Vector2(x + 24f, BackH - 20f), new Vector2(x + 20f, BackH - 110f - i * 8f), new Vector2(x, BackH - 86f - i * 8f), new Vector2(x - 20f, BackH - 120f - i * 8f) }, flag);
+                for (int j = 0; j < 5; j++) p.Capsule(new Vector2(x + 52f, BackH - 22f - j * 18f), new Vector2(x + 52f, BackH - 36f - j * 18f), 3.2f, sil);
+            }
+            p.Poly(new[] { new Vector2(300f, BackH), new Vector2(380f, BackH), new Vector2(350f, BackH - 70f) }, sil);
+            return Fade(p.Render(0f, Color.black), 0.95f);
+        }
+
+        /// <summary>Promenade: floating chunks of ruin and dust clouds in the distant sky.</summary>
+        public static Color32[] BackdropIslands()
+        {
+            var p = new Painter(BackW, BackH);
+            Mat island = Mat.Glow(new Color(0.30f, 0.12f, 0.2f));
+            float[] xs = { 140f, 420f, 700f, 1010f };
+            for (int i = 0; i < xs.Length; i++)
+            {
+                float x = xs[i], y = 430f + (i * 67 % 200), w = 70f + (i * 29 % 40);
+                p.Poly(new[] { new Vector2(x - w, y), new Vector2(x + w, y), new Vector2(x + w * 0.6f, y - 30f), new Vector2(x + w * 0.2f, y - 80f - i * 8f), new Vector2(x - w * 0.3f, y - 52f), new Vector2(x - w * 0.8f, y - 22f) }, island);
+                p.Poly(new[] { new Vector2(x - w * 0.5f, y), new Vector2(x + w * 0.3f, y + 24f), new Vector2(x + w * 0.1f, y + 60f) }, island);   // ruined spire on top
+            }
+            return Fade(p.Render(0f, Color.black), 0.7f);
         }
     }
 }

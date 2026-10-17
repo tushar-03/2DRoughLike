@@ -148,6 +148,8 @@ namespace Roughlike.Editor.Art
         public const int Supersample = 2;
 
         public readonly int Width, Height;
+        /// <summary>Design coordinates are multiplied by this, so the same drawing code paints a bigger character on a bigger canvas.</summary>
+        public float Scale = 1f;
         readonly List<Shape> _shapes = new List<Shape>();
 
         static readonly Vector2 LightDir = new Vector2(-0.42f, 0.8f).normalized;
@@ -155,11 +157,15 @@ namespace Roughlike.Editor.Art
 
         public Painter(int width, int height) { Width = width; Height = height; }
 
-        public void Capsule(Vector2 a, Vector2 b, float ra, float rb, Mat m) => _shapes.Add(new CapsuleShape(a, b, ra, rb) { M = m });
+        public void Capsule(Vector2 a, Vector2 b, float ra, float rb, Mat m) => _shapes.Add(new CapsuleShape(a * Scale, b * Scale, ra * Scale, rb * Scale) { M = m });
         public void Capsule(Vector2 a, Vector2 b, float r, Mat m) => Capsule(a, b, r, r, m);
-        public void Circle(Vector2 c, float r, Mat m) => _shapes.Add(new EllipseShape(c, r, r, 0f) { M = m });
-        public void Ellipse(Vector2 c, float rx, float ry, float rotDeg, Mat m) => _shapes.Add(new EllipseShape(c, rx, ry, rotDeg) { M = m });
-        public void Poly(Vector2[] pts, Mat m) => _shapes.Add(new PolyShape(pts) { M = m });
+        public void Circle(Vector2 c, float r, Mat m) => _shapes.Add(new EllipseShape(c * Scale, r * Scale, r * Scale, 0f) { M = m });
+        public void Ellipse(Vector2 c, float rx, float ry, float rotDeg, Mat m) => _shapes.Add(new EllipseShape(c * Scale, rx * Scale, ry * Scale, rotDeg) { M = m });
+        public void Poly(Vector2[] pts, Mat m)
+        {
+            if (Scale != 1f) { pts = (Vector2[])pts.Clone(); for (int i = 0; i < pts.Length; i++) pts[i] *= Scale; }
+            _shapes.Add(new PolyShape(pts) { M = m });
+        }
 
         public Color32[] Render(float outlinePx, Color outline)
         {

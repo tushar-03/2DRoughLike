@@ -6,7 +6,7 @@ using Roughlike.Utils;
 
 namespace Roughlike.Player
 {
-    public enum HapticKind { Light, Medium, Heavy, Parry, Roll, Explosion, Death }
+    public enum HapticKind { Light, Medium, Heavy, Parry, Roll, Explosion, Death, Jump, Attack }
 
     /// <summary>
     /// Rumble and vibration. A real gamepad gets motor speeds (low and high frequency) for a short time; a phone or tablet in the
@@ -30,6 +30,8 @@ namespace Roughlike.Player
             new Preset { Low = 0.10f, High = 0.10f, Seconds = 0.05f, Millis = 8 },    // Roll
             new Preset { Low = 1.00f, High = 0.60f, Seconds = 0.32f, Millis = 90 },   // Explosion
             new Preset { Low = 0.70f, High = 0.50f, Seconds = 0.65f, Millis = 220 },  // Death
+            new Preset { Low = 0.12f, High = 0.28f, Seconds = 0.07f, Millis = 12 },   // Jump: a small kick off the ground
+            new Preset { Low = 0.25f, High = 0.35f, Seconds = 0.08f, Millis = 18 },   // Attack: the swing itself
         };
 
         /// <summary>Tests (and anything else that wants to listen) see every request with its final strength.</summary>

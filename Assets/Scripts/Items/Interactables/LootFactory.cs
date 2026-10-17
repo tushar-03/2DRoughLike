@@ -76,6 +76,13 @@ namespace Roughlike.Items
             {
                 case ItemKind.Weapon:
                     Color wt = item.Weapon != null ? item.Weapon.tint : Color.white;
+                    if (item.Weapon != null && item.Weapon.sprite != null)
+                    {
+                        // the painted weapon, lying at an angle; a shield stands upright
+                        bool shield = item.Weapon.kind == WeaponKind.Shield;
+                        Shape(icon, item.Weapon.sprite, Color.white, Vector2.one * (shield ? 0.9f : 0.85f), shield ? Vector2.zero : new Vector2(0.2f, -0.45f), 6, shield ? 0f : -38f);
+                        break;
+                    }
                     if (item.Weapon != null && item.Weapon.kind == WeaponKind.Shield)
                         Shape(icon, ProceduralSprites.Square, wt, new Vector2(0.65f, 0.85f), Vector2.zero, 6);
                     else

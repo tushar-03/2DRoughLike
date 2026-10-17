@@ -23,23 +23,28 @@ MonoBehaviour:
     frames: 6
     fps: 6
     loop: 1
+    anchors: []
   - name: walk
     row: 1
     frames: 8
     fps: 9
     loop: 1
+    anchors: []
   - name: telegraph
     row: 2
     frames: 4
     fps: 8
     loop: 0
+    anchors: []
   - name: attack
     row: 3
     frames: 6
     fps: 14
     loop: 1
+    anchors: []
   - name: hurt
     row: 4
     frames: 2
     fps: 8
     loop: 0
+    anchors: []

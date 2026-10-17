@@ -26,6 +26,10 @@ namespace Roughlike.Rooms
         public int version = CurrentVersion;
         public long seed;
         public string biome;
+        /// <summary>Which biome of the run this is (0 first).</summary>
+        public int levelIndex;
+        /// <summary>0 Story, 1 Normal, 2 Hard, 3 Nightmare.</summary>
+        public int difficulty = 1;
 
         // player
         public float health;
@@ -97,7 +101,11 @@ namespace Roughlike.Rooms
         /// <summary>Seed for a new run; 0 means pick one at random.</summary>
         public static uint Seed;
 
+        /// <summary>The difficulty picked for the run about to start.</summary>
+        public static Roughlike.Core.Difficulty Difficulty = Roughlike.Core.Difficulty.Normal;
+
         public static void StartNew(uint seed = 0) { Mode = SessionMode.NewRun; Seed = seed; }
+        public static void StartNew(uint seed, Roughlike.Core.Difficulty difficulty) { Difficulty = difficulty; StartNew(seed); }
         public static void StartContinue() { Mode = SessionMode.Continue; Seed = 0; }
         public static void Clear() { Mode = SessionMode.None; Seed = 0; }
     }

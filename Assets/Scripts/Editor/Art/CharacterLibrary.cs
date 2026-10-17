@@ -20,6 +20,8 @@ namespace Roughlike.Editor.Art
         public int FrameW = HumanoidArt.FrameSize, FrameH = HumanoidArt.FrameSize;
         public Vector2 Pivot = new Vector2(140f / HumanoidArt.FrameSize, 34f / HumanoidArt.FrameSize);
         public readonly List<ClipPlan> Clips = new List<ClipPlan>();
+        /// <summary>Record hand and shield anchors for every frame (the player's gear is drawn separately at runtime).</summary>
+        public bool Anchors;
 
         public CharacterPlan Add(string name, int frames, float fps, bool loop, Func<int, int, Color32[]> paint)
         {
@@ -36,7 +38,7 @@ namespace Roughlike.Editor.Art
 
         static CharacterPlan Humanoid(HumanoidSpec s, bool player)
         {
-            var plan = new CharacterPlan { Name = s.Name };
+            var plan = new CharacterPlan { Name = s.Name, Anchors = s.RuntimeGear };
             plan.Add("idle", 6, 6f, true, (i, n) => HumanoidArt.Render(s, "idle", T(i, n)));
             if (player)
             {
@@ -75,7 +77,7 @@ namespace Roughlike.Editor.Art
 
             var player = new HumanoidSpec
             {
-                Name = "BellRinger", Height = 262f, HeadR = 31f, Hood = true, Cloak = true, Bell = true, Weapon = "sword", WeaponLen = 100f, ShieldBlock = true,
+                Name = "BellRinger", Height = 262f, HeadR = 31f, Hood = true, Cloak = true, Bell = true, Weapon = "none", WeaponLen = 100f, RuntimeGear = true,
                 Skin = new Color(0.92f, 0.76f, 0.64f), Cloth = new Color(0.9f, 0.86f, 0.76f), Cloth2 = new Color(0.52f, 0.24f, 0.24f),
                 Trim = new Color(0.96f, 0.76f, 0.32f), Metal = new Color(0.86f, 0.8f, 0.62f), Glow = new Color(1f, 0.82f, 0.36f),
                 Boot = new Color(0.3f, 0.2f, 0.2f), Rim = new Color(1f, 0.88f, 0.6f)
@@ -100,7 +102,7 @@ namespace Roughlike.Editor.Art
             };
             var guard = new HumanoidSpec
             {
-                Name = "ShellGuard", Height = 262f, HeadR = 29f, Bulk = 1.5f, Helmet = true, Weapon = "mace", WeaponLen = 92f, ShieldBlock = false,
+                Name = "ShellGuard", Height = 262f, HeadR = 29f, Bulk = 1.5f, Helmet = true, Weapon = "mace", WeaponLen = 92f, EnemyShield = true,
                 Skin = new Color(0.6f, 0.5f, 0.45f), Cloth = new Color(0.44f, 0.54f, 0.7f), Cloth2 = new Color(0.26f, 0.32f, 0.46f),
                 Trim = new Color(0.9f, 0.78f, 0.44f), Metal = new Color(0.62f, 0.72f, 0.82f), Glow = new Color(0.55f, 0.88f, 1f),
                 Boot = new Color(0.2f, 0.22f, 0.3f), Rim = new Color(0.85f, 0.95f, 1f)
@@ -118,6 +120,24 @@ namespace Roughlike.Editor.Art
                 Trim = new Color(0.46f, 0.92f, 1f), Glow = new Color(0.5f, 0.96f, 1f), Boot = new Color(0.14f, 0.2f, 0.3f), Rim = new Color(0.75f, 1f, 1f)
             };
 
+            // bosses are drawn at 1.7x on a bigger canvas
+            const float BossScale = 1.7f;
+            var witch = new HumanoidSpec
+            {
+                Name = "HagOfBells", Height = 262f, HeadR = 30f, Scale = BossScale, Hood = true, Hat = true, Robe = true, Floating = true,
+                Weapon = "staff", Attack = AttackStyle.Cast, Cloak = false,
+                Skin = new Color(0.55f, 0.7f, 0.5f), Cloth = new Color(0.42f, 0.2f, 0.58f), Cloth2 = new Color(0.2f, 0.1f, 0.32f),
+                Trim = new Color(0.55f, 1f, 0.45f), Glow = new Color(0.62f, 1f, 0.42f), Boot = new Color(0.16f, 0.1f, 0.24f), Rim = new Color(0.85f, 0.7f, 1f),
+                Metal = new Color(0.55f, 0.4f, 0.3f), Outline = 3.6f
+            };
+            var warden = new HumanoidSpec
+            {
+                Name = "RustWarden", Height = 262f, HeadR = 30f, Scale = BossScale, Bulk = 1.75f, Helmet = true, Weapon = "greatsword", WeaponLen = 165f,
+                Skin = new Color(0.55f, 0.4f, 0.35f), Cloth = new Color(0.52f, 0.28f, 0.2f), Cloth2 = new Color(0.28f, 0.15f, 0.13f),
+                Trim = new Color(0.95f, 0.72f, 0.3f), Metal = new Color(0.72f, 0.7f, 0.74f), Glow = new Color(1f, 0.5f, 0.2f),
+                Boot = new Color(0.2f, 0.14f, 0.12f), Rim = new Color(1f, 0.75f, 0.5f), Outline = 3.8f
+            };
+
             var list = new List<CharacterPlan>
             {
                 Humanoid(player, true),
@@ -131,6 +151,15 @@ namespace Roughlike.Editor.Art
                 Creature("Tideboar", CreatureArt.Boar, true),
                 Creature("Bloat", CreatureArt.Bloat, true)
             };
+
+            foreach (var boss in new[] { Humanoid(witch, false), Humanoid(warden, false) })
+            {
+                int canvas = Mathf.RoundToInt(HumanoidArt.FrameSize * BossScale);
+                boss.FrameW = canvas; boss.FrameH = canvas;
+                // keep the sheet within 4096 pixels (browsers and phones): 6 frames of 544 across
+                foreach (var c in boss.Clips) if (c.Frames > 6) c.Frames = 6;
+                list.Add(boss);
+            }
 
             // the guard's shield is a separate prop so it can break
             list[4].Add("shield", 1, 1f, false, (i, n) => CreatureArt.ShieldProp(false));

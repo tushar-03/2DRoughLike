@@ -121,9 +121,13 @@ namespace Roughlike.UI
             return b;
         }
 
-        /// <summary>Draws a small placeholder icon for an item inside <paramref name="img"/>.</summary>
+        /// <summary>Draws an item's icon inside <paramref name="img"/>: the painted weapon sprite when it has one, a simple shape otherwise.</summary>
         public static void FillIcon(Image img, ItemInstance item)
         {
+            var rt = img.rectTransform;
+            rt.localRotation = Quaternion.identity;
+            rt.localScale = Vector3.one;
+            img.preserveAspect = false;
             if (item == null) { img.color = new Color(1f, 1f, 1f, 0.08f); img.sprite = ProceduralSprites.Square; return; }
             switch (item.Kind)
             {
@@ -140,8 +144,22 @@ namespace Roughlike.UI
                     img.color = item.Gear != null ? item.Gear.tint : Color.white;
                     break;
                 default:
+                    var w = item.Weapon;
+                    if (w != null && w.sprite != null)
+                    {
+                        img.sprite = w.sprite;
+                        img.color = Color.white;
+                        img.preserveAspect = true;
+                        if (w.kind == Roughlike.Combat.WeaponKind.Melee)
+                        {
+                            // the classic inventory pose: the blade laid diagonally
+                            rt.localRotation = Quaternion.Euler(0f, 0f, -45f);
+                            rt.localScale = Vector3.one * 1.3f;
+                        }
+                        break;
+                    }
                     img.sprite = ProceduralSprites.Square;
-                    img.color = item.Weapon != null ? item.Weapon.tint : Color.white;
+                    img.color = w != null ? w.tint : Color.white;
                     break;
             }
         }

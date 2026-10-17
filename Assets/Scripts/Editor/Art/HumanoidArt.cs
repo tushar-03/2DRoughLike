@@ -1,4 +1,5 @@
 using UnityEngine;
+using Roughlike.Utils;
 
 namespace Roughlike.Editor.Art
 {
@@ -26,6 +27,10 @@ namespace Roughlike.Editor.Art
         public float WeaponLen = 95f;
         public AttackStyle Attack = AttackStyle.Swing;
         public float Outline = 3.4f;
+        public float Scale = 1f;          // bosses are drawn bigger on a bigger canvas
+        public bool Hat;                  // a tall pointed witch's hat
+        public bool RuntimeGear;          // the player: weapon and shield are separate sprites; record hand anchors instead of painting them
+        public bool EnemyShield;          // a heater shield strapped to the off arm, always up
     }
 
     /// <summary>A pose in frame-local pixels, origin at the centre of the feet on the floor, +x forward.</summary>
@@ -39,6 +44,10 @@ namespace Roughlike.Editor.Art
     public static class HumanoidArt
     {
         public const int FrameSize = 320;
+        /// <summary>Anchors of the frame painted last (only meaningful for <see cref="HumanoidSpec.RuntimeGear"/> specs).</summary>
+        public static CharacterArt.Anchor LastAnchor;
+        public static bool HasAnchor;
+
         const float FloorY = 34f;
         const float CentreX = 140f;
         const float Ankle = 10f;
@@ -239,9 +248,10 @@ namespace Roughlike.Editor.Art
 
         public static Color32[] Render(HumanoidSpec s, string clip, float t)
         {
-            var painter = new Painter(FrameSize, FrameSize);
+            int canvas = Mathf.RoundToInt(FrameSize * s.Scale);
+            var painter = new Painter(canvas, canvas) { Scale = s.Scale };
             Draw(painter, s, PoseFor(s, clip, t), clip);
-            return painter.Render(s.Outline, new Color(0.07f, 0.05f, 0.1f));
+            return painter.Render(s.Outline * Mathf.Pow(s.Scale, 0.8f), new Color(0.07f, 0.05f, 0.1f));
         }
 
         public static Color32[] RenderRoll(HumanoidSpec s, float t)
@@ -377,9 +387,28 @@ namespace Roughlike.Editor.Art
                 pt.Ellipse(neck - fwd * 4f + up * 1f, 26f * Mathf.Sqrt(bulk), 12f, p.Lean * -0.6f, s.Hood ? clothDark : trim);   // collar / hood bunching
 
             // ---- front arm and what it holds
-            Weapon(pt, s, p, handF, metal, trim, Mat.Of(s.Boot));
+            WeaponPalette pal = new WeaponPalette
+            {
+                Metal = metal, Trim = trim, Wood = Mat.Of(s.Boot), Leather = Mat.Of(s.Boot * 0.8f), Glow = glow,
+                Field = Mat.Of(Color.Lerp(s.Cloth2, s.Cloth, 0.2f), s.Rim, 3f)
+            };
+            if (s.EnemyShield) WeaponArt.Heater(pt, handB + new Vector2(20f, 4f), 36f * Mathf.Sqrt(bulk), 130f, pal);
+            if (!s.RuntimeGear) Weapon(pt, s, p, handF, pal);
             Limb(pt, shF, elbowF, handF, limb, cloth, skin);
-            if (p.ShieldUp) Shield(pt, s, O + new Vector2(62f, hipY + torso * 0.3f), metal, trim);
+            if (p.ShieldUp && !s.RuntimeGear) WeaponArt.Heater(pt, O + new Vector2(62f, hipY + torso * 0.3f), 40f, 140f, pal);
+            if (s.RuntimeGear)
+            {
+                LastAnchor = new CharacterArt.Anchor
+                {
+                    valid = true,
+                    hand = handF * s.Scale,
+                    angle = p.WeaponAngle,
+                    shieldUp = p.ShieldUp,
+                    shield = (O + new Vector2(60f, hipY + torso * 0.3f)) * s.Scale,
+                    stow = (O + new Vector2(-36f, hipY + torso * 0.5f)) * s.Scale
+                };
+                HasAnchor = true;
+            }
             if (s.Attack == AttackStyle.Cast && p.Draw > 0.02f)
             {
                 Vector2 orb = (handF + handB) * 0.5f + new Vector2(0f, 16f + 10f * p.Draw);
@@ -429,6 +458,13 @@ namespace Roughlike.Editor.Art
                 if (s.Weapon != "bow")
                     pt.Ellipse(head + new Vector2(-R * 0.25f, R * 0.35f), R * 0.95f, R * 0.7f, 10f, clothDark);   // hair / cap
             }
+            if (s.Hat)
+            {
+                Mat hat = Mat.Of(new Color(0.2f, 0.12f, 0.32f), new Color(0.8f, 0.6f, 1f), 5f);
+                pt.Ellipse(head + new Vector2(0f, R * 0.78f), R * 1.75f, R * 0.32f, 8f, hat);                                              // brim
+                pt.Poly(new[] { head + new Vector2(-R * 0.82f, R * 0.8f), head + new Vector2(R * 0.9f, R * 0.85f), head + new Vector2(R * 0.5f, R * 1.7f), head + new Vector2(R * 1.4f, R * 2.45f), head + new Vector2(-R * 0.1f, R * 1.95f) }, hat);   // bent cone
+                pt.Capsule(head + new Vector2(-R * 0.82f, R * 0.95f), head + new Vector2(R * 0.9f, R * 1.0f), 4f, Mat.Of(new Color(0.75f, 0.5f, 0.95f), Color.white));   // band
+            }
             if (s.Horns)
             {
                 pt.Poly(new[] { head + new Vector2(-4f, R * 0.8f), head + new Vector2(-R * 0.9f, R * 1.9f), head + new Vector2(R * 0.3f, R * 0.95f) }, Mat.Of(new Color(0.9f, 0.85f, 0.7f), Color.white));
@@ -450,59 +486,10 @@ namespace Roughlike.Editor.Art
             }
         }
 
-        static void Shield(Painter pt, HumanoidSpec s, Vector2 c, Mat metal, Mat trim)
+        static void Weapon(Painter pt, HumanoidSpec s, Pose p, Vector2 hand, WeaponPalette pal)
         {
-            pt.Poly(new[] { c + new Vector2(0f, 62f), c + new Vector2(24f, 38f), c + new Vector2(24f, -30f), c + new Vector2(0f, -62f), c + new Vector2(-24f, -30f), c + new Vector2(-24f, 38f) }, metal);
-            pt.Capsule(c + new Vector2(0f, 48f), c + new Vector2(0f, -48f), 5f, trim);
-            pt.Circle(c, 11f, trim);
-        }
-
-        static void Weapon(Painter pt, HumanoidSpec s, Pose p, Vector2 hand, Mat metal, Mat trim, Mat wood)
-        {
-            Vector2 d = Dir(p.WeaponAngle);
-            Vector2 nrm = new Vector2(-d.y, d.x);
-            switch (s.Weapon)
-            {
-                case "sword":
-                {
-                    Vector2 tip = hand + d * s.WeaponLen;
-                    pt.Capsule(hand - d * 14f, hand + d * 4f, 5f, wood);                      // grip
-                    pt.Capsule(hand + nrm * 14f + d * 4f, hand - nrm * 14f + d * 4f, 4f, trim); // guard
-                    pt.Capsule(hand + d * 6f, tip, 7f, 2.5f, metal);                         // blade
-                    pt.Circle(hand - d * 16f, 5.5f, trim);                                    // pommel
-                    break;
-                }
-                case "dagger":
-                    pt.Capsule(hand - d * 8f, hand + d * 2f, 4.5f, wood);
-                    pt.Capsule(hand + d * 3f, hand + d * s.WeaponLen * 0.55f, 5f, 2f, metal);
-                    break;
-                case "club":
-                    pt.Capsule(hand - d * 12f, hand + d * s.WeaponLen, 6f, 13f, wood);
-                    pt.Circle(hand + d * (s.WeaponLen - 6f), 15f, wood);
-                    break;
-                case "mace":
-                    pt.Capsule(hand - d * 12f, hand + d * s.WeaponLen * 0.85f, 6f, 6f, wood);
-                    pt.Circle(hand + d * (s.WeaponLen * 0.9f), 18f, metal);
-                    pt.Circle(hand + d * (s.WeaponLen * 0.9f) + nrm * 14f, 7f, metal);
-                    pt.Circle(hand + d * (s.WeaponLen * 0.9f) - nrm * 14f, 7f, metal);
-                    break;
-                case "staff":
-                    pt.Capsule(hand - d * 70f, hand + d * 110f, 5f, 5f, wood);
-                    pt.Circle(hand + d * 118f, 11f, Mat.Glow(s.Glow));
-                    break;
-                case "bow":
-                {
-                    Vector2 top = hand + new Vector2(2f, 62f), bottom = hand + new Vector2(2f, -62f);
-                    Vector2 mid = hand + new Vector2(24f, 0f);
-                    pt.Capsule(top, mid, 3f, 5f, wood);
-                    pt.Capsule(mid, bottom, 5f, 3f, wood);
-                    Vector2 pull = hand + new Vector2(-8f - p.Draw * 60f, 0f);
-                    pt.Capsule(top, pull, 1.4f, Mat.Glow(new Color(0.9f, 0.9f, 0.85f)));
-                    pt.Capsule(pull, bottom, 1.4f, Mat.Glow(new Color(0.9f, 0.9f, 0.85f)));
-                    if (p.Draw > 0.05f) pt.Capsule(pull, hand + new Vector2(34f, 0f), 2f, Mat.Glow(s.Glow));   // nocked bolt
-                    break;
-                }
-            }
+            if (s.Weapon == "none") return;
+            WeaponArt.Draw(pt, s.Weapon, hand, Dir(p.WeaponAngle), s.WeaponLen, pal, p.Draw);
         }
     }
 }

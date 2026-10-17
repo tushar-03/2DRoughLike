@@ -13,11 +13,15 @@ namespace Roughlike.Items
         Transform _icon;
         float _t;
         bool _taken;
+        float _hold;
 
         public ItemInstance Item => _item;
         public override string Prompt => _item == null ? "" : $"Take {_item.DisplayName} ({_item.Rarity})";
         public override Color PromptColour => _item == null ? Color.white : _item.RarityColour;
-        public override bool CanInteract => !_taken && _item != null;
+        /// <summary>Makes the item ungrabbable for a moment (a swapped-out item must not be re-taken by the same button press).</summary>
+        public void HoldFor(float seconds) => _hold = seconds;
+
+        public override bool CanInteract => !_taken && _item != null && _hold <= 0f;
         public override ItemInstance PreviewItem => _item;
 
         public void Init(ItemInstance item, Transform icon)
@@ -29,6 +33,7 @@ namespace Roughlike.Items
         void Update()
         {
             _t += Time.deltaTime;
+            if (_hold > 0f) _hold -= Time.deltaTime;
             if (_icon != null) _icon.localPosition = new Vector3(0f, 0.9f + 0.12f * Mathf.Sin(_t * 3f), 0f);
         }
 

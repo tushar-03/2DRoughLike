@@ -10,7 +10,7 @@ namespace Roughlike.Enemies
 
         public override Vector2 Chase(float dt)
         {
-            float vx = HoldDistance(D.preferredMinDistance, D.preferredMaxDistance, D.chaseSpeed);
+            float vx = HoldDistance(D.preferredMinDistance, D.preferredMaxDistance, E.Spd(D.chaseSpeed));
             bool inBand = vx == 0f;
             if (inBand && E.CanAttack && E.TargetOnSameLevel && E.HasLineOfSightToTarget) E.BeginTelegraph();
             return new Vector2(vx, 0f);
@@ -32,7 +32,7 @@ namespace Roughlike.Enemies
         {
             if (_fired) return Vector2.zero;
             _fired = true;
-            Projectile.Spawn(E.Muzzle, new Vector2(E.Facing * D.projectileSpeed, 0f), D.damage, Team.Enemy, D.knockback.x, D.stagger);
+            Projectile.Spawn(E.Muzzle, new Vector2(E.Facing * D.projectileSpeed, 0f), E.Damage, Team.Enemy, D.knockback.x, D.stagger);
             return Vector2.zero;
         }
     }

@@ -93,13 +93,17 @@ namespace Roughlike.Editor.Art
             var clear = new Color32[tex.width * tex.height];
             tex.SetPixels32(clear);
 
+            var anchors = new CharacterArt.Anchor[rows][];
             for (int r = 0; r < rows; r++)
             {
                 var clip = plan.Clips[r];
+                anchors[r] = new CharacterArt.Anchor[clip.Frames];
                 for (int f = 0; f < clip.Frames; f++)
                 {
+                    HumanoidArt.HasAnchor = false;
                     Color32[] px = clip.Paint(f, clip.Frames);
                     tex.SetPixels32(f * fw, (rows - 1 - r) * fh, fw, fh, px);
+                    if (plan.Anchors && HumanoidArt.HasAnchor) anchors[r][f] = HumanoidArt.LastAnchor;
                 }
             }
             tex.Apply();
@@ -133,7 +137,7 @@ namespace Roughlike.Editor.Art
             for (int r = 0; r < plan.Clips.Count; r++)
             {
                 var c = plan.Clips[r];
-                art.clips[r] = new CharacterArt.Clip { name = c.Name, row = r, frames = c.Frames, fps = c.Fps, loop = c.Loop };
+                art.clips[r] = new CharacterArt.Clip { name = c.Name, row = r, frames = c.Frames, fps = c.Fps, loop = c.Loop, anchors = plan.Anchors ? anchors[r] : null };
             }
             if (created) AssetDatabase.CreateAsset(art, AssetPath(plan.Name));
             else EditorUtility.SetDirty(art);

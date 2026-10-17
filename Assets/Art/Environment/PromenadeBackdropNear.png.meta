@@ -1,0 +1,520 @@
+fileFormatVersion: 2
+guid: a51c70d3ca5fa754da127043fcc57db7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3152248285313984515
+    second: PromenadeBackdropNear_0
+  - first:
+      213: 4656138087392833843
+    second: PromenadeBackdropNear_1
+  - first:
+      213: -649990943131732619
+    second: PromenadeBackdropNear_2
+  - first:
+      213: 8331575029552518240
+    second: PromenadeBackdropNear_3
+  - first:
+      213: -674637265479566536
+    second: PromenadeBackdropNear_4
+  - first:
+      213: -3053613384977525607
+    second: PromenadeBackdropNear_5
+  - first:
+      213: 3482003908085697344
+    second: PromenadeBackdropNear_6
+  - first:
+      213: -7251346775295517037
+    second: PromenadeBackdropNear_7
+  - first:
+      213: -6443047088962866328
+    second: PromenadeBackdropNear_8
+  - first:
+      213: -9188644405594665653
+    second: PromenadeBackdropNear_9
+  - first:
+      213: -5268431684196484834
+    second: PromenadeBackdropNear_10
+  - first:
+      213: -387678926896407106
+    second: PromenadeBackdropNear_11
+  - first:
+      213: -2297960740453062750
+    second: PromenadeBackdropNear_12
+  - first:
+      213: 6478309999832441282
+    second: PromenadeBackdropNear_13
+  - first:
+      213: 3653299477413051270
+    second: PromenadeBackdropNear_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PromenadeBackdropNear_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 671
+        width: 261
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30869f93d190fbb20800000000000000
+      internalID: 3152248285313984515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PromenadeBackdropNear_1
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 507
+        width: 10
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3317734dbeced9040800000000000000
+      internalID: 4656138087392833843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PromenadeBackdropNear_2
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 657
+        width: 502
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57579675ea4caf6f0800000000000000
+      internalID: -649990943131732619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PromenadeBackdropNear_3
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 507
+        width: 10
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0641ef7c853bf9370800000000000000
+      internalID: 8331575029552518240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PromenadeBackdropNear_4
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 657
+        width: 241
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83b79de3bf433a6f0800000000000000
+      internalID: -674637265479566536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PromenadeBackdropNear_5
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 559
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 994590b1ec26f95d0800000000000000
+      internalID: -3053613384977525607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PromenadeBackdropNear_6
+      rect:
+        serializedVersion: 2
+        x: 1151
+        y: 559
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04b48ff1b10925030800000000000000
+      internalID: 3482003908085697344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PromenadeBackdropNear_7
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 419
+        width: 46
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39e1653f68a0e5b90800000000000000
+      internalID: -7251346775295517037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PromenadeBackdropNear_8
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 383
+        width: 52
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 863f04f2fc2b596a0800000000000000
+      internalID: -6443047088962866328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PromenadeBackdropNear_9
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 419
+        width: 46
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4d462db8906b7080800000000000000
+      internalID: -9188644405594665653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PromenadeBackdropNear_10
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 383
+        width: 52
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e193e0ceb45c2e6b0800000000000000
+      internalID: -5268431684196484834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PromenadeBackdropNear_11
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 0
+        width: 132
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebd5f6be110be9af0800000000000000
+      internalID: -387678926896407106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PromenadeBackdropNear_12
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 0
+        width: 122
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a76085b1e00c10e0800000000000000
+      internalID: -2297960740453062750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PromenadeBackdropNear_13
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 0
+        width: 132
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c1afdc0f9497e950800000000000000
+      internalID: 6478309999832441282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PromenadeBackdropNear_14
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 0
+        width: 122
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68b3359c48023b230800000000000000
+      internalID: 3653299477413051270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PromenadeBackdropNear_0: 3152248285313984515
+      PromenadeBackdropNear_1: 4656138087392833843
+      PromenadeBackdropNear_10: -5268431684196484834
+      PromenadeBackdropNear_11: -387678926896407106
+      PromenadeBackdropNear_12: -2297960740453062750
+      PromenadeBackdropNear_13: 6478309999832441282
+      PromenadeBackdropNear_14: 3653299477413051270
+      PromenadeBackdropNear_2: -649990943131732619
+      PromenadeBackdropNear_3: 8331575029552518240
+      PromenadeBackdropNear_4: -674637265479566536
+      PromenadeBackdropNear_5: -3053613384977525607
+      PromenadeBackdropNear_6: 3482003908085697344
+      PromenadeBackdropNear_7: -7251346775295517037
+      PromenadeBackdropNear_8: -6443047088962866328
+      PromenadeBackdropNear_9: -9188644405594665653
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

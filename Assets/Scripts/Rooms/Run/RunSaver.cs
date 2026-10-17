@@ -17,6 +17,8 @@ namespace Roughlike.Rooms
             {
                 seed = run.Seed,
                 biome = run.Biome != null ? run.Biome.name : "",
+                levelIndex = run.LevelIndex,
+                difficulty = (int)Roughlike.Core.DifficultyService.Current,
                 health = run.PlayerHealth.Current,
                 roomX = run.CurrentRoom.x,
                 roomY = run.CurrentRoom.y,

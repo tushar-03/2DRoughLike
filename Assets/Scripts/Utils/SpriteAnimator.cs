@@ -22,6 +22,8 @@ namespace Roughlike.Utils
 
         public CharacterArt Art => art;
         public string Clip => _clip;
+        /// <summary>Index of the frame currently shown.</summary>
+        public int FrameIndex { get; private set; }
         /// <summary>True while a one-shot clip is still running; looping clips and scrubbed clips never report finished.</summary>
         public bool IsPlayingOnce => _once && _time < _duration;
 
@@ -63,6 +65,7 @@ namespace Roughlike.Utils
             _scrub = scrub;
             _time = 0f;
             _duration = duration > 0f ? duration : (_def != null ? _def.frames / Mathf.Max(1f, _def.fps) : 0.5f);
+            FrameIndex = 0;
             if (_frames.Length > 0) Renderer.sprite = _frames[0];
         }
 
@@ -80,6 +83,7 @@ namespace Roughlike.Utils
             int i = Mathf.FloorToInt(_time * fps);
             bool loop = _def == null || _def.loop;
             i = loop ? i % _frames.Length : Mathf.Min(i, _frames.Length - 1);
+            FrameIndex = i;
             Renderer.sprite = _frames[i];
         }
 
@@ -92,6 +96,7 @@ namespace Roughlike.Utils
             float fps = _def != null ? _def.fps : 10f;
             int i = Mathf.FloorToInt(_time * fps);
             i = (_def == null || _def.loop) ? i % _frames.Length : Mathf.Min(i, _frames.Length - 1);
+            FrameIndex = i;
             Renderer.sprite = _frames[i];
         }
 
@@ -99,6 +104,7 @@ namespace Roughlike.Utils
         {
             if (_frames.Length == 0) return;
             int i = Mathf.Min(_frames.Length - 1, Mathf.FloorToInt(progress01 * _frames.Length));
+            FrameIndex = i;
             Renderer.sprite = _frames[i];
         }
     }

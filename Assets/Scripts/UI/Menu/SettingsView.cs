@@ -18,6 +18,7 @@ namespace Roughlike.UI
         readonly List<Button> _tabs = new List<Button>();
         readonly List<Selectable> _first = new List<Selectable>();
         int _tab;
+        ScrollRect _scroll;
 
         public int Tab => _tab;
         public Selectable FirstSelectable { get; private set; }
@@ -42,10 +43,28 @@ namespace Roughlike.UI
                 _tabs.Add(b);
             }
 
-            _rows = UiKit.Node("Rows", window);
-            UiKit.Place(_rows, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(0.5f, 0.5f), Vector2.zero, Vector2.zero);
-            _rows.offsetMin = new Vector2(70f, 100f);
-            _rows.offsetMax = new Vector2(-70f, -135f);
+            // the rows live in a scrolling list, so any number of settings fits and a controller can reach all of them
+            var viewport = UiKit.Node("Viewport", window);
+            UiKit.Place(viewport, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(0.5f, 0.5f), Vector2.zero, Vector2.zero);
+            viewport.offsetMin = new Vector2(60f, 100f);
+            viewport.offsetMax = new Vector2(-60f, -128f);
+            viewport.gameObject.AddComponent<RectMask2D>();
+
+            _rows = UiKit.Node("Rows", viewport);
+            _rows.anchorMin = new Vector2(0f, 1f);
+            _rows.anchorMax = new Vector2(1f, 1f);
+            _rows.pivot = new Vector2(0.5f, 1f);
+            _rows.anchoredPosition = Vector2.zero;
+            _rows.sizeDelta = new Vector2(0f, 400f);
+
+            _scroll = viewport.gameObject.AddComponent<ScrollRect>();
+            _scroll.viewport = viewport;
+            _scroll.content = _rows;
+            _scroll.horizontal = false;
+            _scroll.vertical = true;
+            _scroll.movementType = ScrollRect.MovementType.Clamped;
+            _scroll.scrollSensitivity = 45f;
+            ScrollToSelected.Attach(_scroll);
 
             var reset = MenuKit.Action(window, "Reset to defaults", new Vector2(300f, 52f), () => { SettingsService.ResetToDefaults(); ShowTab(_tab); });
             UiKit.Place((RectTransform)reset.transform, new Vector2(0f, 0f), new Vector2(0f, 0f), new Vector2(0f, 0f), new Vector2(40f, 24f), new Vector2(300f, 52f));
@@ -79,6 +98,8 @@ namespace Roughlike.UI
                 case 1: BuildAudio(); break;
                 default: BuildGameplay(); break;
             }
+            _rows.sizeDelta = new Vector2(0f, Mathf.Max(300f, _rows.childCount * (MenuKit.RowSize.y + 8f) + 20f));
+            _rows.anchoredPosition = Vector2.zero;
             FirstSelectable = _first.Count > 0 ? _first[0] : _tabs[_tab];
         }
 
@@ -173,17 +194,17 @@ namespace Roughlike.UI
         {
             var s = SettingsService.Current;
             AddSlider("Screen shake", 0, s.screenShake, v => { s.screenShake = v; SettingsService.NotifyChanged(); });
-            AddSlider("Hit-stop (freeze on impact)", 1, s.hitStop, v => { s.hitStop = v; SettingsService.NotifyChanged(); });
+            AddSlider("Hit-stop (impact freeze)", 1, s.hitStop, v => { s.hitStop = v; SettingsService.NotifyChanged(); });
             AddSlider("Flash intensity", 2, s.flashIntensity, v => { s.flashIntensity = v; SettingsService.NotifyChanged(); });
 
             var slot = MenuKit.Row(_rows, "Damage numbers", RowY(3), out _);
             AddToggle(slot, s.damageNumbers, v => { s.damageNumbers = v; SettingsService.NotifyChanged(); });
-            slot = MenuKit.Row(_rows, "Toggle shield (press to raise and lower)", RowY(4), out _);
+            slot = MenuKit.Row(_rows, "Toggle shield (press to raise)", RowY(4), out _);
             AddToggle(slot, s.toggleBlock, v => { s.toggleBlock = v; SettingsService.NotifyChanged(); });
-            slot = MenuKit.Row(_rows, "Assist mode (enemies deal 40% less)", RowY(5), out _);
+            slot = MenuKit.Row(_rows, "Assist mode (-40% damage taken)", RowY(5), out _);
             AddToggle(slot, s.assistMode, v => { s.assistMode = v; SettingsService.NotifyChanged(); });
 
-            slot = MenuKit.Row(_rows, "Vibration (controller rumble, phone haptics)", RowY(6), out _);
+            slot = MenuKit.Row(_rows, "Vibration (rumble / haptics)", RowY(6), out _);
             AddToggle(slot, s.haptics, v => { s.haptics = v; SettingsService.NotifyChanged(); if (v) Roughlike.Player.Haptics.Play(Roughlike.Player.HapticKind.Medium); });
             AddSlider("Vibration strength", 7, s.hapticStrength, v => { s.hapticStrength = v; SettingsService.NotifyChanged(); });
             slot = MenuKit.Row(_rows, "Touch controls", RowY(8), out _);

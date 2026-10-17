@@ -45,6 +45,8 @@ namespace Roughlike.Core
         public int touchControls = 0;
         /// <summary>The tutorial has been offered or played once.</summary>
         public bool tutorialSeen;
+        /// <summary>The difficulty last picked for a new game (0 Story, 1 Normal, 2 Hard, 3 Nightmare).</summary>
+        public int difficulty = 1;
 
         // ---- controls: Input System binding overrides as JSON
         public string bindingOverrides = "";
@@ -65,6 +67,7 @@ namespace Roughlike.Core
             fullscreenMode = Mathf.Clamp(fullscreenMode, 0, 2);
             hapticStrength = Mathf.Clamp01(hapticStrength);
             touchControls = Mathf.Clamp(touchControls, 0, 2);
+            difficulty = Mathf.Clamp(difficulty, 0, 3);
             resolutionWidth = Mathf.Max(0, resolutionWidth);
             resolutionHeight = Mathf.Max(0, resolutionHeight);
             if (bindingOverrides == null) bindingOverrides = "";

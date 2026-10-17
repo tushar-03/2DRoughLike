@@ -80,6 +80,29 @@ namespace Roughlike.Combat
         public WeaponData Slot2 => slot2;
         public WeaponData GetWeapon(int slot) => slot == 0 ? slot1 : slot2;
 
+        /// <summary>The melee weapon to show in the hand: the one used last, else whichever slot holds one.</summary>
+        public WeaponData HeldMelee
+        {
+            get
+            {
+                WeaponData first = _lastSlot == 1 ? slot2 : slot1, second = _lastSlot == 1 ? slot1 : slot2;
+                if (first != null && first.kind == WeaponKind.Melee) return first;
+                if (second != null && second.kind == WeaponKind.Melee) return second;
+                return null;
+            }
+        }
+
+        /// <summary>The shield the player carries, if either slot holds one.</summary>
+        public WeaponData HeldShield
+        {
+            get
+            {
+                if (slot1 != null && slot1.kind == WeaponKind.Shield) return slot1;
+                if (slot2 != null && slot2.kind == WeaponKind.Shield) return slot2;
+                return null;
+            }
+        }
+
         public event Action<WeaponData, AttackStep, int> AttackStarted;
         public event Action<Health, HitResult> StrikeLanded;
         public event Action Parried;

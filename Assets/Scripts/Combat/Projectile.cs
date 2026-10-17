@@ -23,6 +23,8 @@ namespace Roughlike.Combat
         Team _team;
         readonly HashSet<Health> _hit = new HashSet<Health>();
         LayerMask _groundMask;
+        Color? _tint;
+        float _turnRate, _homeUntil;
 
         public Vector2 Velocity => _velocity;
         public Team Team => _team;
@@ -41,7 +43,7 @@ namespace Roughlike.Combat
         }
 
         public static Projectile Spawn(Vector2 position, Vector2 velocity, float damage, Team team,
-            float knockback = 4f, float stagger = 10f, float lifetime = 4f, float radius = 0.2f)
+            float knockback = 4f, float stagger = 10f, float lifetime = 4f, float radius = 0.2f, Color? tint = null)
         {
             _pool ??= new ComponentPool<Projectile>(Create);
             Projectile p = _pool.Get();
@@ -53,6 +55,9 @@ namespace Roughlike.Combat
             p._stagger = stagger;
             p._life = lifetime;
             p._radius = radius;
+            p._tint = tint;
+            p._turnRate = 0f;
+            p._homeUntil = 0f;
             p._hit.Clear();
             p._groundMask = GameLayers.GroundMask;
             p.transform.localScale = Vector3.one * radius * 2.2f;
@@ -62,7 +67,14 @@ namespace Roughlike.Combat
 
         void Recolour()
         {
-            _sr.color = _team == Team.Player ? new Color(1f, 0.9f, 0.4f) : new Color(1f, 0.45f, 0.15f);
+            _sr.color = _team == Team.Player ? new Color(1f, 0.9f, 0.4f) : (_tint ?? new Color(1f, 0.45f, 0.15f));
+        }
+
+        /// <summary>Makes the projectile curve toward the player for a while (the witch's soul orbs).</summary>
+        public void SetHoming(float degreesPerSecond, float seconds)
+        {
+            _turnRate = degreesPerSecond;
+            _homeUntil = _life - seconds;   // _life counts down; homing lasts until this much life remains
         }
 
         void Update()
@@ -75,6 +87,14 @@ namespace Roughlike.Combat
             _life -= dt;
             if (_life <= 0f) { Despawn(); return; }
 
+            if (_turnRate > 0f && _life > _homeUntil && _team == Team.Enemy && Health.Player != null && !Health.Player.IsDead)
+            {
+                Vector2 want = (Health.Player.Center - (Vector2)transform.position).normalized;
+                float speed = _velocity.magnitude;
+                float angle = Vector2.SignedAngle(_velocity, want);
+                float turn = Mathf.Clamp(angle, -_turnRate * dt, _turnRate * dt);
+                _velocity = (Vector2)(Quaternion.Euler(0f, 0f, turn) * _velocity.normalized) * speed;
+            }
             transform.position += (Vector3)(_velocity * dt);
 
             LayerMask targets = LayerMask.GetMask(_team == Team.Player ? GameLayers.EnemyName : GameLayers.PlayerName);

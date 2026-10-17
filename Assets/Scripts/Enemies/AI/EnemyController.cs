@@ -55,6 +55,14 @@ namespace Roughlike.Enemies
         public EnemyState State { get; private set; } = EnemyState.Patrol;
         public int Facing { get; private set; } = 1;
         public EnemyDefinition Definition => definition;
+        /// <summary>Difficulty and depth multipliers (health is applied when the enemy is built).</summary>
+        public EnemyScaling Scaling { get; set; } = EnemyScaling.One;
+        public float Damage => definition.damage * Scaling.Damage;
+        public float TelegraphTime => definition.telegraphTime * Scaling.Telegraph;
+        public float RecoverTime => definition.recoverTime * Scaling.Telegraph;
+        public float AttackCooldown => definition.attackCooldown * Scaling.Cooldown;
+        /// <summary>A speed from the definition with the difficulty's speed multiplier.</summary>
+        public float Spd(float speed) => speed * Scaling.Speed;
         public EnemyBehavior Behavior => _behavior;
         public float StateTime => _stateTimer;
         public float StaggerDuration => _staggerDuration;
@@ -194,7 +202,7 @@ namespace Roughlike.Enemies
             }
 
             SetFacing(_patrolDir);
-            return _patrolDir * definition.patrolSpeed;
+            return _patrolDir * Spd(definition.patrolSpeed);
         }
 
         // ---- chase ------------------------------------------------------------------
@@ -228,7 +236,7 @@ namespace Roughlike.Enemies
             if (_telegraph != null)
             {
                 int facing = Mathf.Abs(spec.Angle) > 0.01f ? 1 : Facing;
-                _telegraph.Begin(spec.Centre, spec.Size, facing, definition.telegraphTime, spec.Unparryable, spec.Angle, spec.Circle);
+                _telegraph.Begin(spec.Centre, spec.Size, facing, TelegraphTime, spec.Unparryable, spec.Angle, spec.Circle);
             }
         }
 
@@ -240,10 +248,10 @@ namespace Roughlike.Enemies
 
         void TickTelegraph()
         {
-            float t = Mathf.Clamp01(_stateTimer / definition.telegraphTime);
+            float t = Mathf.Clamp01(_stateTimer / TelegraphTime);
             if (_react != null) _react.SetWarning(t);
             _behavior.TelegraphTick(t);
-            if (_stateTimer >= definition.telegraphTime) SetState(EnemyState.Attack);
+            if (_stateTimer >= TelegraphTime) SetState(EnemyState.Attack);
         }
 
         Vector2 TickAttack(float dt)
@@ -262,9 +270,9 @@ namespace Roughlike.Enemies
 
         Vector2 TickRecover(float dt)
         {
-            if (_stateTimer >= definition.recoverTime)
+            if (_stateTimer >= RecoverTime)
             {
-                _cooldown = definition.attackCooldown;
+                _cooldown = AttackCooldown;
                 SetState(EnemyState.Chase);
                 return Vector2.zero;
             }
@@ -286,7 +294,7 @@ namespace Roughlike.Enemies
         {
             return new DamageInfo
             {
-                Amount = definition.damage,
+                Amount = Damage,
                 SourceTeam = Team.Enemy,
                 Attacker = this,
                 SourcePosition = transform.position,

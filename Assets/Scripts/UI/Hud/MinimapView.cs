@@ -41,9 +41,9 @@ namespace Roughlike.UI
             UiKit.Place(rt, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(24f, -150f), new Vector2(400f, 220f));
 
             _label = UiKit.Label(rt, "Seed", "", 20, new Color(1f, 1f, 1f, 0.8f), TextAnchor.UpperLeft);
-            UiKit.Place(_label.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0f, 1f), Vector2.zero, new Vector2(0f, 30f));
+            UiKit.Place(_label.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0f, 1f), Vector2.zero, new Vector2(0f, 54f));
             _map = UiKit.Node("Map", rt);
-            UiKit.Place(_map, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, -34f), new Vector2(380f, 180f));
+            UiKit.Place(_map, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, -58f), new Vector2(380f, 180f));
         }
 
         void Update()
@@ -92,7 +92,7 @@ namespace Roughlike.UI
 
         void Refresh()
         {
-            _label.text = $"Seed {SeedCode.Encode(_run.Seed)}   Room {_run.CurrentRoom.x},{_run.CurrentRoom.y}";
+            _label.text = $"{_run.Biome.displayName}  -  {DifficultyService.Name(_run.Difficulty)}\nSeed {SeedCode.Encode(_run.Seed)}   Room {_run.CurrentRoom.x},{_run.CurrentRoom.y}";
 
             foreach (var e in _edges)
             {

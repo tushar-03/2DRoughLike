@@ -2,6 +2,7 @@ using UnityEngine;
 using Roughlike.Combat;
 using Roughlike.Core;
 using Roughlike.Enemies;
+using Roughlike.Enemies;
 
 namespace Roughlike.Items
 {
@@ -22,6 +23,9 @@ namespace Roughlike.Items
         /// <summary>0..1 position along the level; raises gold and quality of drops a little.</summary>
         public float Progress { get; set; }
 
+        /// <summary>The loot tables of the current biome (a boss drops from them).</summary>
+        public LootDatabase Loot { get; set; }
+
         public void BeginRun(uint seed)
         {
             _seed = seed;
@@ -33,12 +37,14 @@ namespace Roughlike.Items
         {
             EventBus<EnemyDiedEvent>.Subscribe(OnEnemyDied);
             EventBus<RoomClearedEvent>.Subscribe(OnRoomCleared);
+            EventBus<BossDefeatedEvent>.Subscribe(OnBossDefeated);
         }
 
         void OnDisable()
         {
             EventBus<EnemyDiedEvent>.Unsubscribe(OnEnemyDied);
             EventBus<RoomClearedEvent>.Unsubscribe(OnRoomCleared);
+            EventBus<BossDefeatedEvent>.Unsubscribe(OnBossDefeated);
         }
 
         PlayerStats Stats
@@ -54,7 +60,7 @@ namespace Roughlike.Items
         {
             float reward = e.Definition != null ? e.Definition.rewardMultiplier : 1f;
             if (reward <= 0f) return;   // summoned minions drop nothing
-            float goldFind = (Stats != null ? Stats.GoldFind : 1f) * reward;
+            float goldFind = (Stats != null ? Stats.GoldFind : 1f) * reward * DifficultyService.Scaling.Gold;
             int total = Mathf.RoundToInt(_rng.Range(4, 10) * (1f + 0.5f * Progress) * goldFind);
             int coins = Mathf.Clamp(total / 4, 1, 3);
             int each = Mathf.Max(1, total / coins);
@@ -62,6 +68,22 @@ namespace Roughlike.Items
                 LootFactory.SpawnGold(e.Position + new Vector2(0f, 0.8f), each);
 
             if (_rng.Chance(cellChance)) LootFactory.SpawnCell(e.Position + new Vector2(0f, 0.8f), 1);
+        }
+
+        /// <summary>A boss pays out: a shower of gold, Cells and one good item.</summary>
+        void OnBossDefeated(BossDefeatedEvent e)
+        {
+            float gold = DifficultyService.Scaling.Gold * (Stats != null ? Stats.GoldFind : 1f);
+            const int coins = 14;
+            int each = Mathf.Max(1, Mathf.RoundToInt(e.Definition.goldReward * gold / coins));
+            for (int i = 0; i < coins; i++)
+                LootFactory.SpawnGold(e.Position + new Vector2(Mathf.Lerp(-2.2f, 2.2f, i / (coins - 1f)), 1.2f + (i % 3) * 0.4f), each);
+            for (int i = 0; i < 4; i++) LootFactory.SpawnCell(e.Position + new Vector2(-1.5f + i, 1.8f), 1);
+            if (Loot != null)
+            {
+                var item = LootRoller.Roll(Loot, _rng, 1f, null, 1f);
+                if (item != null) LootFactory.DropItem(item, e.Position + new Vector2(0f, 0.5f));
+            }
         }
 
         void OnRoomCleared(RoomClearedEvent e)

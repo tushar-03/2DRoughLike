@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4352ca70bca7b79419f6cdcfa2581bd5, type: 3}
+  m_Name: AshenPromenadeArt
+  m_EditorClassIdentifier: Roughlike.Utils::Roughlike.Utils.EnvironmentArt
+  wall: {fileID: 21300000, guid: b0e67c05383683543b18aab0899ed5b3, type: 3}
+  rock: {fileID: 21300000, guid: 6c1befa3e769aa247a2dd405daa5fb50, type: 3}
+  floorTrim: {fileID: 21300000, guid: 957c47271fb091c4eacce216e157441b, type: 3}
+  platform: {fileID: 21300000, guid: 8e4d11ce338e4484a9dd4da8544883f6, type: 3}
+  backdrop:
+  - name: Sunset and distant towers
+    sprite: {fileID: 21300000, guid: 8f381c85928c2734a96c6aa55e0d496d, type: 3}
+    follow: 0.97
+    followY: 0.93
+    yOffset: 1.2
+    tint: {r: 0.72, g: 0.66, b: 0.7, a: 1}
+    sortingOrder: -60
+  - name: Ruined gates
+    sprite: {fileID: 21300000, guid: b88fb171b8b419543b8a91f83ab55e16, type: 3}
+    follow: 0.85
+    followY: 0.86
+    yOffset: 0.4
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sortingOrder: -50
+  - name: Beams and chains
+    sprite: {fileID: 21300000, guid: a51c70d3ca5fa754da127043fcc57db7, type: 3}
+    follow: 0.64
+    followY: 0.74
+    yOffset: 0
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sortingOrder: -40
+  - name: Floating ruins
+    sprite: {fileID: 21300000, guid: 28a088a3c2fa7224abd939de534e46b5, type: 3}
+    follow: 0.91
+    followY: 0.88
+    yOffset: 0.5
+    tint: {r: 0.85, g: 0.7, b: 0.72, a: 1}
+    sortingOrder: -58
+  - name: Foreground weeds and posts
+    sprite: {fileID: 21300000, guid: 62210f34c546fc543a7103e85cfe1e5a, type: 3}
+    follow: -0.35
+    followY: 1
+    yOffset: 5.3
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sortingOrder: 60
+  - name: Foreground banners
+    sprite: {fileID: 21300000, guid: 3ba2118aaeaa5c448a664e550b992e6e, type: 3}
+    follow: -0.5
+    followY: 1
+    yOffset: -5.1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sortingOrder: 61
+  ambient: {r: 1, g: 0.78, b: 0.62, a: 1}
+  ambientIntensity: 0.6
+  playerLight: {r: 1, g: 0.85, b: 0.6, a: 1}
+  torchLight: {r: 1, g: 0.62, b: 0.26, a: 1}
+  bloom: 0.85
+  vignette: 0.34
+  grain: 0.1
+  colourFilter: {r: 1, g: 0.94, b: 0.88, a: 1}
+  saturation: 22
+  contrast: 12
+  moteColour: {r: 1, g: 0.6, b: 0.25, a: 0.7}
+  moteCount: 40
+  props: {fileID: 11400000, guid: 39fe8fd0c8aeb9b4aa80cda8393fde40, type: 2}
+  worldProps: {fileID: 11400000, guid: 7cc86d3be8583f642ab99f843ec351bb, type: 2}

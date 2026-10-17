@@ -25,7 +25,7 @@ namespace Roughlike.Enemies
 
         public override Vector2 Chase(float dt)
         {
-            float vx = HoldDistance(D.preferredMinDistance, D.preferredMaxDistance, D.chaseSpeed);
+            float vx = HoldDistance(D.preferredMinDistance, D.preferredMaxDistance, E.Spd(D.chaseSpeed));
             if (E.CanAttack && D.minion != null && LiveMinions < D.maxMinions && E.HorizontalDistance < D.sightRange)
             {
                 E.BeginTelegraph();

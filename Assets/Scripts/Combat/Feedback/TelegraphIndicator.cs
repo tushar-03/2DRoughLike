@@ -1,55 +1,64 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Roughlike.Utils;
 
 namespace Roughlike.Combat
 {
     /// <summary>
-    /// Consistent visual language for incoming attacks: a bright-outlined box showing the danger area that
-    /// fills from the attacker toward the far edge, finishing exactly when the hit lands. Readable by shape
-    /// and motion, not only by colour (colourblind-safe). The same indicator is used by every enemy.
+    /// Consistent visual language for incoming attacks: a dotted outline of the danger area. The dots light up from the attacker
+    /// toward the far edge and are all bright exactly when the hit lands. Lasers are a single dotted line, explosions a dotted
+    /// ring that fills inward-out. Readable by shape and motion, not only by colour (colourblind-safe), and it hides far less of
+    /// the scene than a filled box. The same indicator is used by every enemy and boss.
     /// </summary>
     public class TelegraphIndicator : MonoBehaviour
     {
         public static readonly Color StandardColour = new Color(1f, 0.55f, 0.1f);
         public static readonly Color UnparryableColour = new Color(0.8f, 0.3f, 1f);
 
-        SpriteRenderer _outline, _fill;
+        const float Spacing = 0.3f;
+        const float DotSize = 0.12f;
+        const int MaxDots = 220;
+
+        readonly List<SpriteRenderer> _dots = new List<SpriteRenderer>();
+        readonly List<Vector2> _points = new List<Vector2>();     // local positions
+        readonly List<float> _phase = new List<float>();          // 0..1: when each dot lights up
         Vector2 _size;
         int _facing = 1;
         float _duration, _elapsed;
-        bool _running;
+        bool _running, _circle;
+        Color _colour = StandardColour;
 
         void Awake() => Build();
 
+        bool _built;
+
         void Build()
         {
-            if (_outline != null) return;
-            _outline = MakeChild("Outline", 40);
-            _outline.color = new Color(0.1f, 0.02f, 0.02f, 0.85f);
-            _fill = MakeChild("Fill", 41);
+            if (_built) return;
+            _built = true;
             gameObject.SetActive(false);
         }
 
-        SpriteRenderer MakeChild(string childName, int order)
+        /// <summary>Creates dots on demand, so a pool of indicators costs nothing until a telegraph actually needs them.</summary>
+        void EnsureDots(int count)
         {
-            var go = new GameObject(childName);
-            go.transform.SetParent(transform, false);
-            var sr = go.AddComponent<SpriteRenderer>();
-            sr.sprite = ProceduralSprites.Square;
-            sr.sortingOrder = order;
-            return sr;
+            while (_dots.Count < count && _dots.Count < MaxDots)
+            {
+                var go = new GameObject("Dot");
+                go.transform.SetParent(transform, false);
+                var sr = go.AddComponent<SpriteRenderer>();
+                sr.sprite = ProceduralSprites.Circle;
+                sr.sortingOrder = 40;
+                go.SetActive(false);
+                _dots.Add(sr);
+            }
         }
 
         /// <summary>Starts a telegraph covering <paramref name="size"/> centred on <paramref name="centre"/>.</summary>
-        bool _circle;
-
         public void Begin(Vector2 centre, Vector2 size, int facing, float duration, bool unparryable = false, float angleDeg = 0f, bool circle = false)
         {
             Build();
             _circle = circle;
-            var shape = circle ? ProceduralSprites.Circle : ProceduralSprites.Square;
-            _outline.sprite = shape;
-            _fill.sprite = shape;
             transform.position = centre;
             transform.rotation = Quaternion.Euler(0f, 0f, angleDeg);
             _size = size;
@@ -57,8 +66,9 @@ namespace Roughlike.Combat
             _duration = Mathf.Max(0.01f, duration);
             _elapsed = 0f;
             _running = true;
-            _fill.color = unparryable ? UnparryableColour : StandardColour;
+            _colour = unparryable ? UnparryableColour : StandardColour;
             gameObject.SetActive(true);
+            Layout();
             Apply(0f);
         }
 
@@ -68,7 +78,7 @@ namespace Roughlike.Combat
             if (!_running) return;
             transform.position = centre;
             transform.rotation = Quaternion.Euler(0f, 0f, angleDeg);
-            _size = size;
+            if ((size - _size).sqrMagnitude > 0.0004f) { _size = size; Layout(); }
             Apply(Mathf.Clamp01(_elapsed / _duration));
         }
 
@@ -85,34 +95,107 @@ namespace Roughlike.Combat
             Apply(Mathf.Clamp01(_elapsed / _duration));
         }
 
+        // ------------------------------------------------------------------ layout
+
+        void Layout()
+        {
+            _points.Clear();
+            _phase.Clear();
+            if (_circle) LayoutRing(); else if (_size.y < 0.45f) LayoutLine(); else LayoutRectangle();
+            EnsureDots(_points.Count);
+        }
+
+        void Add(Vector2 p, float phase)
+        {
+            if (_points.Count >= MaxDots) return;
+            _points.Add(p);
+            _phase.Add(Mathf.Clamp01(phase));
+        }
+
+        /// <summary>When a point along the attack direction lights up: the attacker's side first.</summary>
+        float AlongPhase(float x)
+        {
+            float u = (x * _facing + _size.x * 0.5f) / Mathf.Max(0.01f, _size.x);
+            return u;
+        }
+
+        void LayoutLine()
+        {
+            int n = Mathf.Max(2, Mathf.CeilToInt(_size.x / Spacing));
+            for (int i = 0; i <= n; i++)
+            {
+                float x = Mathf.Lerp(-_size.x * 0.5f, _size.x * 0.5f, i / (float)n);
+                Add(new Vector2(x, 0f), AlongPhase(x));
+            }
+        }
+
+        void LayoutRectangle()
+        {
+            float hw = _size.x * 0.5f, hh = _size.y * 0.5f;
+            int nx = Mathf.Max(2, Mathf.CeilToInt(_size.x / Spacing));
+            int ny = Mathf.Max(2, Mathf.CeilToInt(_size.y / Spacing));
+            for (int i = 0; i <= nx; i++)
+            {
+                float x = Mathf.Lerp(-hw, hw, i / (float)nx);
+                Add(new Vector2(x, hh), AlongPhase(x));
+                Add(new Vector2(x, -hh), AlongPhase(x));
+            }
+            for (int j = 1; j < ny; j++)
+            {
+                float y = Mathf.Lerp(-hh, hh, j / (float)ny);
+                Add(new Vector2(-hw, y), AlongPhase(-hw));
+                Add(new Vector2(hw, y), AlongPhase(hw));
+            }
+        }
+
+        void LayoutRing()
+        {
+            float r = Mathf.Max(_size.x, _size.y) * 0.5f;
+            int n = Mathf.Clamp(Mathf.CeilToInt(2f * Mathf.PI * r / Spacing), 12, 90);
+            for (int i = 0; i < n; i++)
+            {
+                float a = i / (float)n * Mathf.PI * 2f;
+                Add(new Vector2(Mathf.Cos(a), Mathf.Sin(a)) * r, 0f);
+            }
+            // an inner ring that sweeps outward as the blast charges (phase = its radius fraction)
+            for (float f = 0.25f; f < 0.99f; f += 0.25f)
+            {
+                int m = Mathf.Max(8, Mathf.CeilToInt(2f * Mathf.PI * r * f / (Spacing * 1.3f)));
+                for (int i = 0; i < m; i++)
+                {
+                    float a = i / (float)m * Mathf.PI * 2f;
+                    Add(new Vector2(Mathf.Cos(a), Mathf.Sin(a)) * r * f, f);
+                }
+            }
+        }
+
+        // ------------------------------------------------------------------ drawing
+
         void Apply(float t)
         {
-            const float pad = 0.1f;
-            if (_circle)
+            for (int i = 0; i < _dots.Count; i++)
             {
-                // a disc that grows from the centre to the full blast radius
-                float d = Mathf.Max(_size.x, _size.y);
-                float unit = 1f / ProceduralSprites.Circle.bounds.size.x;   // sprite is 1 unit wide at scale 1
-                _outline.transform.localScale = new Vector3((d + pad) * unit, (d + pad) * unit, 1f);
-                _outline.transform.localPosition = Vector3.zero;
-                float r = Mathf.Max(0.01f, d * t) * unit;
-                _fill.transform.localScale = new Vector3(r, r, 1f);
-                _fill.transform.localPosition = Vector3.zero;
-                Color cc = _fill.color;
-                cc.a = Mathf.Lerp(0.25f, 0.75f, t);
-                _fill.color = cc;
-                return;
+                var dot = _dots[i];
+                if (i >= _points.Count)
+                {
+                    if (dot.gameObject.activeSelf) dot.gameObject.SetActive(false);
+                    continue;
+                }
+                if (!dot.gameObject.activeSelf) dot.gameObject.SetActive(true);
+                dot.transform.localPosition = _points[i];
+
+                float lit = Mathf.Clamp01((t - _phase[i]) * 8f + 1f);   // 0 = not reached yet, 1 = fully lit
+                bool inner = _circle && _phase[i] > 0.01f;
+                float size = DotSize * Mathf.Lerp(1f, 1.5f, lit);
+                if (inner) size *= 0.8f;
+                dot.transform.localScale = Vector3.one * size;
+
+                Color c = _colour;
+                if (_circle) lit = inner ? (t >= _phase[i] ? 1f : 0.12f) : Mathf.Lerp(0.45f, 1f, t);
+                c.a = Mathf.Lerp(0.25f, 0.95f, lit);
+                if (t > 0.92f) c = Color.Lerp(c, Color.white, (t - 0.92f) * 8f * 0.7f);   // flash white right before the hit
+                dot.color = c;
             }
-            _outline.transform.localScale = new Vector3(_size.x + pad, _size.y + pad, 1f);
-            _outline.transform.localPosition = Vector3.zero;
-
-            float w = Mathf.Max(0.01f, _size.x * t);
-            _fill.transform.localScale = new Vector3(w, _size.y, 1f);
-            _fill.transform.localPosition = new Vector3(_facing * (-_size.x * 0.5f + w * 0.5f), 0f, 0f);
-
-            Color c = _fill.color;
-            c.a = Mathf.Lerp(0.25f, 0.75f, t);
-            _fill.color = c;
         }
     }
 }

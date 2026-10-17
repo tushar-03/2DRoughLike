@@ -14,6 +14,10 @@ You are a bell-ringer's apprentice who died sealing a sunken cathedral-city. Eac
 |---|---|
 | ![Exit portal](docs/images/m5_exit_portal.png) | ![Bell-Wisp](docs/images/m5_combat_wisp.png) |
 
+| Hag of Bells (boss, world 1) | Rust Warden (boss, world 2) |
+|---|---|
+| ![Witch boss](docs/images/m5_boss_witch.png) | ![Warden boss](docs/images/m5_boss_warden.png) |
+
 The cast, all painted and animated by code ([how](#art)):
 
 ![Roster, part 1](docs/images/m5_roster_1.png)
@@ -80,6 +84,21 @@ Later enemies appear deeper in a level (`minProgress`), with per-room caps, so e
 - Hand-built **painting pipeline**: every character, prop and tile is drawn by code (shaded, outlined, rim-lit) into sprite sheets with a swap-in `CharacterArt` asset, so final art can replace any of it.
 - Animated characters (idle, run, jump, fall, roll, block, attack, hurt; enemies telegraph, attack and flinch in sync with their AI timing).
 - **Ember Catacombs biome**: tiled stone, parallax backdrop (windows, colonnade, hanging banners), 2D lighting (ambient, a lantern on the player, flickering torches and braziers) and post-processing (bloom, vignette, grading, film grain). Painted exit portal, chest, altar and merchant. An ornamental UI skin.
+
+**Difficulty, two worlds and bosses**
+- **Pick a difficulty** when you start a new game: Story, Normal (the default, already tougher than the first versions), Hard and Nightmare. They change enemy health, damage, speed, how long warnings last, how many enemies fill a room and how much gold drops. Enemies also get tougher deeper in a level and in the second world.
+- **Two worlds**: the **Ember Catacombs** (cool stone, torchlight) and the **Ashen Promenade** (rust-brown ruins under a burning sunset). A run is both, one after the other, and you keep everything you carry between them.
+- **A boss at the end of each world.** The room seals behind you; beat it to open the door and the exit portal.
+  - **The Hag of Bells** (Catacombs) floats and scatters magic around the room: a ring of bolts thrown every which way, hex circles erupting all over the floor, slow homing orbs you can parry back, a blink beside you for a melee sweep, and in the last phase summoned wretches.
+  - **The Rust Warden** (Promenade) is a towering knight with a greatsword whose blows leave danger areas: an overhead slam with floor-running shockwaves, a huge sweep you can parry, a leap that lands in a blast, a line of eruptions marching toward you, and a sweep-into-slam combo.
+  - Both get faster and add moves as their health drops (phase ticks on the boss bar), take extra damage when stunned by a parry, and pay out gold, Cells and a good item.
+- **Dotted warnings**: every attack shows a dotted outline (a box, a line or a ring) that lights up exactly as the hit lands.
+- The world is carved into solid rock, so rooms are never slabs floating in the void.
+
+**Depth and gear**
+- **Parallax in every world.** Several background planes drift at different speeds (haze, colonnades or ruined towers, hanging lanterns or floating ruins), and two **foreground planes** (rubble, roots and chains in the Catacombs; weeds, broken posts and torn banners in the Promenade) slide past in front of you faster than the world, along with drifting dust or embers at several depths.
+- **Torches stand on stone posts** instead of hanging in the air.
+- **Weapons are painted and visible.** You see the sword, dagger, hammer or boathook you are holding (it swings with the attack animation), and the shield you carry rides on your back until you raise it. Swap a weapon at a chest and the sprite changes. The same art shows in the HUD slots, item cards, shop rows and as items on the ground. Weapons are European arms: arming sword, rondel dagger, warhammer, halberd-style boathook, heater/kite shield and round buckler. Enemies carry matching flanged maces, nailed clubs, bows and shields.
 
 **Browser, phone and controller support**
 - **Plays in a browser** (WebGL 2) on desktop and phones, hostable for free on Vercel; progress is saved locally in the browser. See [docs/WEB.md](docs/WEB.md).
@@ -166,7 +185,7 @@ Modules are separate assemblies (`Roughlike.*`) with a one-way dependency direct
 
 ## Tests
 
-137 PlayMode tests and 38 EditMode tests cover movement feel (jump height, roll distance, coyote time, wall-jump chains), combat (combos, parry, block, i-frames, telegraph timing), each of the eight enemy archetypes (dive, shield break, wall stun, summoning, explosions, sniper lock), level generation (determinism and structural validity across 1000 seeds, spawn rules), loot, status effects, skills, mutations, run flow, saves and loading, settings and rebinding, the menus, sprite animation, that painted levels have exactly the same solid geometry as graybox ones, that every generated level is traversable, the menu-stacking regression, haptics, touch controls and the tutorial flow.
+158 PlayMode tests and 38 EditMode tests cover movement feel (jump height, roll distance, coyote time, wall-jump chains), combat (combos, parry, block, i-frames, telegraph timing), each of the eight enemy archetypes (dive, shield break, wall stun, summoning, explosions, sniper lock), level generation (determinism and structural validity across 1000 seeds, spawn rules), loot, status effects, skills, mutations, run flow, saves and loading, settings and rebinding, the menus, sprite animation, that painted levels have exactly the same solid geometry as graybox ones, that every generated level is traversable, the menu-stacking regression, haptics, touch controls, the tutorial flow, difficulty scaling, both bosses, multi-biome runs and saves, dotted telegraphs and the swap-drop fix.
 
 Run them in the Unity Test Runner (`Window > General > Test Runner`), or from the command line with the Unity CLI:
 

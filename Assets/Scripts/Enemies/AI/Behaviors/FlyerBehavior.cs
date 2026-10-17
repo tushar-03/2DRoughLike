@@ -22,7 +22,7 @@ namespace Roughlike.Enemies
             Vector2 home = E.Home;
             float x = home.x + Mathf.Sin(E.Age * 0.7f + E.Phase) * D.patrolRadius;
             float y = home.y + Mathf.Sin(E.Age * 1.4f + E.Phase) * 0.35f;
-            return Steer(E.Position, new Vector2(x, y), D.patrolSpeed);
+            return Steer(E.Position, new Vector2(x, y), E.Spd(D.patrolSpeed));
         }
 
         public override Vector2 Chase(float dt)
@@ -32,7 +32,7 @@ namespace Roughlike.Enemies
             float y = target.y + D.hoverHeight + Mathf.Sin(E.Age * 2f + E.Phase) * 0.3f;
 
             if (E.HorizontalDistance < 5f && E.CanAttack && E.HasLineOfSightToTarget) E.BeginTelegraph();
-            return Steer(E.Position, new Vector2(x, y), D.chaseSpeed);
+            return Steer(E.Position, new Vector2(x, y), E.Spd(D.chaseSpeed));
         }
 
         void Aim(out Vector2 centre, out float length, out float angle)
@@ -63,7 +63,7 @@ namespace Roughlike.Enemies
         public override Vector2 AttackTick(float dt)
         {
             E.StrikeBox(BodyCentre, D.size, E.MakeAttack(DamageTags.Melee));
-            return _diveDir * D.diveSpeed;
+            return _diveDir * E.Spd(D.diveSpeed);
         }
 
         public override bool AttackFinished(float stateTime)

@@ -21,6 +21,22 @@ namespace Roughlike.Utils
             public int frames = 1;
             public float fps = 10f;
             public bool loop = true;
+            [Tooltip("Optional, one per frame: where the hand and shield are, so gear can be drawn on top of the body.")]
+            public Anchor[] anchors;
+        }
+
+        /// <summary>Per-frame attachment points for held gear. Pixels in the frame, origin at the bottom left.</summary>
+        [Serializable]
+        public struct Anchor
+        {
+            public bool valid;
+            public Vector2 hand;
+            [Tooltip("Direction the held weapon points, degrees from +x (forward).")]
+            public float angle;
+            public bool shieldUp;
+            public Vector2 shield;
+            [Tooltip("Where a lowered shield is carried (on the back).")]
+            public Vector2 stow;
         }
 
         public Texture2D sheet;
@@ -54,6 +70,12 @@ namespace Roughlike.Utils
 
             var list = new Sprite[Mathf.Max(1, c.frames)];
             int top = sheet.height - (c.row + 1) * frameHeight;
+            if (top < 0 || c.frames * frameWidth > sheet.width)
+            {
+                // the sheet is smaller than the clip list says (usually a texture shrunk by its import size limit)
+                Debug.LogError($"CharacterArt '{name}': clip '{clip}' does not fit the {sheet.width}x{sheet.height} sheet. Raise the texture's max size or shrink the sheet.", this);
+                return _cache[clip] = Array.Empty<Sprite>();
+            }
             for (int i = 0; i < list.Length; i++)
             {
                 var rect = new Rect(i * frameWidth, top, frameWidth, frameHeight);
@@ -61,6 +83,22 @@ namespace Roughlike.Utils
                 list[i].name = $"{name}_{clip}_{i}";
             }
             return _cache[clip] = list;
+        }
+
+        public bool TryAnchor(string clip, int frame, out Anchor anchor)
+        {
+            anchor = default;
+            Clip c = Find(clip);
+            if (c == null || c.anchors == null || frame < 0 || frame >= c.anchors.Length) return false;
+            anchor = c.anchors[frame];
+            return anchor.valid;
+        }
+
+        /// <summary>Converts a point in frame pixels to a local position relative to the sprite's pivot, in world units.</summary>
+        public Vector2 PixelToLocal(Vector2 px)
+        {
+            var pivotPx = new Vector2(pivot.x * frameWidth, pivot.y * frameHeight);
+            return (px - pivotPx) / pixelsPerUnit;
         }
 
         /// <summary>First frame of a clip, for single-sprite props such as a shield.</summary>

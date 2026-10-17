@@ -17,6 +17,8 @@ MonoBehaviour:
   tint: {r: 1, g: 0.9, b: 0.55, a: 1}
   affinity: 1
   description: A balanced blade that tolls on every hit.
+  sprite: {fileID: 21300000, guid: d2e16f97b2f01eb4ea55650d240563ed, type: 3}
+  heldScale: 1.25
   steps:
   - name: Slash
     damage: 14

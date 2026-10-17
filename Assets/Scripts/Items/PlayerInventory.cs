@@ -165,7 +165,7 @@ namespace Roughlike.Items
             if (item.Kind == ItemKind.Amulet || item.Kind == ItemKind.Outfit)
             {
                 ItemInstance old = EquipGear(item);
-                if (old != null) LootFactory.DropItem(old, dropAt);
+                if (old != null) LootFactory.DropItem(old, SwapDropPoint(dropAt)).HoldFor(1.2f);
                 Announce(item);
                 onResolved?.Invoke(true);
                 return;
@@ -186,13 +186,23 @@ namespace Roughlike.Items
             {
                 if (slot < 0 || slot > 1) { onResolved?.Invoke(false); return; }
                 ItemInstance old = Place(item, slot);
-                if (old != null) LootFactory.DropItem(old, dropAt);
+                if (old != null) LootFactory.DropItem(old, SwapDropPoint(dropAt)).HoldFor(1.2f);
                 Announce(item);
                 onResolved?.Invoke(true);
             }
 
             if (EventBus<ReplaceItemRequest>.SubscriberCount == 0) { Resolve(0); return; }
             EventBus<ReplaceItemRequest>.Raise(new ReplaceItemRequest { Item = item, Inventory = this, Resolve = Resolve });
+        }
+
+        /// <summary>
+        /// Where a replaced item lands: a few steps to the side, never on top of what was just picked up. Dropping it on the same
+        /// spot made the old item the nearest thing to interact with, so pressing the button swapped them straight back.
+        /// </summary>
+        Vector2 SwapDropPoint(Vector2 pickedAt)
+        {
+            float side = transform.position.x <= pickedAt.x ? 1f : -1f;   // away from the player
+            return pickedAt + new Vector2(side * 2.6f, 0f);
         }
 
         ItemInstance Place(ItemInstance item, int slot)

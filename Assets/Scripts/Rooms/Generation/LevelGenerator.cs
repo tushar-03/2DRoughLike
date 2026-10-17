@@ -19,6 +19,8 @@ namespace Roughlike.Rooms
         public int minExitColumn = 5;
         [Range(0f, 1f), Tooltip("Chance of moving up or down instead of right at each step.")]
         public float verticalChance = 0.35f;
+        [Tooltip("The last step into the exit (the boss room) is horizontal, so the arena has a single door and a flat floor.")]
+        public bool horizontalFinish = true;
 
         [Header("Branches (optional dead-end paths)")]
         public int minBranches = 2;
@@ -93,6 +95,7 @@ namespace Roughlike.Rooms
 
             Vector2Int exitPos = path[path.Count - 1];
             if (exitPos.x - path[0].x < s.minExitColumn) return null;
+            if (s.horizontalFinish && path.Count >= 2 && path[path.Count - 1].x == path[path.Count - 2].x) return null;
 
             var layout = new LevelLayout { Seed = seed, MainPathLength = path.Count };
             var edges = new List<(Vector2Int, Vector2Int)>();

@@ -25,7 +25,7 @@ namespace Roughlike.Combat
                 var sr = visual.GetComponent<SpriteRenderer>();
                 var react = visual.gameObject.AddComponent<HitReactionVisual>();
                 react.Bind(sr, health, false);
-                if (visual.GetComponent<Roughlike.Utils.SpriteAnimator>() != null) visual.gameObject.AddComponent<PlayerCombatAnimator>();
+                visual.gameObject.AddComponent<PlayerCombatAnimator>();   // plays clips when there is art, and always handles haptics
             }
 
             go.SetActive(wasActive);

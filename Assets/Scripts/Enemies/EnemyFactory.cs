@@ -8,8 +8,9 @@ namespace Roughlike.Enemies
     /// <summary>Builds a fully wired enemy from a definition. One definition of "what an enemy is made of", shared by tests and the scene builder.</summary>
     public static class EnemyFactory
     {
-        public static EnemyController Build(EnemyDefinition def, Vector2 position, bool withHealthBar = true)
+        public static EnemyController Build(EnemyDefinition def, Vector2 position, bool withHealthBar = true, EnemyScaling? scaling = null)
         {
+            EnemyScaling scale = scaling ?? EnemyScaling.One;
             var go = new GameObject(def.displayName);
             go.SetActive(false);   // wire everything before Awake runs
             go.layer = GameLayers.Enemy;
@@ -27,7 +28,7 @@ namespace Roughlike.Enemies
             motor.ConfigureBody(def.size);
 
             var health = go.AddComponent<Health>();
-            health.Initialize(Team.Enemy, def.maxHealth);
+            health.Initialize(Team.Enemy, def.maxHealth * scale.Health);
             go.AddComponent<StatusEffects>();
 
             // visuals: root (flipped by facing) -> sprite (squash, flash)
@@ -76,6 +77,7 @@ namespace Roughlike.Enemies
             }
 
             var controller = go.AddComponent<EnemyController>();
+            controller.Scaling = scale;
             controller.Initialize(def, telegraph, react, visualRoot);
 
             go.SetActive(true);

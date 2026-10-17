@@ -10,7 +10,7 @@ namespace Roughlike.UI
     public sealed class ItemCard : MonoBehaviour
     {
         Text _title, _subtitle, _body;
-        Image _edge;
+        Image _edge, _icon;
 
         public static ItemCard Create(Transform parent, Vector2 size)
         {
@@ -18,10 +18,13 @@ namespace Roughlike.UI
             var card = inner.parent.gameObject.AddComponent<ItemCard>();
             card._edge = inner.parent.GetComponent<Image>();
 
+            card._icon = UiKit.Image(inner, "Icon", Color.white);
+            UiKit.Place(card._icon.rectTransform, new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(-18f, -14f), new Vector2(84f, 84f));
+            card._icon.raycastTarget = false;
             card._title = UiKit.Label(inner, "Title", "", 30, Color.white, TextAnchor.UpperLeft, true);
-            UiKit.Place(card._title.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -14f), new Vector2(-32f, 40f));
+            UiKit.Place(card._title.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0.5f, 1f), new Vector2(-50f, -14f), new Vector2(-132f, 40f));
             card._subtitle = UiKit.Label(inner, "Subtitle", "", 20, UiKit.Muted, TextAnchor.UpperLeft);
-            UiKit.Place(card._subtitle.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -54f), new Vector2(-32f, 28f));
+            UiKit.Place(card._subtitle.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0.5f, 1f), new Vector2(-50f, -54f), new Vector2(-132f, 28f));
             card._body = UiKit.Label(inner, "Body", "", 22, Color.white, TextAnchor.UpperLeft);
             UiKit.Place(card._body.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -88f), new Vector2(-32f, -100f));
             card._body.rectTransform.offsetMin = new Vector2(16f, 12f);
@@ -38,6 +41,7 @@ namespace Roughlike.UI
             _edge.color = colour;
             _title.text = title;
             _title.color = colour;
+            _icon.enabled = false;
             _subtitle.text = "";
             _body.supportRichText = true;
             _body.text = body;
@@ -52,6 +56,8 @@ namespace Roughlike.UI
             _edge.color = rc;
             _title.text = item.DisplayName;
             _title.color = rc;
+            _icon.enabled = true;
+            UiKit.FillIcon(_icon, item);
             _subtitle.text = $"{item.Rarity} {KindLabel(item)}" + (item.Tier > 1 ? $"   Tier {item.Tier}" : "");
 
             var curses = new HashSet<string>();

@@ -28,7 +28,7 @@ namespace Roughlike.Editor
 
             Roughlike.Editor.Art.CharacterSheetBuilder.EnsureAll();
             LootDatabase db = ItemContentBuilder.Build();
-            BiomeData biome = LoadOrCreateBiome(db);
+            BiomeData[] biomes = BiomeContentBuilder.BuildAll(db);
             GameObject prefab = BuildPlayerPrefab(db);
 
             Scene scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
@@ -44,7 +44,7 @@ namespace Roughlike.Editor
 
             var runGo = new GameObject("Run");
             var run = runGo.AddComponent<RunManager>();
-            run.Bind(biome, controller, vcam, director);
+            run.Bind(biomes, controller, vcam, director);
             runGo.AddComponent<RunHud>().Bind(run, playerGo.GetComponent<Health>());
 
             var ui = new GameObject("UI").AddComponent<UiBootstrap>();
@@ -56,23 +56,7 @@ namespace Roughlike.Editor
             Debug.Log("[Loot] M4 scene built: " + ScenePath);
         }
 
-        internal static BiomeData LoadOrCreateBiome(LootDatabase db)
-        {
-            const string path = "Assets/Data/Biomes/EmberCatacombs.asset";
-            var biome = AssetDatabase.LoadAssetAtPath<BiomeData>(path);
-            if (biome == null)
-            {
-                Directory.CreateDirectory(Path.GetDirectoryName(path));
-                biome = ScriptableObject.CreateInstance<BiomeData>();
-                biome.displayName = "Ember Catacombs";
-                AssetDatabase.CreateAsset(biome, path);
-            }
-            biome.enemyPool = EnemyContentBuilder.BuildPool();
-            Roughlike.Editor.Art.EnvironmentBuilder.Apply(biome);
-            biome.loot = db;
-            EditorUtility.SetDirty(biome);
-            return biome;
-        }
+        internal static BiomeData LoadOrCreateBiome(LootDatabase db) => BiomeContentBuilder.BuildCatacombs(db);
 
         internal static GameObject BuildPlayerPrefab(LootDatabase db)
         {

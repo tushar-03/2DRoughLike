@@ -23,8 +23,10 @@ MonoBehaviour:
     frames: 4
     fps: 8
     loop: 1
+    anchors: []
   - name: brazier
     row: 1
     frames: 4
     fps: 8
     loop: 1
+    anchors: []

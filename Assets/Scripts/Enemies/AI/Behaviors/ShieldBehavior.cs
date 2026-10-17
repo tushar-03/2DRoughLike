@@ -54,7 +54,7 @@ namespace Roughlike.Enemies
             int dir = E.DirToTarget;
             if (E.HorizontalDistance <= D.attackRange && E.TargetOnSameLevel && E.CanAttack) { E.BeginTelegraph(); return Vector2.zero; }
             if (E.HorizontalDistance <= D.attackRange * 0.7f) return Vector2.zero;
-            return new Vector2(WalkToward(dir, D.chaseSpeed), 0f);
+            return new Vector2(WalkToward(dir, E.Spd(D.chaseSpeed)), 0f);
         }
 
         public override TelegraphSpec Telegraph()

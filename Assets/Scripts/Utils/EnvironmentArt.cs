@@ -15,7 +15,7 @@ namespace Roughlike.Utils
         {
             public string name = "Layer";
             public Sprite sprite;
-            [Range(0f, 1f), Tooltip("0 = fixed in the world, 1 = glued to the camera. Higher looks further away.")]
+            [Range(-1f, 1f), Tooltip("0 = fixed in the world, 1 = glued to the camera (very far away). Negative values move faster than the world: a foreground layer in front of the player.")]
             public float follow = 0.8f;
             [Range(0f, 1f), Tooltip("Same, for vertical movement.")]
             public float followY = 0.85f;
@@ -27,6 +27,8 @@ namespace Roughlike.Utils
 
         [Header("Tiles (seamless, 128 pixels per unit)")]
         public Sprite wall;
+        [Tooltip("Darker stone for the solid rock packed around the rooms.")]
+        public Sprite rock;
         public Sprite floorTrim;
         public Sprite platform;
 
@@ -46,6 +48,10 @@ namespace Roughlike.Utils
         public Color colourFilter = new Color(1f, 0.97f, 0.94f);
         [Range(-100f, 100f)] public float saturation = 14f;
         [Range(-100f, 100f)] public float contrast = 12f;
+
+        [Header("Drifting motes (dust, embers, fireflies)")]
+        public Color moteColour = new Color(0.7f, 0.9f, 1f, 0.6f);
+        [Range(0, 80)] public int moteCount = 36;
 
         [Header("Decor")]
         public CharacterArt props;

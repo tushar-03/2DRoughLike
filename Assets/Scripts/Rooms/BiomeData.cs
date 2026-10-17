@@ -22,6 +22,10 @@ namespace Roughlike.Rooms
         [Tooltip("Enemies in a combat room near the exit. Rooms in between scale linearly.")]
         public int maxEnemies = 3;
 
+        [Header("Boss")]
+        [Tooltip("The boss waiting in the final room. Leave empty for a plain exit.")]
+        public BossDefinition boss;
+
         [Header("Art")]
         [Tooltip("Tiles, backdrop, lighting and post-processing. Leave empty for the plain graybox look.")]
         public Roughlike.Utils.EnvironmentArt art;

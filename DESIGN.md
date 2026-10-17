@@ -65,6 +65,11 @@ Every generated level must be finishable with the base kit, and the rule is enfo
 - `Haptics` is the only code that touches rumble or vibration; gameplay just raises combat events.
 - Web: browser-only needs live in `WebBridge` and one `.jslib`; everything else is plain Unity. Saves go through `SaveService`, which flushes to IndexedDB after each write.
 
+## Difficulty and bosses
+- Difficulty is data (`DifficultyService.For`): multipliers applied when enemies are built (`EnemyScaling`) and when rooms are populated. Enemy definitions stay the authored baseline.
+- A boss is a controller plus a brain. The controller owns health, phases, stun, telegraph pooling and death; the brain owns movement between attacks and the attacks, as coroutines that must show a dotted telegraph before anything damaging. Parryable melee attacks open a parry window; area blasts are marked unparryable.
+- A run is a list of biomes. Each biome is a generated level whose last room is the boss arena.
+
 ## Milestones
 M0 Setup · M1 Movement · M2 Combat · M3 Level gen · M4 Loot/stats · M4.5 Menus/saves · M5 Visual slice + enemies · M6 Content · M7 Boss/biome 1 · M8 Meta/hub/story · M9 Biomes 2-3 · M10 Polish.
 Review stop after each.

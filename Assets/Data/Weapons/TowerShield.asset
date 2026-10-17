@@ -17,6 +17,8 @@ MonoBehaviour:
   tint: {r: 0.7, g: 0.85, b: 1, a: 1}
   affinity: 4
   description: Tap to parry, hold to block. Heavy and dependable.
+  sprite: {fileID: 21300000, guid: ef2fff92b69bb9b4987c96012253c2f5, type: 3}
+  heldScale: 0.78
   steps: []
   comboResetTime: 0.45
   shield:

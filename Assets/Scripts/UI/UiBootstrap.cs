@@ -54,6 +54,7 @@ namespace Roughlike.UI
             {
                 PauseController.Create(transform, Modals, run);
                 MinimapView.Create(Root, run);
+                BossHealthBar.Create(Root);
                 EndScreenView.Create(Root, run);
             }
             if (GetComponent<SettingsBootstrap>() == null) gameObject.AddComponent<SettingsBootstrap>();

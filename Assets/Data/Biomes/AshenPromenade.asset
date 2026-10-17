@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca930f1dcfa67e4685ec3f71489f458, type: 3}
+  m_Name: AshenPromenade
+  m_EditorClassIdentifier: Roughlike.Rooms::Roughlike.Rooms.BiomeData
+  displayName: Ashen Promenade
+  generator:
+    width: 8
+    height: 4
+    minMainPath: 7
+    maxMainPath: 10
+    minExitColumn: 6
+    verticalChance: 0.35
+    horizontalFinish: 1
+    minBranches: 2
+    maxBranches: 3
+    minBranchLength: 1
+    maxBranchLength: 3
+    variantCount: 4
+  loot: {fileID: 11400000, guid: d269542f687b9df4fbb2022483bfc6f0, type: 2}
+  enemyPool:
+  - {fileID: 11400000, guid: 5ecbd5e680ec8974a90d3a95eba2447d, type: 2}
+  - {fileID: 11400000, guid: de7140fa076e3a34cb2b8b77f4ee77be, type: 2}
+  - {fileID: 11400000, guid: 0c811f5604630184d9b8ebbb6a17c688, type: 2}
+  - {fileID: 11400000, guid: 1d30dea80f8b9c54e94405cdc6b4ecf7, type: 2}
+  - {fileID: 11400000, guid: d97225aa78af93f49a0215348b202bc8, type: 2}
+  - {fileID: 11400000, guid: c104e4b792c06a449aeff6221b72fe88, type: 2}
+  - {fileID: 11400000, guid: f164eed040485a747b33dd2b3161c029, type: 2}
+  - {fileID: 11400000, guid: f9d91334a9694ee478aba0842d3a6eec, type: 2}
+  minEnemies: 3
+  maxEnemies: 6
+  boss: {fileID: 11400000, guid: e427d91f165b630469f08bdec9d5b9fc, type: 2}
+  art: {fileID: 11400000, guid: ba6154ffd069e7247bf13a022510f89e, type: 2}
+  ground: {r: 0.3, g: 0.22, b: 0.22, a: 1}
+  trim: {r: 0.55, g: 0.38, b: 0.3, a: 1}
+  platform: {r: 0.95, g: 0.6, b: 0.25, a: 1}
+  background: {r: 0.2, g: 0.09, b: 0.12, a: 1}
+  accent: {r: 1, g: 0.6, b: 0.3, a: 1}

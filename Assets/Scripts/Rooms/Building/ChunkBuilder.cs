@@ -119,8 +119,10 @@ namespace Roughlike.Rooms
             chunk.EnemySpawns.Add(origin + new Vector2(6f, F));
             chunk.EnemySpawns.Add(origin + new Vector2(15f, F));
             chunk.EnemySpawns.Add(origin + new Vector2(24f, F));
+            chunk.EnemySpawns.Add(origin + new Vector2(10.5f, F));
+            chunk.EnemySpawns.Add(origin + new Vector2(19.5f, F));
             if (variant == VariantPlatforms) chunk.EnemySpawns.Add(origin + new Vector2(15f, 8.2f));
-            if (variant == VariantTunnel) chunk.EnemySpawns.RemoveAt(1);   // not inside the roll tunnel
+            if (variant == VariantTunnel) chunk.EnemySpawns.RemoveAll(sp => sp.x - origin.x > 9.5f && sp.x - origin.x < 20.5f);   // not inside the roll tunnel
             if (down) chunk.EnemySpawns.RemoveAll(sp => Mathf.Abs(sp.x - origin.x - 15f) < 4f && sp.y < origin.y + F + 0.1f);   // nothing spawns over the hole
 
             return chunk;

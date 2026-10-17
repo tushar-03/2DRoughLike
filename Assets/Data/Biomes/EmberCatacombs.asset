@@ -20,6 +20,7 @@ MonoBehaviour:
     maxMainPath: 10
     minExitColumn: 5
     verticalChance: 0.35
+    horizontalFinish: 1
     minBranches: 1
     maxBranches: 2
     minBranchLength: 1
@@ -35,8 +36,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c104e4b792c06a449aeff6221b72fe88, type: 2}
   - {fileID: 11400000, guid: f164eed040485a747b33dd2b3161c029, type: 2}
   - {fileID: 11400000, guid: f9d91334a9694ee478aba0842d3a6eec, type: 2}
-  minEnemies: 1
-  maxEnemies: 3
+  minEnemies: 2
+  maxEnemies: 5
+  boss: {fileID: 11400000, guid: 2526b411a1ced294ba419fb51f8797d4, type: 2}
   art: {fileID: 11400000, guid: 932b1ff809d428f4d87dca2b6262c51f, type: 2}
   ground: {r: 0.2, g: 0.23, b: 0.3, a: 1}
   trim: {r: 0.34, g: 0.38, b: 0.48, a: 1}

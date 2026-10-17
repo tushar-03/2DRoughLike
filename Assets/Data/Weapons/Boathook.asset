@@ -17,6 +17,8 @@ MonoBehaviour:
   tint: {r: 0.7, g: 1, b: 0.8, a: 1}
   affinity: 6
   description: Long reach. Keep your distance and poke.
+  sprite: {fileID: 21300000, guid: ff1ca5273b193b54ca339ca69fe1c71b, type: 3}
+  heldScale: 0.95
   steps:
   - name: Poke
     damage: 10

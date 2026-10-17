@@ -102,7 +102,7 @@ namespace Roughlike.UI
         {
             if (_stack.Count > 0) _stack.Peek().Root.SetActive(false);
 
-            var dim = UiKit.Image(_root.ModalLayer, "Modal", new Color(0f, 0f, 0f, 0.72f));
+            var dim = UiKit.Image(_root.ModalLayer, "Modal", new Color(0f, 0f, 0f, _pauseGame ? 0.72f : 0.9f));
             dim.raycastTarget = true;
             UiKit.Stretch(dim.rectTransform);
 
@@ -160,6 +160,7 @@ namespace Roughlike.UI
             public ShopOffer Offer;
             public Button Button;
             public Text Title, Price;
+            public Image Icon;
         }
 
         void OpenShop(OpenShopEvent e)
@@ -187,9 +188,12 @@ namespace Roughlike.UI
                 UiKit.Place((RectTransform)row.Button.transform, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, y), new Vector2(640f, 62f));
                 y -= 70f;
 
+                row.Icon = UiKit.Image(row.Button.transform, "Icon", Color.white);
+                UiKit.Place(row.Icon.rectTransform, new Vector2(0f, 0.5f), new Vector2(0f, 0.5f), new Vector2(0f, 0.5f), new Vector2(14f, 0f), new Vector2(46f, 46f));
+                row.Icon.raycastTarget = false;
                 row.Title = UiKit.Label(row.Button.transform, "Title", "", 26, Color.white, TextAnchor.MiddleLeft, true);
                 UiKit.Place(row.Title.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(0.5f, 0.5f), Vector2.zero, Vector2.zero);
-                row.Title.rectTransform.offsetMin = new Vector2(16f, 0f);
+                row.Title.rectTransform.offsetMin = new Vector2(72f, 0f);
                 row.Title.rectTransform.offsetMax = new Vector2(-130f, 0f);
                 row.Price = UiKit.Label(row.Button.transform, "Price", "", 26, UiKit.Gold, TextAnchor.MiddleRight, true);
                 UiKit.Place(row.Price.rectTransform, new Vector2(1f, 0f), new Vector2(1f, 1f), new Vector2(1f, 0.5f), new Vector2(-14f, 0f), new Vector2(120f, 0f));
@@ -231,6 +235,9 @@ namespace Roughlike.UI
                                 || (o.Kind == OfferKind.UpgradeSlot && (inv.Weapons[o.Slot] == null || !inv.Weapons[o.Slot].CanUpgrade));
                 bool afford = inv.Gold >= price;
 
+                ItemInstance shown = o.Kind == OfferKind.Item ? o.Item : o.Kind == OfferKind.UpgradeSlot ? inv.Weapons[o.Slot] : null;
+                r.Icon.enabled = shown != null;
+                if (shown != null) UiKit.FillIcon(r.Icon, shown);
                 r.Title.text = o.Title(inv);
                 r.Title.color = soldOut || unavailable ? UiKit.Muted : o.TitleColour;
                 r.Price.text = soldOut ? "SOLD" : unavailable ? "-" : price.ToString();

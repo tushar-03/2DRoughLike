@@ -63,7 +63,7 @@ namespace Roughlike.UI
             string summary =
                 $"Seed  {SeedCode.Encode(_run.Seed)}\n" +
                 $"Rooms explored  {s.RoomsVisited} / {_run.Layout.Cells.Count}\n" +
-                $"Enemies slain  {s.Kills}\n" +
+                $"Enemies slain  {s.Kills}     Bosses  {s.Bosses}\n" +
                 $"Damage taken  {s.DamageTaken:0}\n" +
                 $"Gold  {s.Gold}     Cells  {s.Cells}{(s.CellsBanked ? " (banked)" : " (lost)")}\n" +
                 $"Time  {(int)s.Time / 60}:{(int)s.Time % 60:00}";
