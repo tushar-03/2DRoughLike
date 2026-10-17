@@ -77,17 +77,18 @@ namespace Roughlike.Rooms
             // vertical connections
             if (up)
             {
-                // stair of one-way platforms, each at most 2.6 above the last (jump height is 3.2)
-                OneWay(c, "Stair 1", 7f, 12f, 5.6f);
-                OneWay(c, "Stair 2", 18f, 23f, 8.2f);
-                OneWay(c, "Stair 3", 7f, 12f, 10.8f);
-                OneWay(c, "Stair 4", 18f, 23f, 13.4f);
+                // a diagonal stair of one-way platforms, each at most 2.6 above the last (jump height is 3.2) and overlapping the
+                // previous one horizontally, so every step is a straight hop up through the platform above
+                OneWay(c, "Stair 1", 5f, 11f, 5.6f);
+                OneWay(c, "Stair 2", 9f, 15f, 8.2f);
+                OneWay(c, "Stair 3", 13f, 19f, 10.8f);
+                OneWay(c, "Stair 4", 17f, 23f, 13.4f);
                 OneWay(c, "Stair 5", 12.5f, 17.5f, 15.8f);
             }
             if (down)
             {
                 // landing step inside the hole so you can climb out of the shaft from the room below
-                OneWay(c, "Hole step", 13f, 17f, 0.6f);
+                OneWay(c, "Hole step", 13f, 17f, 0.35f);
             }
 
             // interior variants (only in rooms without vertical openings, which already have their own geometry)
@@ -105,21 +106,22 @@ namespace Roughlike.Rooms
                     OneWay(c, "Platform C", 21f, 26f, 5.6f);
                     break;
                 case VariantTunnel:
-                    // 1.3-high gap above the floor: too low to walk, just right for a roll
-                    Slab(c, "Low ceiling", 10f, 20f, F + 1.3f, H - 1f);
+                    // 1.3-high gap above the floor: too low to walk, just right for a roll (the top is a normal walkable ledge too)
+                    Slab(c, "Low ceiling", 10f, 20f, F + 1.3f, F + 2.5f);   // roll under it, or hop on top and walk across
                     break;
             }
 
             // markers
             chunk.PlayerSpawn = origin + new Vector2(5f, F);
             chunk.ExitAnchor = origin + new Vector2(25f, F);
-            chunk.LootAnchor = origin + new Vector2(15f, F);
+            chunk.LootAnchor = origin + new Vector2(down ? 21f : 15f, F);   // never over the floor hole
 
             chunk.EnemySpawns.Add(origin + new Vector2(6f, F));
             chunk.EnemySpawns.Add(origin + new Vector2(15f, F));
             chunk.EnemySpawns.Add(origin + new Vector2(24f, F));
             if (variant == VariantPlatforms) chunk.EnemySpawns.Add(origin + new Vector2(15f, 8.2f));
             if (variant == VariantTunnel) chunk.EnemySpawns.RemoveAt(1);   // not inside the roll tunnel
+            if (down) chunk.EnemySpawns.RemoveAll(sp => Mathf.Abs(sp.x - origin.x - 15f) < 4f && sp.y < origin.y + F + 0.1f);   // nothing spawns over the hole
 
             return chunk;
         }

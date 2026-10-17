@@ -1,6 +1,8 @@
 using UnityEngine;
 using Roughlike.Combat;
 using Roughlike.Core;
+using Roughlike.Player;
+using Roughlike.Utils;
 
 namespace Roughlike.UI
 {
@@ -21,7 +23,12 @@ namespace Roughlike.UI
             // audio (a mixer with per-group volumes arrives with the audio pass; master works now)
             AudioListener.volume = s.master;
 
-            // video
+            // keep controllers working when the window or browser tab loses focus for a moment
+            UnityEngine.InputSystem.InputSystem.settings.backgroundBehavior = UnityEngine.InputSystem.InputSettings.BackgroundBehavior.IgnoreFocus;
+            Haptics.RefreshTouchHaptics();
+
+            // video: browsers and phones own the window, so only desktop builds change it
+            if (WebBridge.IsWebGL || Application.isMobilePlatform) return;
             QualitySettings.vSyncCount = s.vsync ? 1 : 0;
             if (s.qualityLevel >= 0 && s.qualityLevel < QualitySettings.names.Length && QualitySettings.GetQualityLevel() != s.qualityLevel)
                 QualitySettings.SetQualityLevel(s.qualityLevel, true);

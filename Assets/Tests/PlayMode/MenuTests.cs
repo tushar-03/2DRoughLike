@@ -109,8 +109,31 @@ namespace Roughlike.Tests.PlayMode
         }
 
         [Test]
+        public void FirstNewGameOffersTheTutorialAndEitherAnswerIsRemembered()
+        {
+            var menu = BuildMenu();
+            menu.NewGameButton.onClick.Invoke();
+            Assert.AreEqual(1, menu.Modals.Depth, "the tutorial question");
+            Assert.AreEqual(0, _loaded.Count);
+
+            // "Play tutorial"
+            FindButton("Play tutorial").onClick.Invoke();
+            CollectionAssert.AreEqual(new[] { GameSession.TutorialScene }, _loaded);
+            Assert.IsFalse(SettingsService.Current.tutorialSeen, "only finishing or skipping the tutorial marks it seen");
+
+            // "Skip it" goes straight to a run and the question never comes back
+            _loaded.Clear();
+            menu.Modals.CloseAll();
+            menu.NewGameButton.onClick.Invoke();
+            FindButton("Skip it").onClick.Invoke();
+            Assert.IsTrue(SettingsService.Current.tutorialSeen);
+            CollectionAssert.AreEqual(new[] { GameSession.GameplayScene }, _loaded);
+        }
+
+        [Test]
         public void NewGameStartsImmediatelyWithoutASaveAndAsksFirstWithOne()
         {
+            SettingsService.Current.tutorialSeen = true;
             var menu = BuildMenu();
             menu.NewGameButton.onClick.Invoke();
             Assert.AreEqual(SessionMode.NewRun, GameSession.Mode);
@@ -175,7 +198,7 @@ namespace Roughlike.Tests.PlayMode
             FindButton("Gameplay").onClick.Invoke();
             var sliders = new List<Slider>(Object.FindObjectsByType<Slider>(FindObjectsInactive.Exclude));
             sliders.Sort((a, b) => b.transform.position.y.CompareTo(a.transform.position.y));
-            Assert.AreEqual(3, sliders.Count, "shake, hit-stop, flash");
+            Assert.AreEqual(4, sliders.Count, "shake, hit-stop, flash, vibration strength");
 
             sliders[0].value = 0.25f;     // screen shake
             sliders[1].value = 0f;        // hit-stop off
@@ -185,7 +208,7 @@ namespace Roughlike.Tests.PlayMode
 
             var toggles = new List<Toggle>(Object.FindObjectsByType<Toggle>(FindObjectsInactive.Exclude));
             toggles.Sort((a, b) => b.transform.position.y.CompareTo(a.transform.position.y));
-            Assert.AreEqual(3, toggles.Count, "damage numbers, toggle shield, assist");
+            Assert.AreEqual(4, toggles.Count, "damage numbers, toggle shield, assist, vibration");
             toggles[0].isOn = false;
             toggles[1].isOn = true;
             toggles[2].isOn = true;

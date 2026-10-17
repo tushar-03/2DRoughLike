@@ -13,6 +13,8 @@ namespace Roughlike.Player
 
         public PlayerIntent Read()
         {
+            // the press that closed a menu (A to confirm, B to cancel) must not also jump or roll
+            if (Roughlike.Core.InputGate.Blocked) return default;
             return new PlayerIntent
             {
                 Move = GameInput.Move.ReadValue<Vector2>(),

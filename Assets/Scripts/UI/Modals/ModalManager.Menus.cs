@@ -86,19 +86,26 @@ namespace Roughlike.UI
         // Pause menu (in a run)
         // =====================================================================
 
-        public void OpenPause(RunManager run)
+        public void OpenPause(RunManager run, Action skipTutorial = null)
         {
-            var w = Push("Paused", new Vector2(620f, 640f), () => Pop(), out RectTransform content);
+            var w = Push("Paused", new Vector2(620f, 720f), () => Pop(), out RectTransform content);
 
-            string[] labels = { "Resume", "Settings", "Controls", "Save and quit to menu", "Quit to desktop" };
-            Action[] actions =
+            var labelList = new System.Collections.Generic.List<string> { "Resume", "Settings", "Controls" };
+            var actionList = new System.Collections.Generic.List<Action> { () => Pop(), () => OpenSettings(), () => OpenControls() };
+            if (skipTutorial != null)
             {
-                () => Pop(),
-                () => OpenSettings(),
-                () => OpenControls(),
-                () => { if (run != null) run.SaveNow(); LoadScene(GameSession.MenuScene); },
-                () => { if (run != null) run.SaveNow(); QuitApplication(); }
-            };
+                labelList.Add("Skip tutorial");
+                actionList.Add(() => { Pop(); skipTutorial(); });
+            }
+            labelList.Add(run != null ? "Save and quit to menu" : "Quit to menu");
+            actionList.Add(() => { if (run != null) run.SaveNow(); LoadScene(GameSession.MenuScene); });
+            if (!Roughlike.Utils.WebBridge.IsWebGL && !Application.isMobilePlatform)
+            {
+                labelList.Add("Quit to desktop");
+                actionList.Add(() => { if (run != null) run.SaveNow(); QuitApplication(); });
+            }
+            string[] labels = labelList.ToArray();
+            Action[] actions = actionList.ToArray();
 
             Selectable first = null;
             for (int i = 0; i < labels.Length; i++)

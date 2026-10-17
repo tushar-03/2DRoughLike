@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>{{{ PRODUCT_NAME }}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#07090f">
+  <meta name="description" content="A fast 2D action-platformer roguelite. Play it in your browser, on desktop, gamepad or phone.">
+  <style>
+    html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #07090f; overflow: hidden;
+      overscroll-behavior: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: transparent; font-family: Georgia, 'Palatino Linotype', serif; color: #e9dcc0; }
+    #unity-container { position: fixed; inset: 0; }
+    #unity-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; background: #07090f; touch-action: none; outline: none; }
+
+    #loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: radial-gradient(ellipse at 50% 80%, #2a1a14 0%, #0d1018 60%, #07090f 100%); z-index: 5; transition: opacity .4s; }
+    #loading h1 { font-size: clamp(28px, 6vw, 64px); letter-spacing: .06em; margin: 0 0 6px; color: #ffe08c; text-shadow: 0 3px 12px #000; text-align: center; padding: 0 16px; }
+    #loading p { margin: 0 0 28px; opacity: .75; font-size: clamp(14px, 2.2vw, 20px); text-align: center; padding: 0 16px; }
+    #bar { width: min(420px, 70vw); height: 10px; border: 1px solid #b98a3c; border-radius: 6px; overflow: hidden; background: #120f0c; }
+    #bar > div { height: 100%; width: 0%; background: linear-gradient(90deg, #b9742c, #ffd77a); transition: width .15s; }
+    #status { margin-top: 14px; font-size: 14px; opacity: .7; min-height: 18px; }
+    #tips { margin-top: 26px; font-size: 13px; opacity: .55; max-width: 520px; text-align: center; padding: 0 20px; line-height: 1.5; }
+
+    .btn { position: absolute; z-index: 4; width: 44px; height: 44px; border-radius: 10px; border: 1px solid #b98a3c; background: rgba(8, 10, 16, .55);
+      color: #ffe08c; font-size: 22px; line-height: 40px; text-align: center; cursor: pointer; opacity: .55; }
+    .btn:hover { opacity: 1; }
+    #fs { right: 10px; bottom: 10px; }
+
+    #rotate { display: none; position: fixed; inset: 0; z-index: 9; background: #07090f; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding: 24px; }
+    #rotate .icon { font-size: 64px; margin-bottom: 12px; animation: tilt 1.8s ease-in-out infinite; }
+    @keyframes tilt { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-90deg); } }
+    @media (orientation: portrait) and (pointer: coarse) { #rotate { display: flex; } }
+
+    #error { display: none; position: absolute; inset: 0; z-index: 8; background: #07090f; align-items: center; justify-content: center; text-align: center; padding: 30px; flex-direction: column; }
+    #error small { opacity: .6; margin-top: 12px; max-width: 600px; word-break: break-word; }
+  </style>
+</head>
+<body>
+  <div id="unity-container">
+    <canvas id="unity-canvas" tabindex="-1"></canvas>
+
+    <div id="loading">
+      <h1>{{{ PRODUCT_NAME }}}</h1>
+      <p>a bell-ringer's apprentice, a sunken city, and one more try</p>
+      <div id="bar"><div id="fill"></div></div>
+      <div id="status">Loading...</div>
+      <div id="tips">Keyboard, gamepad and touch all work. Your progress is saved in this browser.</div>
+    </div>
+
+    <div class="btn" id="fs" title="Fullscreen" role="button" aria-label="Toggle fullscreen">&#x26F6;</div>
+
+    <div id="rotate"><div class="icon">&#x1F4F1;</div><h2>Rotate your device</h2><p>The game plays in landscape.</p></div>
+
+    <div id="error"><h2>Could not start the game</h2><div>Your browser may not support WebGL 2. Try the latest Chrome, Edge, Firefox or Safari.</div><small id="errtext"></small></div>
+  </div>
+
+  <script>
+    var canvas = document.getElementById('unity-canvas');
+    var fill = document.getElementById('fill');
+    var status = document.getElementById('status');
+    var loading = document.getElementById('loading');
+
+    var buildUrl = 'Build';
+    var config = {
+      dataUrl: buildUrl + '/{{{ DATA_FILENAME }}}',
+      frameworkUrl: buildUrl + '/{{{ FRAMEWORK_FILENAME }}}',
+#if USE_WASM
+      codeUrl: buildUrl + '/{{{ CODE_FILENAME }}}',
+#endif
+#if MEMORY_FILENAME
+      memoryUrl: buildUrl + '/{{{ MEMORY_FILENAME }}}',
+#endif
+#if SYMBOLS_FILENAME
+      symbolsUrl: buildUrl + '/{{{ SYMBOLS_FILENAME }}}',
+#endif
+      streamingAssetsUrl: 'StreamingAssets',
+      companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
+      productName: {{{ JSON.stringify(PRODUCT_NAME) }}},
+      productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}},
+      matchWebGLToCanvasSize: false,
+      devicePixelRatio: 1
+    };
+
+    // keep the render size matched to the screen, capped so phones stay smooth
+    function fitCanvas() {
+      var dpr = Math.min(window.devicePixelRatio || 1, (navigator.maxTouchPoints > 0) ? 1.5 : 2);
+      var w = Math.floor(canvas.clientWidth * dpr), h = Math.floor(canvas.clientHeight * dpr);
+      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+    }
+    fitCanvas();
+    window.addEventListener('resize', fitCanvas);
+    window.addEventListener('orientationchange', function () { setTimeout(fitCanvas, 200); });
+
+    // no page scrolling, pull-to-refresh, pinch zoom or context menu while playing
+    document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    document.addEventListener('gesturestart', function (e) { e.preventDefault(); });
+    document.addEventListener('touchmove', function (e) { e.preventDefault(); }, { passive: false });
+
+    var unityInstance = null;
+
+    function toggleFullscreen() {
+      var el = document.documentElement;
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
+        (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      } else {
+        var req = el.requestFullscreen || el.webkitRequestFullscreen;
+        if (req) {
+          var p = req.call(el);
+          if (p && p.then) p.then(function () {
+            if (screen.orientation && screen.orientation.lock) screen.orientation.lock('landscape').catch(function () {});
+          }).catch(function () {});
+        }
+      }
+    }
+    var fs = document.getElementById('fs');
+    fs.addEventListener('click', toggleFullscreen);
+    // iOS Safari has no fullscreen for pages: hide the button there
+    if (!(document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen)) fs.style.display = 'none';
+
+    function showError(message) {
+      document.getElementById('error').style.display = 'flex';
+      document.getElementById('errtext').textContent = String(message);
+      loading.style.display = 'none';
+    }
+
+    var script = document.createElement('script');
+    script.src = buildUrl + '/{{{ LOADER_FILENAME }}}';
+    script.onload = function () {
+      createUnityInstance(canvas, config, function (progress) {
+        fill.style.width = (progress * 100) + '%';
+        status.textContent = progress < 0.9 ? 'Loading... ' + Math.round(progress * 100) + '%' : 'Starting...';
+      }).then(function (instance) {
+        unityInstance = instance;
+        loading.style.opacity = 0;
+        setTimeout(function () { loading.style.display = 'none'; }, 450);
+        canvas.focus();
+      }).catch(function (message) { showError(message); });
+    };
+    script.onerror = function () { showError('The game files could not be downloaded.'); };
+    document.body.appendChild(script);
+
+    // gamepads only become visible to the page after a button press: nothing to do, but keep focus on the canvas
+    window.addEventListener('gamepadconnected', function () { canvas.focus(); });
+    window.addEventListener('click', function () { canvas.focus(); });
+  </script>
+</body>
+</html>

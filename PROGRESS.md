@@ -184,5 +184,28 @@ Built and verified: 122 PlayMode + 38 EditMode tests pass; the scene was played 
 - Still placeholder: item icons and dropped-item visuals, the HUD widgets inside the new frames, VFX (hit sparks, slashes), and there is no custom shader yet (hit flash is a colour lerp; outlines are baked into the sprites).
 - `Assets/Screenshots` is ignored by git; the README images live in `docs/images`.
 
+## M5.1 - Bug fixes, traversal rules, web build, touch, haptics, tutorial (awaiting review)
+**Fixed**
+- **Shop and altar menus not closing.** Cause: while paused the player controller returned early without refreshing its input, so a stale "Interact pressed" made the interaction sensor re-open the menu every frame (a stack of duplicates; closing one revealed the next). The controller now clears its intent when paused, the sensor ignores paused frames, and closing a menu swallows gameplay input for three frames so A or B does not also jump or roll.
+- **Impossible parkour.** `TraversalValidator` links every standable surface in a built level with walk, jump and drop edges using the real movement config (with safety margins) and sweeps the player's body along each arc against the real colliders; it then searches from the spawn to the exit, chests, merchant and altars. Rolls, wall jumps and double jumps are not counted. It found and we fixed: 6-unit gaps in the shaft stairs (now overlapping diagonal steps), a roll tunnel that sealed the room (now an optional low block with a walkable top), and chests, merchants and enemies placed over floor holes. A test checks 60 seeds and proves the validator rejects an impossible level.
+- **Controllers.** The run-over panel and minimap were editor-only IMGUI and keyboard-only (R/T/M); they are now uGUI (`EndScreenView`, `MinimapView`) with real buttons for mouse, gamepad and touch, and exist in release builds. Prompts and menu hints follow the active device.
+
+**Added**
+- **Haptics** (`Haptics`): gamepad rumble and phone vibration, driven by combat events; settings for on/off and strength.
+- **Touch controls** (`TouchControls`): on-screen stick and buttons via the Input System's on-screen controls (virtual gamepad); automatic on touch devices; Settings > Gameplay > Touch controls.
+- **Tutorial** (`TutorialDirector`, `TutorialHud`, `Tutorial.unity`): ten stations, gates, device-aware text, safe health, skip from the pause menu, offered on first New Game, "Tutorial" in the main menu.
+- **Web build** (`WebBuild`, custom page template, `Roughlike.jslib`, `WebBridge`): Roughlike > Build > WebGL; Brotli, hashed files, `vercel.json`; saves flushed to IndexedDB after each write; browser-friendly settings (fullscreen toggle instead of resolution; no Quit button). `tools/serve-web.py` serves it locally with the right headers; `docs/WEB.md` has the Vercel steps.
+
+### How to test M5.1
+1. Altars and shops: open one, pick or leave; it closes, once. Also with a gamepad (A / B).
+2. Tutorial: main menu > Tutorial, or New Game on a fresh profile.
+3. Touch: Settings > Gameplay > Touch controls > Always on.
+4. Web: build, `python tools/serve-web.py`, open <http://localhost:8080> (verified loading, playing and saving in a browser here).
+5. Rumble: plug in a controller and get hit.
+
+### Notes
+- The traversal check is conservative but not a full physics bot; a real playthrough is still the final word.
+- iPhone: no vibration API in Safari (touch tick only). Touch layout was verified in the editor and in a desktop browser; it has not been tried on a physical phone.
+
 ## Next
 M6 - content expansion: more weapons, special rooms and challenge doors, more mutations and status effects.

@@ -15,6 +15,7 @@ namespace Roughlike.Combat
         PlayerCombat _combat;
         Health _health;
         PlayerVisual _visual;
+        PlayerController _controller;
 
         void Awake()
         {
@@ -22,12 +23,14 @@ namespace Roughlike.Combat
             _visual = GetComponent<PlayerVisual>();
             _combat = GetComponentInParent<PlayerCombat>();
             _health = GetComponentInParent<Health>();
+            _controller = GetComponentInParent<PlayerController>();
         }
 
         void OnEnable()
         {
             if (_combat != null) _combat.AttackStarted += OnAttack;
             if (_health != null) _health.HitTaken += OnHit;
+            if (_controller != null) _controller.RollStarted += OnRoll;
             if (_visual != null) _visual.ClipOverride = BlockOverride;
         }
 
@@ -35,6 +38,7 @@ namespace Roughlike.Combat
         {
             if (_combat != null) _combat.AttackStarted -= OnAttack;
             if (_health != null) _health.HitTaken -= OnHit;
+            if (_controller != null) _controller.RollStarted -= OnRoll;
             if (_visual != null && _visual.ClipOverride == (System.Func<string>)BlockOverride) _visual.ClipOverride = null;
         }
 
@@ -44,6 +48,8 @@ namespace Roughlike.Combat
             ShieldPhase s = _combat.Shield;
             return s == ShieldPhase.Parry || s == ShieldPhase.Block ? "block" : null;
         }
+
+        void OnRoll() => Haptics.Play(HapticKind.Roll);
 
         void OnAttack(WeaponData weapon, AttackStep step, int index)
         {

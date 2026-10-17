@@ -81,6 +81,14 @@ Later enemies appear deeper in a level (`minProgress`), with per-room caps, so e
 - Animated characters (idle, run, jump, fall, roll, block, attack, hurt; enemies telegraph, attack and flinch in sync with their AI timing).
 - **Ember Catacombs biome**: tiled stone, parallax backdrop (windows, colonnade, hanging banners), 2D lighting (ambient, a lantern on the player, flickering torches and braziers) and post-processing (bloom, vignette, grading, film grain). Painted exit portal, chest, altar and merchant. An ornamental UI skin.
 
+**Browser, phone and controller support**
+- **Plays in a browser** (WebGL 2) on desktop and phones, hostable for free on Vercel; progress is saved locally in the browser. See [docs/WEB.md](docs/WEB.md).
+- **Touch controls** (stick and action buttons) appear automatically on phones and tablets; they drive a virtual gamepad so every binding and menu works.
+- **Haptics**: controller rumble on hits, parries, explosions and death; phone vibration on Android browsers (iPhone Safari has no vibration API). Strength and an off switch are in Settings.
+- Prompts and the tutorial name the right controls for whatever you are using (keyboard, gamepad or touch).
+- **Tutorial**: ten guided stations (move, jump, roll, attack, parry, ledges, loot, skills, mutations, exit). Offered on your first New Game; always in the main menu.
+- Levels are checked against the real jump physics: every generated level can be finished with jumping alone (no roll, wall jump or double jump needed).
+
 ## Requirements
 
 - **Unity 6000.5.6f1** (Unity 6), Universal Render Pipeline with the 2D Renderer
@@ -95,6 +103,7 @@ Later enemies appear deeper in a level (`minProgress`), with per-room caps, so e
 | Scene | What it is |
 |---|---|
 | `MainMenu.unity` | **Start here** (scene 0 in the build). New Game and Continue load `M4_LootRun` |
+| `Tutorial.unity` | The guided tutorial hall (also reachable from the main menu) |
 | `M4_LootRun.unity` | The game: a generated run in the painted Ember Catacombs with loot, a merchant, mutation altars, skills and the full HUD. You can also open it directly and press Play |
 | `M3_Run.unity` | A generated run without loot: explore, fight, reach the exit |
 | `M2_CombatArena.unity` | Combat sandbox: dummy, grunt, spitter, weapon swapping |
@@ -157,7 +166,7 @@ Modules are separate assemblies (`Roughlike.*`) with a one-way dependency direct
 
 ## Tests
 
-122 PlayMode tests and 38 EditMode tests cover movement feel (jump height, roll distance, coyote time, wall-jump chains), combat (combos, parry, block, i-frames, telegraph timing), each of the eight enemy archetypes (dive, shield break, wall stun, summoning, explosions, sniper lock), level generation (determinism and structural validity across 1000 seeds, spawn rules), loot, status effects, skills, mutations, run flow, saves and loading, settings and rebinding, the menus, sprite animation, and that painted levels have exactly the same solid geometry as graybox ones.
+137 PlayMode tests and 38 EditMode tests cover movement feel (jump height, roll distance, coyote time, wall-jump chains), combat (combos, parry, block, i-frames, telegraph timing), each of the eight enemy archetypes (dive, shield break, wall stun, summoning, explosions, sniper lock), level generation (determinism and structural validity across 1000 seeds, spawn rules), loot, status effects, skills, mutations, run flow, saves and loading, settings and rebinding, the menus, sprite animation, that painted levels have exactly the same solid geometry as graybox ones, that every generated level is traversable, the menu-stacking regression, haptics, touch controls and the tutorial flow.
 
 Run them in the Unity Test Runner (`Window > General > Test Runner`), or from the command line with the Unity CLI:
 

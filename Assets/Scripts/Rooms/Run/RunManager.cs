@@ -56,6 +56,8 @@ namespace Roughlike.Rooms
         public RunStats Stats { get; internal set; } = new RunStats();
         public readonly HashSet<Vector2Int> Visited = new HashSet<Vector2Int>();
         public Vector2Int CurrentRoom { get; internal set; }
+        /// <summary>Dev toggle (F12): the minimap shows every room.</summary>
+        public static bool RevealMap;
         /// <summary>True once the end-of-run panel should be showing.</summary>
         public bool EndScreenVisible => (State == RunState.Dead || State == RunState.Complete) && _endTimer >= deathScreenDelay;
 

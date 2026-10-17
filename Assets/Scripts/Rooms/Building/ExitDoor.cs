@@ -91,7 +91,7 @@ namespace Roughlike.Rooms
             var col = Physics2D.OverlapBox(centre, size, 0f, LayerMask.GetMask(GameLayers.PlayerName));
             PlayerController player = col != null ? col.GetComponentInParent<PlayerController>() : null;
 
-            if (_prompt != null) _prompt.text = player != null ? "Press UP to descend" : "EXIT";
+            if (_prompt != null) _prompt.text = player != null ? (InputDevices.Scheme == InputScheme.Touch ? "Push the stick UP to descend" : "Press UP to descend") : "EXIT";
             if (player != null && player.LastIntent.UpHeld())
             {
                 _used = true;

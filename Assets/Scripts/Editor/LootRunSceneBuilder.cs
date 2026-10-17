@@ -56,7 +56,7 @@ namespace Roughlike.Editor
             Debug.Log("[Loot] M4 scene built: " + ScenePath);
         }
 
-        static BiomeData LoadOrCreateBiome(LootDatabase db)
+        internal static BiomeData LoadOrCreateBiome(LootDatabase db)
         {
             const string path = "Assets/Data/Biomes/EmberCatacombs.asset";
             var biome = AssetDatabase.LoadAssetAtPath<BiomeData>(path);
@@ -74,7 +74,7 @@ namespace Roughlike.Editor
             return biome;
         }
 
-        static GameObject BuildPlayerPrefab(LootDatabase db)
+        internal static GameObject BuildPlayerPrefab(LootDatabase db)
         {
             Directory.CreateDirectory(Path.GetDirectoryName(PrefabPath));
             var config = AssetDatabase.LoadAssetAtPath<MovementConfig>("Assets/Data/Player/PlayerMovement.asset");

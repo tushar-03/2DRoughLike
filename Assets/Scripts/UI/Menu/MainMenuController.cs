@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Roughlike.Player;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -224,10 +225,12 @@ namespace Roughlike.UI
             _continue = Add(column, "Continue", summary, ref y, OnContinue, 86f);
             _continue.interactable = hasSave;
             _newGame = Add(column, "New Game", null, ref y, OnNewGame);
+            _tutorial = Add(column, "Tutorial", "Learn to move, fight, loot and survive", ref y, OnTutorial, 86f);
             _newSeed = Add(column, "New Game from Seed", null, ref y, OnNewSeed);
             _settings = Add(column, "Settings", null, ref y, () => _modals.OpenSettings());
             _controls = Add(column, "Controls", null, ref y, () => _modals.OpenControls());
-            _quit = Add(column, "Quit", null, ref y, ModalManager.QuitApplication);
+            if (!Roughlike.Utils.WebBridge.IsWebGL && !Application.isMobilePlatform)
+                _quit = Add(column, "Quit", null, ref y, ModalManager.QuitApplication);
 
             // keep the vertical order explicit so a disabled Continue is skipped by the controller
             var first = hasSave ? _continue : _newGame;
@@ -242,9 +245,19 @@ namespace Roughlike.UI
             return b;
         }
 
+        static string HintLine()
+        {
+            switch (InputDevices.Scheme)
+            {
+                case InputScheme.Gamepad: return "Move: stick / D-pad     Confirm: A     Back: B";
+                case InputScheme.Touch: return "Tap to choose";
+                default: return "Move: arrows / stick     Confirm: Enter / A     Back: Esc / B";
+            }
+        }
+
         void BuildFooter(RectTransform parent)
         {
-            var hint = UiKit.Label(parent, "Hint", "Move: arrows / stick     Confirm: Enter / A     Back: Esc / B", 24, new Color(0.8f, 0.85f, 0.9f, 0.7f), TextAnchor.MiddleCenter);
+            var hint = UiKit.Label(parent, "Hint", HintLine(), 24, new Color(0.8f, 0.85f, 0.9f, 0.7f), TextAnchor.MiddleCenter);
             UiKit.Place(hint.rectTransform, new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0f, 26f), new Vector2(1200f, 36f));
 
             var version = UiKit.Label(parent, "Version", "v" + Application.version + "  -  alpha build", 20, new Color(0.8f, 0.85f, 0.9f, 0.45f), TextAnchor.LowerRight);
@@ -261,7 +274,24 @@ namespace Roughlike.UI
             ModalManager.LoadScene(GameSession.GameplayScene);
         }
 
-        public void OnNewGame() => ConfirmThenStart(0);
+        Button _tutorial;
+
+        /// <summary>Starts the tutorial level.</summary>
+        public void OnTutorial() => ModalManager.LoadScene(GameSession.TutorialScene);
+
+        public void OnNewGame()
+        {
+            // first time: offer the tutorial before the first run
+            if (!SettingsService.Current.tutorialSeen)
+            {
+                _modals.OpenConfirm("New here?", "Learn the basics in a short guided level first? You can replay it any time from the main menu.",
+                    "Play tutorial", "Skip it",
+                    () => OnTutorial(),
+                    () => { SettingsService.Current.tutorialSeen = true; SettingsService.NotifyChanged(true); ConfirmThenStart(0); });
+                return;
+            }
+            ConfirmThenStart(0);
+        }
 
         public void OnNewSeed()
         {

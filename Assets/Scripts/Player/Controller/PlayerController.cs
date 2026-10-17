@@ -170,7 +170,13 @@ namespace Roughlike.Player
         {
             if (config == null || _motor == null) return;
             dt = Mathf.Min(dt, MaxDeltaTime);
-            if (dt <= 0f) return;
+            if (dt <= 0f)
+            {
+                // paused: nothing is being pressed as far as the game is concerned. A stale intent here made the interaction
+                // sensor re-open the shop and altar menus every frame.
+                LastIntent = default;
+                return;
+            }
 
             PlayerIntent intent = _source != null ? _source.Read() : default;
             LastIntent = intent;

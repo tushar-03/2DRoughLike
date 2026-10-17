@@ -91,6 +91,7 @@ namespace Roughlike.Rooms
     {
         public const string MenuScene = "MainMenu";
         public const string GameplayScene = "M4_LootRun";
+        public const string TutorialScene = "Tutorial";
 
         public static SessionMode Mode;
         /// <summary>Seed for a new run; 0 means pick one at random.</summary>

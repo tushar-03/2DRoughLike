@@ -71,7 +71,7 @@ namespace Roughlike.UI
 
             var reset = MenuKit.Action(window, "Reset to defaults", new Vector2(300f, 52f), ResetAll);
             UiKit.Place((RectTransform)reset.transform, new Vector2(0f, 0f), new Vector2(0f, 0f), new Vector2(0f, 0f), new Vector2(40f, 24f), new Vector2(300f, 52f));
-            var done = MenuKit.Action(window, "Back  (Esc / B)", new Vector2(300f, 52f), () => back());
+            var done = MenuKit.Action(window, $"Back  ({InputDevices.BackName})", new Vector2(300f, 52f), () => back());
             UiKit.Place((RectTransform)done.transform, new Vector2(1f, 0f), new Vector2(1f, 0f), new Vector2(1f, 0f), new Vector2(-40f, 24f), new Vector2(300f, 52f));
 
             FirstSelectable = _buttons.Count > 0 ? _buttons[0].Label.GetComponentInParent<Button>() : done;

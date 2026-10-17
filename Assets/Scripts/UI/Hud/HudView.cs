@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Roughlike.Player;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Roughlike.Combat;
@@ -235,7 +236,7 @@ namespace Roughlike.UI
             _promptRoot.gameObject.SetActive(e.Visible);
             if (!e.Visible) return;
 
-            _promptText.text = "[E] " + e.Text;
+            _promptText.text = "[" + InputDevices.Prompt("Interact") + "] " + e.Text;
             _promptText.color = e.Colour;
             if (e.Item != null) _promptCard.Show(e.Item); else _promptCard.Hide();
         }

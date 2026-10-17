@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Roughlike.Player;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Roughlike.Core;
@@ -48,7 +49,7 @@ namespace Roughlike.UI
 
             var reset = MenuKit.Action(window, "Reset to defaults", new Vector2(300f, 52f), () => { SettingsService.ResetToDefaults(); ShowTab(_tab); });
             UiKit.Place((RectTransform)reset.transform, new Vector2(0f, 0f), new Vector2(0f, 0f), new Vector2(0f, 0f), new Vector2(40f, 24f), new Vector2(300f, 52f));
-            var done = MenuKit.Action(window, "Back  (Esc / B)", new Vector2(300f, 52f), () => back());
+            var done = MenuKit.Action(window, $"Back  ({InputDevices.BackName})", new Vector2(300f, 52f), () => back());
             UiKit.Place((RectTransform)done.transform, new Vector2(1f, 0f), new Vector2(1f, 0f), new Vector2(1f, 0f), new Vector2(-40f, 24f), new Vector2(300f, 52f));
 
             ShowTab(0);
@@ -90,6 +91,12 @@ namespace Roughlike.UI
             var s = SettingsService.Current;
             int row = 0;
 
+            if (Roughlike.Utils.WebBridge.IsWebGL || Application.isMobilePlatform)
+            {
+                BuildVideoForBrowser(s);
+                return;
+            }
+
             // resolution
             var resolutions = new List<Vector2Int>();
             foreach (var r in Screen.resolutions)
@@ -130,6 +137,21 @@ namespace Roughlike.UI
             UiKit.Place(note.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, RowY(row) - 6f), new Vector2(-20f, 40f));
         }
 
+        /// <summary>Browsers and phones own the window, so the only video choices are fullscreen and quality.</summary>
+        void BuildVideoForBrowser(GameSettings s)
+        {
+            var slot = MenuKit.Row(_rows, "Fullscreen", RowY(0), out _);
+            AddToggle(slot, Screen.fullScreen, v => Screen.fullScreen = v);
+
+            var qualityLabels = new List<string> { "Project default" };
+            qualityLabels.AddRange(QualitySettings.names);
+            slot = MenuKit.Row(_rows, "Quality", RowY(1), out _);
+            AddCycle(slot, qualityLabels, s.qualityLevel + 1, i => { s.qualityLevel = i - 1; SettingsService.NotifyChanged(); });
+
+            var note = UiKit.Label(_rows, "Note", "Your browser controls the window size. Fullscreen needs a click or tap to take effect.", 20, UiKit.Muted, TextAnchor.UpperLeft);
+            UiKit.Place(note.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, RowY(2) - 6f), new Vector2(-20f, 40f));
+        }
+
         // ------------------------------------------------------------------ audio
 
         void BuildAudio()
@@ -160,6 +182,12 @@ namespace Roughlike.UI
             AddToggle(slot, s.toggleBlock, v => { s.toggleBlock = v; SettingsService.NotifyChanged(); });
             slot = MenuKit.Row(_rows, "Assist mode (enemies deal 40% less)", RowY(5), out _);
             AddToggle(slot, s.assistMode, v => { s.assistMode = v; SettingsService.NotifyChanged(); });
+
+            slot = MenuKit.Row(_rows, "Vibration (controller rumble, phone haptics)", RowY(6), out _);
+            AddToggle(slot, s.haptics, v => { s.haptics = v; SettingsService.NotifyChanged(); if (v) Roughlike.Player.Haptics.Play(Roughlike.Player.HapticKind.Medium); });
+            AddSlider("Vibration strength", 7, s.hapticStrength, v => { s.hapticStrength = v; SettingsService.NotifyChanged(); });
+            slot = MenuKit.Row(_rows, "Touch controls", RowY(8), out _);
+            AddCycle(slot, new[] { "Automatic", "Always on", "Off" }, s.touchControls, i => { s.touchControls = i; SettingsService.NotifyChanged(); });
         }
 
         // ------------------------------------------------------------------ row helpers

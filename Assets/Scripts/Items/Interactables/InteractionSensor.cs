@@ -55,7 +55,7 @@ namespace Roughlike.Items
             _current = best;
             Publish(best);
 
-            if (best != null && _controller.LastIntent.InteractPressed && !_controller.IsControlLocked)
+            if (best != null && Time.timeScale > 0f && _controller.LastIntent.InteractPressed && !_controller.IsControlLocked)
                 best.Interact(_inventory, _controller);
         }
 

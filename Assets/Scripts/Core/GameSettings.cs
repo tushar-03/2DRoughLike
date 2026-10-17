@@ -37,6 +37,15 @@ namespace Roughlike.Core
         /// <summary>Assist mode: enemies deal 40% less damage.</summary>
         public bool assistMode;
 
+        // ---- device
+        /// <summary>Controller rumble and phone vibration.</summary>
+        public bool haptics = true;
+        [Range(0f, 1f)] public float hapticStrength = 0.8f;
+        /// <summary>On-screen touch controls: 0 automatic (touch devices only), 1 always, 2 never.</summary>
+        public int touchControls = 0;
+        /// <summary>The tutorial has been offered or played once.</summary>
+        public bool tutorialSeen;
+
         // ---- controls: Input System binding overrides as JSON
         public string bindingOverrides = "";
 
@@ -54,6 +63,8 @@ namespace Roughlike.Core
             hitStop = Mathf.Clamp01(hitStop);
             flashIntensity = Mathf.Clamp01(flashIntensity);
             fullscreenMode = Mathf.Clamp(fullscreenMode, 0, 2);
+            hapticStrength = Mathf.Clamp01(hapticStrength);
+            touchControls = Mathf.Clamp(touchControls, 0, 2);
             resolutionWidth = Mathf.Max(0, resolutionWidth);
             resolutionHeight = Mathf.Max(0, resolutionHeight);
             if (bindingOverrides == null) bindingOverrides = "";

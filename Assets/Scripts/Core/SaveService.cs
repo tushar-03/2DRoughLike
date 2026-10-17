@@ -43,6 +43,7 @@ namespace Roughlike.Core
                 File.Delete(main);
             }
             File.Move(temp, main);
+            Roughlike.Utils.WebBridge.SyncFileSystem();   // browsers keep files in IndexedDB; flush it
         }
 
         /// <summary>Reads a save. If the main file is missing, empty or fails <paramref name="validate"/>, the backup is tried.</summary>
@@ -76,6 +77,7 @@ namespace Roughlike.Core
                 string p = PathOf(name, suffix);
                 if (File.Exists(p)) File.Delete(p);
             }
+            Roughlike.Utils.WebBridge.SyncFileSystem();
         }
     }
 }

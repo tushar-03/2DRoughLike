@@ -56,6 +56,15 @@ Engine: Unity 6000.5.6f1, URP 2D Renderer. Singleplayer only. PC (Windows), 60 F
 - A run save does not serialise the level. It stores the seed and the changes the player made, and rebuilds the level deterministically before applying them.
 - One shared `GameInput` action map is used by gameplay and the rebinding screen; rebinding overrides are stored as (action, group, path) so they survive Input System ID changes.
 
+## Level traversability rule
+Every generated level must be finishable with the base kit, and the rule is enforced by code, not by hand-checking rooms. `TraversalValidator` is the oracle (tests run it over many seeds): templates may only add geometry the validator accepts. Mandatory paths use jumping and walking only. Rolls are for combat and optional shortcuts.
+
+## Input, haptics and platforms
+- One shared gameplay action map. Keyboard, gamepad and touch all feed it; touch uses on-screen controls bound to a virtual gamepad, so there is no second code path.
+- `InputDevices` tracks which device is in use and names controls for it; all prompts read from it.
+- `Haptics` is the only code that touches rumble or vibration; gameplay just raises combat events.
+- Web: browser-only needs live in `WebBridge` and one `.jslib`; everything else is plain Unity. Saves go through `SaveService`, which flushes to IndexedDB after each write.
+
 ## Milestones
 M0 Setup · M1 Movement · M2 Combat · M3 Level gen · M4 Loot/stats · M4.5 Menus/saves · M5 Visual slice + enemies · M6 Content · M7 Boss/biome 1 · M8 Meta/hub/story · M9 Biomes 2-3 · M10 Polish.
 Review stop after each.

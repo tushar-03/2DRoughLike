@@ -1,5 +1,6 @@
 using UnityEngine;
 using Roughlike.Core;
+using Roughlike.Player;
 using Roughlike.Utils;
 
 namespace Roughlike.Combat
@@ -64,6 +65,7 @@ namespace Roughlike.Combat
 
         void OnExplosion(ExplosionEvent e)
         {
+            Haptics.Play(HapticKind.Explosion);
             Spark(e.Position, e.Radius * 1.8f, e.Colour);
             Spark(e.Position + new Vector2(0.3f, 0.2f), e.Radius, Color.white);
             ScreenShake.Shake(0.45f, Vector2.up);
@@ -101,6 +103,8 @@ namespace Roughlike.Combat
             }
             Vector2 dir = r.Info.Knockback.sqrMagnitude > 0.01f ? r.Info.Knockback.normalized : Vector2.right;
 
+            PlayHaptics(r, playerHurt);
+
             switch (r.Result)
             {
                 case HitResult.Hit:
@@ -120,6 +124,20 @@ namespace Roughlike.Combat
 
             HitStop.Request(r.Info.HitStop);
             ScreenShake.Shake(r.Info.Shake * (playerHurt ? 1.4f : 1f), dir);
+        }
+
+        /// <summary>Rumble: hard when you are hurt, light when you land a hit, a sharp snap on a parry.</summary>
+        static void PlayHaptics(HitReport r, bool playerHurt)
+        {
+            switch (r.Result)
+            {
+                case HitResult.Parried: Haptics.Play(HapticKind.Parry); break;
+                case HitResult.Blocked: if (playerHurt) Haptics.Play(HapticKind.Medium); else Haptics.Play(HapticKind.Light); break;
+                case HitResult.Hit:
+                    if (playerHurt) Haptics.Play(r.Killed ? HapticKind.Death : (r.Amount >= 18f ? HapticKind.Heavy : HapticKind.Medium));
+                    else if (r.Info.SourceTeam == Team.Player) Haptics.Play(r.Info.IsCrit || r.Killed ? HapticKind.Medium : HapticKind.Light);
+                    break;
+            }
         }
 
         void Spark(Vector2 pos, float size, Color c) => _sparks.Get().Play(pos, size, c);

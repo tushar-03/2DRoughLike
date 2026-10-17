@@ -26,6 +26,8 @@ namespace Roughlike.UI
         {
             // a classical serif if the machine has one, otherwise the built-in font
             Font os = null;
+            // browsers and phones have no installed fonts to pick from
+            if (Roughlike.Utils.WebBridge.IsWebGL || Application.isMobilePlatform) return Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             try { os = Font.CreateDynamicFontFromOSFont(new[] { "Palatino Linotype", "Book Antiqua", "Georgia", "Cambria", "Times New Roman" }, 32); }
             catch (System.Exception) { }
             return os != null ? os : Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Roughlike.Player;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -134,6 +135,7 @@ namespace Roughlike.UI
             w.Root.SetActive(false);   // gone at once; destroyed at the end of the frame
             Destroy(w.Root);
             if (w.Pauses) PauseGate.Pop();
+            InputGate.Block(3);
             if (_stack.Count == 0) LastEmptiedAt = Time.unscaledTime;
             if (_stack.Count > 0)
             {
@@ -209,7 +211,7 @@ namespace Roughlike.UI
 
             var close = UiKit.Button(content, "Close", new Vector2(220f, 56f), () => { Pop(); closed?.Invoke(); });
             UiKit.Place((RectTransform)close.transform, new Vector2(1f, 0f), new Vector2(1f, 0f), new Vector2(1f, 0f), new Vector2(-24f, 22f), new Vector2(220f, 56f));
-            var closeText = UiKit.Label(close.transform, "Text", "Leave  (Esc / B)", 24, Color.white, TextAnchor.MiddleCenter, true);
+            var closeText = UiKit.Label(close.transform, "Text", $"Leave  ({InputDevices.BackName})", 24, Color.white, TextAnchor.MiddleCenter, true);
             UiKit.Stretch(closeText.rectTransform);
 
             RefreshShop(rows, gold, e.Inventory);
@@ -294,7 +296,7 @@ namespace Roughlike.UI
 
             var cancel = UiKit.Button(content, "Cancel", new Vector2(240f, 52f), () => { Pop(); e.Resolve(-1); });
             UiKit.Place((RectTransform)cancel.transform, new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0f, 18f), new Vector2(240f, 52f));
-            var ct = UiKit.Label(cancel.transform, "Text", "Not now  (Esc / B)", 22, Color.white, TextAnchor.MiddleCenter, true);
+            var ct = UiKit.Label(cancel.transform, "Text", $"Not now  ({InputDevices.BackName})", 22, Color.white, TextAnchor.MiddleCenter, true);
             UiKit.Stretch(ct.rectTransform);
 
             Focus(w, first != null ? first : cancel);
@@ -337,7 +339,7 @@ namespace Roughlike.UI
 
             var cancel = UiKit.Button(content, "Cancel", new Vector2(300f, 56f), () => { Pop(); r.Resolve(-1); });
             UiKit.Place((RectTransform)cancel.transform, new Vector2(0f, 0f), new Vector2(0f, 0f), new Vector2(0f, 0f), new Vector2(24f, 24f), new Vector2(300f, 56f));
-            var ct = UiKit.Label(cancel.transform, "Text", "Keep what I have  (Esc / B)", 22, Color.white, TextAnchor.MiddleCenter, true);
+            var ct = UiKit.Label(cancel.transform, "Text", $"Keep what I have  ({InputDevices.BackName})", 22, Color.white, TextAnchor.MiddleCenter, true);
             UiKit.Stretch(ct.rectTransform);
 
             Focus(w, first);
