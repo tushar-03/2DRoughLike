@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca930f1dcfa67e4685ec3f71489f458, type: 3}
+  m_Name: EmberCatacombs
+  m_EditorClassIdentifier: Roughlike.Rooms::Roughlike.Rooms.BiomeData
+  displayName: Ember Catacombs
+  generator:
+    width: 8
+    height: 4
+    minMainPath: 7
+    maxMainPath: 10
+    minExitColumn: 5
+    verticalChance: 0.35
+    minBranches: 1
+    maxBranches: 2
+    minBranchLength: 1
+    maxBranchLength: 3
+    variantCount: 4
+  enemyPool:
+  - {fileID: 11400000, guid: 5ecbd5e680ec8974a90d3a95eba2447d, type: 2}
+  - {fileID: 11400000, guid: de7140fa076e3a34cb2b8b77f4ee77be, type: 2}
+  minEnemies: 1
+  maxEnemies: 3
+  ground: {r: 0.2, g: 0.23, b: 0.3, a: 1}
+  trim: {r: 0.34, g: 0.38, b: 0.48, a: 1}
+  platform: {r: 0.95, g: 0.7, b: 0.25, a: 1}
+  background: {r: 0.1, g: 0.12, b: 0.17, a: 1}
+  accent: {r: 0.35, g: 0.85, b: 0.85, a: 1}

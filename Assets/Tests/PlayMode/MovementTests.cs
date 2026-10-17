@@ -406,6 +406,56 @@ namespace Roughlike.Tests.PlayMode
         }
 
         [Test]
+        public void WallJumpWorksWithoutSlidingFirstWhileRising()
+        {
+            Box("Wall L", new Vector2(-3f, 10f), new Vector2(2f, 40f)); // right face x = -2
+            Box("Wall R", new Vector2(3f, 10f), new Vector2(2f, 40f));  // left face x = 2
+            Floor(-2f, 2f);
+            SpawnPlayer(new Vector2(0f, 0f), MovementAbilities.WallJump);
+            Settle();
+
+            // jump up while pressing toward the right wall, then tap jump again as soon as we touch it
+            _in.Move = Vector2.right;
+            _in.PressJump();
+            bool kicked = false;
+            _p.WallJumped += () => kicked = true;
+            Run(0.9f, () => { if (!kicked && _p.State != PlayerState.Grounded) _in.PressJump(); });
+            Assert.IsTrue(kicked, "wall jump should fire from a touching wall even while rising or falling");
+        }
+
+        [Test]
+        public void ChainedWallJumpsClimbAThreeWideShaft()
+        {
+            // same geometry as the M1 graybox shaft: 3 wide, 11 tall, with an exit ledge on the right wall
+            Floor(-10f, 12f);
+            Box("Shaft L", new Vector2(0.5f, 4f), new Vector2(1f, 14f));       // x 0..1, y -3..11
+            Box("Shaft R", new Vector2(4.5f, 4f), new Vector2(1f, 14f));       // x 4..5
+            Box("Exit ledge", new Vector2(6.5f, 10.5f), new Vector2(3f, 1f));  // x 5..8, y 10..11
+            SpawnPlayer(new Vector2(2.5f, 0f), MovementAbilities.WallJump);
+            Settle();
+
+            _in.Move = Vector2.left;
+            float t = 0f, maxY = 0f;
+            var trace = new System.Text.StringBuilder();
+            Run(7f, () =>
+            {
+                t += Dt;
+                maxY = Mathf.Max(maxY, _p.transform.position.y);
+                if (Mathf.Repeat(t, 0.25f) < Dt) trace.Append($"[{t:0.0} x{_p.transform.position.x:0.0} y{_p.transform.position.y:0.0} {_p.State}] ");
+                bool nearTop = _p.transform.position.y > 9f;
+                if (!nearTop && Mathf.Repeat(t, 0.2f) < Dt) _in.PressJump();
+                // near the top, stop kicking and lean toward the exit wall so the ledge grab triggers
+                if (nearTop) { _in.Move = Vector2.right; _in.ReleaseJump(); }
+                if (_p.State == PlayerState.LedgeHang) _in.Move = new Vector2(1f, 1f);
+                if (_p.State == PlayerState.Grounded && _p.transform.position.y > 10.5f) _in.Move = Vector2.zero;
+            });
+
+            Assert.Greater(maxY, 9f, "chained wall jumps should climb the shaft");
+            Assert.AreEqual(PlayerState.Grounded, _p.State, trace.ToString());
+            Assert.AreEqual(11f, _p.transform.position.y, 0.25f, "should end up standing on the exit ledge");
+        }
+
+        [Test]
         public void WallSlideAndWallJumpWithRune()
         {
             Box("Wall L", new Vector2(-3f, 10f), new Vector2(2f, 40f)); // right face x = -2

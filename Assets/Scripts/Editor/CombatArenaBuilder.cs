@@ -1,4 +1,4 @@
-using System.IO;
+﻿using System.IO;
 using Unity.Cinemachine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -242,7 +242,7 @@ namespace Roughlike.Editor
 
         // ------------------------------------------------------------------ camera / systems
 
-        static void BuildCamera(PlayerController player)
+        internal static CinemachineCamera BuildCamera(PlayerController player)
         {
             var camGo = new GameObject("Main Camera") { tag = "MainCamera" };
             var cam = camGo.AddComponent<Camera>();
@@ -272,6 +272,7 @@ namespace Roughlike.Editor
             composer.Composition.ScreenPosition = new Vector2(0f, -0.05f);
 
             vcamGo.AddComponent<CinemachineImpulseListener>();   // receives ScreenShake impulses
+            return vcam;
         }
 
         static void BuildSystems(PlayerController player, PlayerCombat combat, WeaponData[] weapons, EnemyDefinition[] enemies)
@@ -292,3 +293,4 @@ namespace Roughlike.Editor
         }
     }
 }
+

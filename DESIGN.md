@@ -21,12 +21,17 @@ Engine: Unity 6000.5.6f1, URP 2D Renderer. Singleplayer only. PC (Windows), 60 F
 
 ## Architecture
 - Folders under `Assets/`: Art, Audio, Prefabs, Data, Shaders, Scenes, Scripts/{Core,Player,Combat,Enemies,Items,Rooms,Meta,UI,Audio,Utils}, Tests/{EditMode,PlayMode}.
-- One asmdef per Scripts folder, namespace `Roughlike.<Module>`. Dependency direction: Utils <- Core <- everything else. Feature modules do not reference each other directly; they talk via the Core event bus and shared interfaces in Core. (Add references deliberately when a milestone needs them.)
-- Allowed dependencies: Utils <- Core (incl. the generic KinematicMotor2D, EventBus, layers) <- Player <- Combat <- Enemies. Modules talk through `EventBus<T>` events (hits, swings, parries, enemy deaths); presentation systems subscribe, gameplay never calls them.
+- One asmdef per Scripts folder, namespace `Roughlike.<Module>`. References are added deliberately when a milestone needs them.
+- Allowed dependencies: Utils <- Core (incl. the generic KinematicMotor2D, EventBus, layers) <- Player <- Combat <- Enemies <- Rooms. Modules talk through `EventBus<T>` events (hits, swings, parries, enemy deaths); presentation systems subscribe, gameplay never calls them.
 - Weapon slots: each slot has its own button (Dead Cells model), which is the instant swap. Shields live in a slot like any weapon: tap = parry window, hold = block.
 - Composition and events over inheritance, no god classes, minimal singletons.
 - All tuning values in the Inspector or ScriptableObjects; all items/weapons/skills/mutations are ScriptableObjects.
 - Planned core modules: event bus, object pooling, stat/modifier system, health/damage, status effects, seeded RNG, level generator, versioned JSON save with backup, game state machine (Boot, Menu, Hub, Run, Death, Victory), settings service.
+
+## Level generation (M3)
+- Grid of 30x18 rooms. A seeded generator makes a main path (Start to Exit, mostly rightward with vertical steps) plus dead-end Treasure branches. Rooms are built from their openings so connections always line up; every connection is traversable with the base kit (jump 3.2, doors 6 high, stairs of one-way platforms in shafts).
+- Determinism rule: all procedural code uses `SeededRng`; sub-systems use `Fork(salt)` so changing one never shifts another. Seeds are shareable codes (`SeedCode`).
+- Rooms are procedural graybox now; hand-authored chunk prefabs plug in through `RoomChunk` markers.
 
 ## Milestones
 M0 Setup · M1 Movement · M2 Combat · M3 Level gen · M4 Loot/stats · M5 Visual slice · M6 Content · M7 Boss/biome 1 · M8 Meta/hub/story · M9 Biomes 2-3 · M10 Polish.

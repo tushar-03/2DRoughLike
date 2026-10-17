@@ -84,8 +84,13 @@ namespace Roughlike.Player
 
         [Header("Traversal rune abilities (off in the base kit)")]
         public float wallSlideSpeed = 3f;
-        public Vector2 wallJumpVelocity = new Vector2(9f, 15f);
-        public float wallJumpInputLock = 0.18f;
+        public Vector2 wallJumpVelocity = new Vector2(8.5f, 14.5f);
+        [Tooltip("Air control is suspended this long after a wall jump so the kick-off carries you away from the wall.")]
+        public float wallJumpInputLock = 0.12f;
+        [Tooltip("A jump pressed this soon after leaving (or before touching) a wall still wall-jumps.")]
+        public float wallCoyoteTime = 0.12f;
+        [Tooltip("How long you cling to a wall after releasing the stick before dropping.")]
+        public float wallStickTime = 0.2f;
         [Tooltip("Extra jumps available with the Double Jump rune.")]
         public int extraAirJumps = 1;
         [Range(0.3f, 1f)] public float extraJumpHeightFactor = 0.85f;

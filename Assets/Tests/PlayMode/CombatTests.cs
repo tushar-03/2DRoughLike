@@ -54,7 +54,7 @@ namespace Roughlike.Tests.PlayMode
         [TearDown]
         public void TearDown()
         {
-            foreach (var p in Object.FindObjectsByType<Projectile>(FindObjectsSortMode.None)) Object.DestroyImmediate(p.gameObject);
+            foreach (var p in Object.FindObjectsByType<Projectile>()) Object.DestroyImmediate(p.gameObject);
             foreach (var go in _spawned) if (go != null) Object.DestroyImmediate(go);
             _spawned.Clear();
             _enemies.Clear();
@@ -134,7 +134,7 @@ namespace Roughlike.Tests.PlayMode
                 _combat.Tick(Dt);
                 _def.Tick(Dt);
                 foreach (var e in _enemies) if (e != null) e.Tick(Dt);
-                foreach (var p in Object.FindObjectsByType<Projectile>(FindObjectsSortMode.None)) p.Tick(Dt);
+                foreach (var p in Object.FindObjectsByType<Projectile>()) p.Tick(Dt);
                 each?.Invoke();
             }
         }
@@ -462,4 +462,5 @@ namespace Roughlike.Tests.PlayMode
         }
     }
 }
+
 

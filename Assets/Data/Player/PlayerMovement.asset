@@ -77,8 +77,10 @@ MonoBehaviour:
   ledgeClimbTime: 0.3
   ledgeRegrabCooldown: 0.3
   wallSlideSpeed: 3
-  wallJumpVelocity: {x: 9, y: 15}
-  wallJumpInputLock: 0.18
+  wallJumpVelocity: {x: 8.5, y: 14.5}
+  wallJumpInputLock: 0.12
+  wallCoyoteTime: 0.12
+  wallStickTime: 0.2
   extraAirJumps: 1
   extraJumpHeightFactor: 0.85
   dropThroughTime: 0.3

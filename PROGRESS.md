@@ -14,7 +14,8 @@ Built and verified (18/18 PlayMode tests pass, console clean):
   - Variable-height jump, apex hang, fast-fall, coyote time (0.1s), jump buffer (0.12s), roll buffer.
   - **Roll**: 0.45s, 5.2 units, speed curve, i-frames 0.03-0.38s, collider shrinks to 0.8 so it passes under 1.2-high gaps, crawls back out if wedged, works mid-air (1 per airtime by default, refunded on landing/ladder/ledge/wall), jump cancels a ground roll and keeps momentum. Passes through enemies (`PassesThroughEnemies`, `IsInvulnerable`).
   - Ladders (including through floor holes capped with a one-way platform), ledge grab and climb, one-way platforms with Down+Jump drop-through, moving platforms (riders carried).
-  - Rune abilities behind flags (off in base kit): Double Jump and Wall Slide/Wall Jump work now. Air Dash and Wall Climb are reserved for M8.
+  - Rune abilities behind flags (off in base kit): Double Jump and Wall Jump. Air Dash and Wall Climb are reserved for M8.
+  - **Wall jump (reworked after playtest feedback):** probe-based wall contact (works whether or not you are pushing into the wall), wall coyote time (0.12s) so a jump just before or after touching still kicks, no need to slide first (works while rising or falling), short input lock so the kick carries you off, brief stick time on the wall, and a same-wall lockout so chains alternate walls. A rune shrine in the M1 course grants it (no debug key needed); `F3` still toggles it.
 - **Input**: `PlayerInputReader` (keyboard + gamepad, built in code, rebindable later) behind `IIntentSource`; `ScriptedIntentSource` for tests.
 - **Camera**: Cinemachine 3 (`CinemachinePositionComposer`) following `PlayerCameraTarget` (look-ahead, fall look-down, damping).
 - **Presentation**: `PlayerVisual` (flip, squash and stretch, roll spin, breathing), placeholder capsule sprite with outline and cel shading.
@@ -75,5 +76,30 @@ Built and verified (34/34 PlayMode tests pass: 18 movement + 16 combat; console 
 - Gamepad bindings are untested on hardware. Hit numbers (damage, hitstop, shake) are first-pass values for tuning.
 - Placeholder VFX are procedural (see ART_TODO.md); real flipbooks and a shader-based flash come in M5.
 
+## M3 — Level generation (awaiting review)
+Built and verified: 44 PlayMode + 9 EditMode tests pass (including a 1000-seed structural validation of the generator and a physical door/shaft passability check on 30 built levels); generated run smoke-tested live in Play Mode.
+
+**Generation**
+- `SeededRng` (SplitMix64, with `Fork` for independent sub-streams) and `SeedCode` (shareable Crockford base-32 codes like `3J7-XQS0`; any text is accepted and hashed). Nothing uses `UnityEngine.Random`.
+- `LevelGenerator` (pure logic): main path from Start to Exit on an 8x4 grid, moving right and sometimes up/down, 7-10 rooms, exit at least 5 columns away; 1-2 dead-end branches ending in Treasure rooms. Every room gets a variant (flat, blocks, one-way platforms, roll tunnel). Fully deterministic per seed.
+- Rooms are 30x18 units with 6-unit side doors and 6-unit shafts. `ChunkBuilder` assembles each room from its openings: side doors, floor/ceiling holes, a stair of one-way platforms in rooms that open upward (rise <= 2.6, jump is 3.2). All connections are traversable with the base kit.
+- `RoomChunk` + marker points (enemy spawns, player spawn, exit and loot anchors) are the hook for hand-authored chunk prefabs: author a prefab with that component and it can replace a procedural room.
+
+**Run flow**
+- `RunManager`: generates and builds the level, places the player, tracks kills, damage taken, rooms visited and time. Permadeath: dying ends the run; the end screen offers a new seed (R) or retry (T). Reaching the exit door (Up) completes the biome (placeholder until M9). Camera snaps on restart.
+- Population: enemies per combat room scale from `minEnemies` to `maxEnemies` with distance along the path; placement is deterministic per seed. `BiomeData` holds generator settings, the enemy pool and the graybox palette.
+- `RunHud`: seed, current room, stats, fog-of-war minimap of the room graph (F12 reveals everything: this is the level-generator visualiser), seed entry box (F11).
+
+### How to test M3
+1. Open `Assets/Scenes/M3_Run.unity` and press Play (a random run starts).
+2. Explore right: side doors, rooms with platforms and blocks, a roll tunnel (gap 1.3, roll through it), and rooms with a stair of orange platforms leading up or a hole in the floor leading down. Dead-end branches have a TREASURE marker (loot arrives in M4).
+3. Reach the glowing EXIT door and press Up. Die on purpose to see the death screen. R = new seed, T = same seed (the layout and enemies repeat exactly).
+4. F11 enter a seed (try `drowned bells`), F12 reveal the minimap, F9/F10 new/retry at any time.
+5. Tests: PlayMode (44) and EditMode (9) in the Test Runner.
+
+### Notes
+- Camera is not confined to rooms yet. Per-room camera bounds and room transitions come with the visual pass (M5).
+- Doors do not lock yet; challenge doors, shops and secret rooms arrive in M6.
+
 ## Next
-M3 — Level generation (chunk-based generator, seeded RNG, exits, doors, death and restart).
+M4 - Loot and stats: scroll stats, rarity and affixes, skills, mutations, amulet and outfit slots with pickup items, shops, gold.

@@ -87,7 +87,8 @@ namespace Roughlike.Player
         float _climbTimer;
         MovingPlatform _ridingPlatform;
         Collider2D _ridingCollider;
-        int _wallDir;
+        int _wallDir, _wallCoyoteDir, _ignoreWallDir;
+        float _wallCoyote, _ignoreWallTimer, _wallLetGo;
 
         void Awake()
         {
@@ -201,6 +202,8 @@ namespace Roughlike.Player
             _rollCooldown = Mathf.Max(0f, _rollCooldown - dt);
             _dropTimer = Mathf.Max(0f, _dropTimer - dt);
             _wallLock = Mathf.Max(0f, _wallLock - dt);
+            _wallCoyote = Mathf.Max(0f, _wallCoyote - dt);
+            _ignoreWallTimer = Mathf.Max(0f, _ignoreWallTimer - dt);
             _ladderCooldown = Mathf.Max(0f, _ladderCooldown - dt);
             _ledgeCooldown = Mathf.Max(0f, _ledgeCooldown - dt);
             if (State != PlayerState.Grounded) _coyote = Mathf.Max(0f, _coyote - dt);
@@ -253,6 +256,9 @@ namespace Roughlike.Player
                     config.airDeceleration, config.airAcceleration, dt);
             }
 
+            UpdateWallContact();
+            // A wall kick beats an air jump; a ground (coyote) jump beats both.
+            if (_coyote <= 0f && TryWallJump()) { Step(dt, 1f, intent, true); return; }
             if (TryStartJump()) { Step(dt, 1f, intent, true); return; }
             if (TryStartRoll(intent)) { TickRolling(intent, dt); return; }
             if (TryEnterLadder(intent)) { TickLadder(intent, dt); return; }
@@ -514,15 +520,72 @@ namespace Roughlike.Player
         // Wall slide / wall jump (rune)
         // =====================================================================
 
+        bool WallRuneActive => (abilities & MovementAbilities.WallJump) != 0;
+
+        /// <summary>True when a vertical solid wall touches the body on the given side (probe-based, independent of input).</summary>
+        bool ProbeWall(int dir)
+        {
+            if (dir == 0) return false;
+            Bounds b = _motor.Box.bounds;
+            float reach = b.extents.x + 0.09f;
+            LayerMask mask = GameLayers.GroundMask;
+            for (int i = 0; i < 3; i++)
+            {
+                float y = Mathf.Lerp(b.min.y + 0.25f, b.max.y - 0.2f, i * 0.5f);
+                RaycastHit2D hit = Physics2D.Raycast(new Vector2(b.center.x, y), Vector2.right * dir, reach, mask);
+                if (hit && Mathf.Abs(hit.normal.x) > 0.85f) return true;
+            }
+            return false;
+        }
+
+        /// <summary>Remembers a recent wall contact so a jump slightly after leaving (or before touching) still kicks off.</summary>
+        void UpdateWallContact()
+        {
+            if (!WallRuneActive) { _wallCoyote = 0f; return; }
+            int preferred = _moveX != 0f ? (int)_moveX : Facing;
+            for (int pass = 0; pass < 2; pass++)
+            {
+                int dir = pass == 0 ? preferred : -preferred;
+                if (_ignoreWallTimer > 0f && dir == _ignoreWallDir) continue;
+                if (ProbeWall(dir))
+                {
+                    _wallCoyote = config.wallCoyoteTime;
+                    _wallCoyoteDir = dir;
+                    return;
+                }
+            }
+        }
+
+        /// <summary>Kicks off the wall we are on (or just left). Works rising, falling or sliding, with no sliding needed first.</summary>
+        bool TryWallJump()
+        {
+            if (!WallRuneActive || _jumpBuffer <= 0f || _wallCoyote <= 0f) return false;
+
+            int wall = _wallCoyoteDir;
+            _jumpBuffer = 0f;
+            _wallCoyote = 0f;
+            _ignoreWallDir = wall;
+            _ignoreWallTimer = 0.15f;
+            _vel = new Vector2(-wall * config.wallJumpVelocity.x, config.wallJumpVelocity.y);
+            Facing = -wall;
+            _wallLock = config.wallJumpInputLock;
+            _airJumpsLeft = AirJumpsAllowed();
+            _airRollsLeft = config.airRollsPerAirtime;
+            SetState(PlayerState.Airborne);
+            WallJumped?.Invoke();
+            return true;
+        }
+
         bool TryStartWallSlide()
         {
-            if ((abilities & MovementAbilities.WallJump) == 0) return false;
-            if (_vel.y > 0f || _moveX == 0f) return false;
-            bool touching = (_moveX < 0f && _motor.Collisions.left) || (_moveX > 0f && _motor.Collisions.right);
-            if (!touching) return false;
+            if (!WallRuneActive || _vel.y > 0f || _moveX == 0f) return false;
+            int dir = (int)_moveX;
+            if (_ignoreWallTimer > 0f && dir == _ignoreWallDir) return false;
+            if (!ProbeWall(dir)) return false;
 
-            _wallDir = (int)_moveX;
-            Facing = _wallDir;
+            _wallDir = dir;
+            _wallLetGo = 0f;
+            Facing = dir;
             _airRollsLeft = config.airRollsPerAirtime;
             _airJumpsLeft = AirJumpsAllowed();
             SetState(PlayerState.WallSlide);
@@ -531,35 +594,30 @@ namespace Roughlike.Player
 
         void TickWallSlide(in PlayerIntent intent, float dt)
         {
-            if (_jumpBuffer > 0f)
-            {
-                _jumpBuffer = 0f;
-                _vel = new Vector2(-_wallDir * config.wallJumpVelocity.x, config.wallJumpVelocity.y);
-                Facing = -_wallDir;
-                _wallLock = config.wallJumpInputLock;
-                SetState(PlayerState.Airborne);
-                WallJumped?.Invoke();
-                Step(dt, 1f, intent, true);
-                return;
-            }
+            _wallCoyote = config.wallCoyoteTime;
+            _wallCoyoteDir = _wallDir;
 
+            if (TryWallJump()) { Step(dt, 1f, intent, true); return; }
             if (TryStartRoll(intent)) { TickRolling(intent, dt); return; }
+            if (TryGrabLedge()) return;
 
-            // keep pushing into the wall so the contact is re-detected each tick
+            // keep pressing lightly into the wall so the contact is stable, slide down at a capped speed
             _vel.x = _wallDir * 1f;
             float vyOld = _vel.y;
             _vel.y = Mathf.Max(vyOld - config.Gravity * dt, -config.wallSlideSpeed);
             _motor.Move(new Vector2(_vel.x * dt, (vyOld + _vel.y) * 0.5f * dt));
 
-            bool still = (_wallDir < 0 && _motor.Collisions.left) || (_wallDir > 0 && _motor.Collisions.right);
+            bool touching = ProbeWall(_wallDir);
             bool away = _moveX != 0f && (int)_moveX != _wallDir;
+            _wallLetGo = _moveX == 0f ? _wallLetGo + dt : 0f;   // short grace if the stick is released
+
             if (_motor.Collisions.below)
             {
                 _vel = Vector2.zero;
                 SetState(PlayerState.Grounded);
                 Landed?.Invoke(0f);
             }
-            else if (!still || away || _moveX == 0f)
+            else if (!touching || away || _wallLetGo > config.wallStickTime)
             {
                 SetState(PlayerState.Airborne);
             }

@@ -231,7 +231,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83208c23e439e73438f5b70052d0f877, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Roughlike.Player::Roughlike.Player.KinematicMotor2D
+  m_EditorClassIdentifier: Roughlike.Core::Roughlike.Core.KinematicMotor2D
   maxSlopeAngle: 55
   drawDebugRays: 0
 --- !u!114 &3813541783714204920

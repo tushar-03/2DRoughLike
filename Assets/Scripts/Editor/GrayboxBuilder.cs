@@ -183,10 +183,30 @@ namespace Roughlike.Editor
             Solid("Low ceiling", 88f, 96f, 5.2f, 1.2f, GroundCol);
             Sign("ROLL UNDER (gap 1.2, you are 1.6)", new Vector2(92f, 6.8f));
 
-            // Wall-jump shaft (needs the Wall Jump rune: press F3).
-            Solid("Shaft wall L", 100f, 101f, 14f, -3f, GroundCol);
-            Solid("Shaft wall R", 105f, 106f, 14f, -3f, GroundCol);
-            Sign("WALL JUMP shaft\n(rune: press F3)", new Vector2(103f, 16.5f));
+            // Wall-jump shaft: a rune shrine grants the ability, then chain kicks between two walls (3 wide, 11 tall).
+            var shrine = new GameObject("Wall Jump Rune Shrine");
+            shrine.transform.SetParent(_root, false);
+            shrine.transform.position = new Vector3(97f, 1.5f, 0f);
+            var shrineGlow = new GameObject("Glow");
+            shrineGlow.transform.SetParent(shrine.transform, false);
+            shrineGlow.transform.localScale = new Vector3(0.7f, 3f, 1f);
+            var glowSr = shrineGlow.AddComponent<SpriteRenderer>();
+            glowSr.sprite = _square; glowSr.sortingOrder = -2;
+            var shrineText = new GameObject("Label");
+            shrineText.transform.SetParent(shrine.transform, false);
+            shrineText.transform.localPosition = new Vector3(0f, 2.6f, 0f);
+            var stm = shrineText.AddComponent<TextMesh>();
+            var sfont = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            stm.font = sfont; stm.text = "WALL JUMP RUNE\n(walk into the glow)"; stm.characterSize = 0.12f; stm.fontSize = 48;
+            stm.anchor = TextAnchor.MiddleCenter; stm.color = new Color(0.6f, 1f, 1f, 0.95f);
+            shrineText.GetComponent<MeshRenderer>().sharedMaterial = sfont.material;
+            shrineText.GetComponent<MeshRenderer>().sortingOrder = 6;
+            shrine.AddComponent<RuneShrine>().Configure(MovementAbilities.WallJump, new Vector2(1.6f, 3f), glowSr, stm);
+
+            Solid("Shaft wall L", 100f, 101f, 11f, -3f, GroundCol);
+            Solid("Shaft wall R", 104f, 105f, 11f, -3f, GroundCol);
+            Solid("Shaft exit ledge", 105f, 108f, 11f, 10f, GroundCol);
+            Sign("WALL JUMP SHAFT\nhold toward a wall and tap Jump to kick off,\nchain between the walls, grab the top ledge", new Vector2(102.5f, 14f));
 
             // Moving platforms over the pit.
             var h = Block("Mover horizontal", new Vector2(111f, -0.25f), new Vector2(4f, 0.5f), GameLayers.GroundName, MoverCol);

@@ -18,4 +18,6 @@ All art sits behind prefab / Sprite Library / ScriptableObject slots so replacem
 | Enemy sprites (`EnemyGrunt.png` 144x240, `EnemyShooter.png` 112x240, `Dummy.png`) | 160 PPU, pivot feet | Light base tinted per `EnemyDefinition`. Need real designs and rigs per archetype | High |
 | Combat VFX (slash crescent, hit spark, projectile, telegraph box) | runtime generated | `Utils/ProceduralSprites`. Replace with flipbook slashes, bold hit bursts, glowing projectile trails; keep the telegraph shape language | High |
 | Hit flash / outline shader | n/a | Currently a sprite colour lerp. Shader Graph hit flash + outline (M5) | Medium |
+| Room geometry (floors, walls, platforms, backdrops) | 30x18 unit rooms | Tinted blocks from `BiomeData` palette. Replace with tilemaps/RuleTiles, ornate trim, layered parallax backdrops per biome; keep door height 6 and shaft width 6 | High |
+| Exit door, treasure chest, rune shrine | n/a | Tinted blocks with labels. Need ornate props with glow | Medium |
 | Player animation set | n/a | Idle, run, jump, fall, land, roll, ladder, ledge hang/climb, wall slide. Currently procedural squash and stretch only | High |
