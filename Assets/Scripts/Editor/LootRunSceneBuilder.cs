@@ -26,6 +26,7 @@ namespace Roughlike.Editor
                 AssetDatabase.LoadAssetAtPath<MovementConfig>("Assets/Data/Player/PlayerMovement.asset") == null)
                 CombatArenaBuilder.Build();
 
+            Roughlike.Editor.Art.CharacterSheetBuilder.EnsureAll();
             LootDatabase db = ItemContentBuilder.Build();
             BiomeData biome = LoadOrCreateBiome(db);
             GameObject prefab = BuildPlayerPrefab(db);
@@ -47,7 +48,7 @@ namespace Roughlike.Editor
             runGo.AddComponent<RunHud>().Bind(run, playerGo.GetComponent<Health>());
 
             var ui = new GameObject("UI").AddComponent<UiBootstrap>();
-            ui.Bind(controller);
+            ui.Bind(controller, run);
 
             Directory.CreateDirectory("Assets/Scenes");
             EditorSceneManager.SaveScene(scene, ScenePath);
@@ -64,13 +65,10 @@ namespace Roughlike.Editor
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
                 biome = ScriptableObject.CreateInstance<BiomeData>();
                 biome.displayName = "Ember Catacombs";
-                biome.enemyPool = new[]
-                {
-                    AssetDatabase.LoadAssetAtPath<EnemyDefinition>("Assets/Data/Enemies/DrownedGrunt.asset"),
-                    AssetDatabase.LoadAssetAtPath<EnemyDefinition>("Assets/Data/Enemies/DrownedSpitter.asset")
-                };
                 AssetDatabase.CreateAsset(biome, path);
             }
+            biome.enemyPool = EnemyContentBuilder.BuildPool();
+            Roughlike.Editor.Art.EnvironmentBuilder.Apply(biome);
             biome.loot = db;
             EditorUtility.SetDirty(biome);
             return biome;
@@ -80,7 +78,8 @@ namespace Roughlike.Editor
         {
             Directory.CreateDirectory(Path.GetDirectoryName(PrefabPath));
             var config = AssetDatabase.LoadAssetAtPath<MovementConfig>("Assets/Data/Player/PlayerMovement.asset");
-            var controller = PlayerFactory.Build(config, PlayerFactory.InputKind.Device, PlaceholderArt.LoadPlayer());
+            var art = Roughlike.Editor.Art.CharacterSheetBuilder.Load("BellRinger");
+            var controller = PlayerFactory.Build(config, PlayerFactory.InputKind.Device, PlaceholderArt.LoadPlayer(), null, "Player", art);
             PlayerCombatSetup.Attach(controller, db.startingWeapon1, db.startingWeapon2);
             PlayerItemsSetup.Attach(controller);
             GameObject go = controller.gameObject;

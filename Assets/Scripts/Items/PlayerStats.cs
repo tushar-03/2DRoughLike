@@ -44,6 +44,7 @@ namespace Roughlike.Items
         void OnEnable()
         {
             _inventory.Changed += Recalculate;
+            SettingsService.Changed += Recalculate;
             EventBus<EnemyDiedEvent>.Subscribe(OnEnemyDied);
             if (_combat != null) _combat.Modifiers = this;
             Recalculate();
@@ -52,6 +53,7 @@ namespace Roughlike.Items
         void OnDisable()
         {
             _inventory.Changed -= Recalculate;
+            SettingsService.Changed -= Recalculate;
             EventBus<EnemyDiedEvent>.Unsubscribe(OnEnemyDied);
             if (_combat != null && ReferenceEquals(_combat.Modifiers, this)) _combat.Modifiers = null;
         }
@@ -83,6 +85,10 @@ namespace Roughlike.Items
 
             if (_momentumStacks > 0)
                 Sheet.Add(new StatModifier(StatKind.DamageDealt, ModOp.PercentAdd, _momentumStacks * _momentumValue, this));
+
+            // accessibility: assist mode makes enemies hit 40% softer
+            if (SettingsService.Current.assistMode)
+                Sheet.Add(new StatModifier(StatKind.DamageTaken, ModOp.PercentMult, -0.4f, this));
 
             Apply();
         }

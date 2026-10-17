@@ -27,6 +27,8 @@ namespace Roughlike.Rooms
     /// </summary>
     public static class ChunkBuilder
     {
+        static readonly Color Dim = new Color(0.72f, 0.72f, 0.8f);
+
         public const int VariantFlat = 0, VariantBlocks = 1, VariantPlatforms = 2, VariantTunnel = 3;
 
         sealed class Ctx
@@ -57,20 +59,20 @@ namespace Roughlike.Rooms
             const float W = ChunkMetrics.Width, H = ChunkMetrics.Height, F = ChunkMetrics.FloorTop, D = ChunkMetrics.DoorTop;
             float s0 = ChunkMetrics.ShaftMin, s1 = ChunkMetrics.ShaftMax;
 
-            // backdrop panel so room bounds read clearly
-            Panel(c, "Backdrop", 0f, W, 0f, H, biome.background, -20);
+            // backdrop panel so room bounds read clearly (painted levels have a parallax backdrop instead)
+            if (biome.art == null) Panel(c, "Backdrop", 0f, W, 0f, H, biome.background, -20);
 
             // floor (hole when the room opens downward)
             if (down) { Slab(c, "Floor L", 0f, s0, 0f, F); Slab(c, "Floor R", s1, W, 0f, F); }
             else Slab(c, "Floor", 0f, W, 0f, F);
 
             // ceiling (hole when the room opens upward)
-            if (up) { Slab(c, "Ceiling L", 0f, s0, H - 1f, H); Slab(c, "Ceiling R", s1, W, H - 1f, H); }
-            else Slab(c, "Ceiling", 0f, W, H - 1f, H);
+            if (up) { Slab(c, "Ceiling L", 0f, s0, H - 1f, H, Dim); Slab(c, "Ceiling R", s1, W, H - 1f, H, Dim); }
+            else Slab(c, "Ceiling", 0f, W, H - 1f, H, Dim);
 
             // side walls with 6-unit doors at floor level
-            if (left) Slab(c, "Wall L", 0f, 1f, D, H - 1f); else Slab(c, "Wall L", 0f, 1f, F, H - 1f);
-            if (right) Slab(c, "Wall R", W - 1f, W, D, H - 1f); else Slab(c, "Wall R", W - 1f, W, F, H - 1f);
+            if (left) Slab(c, "Wall L", 0f, 1f, D, H - 1f, Dim); else Slab(c, "Wall L", 0f, 1f, F, H - 1f, Dim);
+            if (right) Slab(c, "Wall R", W - 1f, W, D, H - 1f, Dim); else Slab(c, "Wall R", W - 1f, W, F, H - 1f, Dim);
 
             // vertical connections
             if (up)
@@ -139,18 +141,64 @@ namespace Roughlike.Rooms
             return go;
         }
 
+        /// <summary>A collider-only block (no sprite), for geometry whose painted look is drawn separately.</summary>
+        static GameObject Solid(Ctx c, string name, float x0, float x1, float y0, float y1, string layer)
+        {
+            var go = new GameObject(name);
+            go.transform.SetParent(c.Root, false);
+            go.transform.localPosition = new Vector3((x0 + x1) * 0.5f, (y0 + y1) * 0.5f, 0f);
+            go.layer = LayerMask.NameToLayer(layer);
+            go.AddComponent<BoxCollider2D>().size = new Vector2(x1 - x0, y1 - y0);
+            return go;
+        }
+
+        /// <summary>A sprite tiled across a rectangle (no collider).</summary>
+        static GameObject Tiled(Ctx c, string name, Sprite sprite, float x0, float x1, float y0, float y1, Color tint, int order)
+        {
+            var go = new GameObject(name);
+            go.transform.SetParent(c.Root, false);
+            go.transform.localPosition = new Vector3((x0 + x1) * 0.5f, (y0 + y1) * 0.5f, 0f);
+            var sr = go.AddComponent<SpriteRenderer>();
+            sr.sprite = sprite;
+            sr.drawMode = SpriteDrawMode.Tiled;
+            sr.tileMode = SpriteTileMode.Continuous;
+            sr.size = new Vector2(x1 - x0, y1 - y0);
+            sr.color = tint;
+            sr.sortingOrder = order;
+            return go;
+        }
+
         static void Panel(Ctx c, string name, float x0, float x1, float y0, float y1, Color col, int order)
             => Block(c, name, x0, x1, y0, y1, null, col, order);
 
-        /// <summary>Solid slab with a lighter top edge for readability.</summary>
-        static void Slab(Ctx c, string name, float x0, float x1, float y0, float y1)
+        /// <summary>Solid slab. Graybox: a flat block with a lighter top edge. Painted: tiled stone with a mossy lip along the top.</summary>
+        static void Slab(Ctx c, string name, float x0, float x1, float y0, float y1) => Slab(c, name, x0, x1, y0, y1, Color.white);
+
+        static void Slab(Ctx c, string name, float x0, float x1, float y0, float y1, Color tint)
         {
+            var art = c.Biome.art;
+            if (art != null && art.wall != null)
+            {
+                Solid(c, name, x0, x1, y0, y1, GameLayers.GroundName);
+                Tiled(c, name + " stone", art.wall, x0, x1, y0, y1, tint, -5);
+                if (art.floorTrim != null && y1 - y0 > 0.4f && tint == Color.white)
+                    Tiled(c, name + " lip", art.floorTrim, x0, x1, y1 - 0.44f, y1 + 0.06f, Color.white, -4);
+                return;
+            }
             Block(c, name, x0, x1, y0, y1, GameLayers.GroundName, c.Biome.ground, -5);
             if (y1 - y0 > 0.4f) Panel(c, name + " trim", x0, x1, y1 - 0.14f, y1, c.Biome.trim, -4);
         }
 
         static void OneWay(Ctx c, string name, float x0, float x1, float top)
-            => Block(c, name, x0, x1, top - 0.3f, top, GameLayers.OneWayName, c.Biome.platform, -3);
+        {
+            var art = c.Biome.art;
+            if (art != null && art.platform != null)
+            {
+                Solid(c, name, x0, x1, top - 0.3f, top, GameLayers.OneWayName);
+                Tiled(c, name + " ledge", art.platform, x0, x1, top - 0.34f, top + 0.04f, Color.white, -3);
+                return;
+            }
+            Block(c, name, x0, x1, top - 0.3f, top, GameLayers.OneWayName, c.Biome.platform, -3);
+        }
     }
 }
-

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using Roughlike.Combat;
 using Roughlike.Core;
@@ -20,7 +20,16 @@ namespace Roughlike.UI
         public static readonly Color Danger = new Color(0.95f, 0.35f, 0.3f);
 
         static Font _font;
-        public static Font Font => _font != null ? _font : (_font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf"));
+        public static Font Font => _font != null ? _font : (_font = LoadFont());
+
+        static Font LoadFont()
+        {
+            // a classical serif if the machine has one, otherwise the built-in font
+            Font os = null;
+            try { os = Font.CreateDynamicFontFromOSFont(new[] { "Palatino Linotype", "Book Antiqua", "Georgia", "Cambria", "Times New Roman" }, 32); }
+            catch (System.Exception) { }
+            return os != null ? os : Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        }
 
         public static RectTransform Node(string name, Transform parent)
         {
@@ -75,10 +84,12 @@ namespace Roughlike.UI
         /// <summary>A bordered panel: returns the inner content node.</summary>
         public static RectTransform Panel(Transform parent, string name, Vector2 size, Color? fill = null)
         {
-            var edge = Image(parent, name, PanelEdge);
+            var edge = Image(parent, name, Color.white, UiSkin.Frame);
+            edge.type = UnityEngine.UI.Image.Type.Sliced;
             ((RectTransform)edge.transform).sizeDelta = size;
-            var inner = Image(edge.transform, "Fill", fill ?? PanelColour);
-            Stretch((RectTransform)inner.transform, 3f);
+            var inner = Image(edge.transform, "Fill", fill ?? PanelColour, UiSkin.Fill);
+            inner.type = UnityEngine.UI.Image.Type.Sliced;
+            Stretch((RectTransform)inner.transform, 9f);
             return (RectTransform)inner.transform;
         }
 
@@ -88,8 +99,12 @@ namespace Roughlike.UI
             var rt = Node(name, parent);
             rt.sizeDelta = size;
             var img = rt.gameObject.AddComponent<Image>();
-            img.sprite = ProceduralSprites.Square;
+            img.sprite = UiSkin.ButtonFill;
+            img.type = UnityEngine.UI.Image.Type.Sliced;
             img.color = new Color(0.14f, 0.16f, 0.22f, 1f);
+            var rim = Image(rt, "Rim", Color.white, UiSkin.ButtonRim);
+            rim.type = UnityEngine.UI.Image.Type.Sliced;
+            Stretch((RectTransform)rim.transform);
             var b = rt.gameObject.AddComponent<Button>();
             b.targetGraphic = img;
             var colours = b.colors;
@@ -167,3 +182,4 @@ namespace Roughlike.UI
         }
     }
 }
+

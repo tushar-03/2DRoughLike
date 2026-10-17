@@ -42,6 +42,7 @@ namespace Roughlike.Rooms
 
         public static BuiltLevel Build(LevelLayout layout, BiomeData biome, bool spawnEnemies = true)
         {
+            WorldArt.Props = biome.art != null ? biome.art.worldProps : null;   // painted set pieces for this level, or graybox
             var built = new BuiltLevel { Layout = layout, Root = new GameObject($"Level {layout.Seed}") };
             var masterRng = new SeededRng(layout.Seed);
             LootDatabase loot = biome.loot;
@@ -52,6 +53,7 @@ namespace Roughlike.Rooms
             {
                 RoomChunk chunk = ChunkBuilder.Build(cell, built.Root.transform, biome);
                 built.Chunks[cell.Pos] = chunk;
+                RoomDecor.Populate(chunk, cell, biome);
 
                 switch (cell.Role)
                 {
@@ -71,7 +73,7 @@ namespace Roughlike.Rooms
                 }
 
                 bool hasAltar = altarCells.Contains(cell.Index);
-                if (hasAltar) PlaceAltar(masterRng.Fork(5000 + cell.Index), loot, chunk, built);
+                if (hasAltar) PlaceAltar(masterRng.Fork(5000 + cell.Index), loot, cell, chunk, built);
 
                 if (spawnEnemies && cell.Role == RoomRole.Combat)
                     SpawnEnemies(masterRng.Fork(1000 + cell.Index), cell, chunk, biome, built, hasAltar ? chunk.ExitAnchor : (Vector2?)null);
@@ -101,6 +103,7 @@ namespace Roughlike.Rooms
             ItemInstance contents = LootRoller.Roll(loot, rng, cell.Progress, null, 0.6f);
             var chest = LootFactory.SpawnChest(chunk.LootAnchor, contents);
             chest.transform.SetParent(chunk.transform, true);
+            chest.CellIndex = cell.Index;
             built.Chests.Add(chest);
         }
 
@@ -109,15 +112,17 @@ namespace Roughlike.Rooms
             var stock = ShopStock.Generate(loot, rng, cell.Progress);
             var shop = LootFactory.SpawnShop(chunk.LootAnchor, stock);
             shop.transform.SetParent(chunk.transform, true);
+            shop.CellIndex = cell.Index;
             built.Shops.Add(shop);
         }
 
-        static void PlaceAltar(SeededRng rng, LootDatabase loot, RoomChunk chunk, BuiltLevel built)
+        static void PlaceAltar(SeededRng rng, LootDatabase loot, LevelCell cell, RoomChunk chunk, BuiltLevel built)
         {
             var choices = LootRoller.RollMutationChoices(loot, rng, 3, null);
             if (choices.Count == 0) return;
             var altar = LootFactory.SpawnAltar(chunk.ExitAnchor, choices);
             altar.transform.SetParent(chunk.transform, true);
+            altar.CellIndex = cell.Index;
             built.Altars.Add(altar);
         }
 
@@ -135,9 +140,24 @@ namespace Roughlike.Rooms
             tracker.Init(cell, chunk);
             built.Trackers.Add(tracker);
 
+            var eligible = new List<EnemyDefinition>();
+            foreach (var d in biome.enemyPool)
+                if (d != null && d.minProgress <= cell.Progress + 0.0001f) eligible.Add(d);
+            if (eligible.Count == 0) eligible.Add(biome.enemyPool[0]);
+            var used = new Dictionary<EnemyDefinition, int>();
+
             for (int i = 0; i < count; i++)
             {
-                EnemyDefinition def = rng.Pick(biome.enemyPool);
+                EnemyDefinition def = rng.Pick(eligible);
+                used.TryGetValue(def, out int n);
+                if (n >= def.maxPerRoom)
+                {
+                    // that type is at its cap here: take the first one with room left, otherwise stop adding enemies
+                    def = eligible.Find(c => !used.TryGetValue(c, out int m) || m < c.maxPerRoom);
+                    if (def == null) break;
+                    used.TryGetValue(def, out n);
+                }
+                used[def] = n + 1;
                 EnemyController e = EnemyFactory.Build(def, spots[i] + Vector2.up * 0.05f);
                 e.transform.SetParent(chunk.transform, true);
                 built.Enemies.Add(e);
@@ -155,3 +175,4 @@ namespace Roughlike.Rooms
         }
     }
 }
+

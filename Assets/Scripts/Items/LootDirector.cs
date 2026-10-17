@@ -52,7 +52,9 @@ namespace Roughlike.Items
 
         void OnEnemyDied(EnemyDiedEvent e)
         {
-            float goldFind = Stats != null ? Stats.GoldFind : 1f;
+            float reward = e.Definition != null ? e.Definition.rewardMultiplier : 1f;
+            if (reward <= 0f) return;   // summoned minions drop nothing
+            float goldFind = (Stats != null ? Stats.GoldFind : 1f) * reward;
             int total = Mathf.RoundToInt(_rng.Range(4, 10) * (1f + 0.5f * Progress) * goldFind);
             int coins = Mathf.Clamp(total / 4, 1, 3);
             int each = Mathf.Max(1, total / coins);

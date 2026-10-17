@@ -23,6 +23,31 @@ namespace Roughlike.Rooms
             go.transform.SetParent(parent, false);
             go.transform.position = feetPosition;
 
+            if (WorldArt.Has("door"))
+            {
+                var painted = new GameObject("Painted Door");
+                painted.transform.SetParent(go.transform, false);
+                painted.transform.localScale = Vector3.one * 1.15f;
+                var psr = painted.AddComponent<SpriteRenderer>();
+                psr.sortingOrder = -2;
+                var anim = painted.AddComponent<SpriteAnimator>();
+                anim.Bind(WorldArt.Props);
+                anim.Loop("door");
+                psr.sprite = WorldArt.Props.Prop("door");
+
+                var glowGo = new GameObject("Light");
+                glowGo.transform.SetParent(go.transform, false);
+                glowGo.transform.localPosition = new Vector3(0f, 1.6f, 0f);
+                var l = glowGo.AddComponent<UnityEngine.Rendering.Universal.Light2D>();
+                l.lightType = UnityEngine.Rendering.Universal.Light2D.LightType.Point;
+                l.color = new Color(0.4f, 0.95f, 0.9f);
+                l.intensity = 1.1f;
+                l.pointLightOuterRadius = 7f;
+                l.pointLightInnerRadius = 0.8f;
+                glowGo.AddComponent<TorchFlicker>();
+                return FinishDoor(go);
+            }
+
             var frame = new GameObject("Frame");
             frame.transform.SetParent(go.transform, false);
             frame.transform.localPosition = new Vector3(0f, 1.5f, 0f);
@@ -39,6 +64,11 @@ namespace Roughlike.Rooms
             gsr.sprite = ProceduralSprites.Square; gsr.sortingOrder = -1;
             gsr.color = new Color(accent.r, accent.g, accent.b, 0.55f);
 
+            return FinishDoor(go);
+        }
+
+        static ExitDoor FinishDoor(GameObject go)
+        {
             var label = new GameObject("Prompt");
             label.transform.SetParent(go.transform, false);
             label.transform.localPosition = new Vector3(0f, 3.9f, 0f);

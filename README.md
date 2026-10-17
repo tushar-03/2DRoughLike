@@ -4,7 +4,20 @@ A fast, fluid **2D action-platformer roguelite** built in Unity 6. Gameplay foll
 
 You are a bell-ringer's apprentice who died sealing a sunken cathedral-city. Each death returns you to a lantern-lit boathouse. The tone is melancholy but warm, with dry humour from a ferryman and an archivist.
 
-> **Status: in active development. The game is a playable graybox with placeholder art.** Movement, combat, level generation and loot are built and tested; the Hades-style visuals, more enemies, the hub and the story arrive in later milestones (see the [roadmap](#roadmap)).
+> **Status: in active development. A playable vertical slice with a main menu, saves, eight enemy types and a procedurally painted first biome.** Movement, combat, level generation, loot, menus and the first art pass are built and tested; the boss, the hub, meta-progression, audio and the story arrive in later milestones (see the [roadmap](#roadmap)).
+
+| Main menu (M5) | Shell Guard and its tower shield (M5) |
+|---|---|
+| ![Main menu](docs/images/m5_main_menu.png) | ![Shell Guard](docs/images/m5_gameplay_guard.png) |
+
+| Exit portal (M5) | Bell-Wisp dive telegraph (M5) |
+|---|---|
+| ![Exit portal](docs/images/m5_exit_portal.png) | ![Bell-Wisp](docs/images/m5_combat_wisp.png) |
+
+The cast, all painted and animated by code ([how](#art)):
+
+![Roster, part 1](docs/images/m5_roster_1.png)
+![Roster, part 2](docs/images/m5_roster_2.png)
 
 | HUD, loot and item card (M4) | Shop menu (M4) |
 |---|---|
@@ -42,6 +55,32 @@ You are a bell-ringer's apprentice who died sealing a sunken cathedral-city. Eac
 - **Status effects** (burn, poison, bleed, slow, stun, weaken), a **health flask**, a **merchant** in every level, treasure chests, and gold and Cells drops.
 - A full **uGUI HUD** and menus with keyboard, mouse and gamepad navigation. Permadeath resets everything.
 
+**Menus, saves and settings (M5)**
+- **Main menu** over an animated painted backdrop: Continue (with a summary of the saved run), New Game, New Game from Seed, Settings, Controls, Quit. **Pause menu** on `Esc` / Start.
+- **Saves**: the run autosaves on every room change and when you save and quit. A save stores the seed plus your progress (health, items, mutations, flask, cleared rooms, opened chests, altars, shop stock); the level is rebuilt from the seed. Writes are atomic with a `.bak` fallback. Dying or winning deletes the run (permadeath).
+- **Settings** (saved as JSON): resolution, display mode, vsync, quality; master, music, sfx, ui and ambient volumes (applied when audio arrives); screen shake, hitstop and flash intensity, damage numbers, toggle block, and an assist mode that takes 40% less damage.
+- **Rebindable controls** for keyboard and mouse and for gamepad, with conflict handling and reset to defaults.
+
+**Eight enemy types (M5)**, each a different problem to solve, all with the same telegraph language:
+
+| Enemy | Archetype | How to beat it |
+|---|---|---|
+| Drowned Grunt | Melee | Parry the swing or roll through it |
+| Drowned Spitter | Ranged | Close in or reflect the bolt |
+| Bell-Wisp | Flyer | Hovers above you, shows a dive line that tracks you and then locks; roll out of the line |
+| Shell Guard | Shield bearer | A frontal tower shield soaks hits; a heavy blow or a parry breaks it for a few seconds, and hits from behind do extra damage |
+| Tideboar | Charger | Paws the ground, then charges the whole lane; jump or roll through it and it stuns itself on a wall |
+| Reliquary Shade | Summoner | Keeps its distance and calls Drowned Wretches; kill it first and they die with it |
+| Bloat | Exploder | Swells and bursts (a growing circle shows the blast); also bursts when killed, so pop it from range |
+| Eel Archer | Sniper | A laser line tracks you, locks, then a fast bolt follows it; break the line or parry the bolt |
+
+Later enemies appear deeper in a level (`minProgress`), with per-room caps, so early rooms stay readable.
+
+**Art (M5)**
+- Hand-built **painting pipeline**: every character, prop and tile is drawn by code (shaded, outlined, rim-lit) into sprite sheets with a swap-in `CharacterArt` asset, so final art can replace any of it.
+- Animated characters (idle, run, jump, fall, roll, block, attack, hurt; enemies telegraph, attack and flinch in sync with their AI timing).
+- **Ember Catacombs biome**: tiled stone, parallax backdrop (windows, colonnade, hanging banners), 2D lighting (ambient, a lantern on the player, flickering torches and braziers) and post-processing (bloom, vignette, grading, film grain). Painted exit portal, chest, altar and merchant. An ornamental UI skin.
+
 ## Requirements
 
 - **Unity 6000.5.6f1** (Unity 6), Universal Render Pipeline with the 2D Renderer
@@ -55,12 +94,13 @@ You are a bell-ringer's apprentice who died sealing a sunken cathedral-city. Eac
 
 | Scene | What it is |
 |---|---|
-| `M4_LootRun.unity` | **Start here.** A generated run with loot, a merchant, mutation altars, skills and the full HUD |
+| `MainMenu.unity` | **Start here** (scene 0 in the build). New Game and Continue load `M4_LootRun` |
+| `M4_LootRun.unity` | The game: a generated run in the painted Ember Catacombs with loot, a merchant, mutation altars, skills and the full HUD. You can also open it directly and press Play |
 | `M3_Run.unity` | A generated run without loot: explore, fight, reach the exit |
 | `M2_CombatArena.unity` | Combat sandbox: dummy, grunt, spitter, weapon swapping |
 | `M1_Graybox.unity` | Movement course: slopes, ladders, ledges, roll tunnel, wall-jump shaft, moving platforms |
 
-The scenes can be rebuilt from the menu `Roughlike > Build` (hand-tuned data assets are kept).
+The scenes can be rebuilt from the menu `Roughlike > Build` (hand-tuned data assets are kept). Art is regenerated from `Roughlike > Art > Generate Characters` and `Generate Environment`.
 
 ## Controls
 
@@ -78,13 +118,13 @@ The scenes can be rebuilt from the menu `Roughlike > Build` (hand-tuned data ass
 | Drop through a one-way platform | Down + Jump | Down + A |
 | Wall jump (needs the rune) | Hold toward a wall, tap Jump | same |
 
-Gamepad bindings are implemented but have not been tested on hardware yet.
+All of these can be changed in **Controls** (main or pause menu). Gamepad bindings are implemented but have not been tested on hardware yet.
 
 **Dev keys**
 - M1: `F1` hide HUD, `F2` double jump, `F3` wall jump, `R` reset.
 - M2: `F4`/`F5` cycle weapons, `F6` spawn grunt, `F7` spawn spitter, `F8` god mode.
 - M3/M4: `F9` new random run, `F10` retry this seed, `F11` seed box, `F12` reveal the whole map.
-- Menus: stick / D-pad / arrows to move, South / Enter to confirm, East / Esc to cancel.
+- Menus: stick / D-pad / arrows to move, South / Enter to confirm, East / Esc to cancel. `Esc` / Start pauses during a run; `M` returns to the menu from the end screen.
 
 ## Seeds
 
@@ -95,18 +135,19 @@ Every run has a seed shown at the top of the screen. Press `F11` to type one in.
 ```
 Assets/
   Scripts/
-    Core/      layers, seeded RNG, seed codes, event bus, stat sheet, the kinematic motor
-    Player/    movement controller, input, camera target, presentation
-    Combat/    health and hit filters, weapons, shield/parry, feedback (hitstop, shake, VFX)
-    Enemies/   enemy definitions, AI state machine, factory, sandbox overlay
+    Core/      layers, seeded RNG, seed codes, event bus, stat sheet, kinematic motor, save service, settings
+    Player/    movement controller, input and rebinding, camera target, animation selection
+    Combat/    health and hit filters, weapons, shield/parry, feedback (hitstop, shake, VFX), player combat animation
+    Enemies/   enemy definitions, the AI state machine and one behaviour per archetype, factory, animation driver
     Items/     rarity, affixes, loot roller, inventory, player stats, skills, pickups, shops, altars
-    Rooms/     level generator, room builder, run manager, run HUD
-    UI/        uGUI HUD, toasts, shop / altar / replace menus
-    Utils/     object pool, procedural sprites
-    Editor/    scene and asset builders
+    Rooms/     level generator, room builder, run manager and saves, run HUD, atmosphere (lights, post, parallax, decor)
+    UI/        uGUI HUD, menus (main, pause, settings, controls), skin, shop / altar / replace screens
+    Utils/     object pool, procedural sprites, CharacterArt / EnvironmentArt, SpriteAnimator
+    Editor/    scene and asset builders; Editor/Art holds the painting pipeline
+  Art/         generated sprite sheets (Characters, Environment) and the art assets that point at them
   Data/        ScriptableObjects: movement config, weapons, skills, gear, affixes, mutations, enemies, biomes
   Tests/       EditMode and PlayMode tests
-  Scenes/      M1, M2 and M3 scenes
+  Scenes/      MainMenu, M4_LootRun (the game) and the M1 to M3 test scenes
 DESIGN.md      pillars, decisions and architecture
 PROGRESS.md    milestone log with how-to-test checklists
 ART_TODO.md    every placeholder asset, with sizes and style notes
@@ -116,7 +157,7 @@ Modules are separate assemblies (`Roughlike.*`) with a one-way dependency direct
 
 ## Tests
 
-88 PlayMode tests and 25 EditMode tests cover movement feel (jump height, roll distance, coyote time, wall-jump chains), combat (combos, parry, block, i-frames, telegraph timing), level generation (determinism and structural validity across 1000 seeds), loot (rarity, affixes, curses, shops), status effects, skills, mutations, run flow and the UI menus.
+122 PlayMode tests and 38 EditMode tests cover movement feel (jump height, roll distance, coyote time, wall-jump chains), combat (combos, parry, block, i-frames, telegraph timing), each of the eight enemy archetypes (dive, shield break, wall stun, summoning, explosions, sniper lock), level generation (determinism and structural validity across 1000 seeds, spawn rules), loot, status effects, skills, mutations, run flow, saves and loading, settings and rebinding, the menus, sprite animation, and that painted levels have exactly the same solid geometry as graybox ones.
 
 Run them in the Unity Test Runner (`Window > General > Test Runner`), or from the command line with the Unity CLI:
 
@@ -126,7 +167,14 @@ unity command run_tests --mode playmode --async_tests
 
 ## Art
 
-All art is currently procedurally generated placeholders (a stylised vector look with thick outlines and cel shading); it is **not** the final Hades-style art. Every character, enemy, prop, tile and VFX sits behind a prefab, sprite or ScriptableObject slot so better art drops in without code changes. [ART_TODO.md](ART_TODO.md) lists each placeholder with dimensions and style notes.
+There is no hand-drawn art in the repo: everything you see is **painted by code** with a small rasteriser (`Assets/Scripts/Editor/Art/`):
+
+- `Painter` draws capsules, ellipses and polygons back to front with three-tone cel shading lit from the upper left, a rim light, an edge line and a thick dark outline, 2x oversampled.
+- `HumanoidArt` (pose-driven two-legged characters with IK limbs), `CreatureArt` (wisp, boar, bloat, shield prop), `PropArt` and `WorldPropArt` (torches, door, chest, altar, merchant) and `EnvironmentPainter` (stone tiles, parallax layers) describe the look; `CharacterLibrary` lists every character, palette and animation.
+- `Roughlike > Art > Generate Characters` and `Generate Environment` write the sheets into `Assets/Art/` and the `CharacterArt` / `EnvironmentArt` assets that reference them. Characters, enemies, tiles and the backdrop all load from those assets, so **final art replaces any of it by swapping a sheet or an asset field; no code changes**.
+- Playback is `SpriteAnimator` (loop, one-shot, or scrubbed by progress, which is how enemy telegraph poses stay locked to their timing). Lighting and post-processing come from the biome's `EnvironmentArt`.
+
+Not final: it is a coherent, readable stand-in rather than Hades-quality illustration. [ART_TODO.md](ART_TODO.md) has the style guide and lists what still needs real art (item icons, the HUD, VFX flipbooks, a hit-flash and outline shader).
 
 ## Roadmap
 
@@ -137,8 +185,9 @@ All art is currently procedurally generated placeholders (a stylised vector look
 | M2 Combat prototype | done |
 | M3 Level generation | done |
 | M4 Loot and stats: scrolls, rarity and affixes, skills, mutations, amulets and outfits, shops, gold | done |
-| M5 Hades-style visual slice (biome 1), animation, and more enemy types | next |
-| M6 Content expansion, special rooms, challenge doors | planned |
+| Main menu, pause menu, settings, rebindable controls, run saves | done |
+| M5 Hades-style visual slice (biome 1), animation, and more enemy types | done (awaiting review) |
+| M6 Content expansion, special rooms, challenge doors | next |
 | M7 Boss and a complete first biome | planned |
 | M8 Meta-progression: hub, Cells, blueprints, runes, save/load, story dialogue | planned |
 | M9 Biomes 2 and 3, branching paths, difficulty tiers | planned |

@@ -1,7 +1,7 @@
 ﻿{
   "name": "Roughlike.Tests.PlayMode",
   "rootNamespace": "Roughlike.Tests.PlayMode",
-  "references": ["Roughlike.Utils", "Roughlike.Core", "Roughlike.Player", "Roughlike.Combat", "Roughlike.Enemies", "Roughlike.Items", "Roughlike.Rooms", "Roughlike.Meta", "Roughlike.UI", "Roughlike.Audio", "Unity.Cinemachine", "UnityEngine.UI", "UnityEngine.TestRunner", "UnityEditor.TestRunner"],
+  "references": ["Roughlike.Utils", "Roughlike.Core", "Roughlike.Player", "Roughlike.Combat", "Roughlike.Enemies", "Roughlike.Items", "Roughlike.Rooms", "Roughlike.Meta", "Roughlike.UI", "Roughlike.Audio", "Unity.Cinemachine", "Unity.InputSystem", "Unity.RenderPipelines.Universal.Runtime", "Unity.RenderPipelines.Universal.2D.Runtime", "UnityEngine.UI", "UnityEngine.TestRunner", "UnityEditor.TestRunner"],
   "includePlatforms": [],
   "excludePlatforms": [],
   "allowUnsafeCode": false,
@@ -12,5 +12,6 @@
   "versionDefines": [],
   "noEngineReferences": false
 }
+
 
 

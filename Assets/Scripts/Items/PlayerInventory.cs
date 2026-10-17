@@ -204,6 +204,34 @@ namespace Roughlike.Items
             EventBus<ItemAcquiredEvent>.Raise(new ItemAcquiredEvent { Item = item });
         }
 
+        // ------------------------------------------------------------------ save / load
+
+        /// <summary>Replaces the whole inventory from a save. Slots may be null.</summary>
+        public void RestoreState(ItemInstance[] weapons, ItemInstance[] skills, ItemInstance amulet, ItemInstance outfit,
+            IEnumerable<MutationData> mutations, int[] scrolls, int gold, int cells, int flask)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                Weapons[i] = weapons != null && i < weapons.Length ? weapons[i] : null;
+                Skills[i] = skills != null && i < skills.Length ? skills[i] : null;
+            }
+            Amulet = amulet;
+            Outfit = outfit;
+            Mutations.Clear();
+            if (mutations != null) foreach (var m in mutations) if (m != null && Mutations.Count < MaxMutations) Mutations.Add(m);
+            for (int i = 0; i < 3; i++) Scrolls[i] = scrolls != null && i < scrolls.Length ? scrolls[i] : 0;
+            Gold = Mathf.Max(0, gold);
+            Cells = Mathf.Max(0, cells);
+            FlaskCharges = Mathf.Clamp(flask, 0, MaxFlaskCharges);
+
+            if (CombatRef != null)
+            {
+                CombatRef.SetWeapon(0, Weapons[0]?.Weapon);
+                CombatRef.SetWeapon(1, Weapons[1]?.Weapon);
+            }
+            Changed?.Invoke();
+        }
+
         // ------------------------------------------------------------------ run reset
 
         /// <summary>Permadeath: wipe everything and hand out the starting loadout.</summary>

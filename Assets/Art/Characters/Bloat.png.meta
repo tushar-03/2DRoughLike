@@ -1,0 +1,806 @@
+fileFormatVersion: 2
+guid: 3fd814028e99a3d44b758e13f74a7928
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5893240273976911759
+    second: Bloat_0
+  - first:
+      213: -2409721797201971757
+    second: Bloat_1
+  - first:
+      213: -2563754509612325010
+    second: Bloat_2
+  - first:
+      213: -6647868591945888981
+    second: Bloat_3
+  - first:
+      213: 3269691957662532366
+    second: Bloat_4
+  - first:
+      213: -762084468761092630
+    second: Bloat_5
+  - first:
+      213: -5212469090442372987
+    second: Bloat_6
+  - first:
+      213: 4536345163418626688
+    second: Bloat_7
+  - first:
+      213: -2779276577354552670
+    second: Bloat_8
+  - first:
+      213: -7925113762318251275
+    second: Bloat_9
+  - first:
+      213: -4695000243896965129
+    second: Bloat_10
+  - first:
+      213: -4555488782434628931
+    second: Bloat_11
+  - first:
+      213: 1108493763797897340
+    second: Bloat_12
+  - first:
+      213: 452028401426723913
+    second: Bloat_13
+  - first:
+      213: 8228889664123888647
+    second: Bloat_14
+  - first:
+      213: -5976087146442872477
+    second: Bloat_15
+  - first:
+      213: 1714780584432466415
+    second: Bloat_16
+  - first:
+      213: 2591566341772028656
+    second: Bloat_17
+  - first:
+      213: 1430203335187120623
+    second: Bloat_18
+  - first:
+      213: -8641567910837012910
+    second: Bloat_19
+  - first:
+      213: 1917513308851832881
+    second: Bloat_20
+  - first:
+      213: 3861941165335817085
+    second: Bloat_21
+  - first:
+      213: 4078150934862499616
+    second: Bloat_22
+  - first:
+      213: -7808672396803650302
+    second: Bloat_23
+  - first:
+      213: 3827217891065292027
+    second: Bloat_24
+  - first:
+      213: -4297074151250087326
+    second: Bloat_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bloat_0
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 1313
+        width: 140
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 178949dc131073ea0800000000000000
+      internalID: -5893240273976911759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_1
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 1313
+        width: 138
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d5b24eeac2fe8ed0800000000000000
+      internalID: -2409721797201971757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_2
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 1313
+        width: 138
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e67604b5bd6bb6cd0800000000000000
+      internalID: -2563754509612325010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_3
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 1313
+        width: 140
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2bc69fccb60eb3a0800000000000000
+      internalID: -6647868591945888981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_4
+      rect:
+        serializedVersion: 2
+        x: 1349
+        y: 1313
+        width: 142
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e034d6d0387406d20800000000000000
+      internalID: 3269691957662532366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_5
+      rect:
+        serializedVersion: 2
+        x: 1669
+        y: 1313
+        width: 142
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aed17ae96388c65f0800000000000000
+      internalID: -762084468761092630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_6
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 993
+        width: 140
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5889a75aaf699a7b0800000000000000
+      internalID: -5212469090442372987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_7
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 993
+        width: 148
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08ae02c34e554fe30800000000000000
+      internalID: 4536345163418626688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_8
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 993
+        width: 140
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2aae73a9da60e69d0800000000000000
+      internalID: -2779276577354552670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_9
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 993
+        width: 134
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fa0670b507540290800000000000000
+      internalID: -7925113762318251275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_10
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 993
+        width: 140
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f72622472208deb0800000000000000
+      internalID: -4695000243896965129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_11
+      rect:
+        serializedVersion: 2
+        x: 1666
+        y: 993
+        width: 148
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dba05b0a617a7c0c0800000000000000
+      internalID: -4555488782434628931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_12
+      rect:
+        serializedVersion: 2
+        x: 1990
+        y: 993
+        width: 140
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c70d8e28439226f00800000000000000
+      internalID: 1108493763797897340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_13
+      rect:
+        serializedVersion: 2
+        x: 2313
+        y: 993
+        width: 134
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9447d67af6de54600800000000000000
+      internalID: 452028401426723913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_14
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 673
+        width: 140
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 704ecfd0d83e23270800000000000000
+      internalID: 8228889664123888647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_15
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 673
+        width: 146
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 369ae79276ca01da0800000000000000
+      internalID: -5976087146442872477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_16
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 673
+        width: 151
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe975d23bdf1cc710800000000000000
+      internalID: 1714780584432466415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_17
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 673
+        width: 156
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fa2e2d6bd717f320800000000000000
+      internalID: 2591566341772028656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_18
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 353
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe148661b5a19d310800000000000000
+      internalID: 1430203335187120623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_19
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 353
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 256352425cbf21880800000000000000
+      internalID: -8641567910837012910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_20
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 353
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 138823ae1306c9a10800000000000000
+      internalID: 1917513308851832881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_21
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 353
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7bac47470f589530800000000000000
+      internalID: 3861941165335817085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_22
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 353
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02f08e41ba0889830800000000000000
+      internalID: 4078150934862499616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_23
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 353
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20dce15c3d502a390800000000000000
+      internalID: -7808672396803650302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_24
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 33
+        width: 156
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf467faf4620d1530800000000000000
+      internalID: 3827217891065292027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bloat_25
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 33
+        width: 156
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 262b93983d9bd54c0800000000000000
+      internalID: -4297074151250087326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Bloat_0: -5893240273976911759
+      Bloat_1: -2409721797201971757
+      Bloat_10: -4695000243896965129
+      Bloat_11: -4555488782434628931
+      Bloat_12: 1108493763797897340
+      Bloat_13: 452028401426723913
+      Bloat_14: 8228889664123888647
+      Bloat_15: -5976087146442872477
+      Bloat_16: 1714780584432466415
+      Bloat_17: 2591566341772028656
+      Bloat_18: 1430203335187120623
+      Bloat_19: -8641567910837012910
+      Bloat_2: -2563754509612325010
+      Bloat_20: 1917513308851832881
+      Bloat_21: 3861941165335817085
+      Bloat_22: 4078150934862499616
+      Bloat_23: -7808672396803650302
+      Bloat_24: 3827217891065292027
+      Bloat_25: -4297074151250087326
+      Bloat_3: -6647868591945888981
+      Bloat_4: 3269691957662532366
+      Bloat_5: -762084468761092630
+      Bloat_6: -5212469090442372987
+      Bloat_7: 4536345163418626688
+      Bloat_8: -2779276577354552670
+      Bloat_9: -7925113762318251275
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

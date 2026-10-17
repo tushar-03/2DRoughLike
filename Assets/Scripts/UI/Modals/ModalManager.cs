@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -22,13 +22,14 @@ namespace Roughlike.UI
     /// game, is fully navigable with keyboard, mouse or gamepad (stick/D-pad, South confirms, East or Esc cancels) and
     /// reacts to events raised by the world, so gameplay code never knows the UI exists.
     /// </summary>
-    public sealed class ModalManager : MonoBehaviour
+    public sealed partial class ModalManager : MonoBehaviour
     {
         sealed class Window
         {
             public GameObject Root;
             public Action Cancel;
             public Selectable First;
+            public bool Pauses;
         }
 
         UiRoot _root;
@@ -38,15 +39,24 @@ namespace Roughlike.UI
 
         public bool IsOpen => _stack.Count > 0;
         public int Depth => _stack.Count;
+        /// <summary>When the last menu closed (so the same Esc press does not immediately reopen the pause menu).</summary>
+        public float LastEmptiedAt { get; private set; } = -10f;
 
-        public static ModalManager Create(UiRoot root, PlayerInventory inventory)
+        bool _pauseGame = true;
+
+        /// <summary>
+        /// Creates the menu stack. In gameplay <paramref name="inventory"/> is the player's (for shops) and menus pause the
+        /// game; the main menu passes null and false.
+        /// </summary>
+        public static ModalManager Create(UiRoot root, PlayerInventory inventory, bool pauseGame = true)
         {
             var go = new GameObject("Modal Manager");
             go.transform.SetParent(root.transform, false);
             var m = go.AddComponent<ModalManager>();
             m._root = root;
             m._inventory = inventory;
-            m._player = inventory.transform;
+            m._player = inventory != null ? inventory.transform : null;
+            m._pauseGame = pauseGame;
             return m;
         }
 
@@ -76,7 +86,7 @@ namespace Roughlike.UI
             var kb = Keyboard.current;
             var pad = Gamepad.current;
             bool cancel = (kb != null && kb.escapeKey.wasPressedThisFrame) || (pad != null && pad.buttonEast.wasPressedThisFrame);
-            if (cancel) _stack.Peek().Cancel?.Invoke();
+            if (cancel && !ControlsView.IsRebinding && Time.unscaledTime - _openedAt > 0.15f) _stack.Peek().Cancel?.Invoke();
 
             // keep something selected so the controller always has focus (a mouse click on empty space clears it)
             if (_stack.Count > 0 && EventSystem.current != null && EventSystem.current.currentSelectedGameObject == null)
@@ -101,12 +111,15 @@ namespace Roughlike.UI
             var t = UiKit.Label(inner, "Title", title, 36, Color.white, TextAnchor.MiddleCenter, true);
             UiKit.Place(t.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -12f), new Vector2(-30f, 52f));
 
-            var w = new Window { Root = dim.gameObject, Cancel = cancel };
+            var w = new Window { Root = dim.gameObject, Cancel = cancel, Pauses = _pauseGame };
             _stack.Push(w);
-            PauseGate.Push();
+            if (w.Pauses) PauseGate.Push();
+            _openedAt = Time.unscaledTime;   // the key press that opened a menu must not also close it
             content = inner;
             return w;
         }
+
+        float _openedAt = -1f;
 
         void Focus(Window w, Selectable first)
         {
@@ -118,8 +131,10 @@ namespace Roughlike.UI
         {
             if (_stack.Count == 0) return;
             Window w = _stack.Pop();
+            w.Root.SetActive(false);   // gone at once; destroyed at the end of the frame
             Destroy(w.Root);
-            PauseGate.Pop();
+            if (w.Pauses) PauseGate.Pop();
+            if (_stack.Count == 0) LastEmptiedAt = Time.unscaledTime;
             if (_stack.Count > 0)
             {
                 Window prev = _stack.Peek();
@@ -329,3 +344,4 @@ namespace Roughlike.UI
         }
     }
 }
+

@@ -208,7 +208,7 @@ namespace Roughlike.Editor
             var camGo = new GameObject("Main Camera") { tag = "MainCamera" };
             var cam = camGo.AddComponent<Camera>();
             cam.orthographic = true;
-            cam.orthographicSize = 6.5f;
+            cam.orthographicSize = 5.6f;
             cam.clearFlags = CameraClearFlags.SolidColor;
             cam.backgroundColor = new Color(0.07f, 0.09f, 0.13f);
             camGo.transform.position = new Vector3(0f, 3f, -10f);
@@ -222,7 +222,7 @@ namespace Roughlike.Editor
             var vcamGo = new GameObject("CM Player Camera");
             var vcam = vcamGo.AddComponent<CinemachineCamera>();
             vcam.Follow = targetGo.transform;
-            vcam.Lens.OrthographicSize = 6.5f;
+            vcam.Lens.OrthographicSize = 5.6f;
             vcam.Lens.NearClipPlane = -50f;
             vcam.Lens.FarClipPlane = 50f;
 

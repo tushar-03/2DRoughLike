@@ -1,0 +1,728 @@
+fileFormatVersion: 2
+guid: 490b2f75b86aa6b4cb7684b88e3ea14e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3547004905418103540
+    second: DrownedWretch_0
+  - first:
+      213: -6060620330253085100
+    second: DrownedWretch_1
+  - first:
+      213: 3864908843017805649
+    second: DrownedWretch_2
+  - first:
+      213: 3044976012602453483
+    second: DrownedWretch_3
+  - first:
+      213: -6260875672411678300
+    second: DrownedWretch_4
+  - first:
+      213: -5071526476731034979
+    second: DrownedWretch_5
+  - first:
+      213: 6227815691957562338
+    second: DrownedWretch_6
+  - first:
+      213: 1415805634880593284
+    second: DrownedWretch_7
+  - first:
+      213: 22008789931418624
+    second: DrownedWretch_8
+  - first:
+      213: -8576469572575705855
+    second: DrownedWretch_9
+  - first:
+      213: -6099497156798103743
+    second: DrownedWretch_10
+  - first:
+      213: -4539552936204609620
+    second: DrownedWretch_11
+  - first:
+      213: -2316961117744266155
+    second: DrownedWretch_12
+  - first:
+      213: -8289021197951489294
+    second: DrownedWretch_13
+  - first:
+      213: -5673263621345483094
+    second: DrownedWretch_14
+  - first:
+      213: -6802357860478400789
+    second: DrownedWretch_15
+  - first:
+      213: -4552325008516420407
+    second: DrownedWretch_16
+  - first:
+      213: 2685565334214548766
+    second: DrownedWretch_17
+  - first:
+      213: -353521135101358142
+    second: DrownedWretch_18
+  - first:
+      213: -5272798323207569323
+    second: DrownedWretch_19
+  - first:
+      213: -9120743064674935390
+    second: DrownedWretch_20
+  - first:
+      213: -656229763959419281
+    second: DrownedWretch_21
+  - first:
+      213: -5058468694854744200
+    second: DrownedWretch_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DrownedWretch_0
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 1311
+        width: 88
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fa930c2b2e793130800000000000000
+      internalID: 3547004905418103540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_1
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 1311
+        width: 87
+        height: 198
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45611c09be954eba0800000000000000
+      internalID: -6060620330253085100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_2
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 1311
+        width: 87
+        height: 198
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15f97559d1ae2a530800000000000000
+      internalID: 3864908843017805649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_3
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 1311
+        width: 88
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bed21ccec8de14a20800000000000000
+      internalID: 3044976012602453483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_4
+      rect:
+        serializedVersion: 2
+        x: 1387
+        y: 1311
+        width: 90
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a9540b5fb6ec19a0800000000000000
+      internalID: -6260875672411678300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_5
+      rect:
+        serializedVersion: 2
+        x: 1707
+        y: 1311
+        width: 90
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d92557d1a815e99b0800000000000000
+      internalID: -5071526476731034979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_6
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 991
+        width: 98
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ebebbd1065ad6650800000000000000
+      internalID: 6227815691957562338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_7
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 991
+        width: 82
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48ddd0249b3f5a310800000000000000
+      internalID: 1415805634880593284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_8
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 991
+        width: 82
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0046cc9b0e03e4000800000000000000
+      internalID: 22008789931418624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_9
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 991
+        width: 88
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 105cda32d524af880800000000000000
+      internalID: -8576469572575705855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_10
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 991
+        width: 102
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14f3b8407ab3a5ba0800000000000000
+      internalID: -6099497156798103743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_11
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 991
+        width: 114
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca75176f7a44001c0800000000000000
+      internalID: -4539552936204609620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_12
+      rect:
+        serializedVersion: 2
+        x: 2015
+        y: 991
+        width: 118
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5540672a32088dfd0800000000000000
+      internalID: -2316961117744266155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_13
+      rect:
+        serializedVersion: 2
+        x: 2340
+        y: 991
+        width: 108
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fa2b68332b77fc80800000000000000
+      internalID: -8289021197951489294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_14
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 671
+        width: 103
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa66e8c6bc48441b0800000000000000
+      internalID: -5673263621345483094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_15
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 671
+        width: 110
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be6491bf09b2991a0800000000000000
+      internalID: -6802357860478400789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_16
+      rect:
+        serializedVersion: 2
+        x: 739
+        y: 671
+        width: 87
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cc60452684e2d0c0800000000000000
+      internalID: -4552325008516420407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_17
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 671
+        width: 89
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1d16f6517b054520800000000000000
+      internalID: 2685565334214548766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_18
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 351
+        width: 90
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cfc0b1966a081bf0800000000000000
+      internalID: -353521135101358142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_19
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 351
+        width: 118
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55000fc8cd143d6b0800000000000000
+      internalID: -5272798323207569323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_20
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 351
+        width: 110
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ad5176a18c9c6180800000000000000
+      internalID: -9120743064674935390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_21
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 31
+        width: 110
+        height: 198
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6e092ca18a94e6f0800000000000000
+      internalID: -656229763959419281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedWretch_22
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 31
+        width: 113
+        height: 198
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 877cfbfd585bcc9b0800000000000000
+      internalID: -5058468694854744200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      DrownedWretch_0: 3547004905418103540
+      DrownedWretch_1: -6060620330253085100
+      DrownedWretch_10: -6099497156798103743
+      DrownedWretch_11: -4539552936204609620
+      DrownedWretch_12: -2316961117744266155
+      DrownedWretch_13: -8289021197951489294
+      DrownedWretch_14: -5673263621345483094
+      DrownedWretch_15: -6802357860478400789
+      DrownedWretch_16: -4552325008516420407
+      DrownedWretch_17: 2685565334214548766
+      DrownedWretch_18: -353521135101358142
+      DrownedWretch_19: -5272798323207569323
+      DrownedWretch_2: 3864908843017805649
+      DrownedWretch_20: -9120743064674935390
+      DrownedWretch_21: -656229763959419281
+      DrownedWretch_22: -5058468694854744200
+      DrownedWretch_3: 3044976012602453483
+      DrownedWretch_4: -6260875672411678300
+      DrownedWretch_5: -5071526476731034979
+      DrownedWretch_6: 6227815691957562338
+      DrownedWretch_7: 1415805634880593284
+      DrownedWretch_8: 22008789931418624
+      DrownedWretch_9: -8576469572575705855
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

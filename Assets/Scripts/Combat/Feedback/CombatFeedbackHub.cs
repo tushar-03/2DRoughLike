@@ -124,9 +124,12 @@ namespace Roughlike.Combat
 
         void Spark(Vector2 pos, float size, Color c) => _sparks.Get().Play(pos, size, c);
 
+        /// <summary>Global switch from the settings menu; combined with the per-hub toggle.</summary>
+        public static bool DamageNumbersEnabled = true;
+
         void Number(Vector2 pos, string text, Color c, float size, float life = 0.7f)
         {
-            if (!showDamageNumbers) return;
+            if (!showDamageNumbers || !DamageNumbersEnabled) return;
             _numbers.Get().Play(pos, text, c, size, life);
         }
     }

@@ -1,0 +1,728 @@
+fileFormatVersion: 2
+guid: b9a63f29f49af03468db82500f0413e1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2066994412078179199
+    second: EelArcher_0
+  - first:
+      213: -4727432245898550859
+    second: EelArcher_1
+  - first:
+      213: -6905115335122945714
+    second: EelArcher_2
+  - first:
+      213: 4740316332934761872
+    second: EelArcher_3
+  - first:
+      213: -3935089893083508956
+    second: EelArcher_4
+  - first:
+      213: -4181691287448985336
+    second: EelArcher_5
+  - first:
+      213: -3691144971360922654
+    second: EelArcher_6
+  - first:
+      213: -9033320393479998269
+    second: EelArcher_7
+  - first:
+      213: 7749259636862527741
+    second: EelArcher_8
+  - first:
+      213: -4047312751069707869
+    second: EelArcher_9
+  - first:
+      213: -7181929200565797283
+    second: EelArcher_10
+  - first:
+      213: -2750014030598628956
+    second: EelArcher_11
+  - first:
+      213: 7682748258131935704
+    second: EelArcher_12
+  - first:
+      213: -6549946182837514461
+    second: EelArcher_13
+  - first:
+      213: 6248567620870153804
+    second: EelArcher_14
+  - first:
+      213: -3756800514342081843
+    second: EelArcher_15
+  - first:
+      213: 5249648374130795997
+    second: EelArcher_16
+  - first:
+      213: 5587460561426177757
+    second: EelArcher_17
+  - first:
+      213: -3416532451048584144
+    second: EelArcher_18
+  - first:
+      213: -9104652402070661478
+    second: EelArcher_19
+  - first:
+      213: 2567327615444805749
+    second: EelArcher_20
+  - first:
+      213: -2576326863967442674
+    second: EelArcher_21
+  - first:
+      213: -7195359086353744317
+    second: EelArcher_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: EelArcher_0
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 1311
+        width: 103
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18cdc5b988f8053e0800000000000000
+      internalID: -2066994412078179199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_1
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 1311
+        width: 103
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b16d7b5b69c46eb0800000000000000
+      internalID: -4727432245898550859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_2
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 1311
+        width: 103
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e49f4e4003a1c20a0800000000000000
+      internalID: -6905115335122945714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_3
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 1311
+        width: 103
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09d0f8be69cf8c140800000000000000
+      internalID: 4740316332934761872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_4
+      rect:
+        serializedVersion: 2
+        x: 1374
+        y: 1311
+        width: 103
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42f078b5790c369c0800000000000000
+      internalID: -3935089893083508956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_5
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 1311
+        width: 103
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 801e14bfde5a7f5c0800000000000000
+      internalID: -4181691287448985336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_6
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 991
+        width: 102
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e3109f743b66ccc0800000000000000
+      internalID: -3691144971360922654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_7
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 991
+        width: 88
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c4355476f233a280800000000000000
+      internalID: -9033320393479998269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_8
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 991
+        width: 91
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df8a6771596ea8b60800000000000000
+      internalID: 7749259636862527741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_9
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 991
+        width: 97
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a1c4991f7e05d7c0800000000000000
+      internalID: -4047312751069707869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_10
+      rect:
+        serializedVersion: 2
+        x: 1365
+        y: 991
+        width: 110
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5e354e8179a45c90800000000000000
+      internalID: -7181929200565797283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_11
+      rect:
+        serializedVersion: 2
+        x: 1683
+        y: 991
+        width: 124
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a914d23fccf5d9d0800000000000000
+      internalID: -2750014030598628956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_12
+      rect:
+        serializedVersion: 2
+        x: 2005
+        y: 991
+        width: 126
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d184b8f5da9e9a60800000000000000
+      internalID: 7682748258131935704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_13
+      rect:
+        serializedVersion: 2
+        x: 2329
+        y: 991
+        width: 118
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32f4b0a56aae915a0800000000000000
+      internalID: -6549946182837514461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_14
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 671
+        width: 125
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4629f4152f57b650800000000000000
+      internalID: 6248567620870153804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_15
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 671
+        width: 133
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcaa2aa26d92ddbc0800000000000000
+      internalID: -3756800514342081843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_16
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 671
+        width: 163
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd5e5c7e16f7ad840800000000000000
+      internalID: 5249648374130795997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_17
+      rect:
+        serializedVersion: 2
+        x: 1061
+        y: 671
+        width: 163
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddedf48e6c5aa8d40800000000000000
+      internalID: 5587460561426177757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_18
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 351
+        width: 163
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03c87ab56d90690d0800000000000000
+      internalID: -3416532451048584144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_19
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 351
+        width: 156
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a96db2bf0e6c5a180800000000000000
+      internalID: -9104652402070661478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_20
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 351
+        width: 156
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57863ac2ddaf0a320800000000000000
+      internalID: 2567327615444805749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_21
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 31
+        width: 162
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e09aceffd5c0f3cd0800000000000000
+      internalID: -2576326863967442674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EelArcher_22
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 31
+        width: 166
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34e718a9803f42c90800000000000000
+      internalID: -7195359086353744317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      EelArcher_0: -2066994412078179199
+      EelArcher_1: -4727432245898550859
+      EelArcher_10: -7181929200565797283
+      EelArcher_11: -2750014030598628956
+      EelArcher_12: 7682748258131935704
+      EelArcher_13: -6549946182837514461
+      EelArcher_14: 6248567620870153804
+      EelArcher_15: -3756800514342081843
+      EelArcher_16: 5249648374130795997
+      EelArcher_17: 5587460561426177757
+      EelArcher_18: -3416532451048584144
+      EelArcher_19: -9104652402070661478
+      EelArcher_2: -6905115335122945714
+      EelArcher_20: 2567327615444805749
+      EelArcher_21: -2576326863967442674
+      EelArcher_22: -7195359086353744317
+      EelArcher_3: 4740316332934761872
+      EelArcher_4: -3935089893083508956
+      EelArcher_5: -4181691287448985336
+      EelArcher_6: -3691144971360922654
+      EelArcher_7: -9033320393479998269
+      EelArcher_8: 7749259636862527741
+      EelArcher_9: -4047312751069707869
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

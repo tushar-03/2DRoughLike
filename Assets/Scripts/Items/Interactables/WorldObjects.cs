@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Roughlike.Combat;
 using Roughlike.Core;
@@ -147,8 +147,12 @@ namespace Roughlike.Items
     {
         ItemInstance _contents;
         Transform _lid;
+        SpriteRenderer _paintedBody;
+        Sprite _paintedOpen;
         bool _opened;
 
+        /// <summary>Index of the room this chest sits in (used to restore saves).</summary>
+        public int CellIndex { get; set; } = -1;
         public bool Opened => _opened;
         public ItemInstance Contents => _contents;
         public override string Prompt => _opened ? "" : "Open chest";
@@ -160,11 +164,31 @@ namespace Roughlike.Items
             _lid = lid;
         }
 
+        /// <summary>Painted chests swap to an open sprite instead of moving a lid.</summary>
+        public void UsePaintedSprites(SpriteRenderer body, Sprite open)
+        {
+            _paintedBody = body;
+            _paintedOpen = open;
+        }
+
+        void ShowOpen()
+        {
+            if (_lid != null) { _lid.localPosition += new Vector3(0.35f, 0.25f, 0f); _lid.localRotation = Quaternion.Euler(0f, 0f, -25f); }
+            if (_paintedBody != null && _paintedOpen != null) _paintedBody.sprite = _paintedOpen;
+        }
+
+        /// <summary>Marks the chest open without dropping its contents (loading a save).</summary>
+        public void RestoreOpened()
+        {
+            _opened = true;
+            ShowOpen();
+        }
+
         public override void Interact(PlayerInventory inventory, PlayerController player)
         {
             if (_opened) return;
             _opened = true;
-            if (_lid != null) { _lid.localPosition += new Vector3(0.35f, 0.25f, 0f); _lid.localRotation = Quaternion.Euler(0f, 0f, -25f); }
+            ShowOpen();
             if (_contents != null) LootFactory.DropItem(_contents, (Vector2)transform.position + new Vector2(0f, 0.2f));
         }
     }
@@ -173,6 +197,7 @@ namespace Roughlike.Items
     public sealed class ShopStand : Interactable
     {
         public ShopStock Stock { get; private set; }
+        public int CellIndex { get; set; } = -1;
         public override string Prompt => "Browse wares";
         public override Color PromptColour => new Color(1f, 0.9f, 0.6f);
 
@@ -194,7 +219,9 @@ namespace Roughlike.Items
         bool _used;
         float _t;
 
+        public int CellIndex { get; set; } = -1;
         public bool Used => _used;
+        public void RestoreUsed() => _used = true;
         public IList<MutationData> Choices => _choices;
         public override string Prompt => _used ? "" : "Mutation altar";
         public override Color PromptColour => new Color(0.8f, 0.5f, 1f);
@@ -252,3 +279,4 @@ namespace Roughlike.Items
         }
     }
 }
+

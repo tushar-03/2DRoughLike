@@ -70,6 +70,13 @@ namespace Roughlike.Combat
             IsDead = false;
         }
 
+        /// <summary>Sets current health directly (loading a save). Does not raise hit events.</summary>
+        public void SetCurrent(float value)
+        {
+            Current = Mathf.Clamp(value, 0f, maxHealth);
+            IsDead = Current <= 0f;
+        }
+
         public void Heal(float amount)
         {
             if (IsDead) return;
@@ -166,4 +173,5 @@ namespace Roughlike.Combat
         }
     }
 }
+
 

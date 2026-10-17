@@ -37,7 +37,18 @@ namespace Roughlike.Enemies
             spriteGo.transform.SetParent(visualRoot, false);
             var sr = spriteGo.AddComponent<SpriteRenderer>();
             sr.sortingOrder = 8;
-            if (def.sprite != null)
+            SpriteAnimator animator = null;
+            if (def.art != null)
+            {
+                // painted art carries its own colours and is already feet-pivoted at world scale
+                sr.sprite = def.art.Prop("idle");
+                sr.color = Color.white;
+                animator = spriteGo.AddComponent<SpriteAnimator>();
+                animator.Bind(def.art);
+                animator.Loop("idle");
+                spriteGo.AddComponent<EnemyAnimDriver>();
+            }
+            else if (def.sprite != null)
             {
                 sr.sprite = def.sprite;
                 sr.color = def.tint;

@@ -1,0 +1,546 @@
+fileFormatVersion: 2
+guid: 0843f557409cb81459b53651b60f8173
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2338515020569976519
+    second: BackdropNear_0
+  - first:
+      213: 4446400298504075131
+    second: BackdropNear_1
+  - first:
+      213: -5734201896020297197
+    second: BackdropNear_2
+  - first:
+      213: -1536074443134632896
+    second: BackdropNear_3
+  - first:
+      213: -6908307534435969466
+    second: BackdropNear_4
+  - first:
+      213: 5767084037502093060
+    second: BackdropNear_5
+  - first:
+      213: -2720530525923713557
+    second: BackdropNear_6
+  - first:
+      213: -795270349178684274
+    second: BackdropNear_7
+  - first:
+      213: -2872731120735378734
+    second: BackdropNear_8
+  - first:
+      213: -4273322374386881008
+    second: BackdropNear_9
+  - first:
+      213: 6085422345167038923
+    second: BackdropNear_10
+  - first:
+      213: 305235484250493410
+    second: BackdropNear_11
+  - first:
+      213: -4600444500345541155
+    second: BackdropNear_12
+  - first:
+      213: -7568528181305347180
+    second: BackdropNear_13
+  - first:
+      213: 3977553008451263894
+    second: BackdropNear_14
+  - first:
+      213: 4036931547738086409
+    second: BackdropNear_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BackdropNear_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 618
+        width: 86
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 931e2019afceb8fd0800000000000000
+      internalID: -2338515020569976519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropNear_1
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 677
+        width: 86
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b77b6817389c4bd30800000000000000
+      internalID: 4446400298504075131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropNear_2
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 327
+        width: 120
+        height: 427
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31ab655b1c50c60b0800000000000000
+      internalID: -5734201896020297197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropNear_3
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 568
+        width: 86
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04c7764be64ceaae0800000000000000
+      internalID: -1536074443134632896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropNear_4
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 697
+        width: 86
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6461ac236e2c020a0800000000000000
+      internalID: -6908307534435969466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropNear_5
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 647
+        width: 86
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4074325706cc80050800000000000000
+      internalID: 5767084037502093060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropNear_6
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 618
+        width: 86
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bedd5b196ebbe3ad0800000000000000
+      internalID: -2720530525923713557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropNear_7
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 677
+        width: 86
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8cbdc8b4d1a6f4f0800000000000000
+      internalID: -795270349178684274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropNear_8
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 327
+        width: 120
+        height: 427
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d2ab5d14420228d0800000000000000
+      internalID: -2872731120735378734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropNear_9
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 568
+        width: 86
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01ee0f701fb12b4c0800000000000000
+      internalID: -4273322374386881008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropNear_10
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 697
+        width: 86
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc9e7e78163c37450800000000000000
+      internalID: 6085422345167038923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropNear_11
+      rect:
+        serializedVersion: 2
+        x: 1157
+        y: 647
+        width: 86
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e158934e0a6c3400800000000000000
+      internalID: 305235484250493410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropNear_12
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 0
+        width: 142
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddd2104e910f720c0800000000000000
+      internalID: -4600444500345541155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropNear_13
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 0
+        width: 222
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 493f2c808bf27f690800000000000000
+      internalID: -7568528181305347180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropNear_14
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 0
+        width: 142
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69d1600236b133730800000000000000
+      internalID: 3977553008451263894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackdropNear_15
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 0
+        width: 222
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90c1f75aadf060830800000000000000
+      internalID: 4036931547738086409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BackdropNear_0: -2338515020569976519
+      BackdropNear_1: 4446400298504075131
+      BackdropNear_10: 6085422345167038923
+      BackdropNear_11: 305235484250493410
+      BackdropNear_12: -4600444500345541155
+      BackdropNear_13: -7568528181305347180
+      BackdropNear_14: 3977553008451263894
+      BackdropNear_15: 4036931547738086409
+      BackdropNear_2: -5734201896020297197
+      BackdropNear_3: -1536074443134632896
+      BackdropNear_4: -6908307534435969466
+      BackdropNear_5: 5767084037502093060
+      BackdropNear_6: -2720530525923713557
+      BackdropNear_7: -795270349178684274
+      BackdropNear_8: -2872731120735378734
+      BackdropNear_9: -4273322374386881008
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

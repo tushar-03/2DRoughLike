@@ -141,7 +141,7 @@ namespace Roughlike.Rooms
                 GUI.Label(new Rect(panel.x + 20, panel.y + 205, panel.width - 40, 24), "(The next biome and Cell banking arrive in later milestones.)", _small);
 
             GUI.Label(new Rect(panel.x + 20, panel.y + 240, panel.width - 40, 48),
-                "[R] new run, new seed        [T] retry this seed\n(permadeath: weapons, health and progress reset)", _label);
+                "[R] new run, new seed     [T] retry this seed     [M] main menu\n(permadeath: weapons, health and progress reset)", _label);
         }
 #endif
     }

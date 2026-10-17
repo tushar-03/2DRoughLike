@@ -1,0 +1,728 @@
+fileFormatVersion: 2
+guid: ebb30b0488ebc514aae38dcdcf705e03
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7035326521445925560
+    second: DrownedGrunt_0
+  - first:
+      213: -3295295001252696750
+    second: DrownedGrunt_1
+  - first:
+      213: -4671662988556797908
+    second: DrownedGrunt_2
+  - first:
+      213: -2631092416873653710
+    second: DrownedGrunt_3
+  - first:
+      213: 6942818880158272219
+    second: DrownedGrunt_4
+  - first:
+      213: 8331662944556318181
+    second: DrownedGrunt_5
+  - first:
+      213: 5095180946784795203
+    second: DrownedGrunt_6
+  - first:
+      213: -4698491403584689910
+    second: DrownedGrunt_7
+  - first:
+      213: 3666805795836747189
+    second: DrownedGrunt_8
+  - first:
+      213: 7437496945162999273
+    second: DrownedGrunt_9
+  - first:
+      213: 6866804620209424456
+    second: DrownedGrunt_10
+  - first:
+      213: -7167105574915051399
+    second: DrownedGrunt_11
+  - first:
+      213: -2079527353735824102
+    second: DrownedGrunt_12
+  - first:
+      213: -7366628810236939272
+    second: DrownedGrunt_13
+  - first:
+      213: -3866704504004713450
+    second: DrownedGrunt_14
+  - first:
+      213: 7516728278126019961
+    second: DrownedGrunt_15
+  - first:
+      213: -1337486132381015396
+    second: DrownedGrunt_16
+  - first:
+      213: -1401343549719174898
+    second: DrownedGrunt_17
+  - first:
+      213: 4019876205846560467
+    second: DrownedGrunt_18
+  - first:
+      213: 1269860510004435001
+    second: DrownedGrunt_19
+  - first:
+      213: 9168676331343209679
+    second: DrownedGrunt_20
+  - first:
+      213: 5844499884903006356
+    second: DrownedGrunt_21
+  - first:
+      213: 4277853362726689259
+    second: DrownedGrunt_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DrownedGrunt_0
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 1311
+        width: 140
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b24bad423082a160800000000000000
+      internalID: 7035326521445925560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_1
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 1311
+        width: 136
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25d6634d7a2c442d0800000000000000
+      internalID: -3295295001252696750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_2
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 1311
+        width: 136
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c287bb0734bea2fb0800000000000000
+      internalID: -4671662988556797908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_3
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 1311
+        width: 140
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23a9501136b7c7bd0800000000000000
+      internalID: -2631092416873653710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_4
+      rect:
+        serializedVersion: 2
+        x: 1374
+        y: 1311
+        width: 143
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bda85b3acf8d95060800000000000000
+      internalID: 6942818880158272219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_5
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 1311
+        width: 143
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ed70961e4300a370800000000000000
+      internalID: 8331662944556318181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_6
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 991
+        width: 144
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34a327f5318b5b640800000000000000
+      internalID: 5095180946784795203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_7
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 991
+        width: 131
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a09ab1d46fa9bceb0800000000000000
+      internalID: -4698491403584689910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_8
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 991
+        width: 127
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bd5139917c13e230800000000000000
+      internalID: 3666805795836747189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_9
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 991
+        width: 137
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e55e7ae01c473760800000000000000
+      internalID: 7437496945162999273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_10
+      rect:
+        serializedVersion: 2
+        x: 1365
+        y: 991
+        width: 153
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84808919b6acb4f50800000000000000
+      internalID: 6866804620209424456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_11
+      rect:
+        serializedVersion: 2
+        x: 1683
+        y: 991
+        width: 167
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 970777bd373598c90800000000000000
+      internalID: -7167105574915051399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_12
+      rect:
+        serializedVersion: 2
+        x: 2005
+        y: 991
+        width: 169
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1d3edbb3e80423e0800000000000000
+      internalID: -2079527353735824102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_13
+      rect:
+        serializedVersion: 2
+        x: 2329
+        y: 991
+        width: 161
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f33bad802a74c990800000000000000
+      internalID: -7366628810236939272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_14
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 671
+        width: 168
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61465638db4b65ac0800000000000000
+      internalID: -3866704504004713450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_15
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 671
+        width: 140
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 975c5da2b88c05860800000000000000
+      internalID: 7516728278126019961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_16
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 671
+        width: 141
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c922b6be27b407de0800000000000000
+      internalID: -1337486132381015396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_17
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 671
+        width: 142
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0124b6577d6d8ce0800000000000000
+      internalID: -1401343549719174898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_18
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 351
+        width: 145
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3de778a6c1879c730800000000000000
+      internalID: 4019876205846560467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_19
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 351
+        width: 180
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9385c15e7637f9110800000000000000
+      internalID: 1269860510004435001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_20
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 351
+        width: 177
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc46e3eab8ead3f70800000000000000
+      internalID: 9168676331343209679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_21
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 31
+        width: 141
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49084790ea5db1150800000000000000
+      internalID: 5844499884903006356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrownedGrunt_22
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 31
+        width: 148
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be9d886e7fcfd5b30800000000000000
+      internalID: 4277853362726689259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      DrownedGrunt_0: 7035326521445925560
+      DrownedGrunt_1: -3295295001252696750
+      DrownedGrunt_10: 6866804620209424456
+      DrownedGrunt_11: -7167105574915051399
+      DrownedGrunt_12: -2079527353735824102
+      DrownedGrunt_13: -7366628810236939272
+      DrownedGrunt_14: -3866704504004713450
+      DrownedGrunt_15: 7516728278126019961
+      DrownedGrunt_16: -1337486132381015396
+      DrownedGrunt_17: -1401343549719174898
+      DrownedGrunt_18: 4019876205846560467
+      DrownedGrunt_19: 1269860510004435001
+      DrownedGrunt_2: -4671662988556797908
+      DrownedGrunt_20: 9168676331343209679
+      DrownedGrunt_21: 5844499884903006356
+      DrownedGrunt_22: 4277853362726689259
+      DrownedGrunt_3: -2631092416873653710
+      DrownedGrunt_4: 6942818880158272219
+      DrownedGrunt_5: 8331662944556318181
+      DrownedGrunt_6: 5095180946784795203
+      DrownedGrunt_7: -4698491403584689910
+      DrownedGrunt_8: 3666805795836747189
+      DrownedGrunt_9: 7437496945162999273
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

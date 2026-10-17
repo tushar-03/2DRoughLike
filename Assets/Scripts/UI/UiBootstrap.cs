@@ -1,7 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Roughlike.Combat;
 using Roughlike.Items;
 using Roughlike.Player;
+using Roughlike.Rooms;
 
 namespace Roughlike.UI
 {
@@ -9,12 +10,17 @@ namespace Roughlike.UI
     public sealed class UiBootstrap : MonoBehaviour
     {
         [SerializeField] PlayerController player;
+        [SerializeField] RunManager run;
 
         public UiRoot Root { get; private set; }
         public HudView Hud { get; private set; }
         public ModalManager Modals { get; private set; }
 
-        public void Bind(PlayerController p) => player = p;
+        public void Bind(PlayerController p, RunManager r = null)
+        {
+            player = p;
+            run = r;
+        }
 
         void Start() => Build();
 
@@ -35,6 +41,9 @@ namespace Roughlike.UI
                 player.GetComponent<SkillRunner>(), player.GetComponent<PlayerCombat>());
             ToastView.Create(Root);
             Modals = ModalManager.Create(Root, inventory);
+            if (run != null) PauseController.Create(transform, Modals, run);
+            if (GetComponent<SettingsBootstrap>() == null) gameObject.AddComponent<SettingsBootstrap>();
         }
     }
 }
+

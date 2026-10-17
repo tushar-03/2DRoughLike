@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0de942adc2ec4748b16e83df1836b0e, type: 3}
+  m_Name: BellWisp
+  m_EditorClassIdentifier: Roughlike.Enemies::Roughlike.Enemies.EnemyDefinition
+  displayName: Bell-Wisp
+  archetype: 2
+  maxHealth: 22
+  size: {x: 0.9, y: 0.9}
+  art: {fileID: 11400000, guid: 5e701a5a0ac2b7347963c50a0488d518, type: 2}
+  sprite: {fileID: 0}
+  tint: {r: 0.6, g: 0.85, b: 1, a: 1}
+  minProgress: 0.1
+  maxPerRoom: 2
+  rewardMultiplier: 1
+  patrolSpeed: 2
+  chaseSpeed: 5
+  patrolRadius: 3.5
+  sightRange: 12
+  loseSightRange: 16
+  verticalSight: 9
+  rearAwareness: 12
+  attackRange: 1.6
+  telegraphTime: 0.8
+  activeTime: 0.6
+  recoverTime: 0.9
+  attackCooldown: 1.8
+  damage: 12
+  knockback: {x: 6, y: 3}
+  stagger: 10
+  hitOffset: {x: 1, y: 0.75}
+  hitSize: {x: 1.6, y: 1.3}
+  preferredMinDistance: 5
+  preferredMaxDistance: 8
+  projectileSpeed: 11
+  muzzleOffset: {x: 0.6, y: 0.9}
+  telegraphSize: {x: 2.2, y: 0.2}
+  aimLockFraction: 0.7
+  hoverHeight: 3.2
+  diveSpeed: 15
+  shieldReduction: 0.85
+  shieldBreakStagger: 20
+  shieldBreakTime: 3
+  backstabMultiplier: 1.3
+  chargeSpeed: 13
+  wallStunTime: 1.6
+  minion: {fileID: 0}
+  summonCount: 2
+  maxMinions: 4
+  explosionRadius: 2.6
+  staggerThreshold: 12
+  staggerTime: 0.5
+  knockbackResistance: 0
+  stunnedDamageMultiplier: 1.5

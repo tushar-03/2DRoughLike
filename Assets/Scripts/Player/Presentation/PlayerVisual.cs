@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Roughlike.Utils;
 
 namespace Roughlike.Player
 {
@@ -16,6 +18,11 @@ namespace Roughlike.Player
         [SerializeField] float breatheAmount = 0.02f;
         [SerializeField] float breatheSpeed = 2.4f;
 
+        SpriteAnimator _anim;
+
+        /// <summary>Lets another system (combat) force a clip, e.g. the shield pose. Return null to leave the clip alone.</summary>
+        public Func<string> ClipOverride;
+
         Vector2 _squash = Vector2.one;
         float _spin;
 
@@ -23,6 +30,7 @@ namespace Roughlike.Player
         {
             if (controller == null) controller = GetComponentInParent<PlayerController>();
             if (body == null) body = transform;
+            _anim = GetComponent<SpriteAnimator>();
         }
 
         void OnEnable()
@@ -65,7 +73,10 @@ namespace Roughlike.Player
 
             _squash = Vector2.Lerp(_squash, Vector2.one, 1f - Mathf.Exp(-squashRecovery * dt));
 
-            float breathe = 1f + Mathf.Sin(Time.time * breatheSpeed) * breatheAmount;
+            bool animated = _anim != null && _anim.Art != null;
+            if (animated) PickClip();
+
+            float breathe = animated ? 1f : 1f + Mathf.Sin(Time.time * breatheSpeed) * breatheAmount;
             bool idle = controller.State == PlayerState.Grounded && Mathf.Abs(controller.Velocity.x) < 0.1f;
             float by = idle ? breathe : 1f;
 
@@ -74,7 +85,7 @@ namespace Roughlike.Player
 
             body.localScale = new Vector3(_squash.x * (1f - stretch) * controller.Facing, _squash.y * by * (1f + stretch), 1f);
 
-            if (controller.State == PlayerState.Rolling)
+            if (controller.State == PlayerState.Rolling && !animated)
             {
                 _spin = -360f * controller.RollProgress * controller.Facing;
                 // Spin about the rolled body's centre (the sprite pivot is at the feet).
@@ -88,6 +99,34 @@ namespace Roughlike.Player
             {
                 body.localRotation = Quaternion.identity;
                 body.localPosition = Vector3.zero;
+            }
+        }
+
+        void PickClip()
+        {
+            string over = ClipOverride?.Invoke();
+            if (_anim.IsPlayingOnce && over == null) return;
+
+            if (over != null) { _anim.Loop(over); return; }
+
+            switch (controller.State)
+            {
+                case PlayerState.Rolling:
+                    _anim.Scrub("roll", controller.RollProgress);
+                    break;
+                case PlayerState.Airborne:
+                    _anim.Loop(controller.Velocity.y > 0.5f ? "jump" : "fall");
+                    break;
+                case PlayerState.WallSlide:
+                case PlayerState.LedgeHang:
+                    _anim.Loop("fall");
+                    break;
+                case PlayerState.Grounded:
+                    _anim.Loop(Mathf.Abs(controller.Velocity.x) > 0.5f ? "run" : "idle");
+                    break;
+                default:
+                    _anim.Loop("idle");
+                    break;
             }
         }
     }

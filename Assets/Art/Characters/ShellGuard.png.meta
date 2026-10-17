@@ -1,0 +1,780 @@
+fileFormatVersion: 2
+guid: 3226b4bf3ab19964a8711f77b2785457
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2822976629912647595
+    second: ShellGuard_0
+  - first:
+      213: -4988521524916130210
+    second: ShellGuard_1
+  - first:
+      213: -8772237826249004774
+    second: ShellGuard_2
+  - first:
+      213: -4962783360530513976
+    second: ShellGuard_3
+  - first:
+      213: 6668844402626198808
+    second: ShellGuard_4
+  - first:
+      213: 7697743660243256206
+    second: ShellGuard_5
+  - first:
+      213: 2808038567762285187
+    second: ShellGuard_6
+  - first:
+      213: 5704032193311818119
+    second: ShellGuard_7
+  - first:
+      213: 3611248615723692974
+    second: ShellGuard_8
+  - first:
+      213: -1072920732755946969
+    second: ShellGuard_9
+  - first:
+      213: 4820886143151245530
+    second: ShellGuard_10
+  - first:
+      213: -7355527345928973813
+    second: ShellGuard_11
+  - first:
+      213: -4254921154803576187
+    second: ShellGuard_12
+  - first:
+      213: -1330914726289443416
+    second: ShellGuard_13
+  - first:
+      213: 2492344375277393910
+    second: ShellGuard_14
+  - first:
+      213: -8381709815904719019
+    second: ShellGuard_15
+  - first:
+      213: 8368592707516485264
+    second: ShellGuard_16
+  - first:
+      213: 572336639299075280
+    second: ShellGuard_17
+  - first:
+      213: 7330516523087037950
+    second: ShellGuard_18
+  - first:
+      213: -3817543307049301985
+    second: ShellGuard_19
+  - first:
+      213: -4421028093643021799
+    second: ShellGuard_20
+  - first:
+      213: -3384464453805579958
+    second: ShellGuard_21
+  - first:
+      213: 4303187826601388045
+    second: ShellGuard_22
+  - first:
+      213: 7067846752858292051
+    second: ShellGuard_23
+  - first:
+      213: -5842204200682050667
+    second: ShellGuard_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ShellGuard_0
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 1951
+        width: 144
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 558c3dc36b5c2d8d0800000000000000
+      internalID: -2822976629912647595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_1
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 1951
+        width: 142
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5eebf87a1635cab0800000000000000
+      internalID: -4988521524916130210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_2
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 1951
+        width: 142
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a19ee21ac20c24680800000000000000
+      internalID: -8772237826249004774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_3
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1951
+        width: 144
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cffb5ad3d6a02bb0800000000000000
+      internalID: -4962783360530513976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_4
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 1951
+        width: 147
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81df2e0b6ae7c8c50800000000000000
+      internalID: 6668844402626198808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_5
+      rect:
+        serializedVersion: 2
+        x: 1689
+        y: 1951
+        width: 147
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8380d81311e3da60800000000000000
+      internalID: 7697743660243256206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_6
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 1631
+        width: 148
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3825113233828f620800000000000000
+      internalID: 2808038567762285187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_7
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1631
+        width: 134
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7814ebdfe0bc82f40800000000000000
+      internalID: 5704032193311818119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_8
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 1631
+        width: 130
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea3f4d79b7bbd1230800000000000000
+      internalID: 3611248615723692974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_9
+      rect:
+        serializedVersion: 2
+        x: 1046
+        y: 1631
+        width: 140
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7221ee337483c11f0800000000000000
+      internalID: -1072920732755946969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_10
+      rect:
+        serializedVersion: 2
+        x: 1361
+        y: 1631
+        width: 156
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad80221b76a37e240800000000000000
+      internalID: 4820886143151245530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_11
+      rect:
+        serializedVersion: 2
+        x: 1679
+        y: 1631
+        width: 170
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b025b32a9daebe990800000000000000
+      internalID: -7355527345928973813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_12
+      rect:
+        serializedVersion: 2
+        x: 2001
+        y: 1631
+        width: 172
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58253a4d0cb73f4c0800000000000000
+      internalID: -4254921154803576187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_13
+      rect:
+        serializedVersion: 2
+        x: 2325
+        y: 1631
+        width: 164
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a57e21ab14a78de0800000000000000
+      internalID: -1330914726289443416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_14
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 1311
+        width: 177
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f71a5a1106969220800000000000000
+      internalID: 2492344375277393910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_15
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 1311
+        width: 151
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55f2894a45f2eab80800000000000000
+      internalID: -8381709815904719019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_16
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 1311
+        width: 143
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09ec1719ab6332470800000000000000
+      internalID: 8368592707516485264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_17
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 1311
+        width: 144
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dcbc5d142951f700800000000000000
+      internalID: 572336639299075280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_18
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 991
+        width: 146
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef50cb260f93bb560800000000000000
+      internalID: 7330516523087037950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_19
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 991
+        width: 185
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1808a4a69c550bc0800000000000000
+      internalID: -3817543307049301985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_20
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 991
+        width: 184
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 912a2685f5a55a2c0800000000000000
+      internalID: -4421028093643021799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_21
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 671
+        width: 153
+        height: 286
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a416bfbc287f701d0800000000000000
+      internalID: -3384464453805579958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_22
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 671
+        width: 155
+        height: 286
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d086c5e678ef7bb30800000000000000
+      internalID: 4303187826601388045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_23
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 356
+        width: 64
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35f3407bc29061260800000000000000
+      internalID: 7067846752858292051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShellGuard_24
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 36
+        width: 64
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59b2d099b325ceea0800000000000000
+      internalID: -5842204200682050667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ShellGuard_0: -2822976629912647595
+      ShellGuard_1: -4988521524916130210
+      ShellGuard_10: 4820886143151245530
+      ShellGuard_11: -7355527345928973813
+      ShellGuard_12: -4254921154803576187
+      ShellGuard_13: -1330914726289443416
+      ShellGuard_14: 2492344375277393910
+      ShellGuard_15: -8381709815904719019
+      ShellGuard_16: 8368592707516485264
+      ShellGuard_17: 572336639299075280
+      ShellGuard_18: 7330516523087037950
+      ShellGuard_19: -3817543307049301985
+      ShellGuard_2: -8772237826249004774
+      ShellGuard_20: -4421028093643021799
+      ShellGuard_21: -3384464453805579958
+      ShellGuard_22: 4303187826601388045
+      ShellGuard_23: 7067846752858292051
+      ShellGuard_24: -5842204200682050667
+      ShellGuard_3: -4962783360530513976
+      ShellGuard_4: 6668844402626198808
+      ShellGuard_5: 7697743660243256206
+      ShellGuard_6: 2808038567762285187
+      ShellGuard_7: 5704032193311818119
+      ShellGuard_8: 3611248615723692974
+      ShellGuard_9: -1072920732755946969
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -307,8 +307,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4609603384540195848}
   - component: {fileID: 7449676851961593690}
+  - component: {fileID: 8607949709183149695}
   - component: {fileID: 1140402824562261773}
   - component: {fileID: 6448825226743088186}
+  - component: {fileID: 3471441444637521166}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -380,17 +382,30 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: ce5aa7bb515688244a1d5e9eb043cb43, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.8, y: 1.6}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &8607949709183149695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7458047260383991195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4977bec821b3bf6468c208ddf1000f7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Roughlike.Utils::Roughlike.Utils.SpriteAnimator
+  art: {fileID: 11400000, guid: e02eee5765b0c394eb078b379fea4b3e, type: 2}
 --- !u!114 &1140402824562261773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,3 +440,15 @@ MonoBehaviour:
   squashOnHit: 0
   flashDuration: 0.09
   warningColour: {r: 1, g: 0.75, b: 0.2, a: 1}
+--- !u!114 &3471441444637521166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7458047260383991195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9702acacb2f5f6e4ca8be54702a595c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Roughlike.Combat::Roughlike.Combat.PlayerCombatAnimator

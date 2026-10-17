@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Roughlike.Core;
@@ -47,6 +47,9 @@ namespace Roughlike.Combat
         /// <summary>Multiplies the damage of the next swing, then resets (parry riposte mutation).</summary>
         public float PendingHitMultiplier { get; set; } = 1f;
         float _swingBonus = 1f;
+        bool _shieldLatched;
+        /// <summary>Accessibility option: the shield button toggles instead of holding.</summary>
+        public bool ToggleBlock => SettingsService.Current.toggleBlock;
 
         PlayerController _pc;
         Health _health;
@@ -338,8 +341,21 @@ namespace Roughlike.Combat
         {
             WeaponData shieldWeapon = null;
             bool held = false;
-            if (slot1 != null && slot1.kind == WeaponKind.Shield && intent.Attack1Held) { shieldWeapon = slot1; held = true; }
-            else if (slot2 != null && slot2.kind == WeaponKind.Shield && intent.Attack2Held) { shieldWeapon = slot2; held = true; }
+            if (!ToggleBlock)
+            {
+                _shieldLatched = false;
+                if (slot1 != null && slot1.kind == WeaponKind.Shield && intent.Attack1Held) { shieldWeapon = slot1; held = true; }
+                else if (slot2 != null && slot2.kind == WeaponKind.Shield && intent.Attack2Held) { shieldWeapon = slot2; held = true; }
+            }
+            else
+            {
+                // accessibility: press once to raise the shield, press again to lower it
+                bool s1 = slot1 != null && slot1.kind == WeaponKind.Shield;
+                bool s2 = slot2 != null && slot2.kind == WeaponKind.Shield;
+                if ((s1 && intent.Attack1Pressed) || (s2 && intent.Attack2Pressed)) _shieldLatched = !_shieldLatched;
+                shieldWeapon = s1 ? slot1 : (s2 ? slot2 : null);
+                held = _shieldLatched && shieldWeapon != null;
+            }
 
             switch (_shieldPhase)
             {
@@ -428,6 +444,7 @@ namespace Roughlike.Combat
             _buffered = -1;
             _hitSet.Clear();
             if (_shieldPhase != ShieldPhase.None) _shieldPhase = ShieldPhase.None;
+            _shieldLatched = false;
             ReleaseMovementOverrides();
         }
 
@@ -465,3 +482,4 @@ namespace Roughlike.Combat
         }
     }
 }
+

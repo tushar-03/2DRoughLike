@@ -1,0 +1,598 @@
+fileFormatVersion: 2
+guid: 35e8f7e6a1e0fd842910db6f4abba0f4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6023451119312391833
+    second: BellWisp_0
+  - first:
+      213: 5167716623833434957
+    second: BellWisp_1
+  - first:
+      213: -3345906474701879569
+    second: BellWisp_2
+  - first:
+      213: 1583788038805248232
+    second: BellWisp_3
+  - first:
+      213: -6450451489885882646
+    second: BellWisp_4
+  - first:
+      213: 7164657373170191700
+    second: BellWisp_5
+  - first:
+      213: 607197216181121747
+    second: BellWisp_6
+  - first:
+      213: 7947683460734601760
+    second: BellWisp_7
+  - first:
+      213: 6653885632733321522
+    second: BellWisp_8
+  - first:
+      213: -8622064122907708958
+    second: BellWisp_9
+  - first:
+      213: 7871321677120947663
+    second: BellWisp_10
+  - first:
+      213: 4692580407969838168
+    second: BellWisp_11
+  - first:
+      213: -5201104263444082720
+    second: BellWisp_12
+  - first:
+      213: 9055601443460909396
+    second: BellWisp_13
+  - first:
+      213: 6873937082476599690
+    second: BellWisp_14
+  - first:
+      213: 7546475744787341917
+    second: BellWisp_15
+  - first:
+      213: 3065897878149550505
+    second: BellWisp_16
+  - first:
+      213: -6297393347566228406
+    second: BellWisp_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BellWisp_0
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 991
+        width: 166
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 761b47fde17686ca0800000000000000
+      internalID: -6023451119312391833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellWisp_1
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 997
+        width: 165
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4b097fb3ea67b740800000000000000
+      internalID: 5167716623833434957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellWisp_2
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 997
+        width: 165
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe607b3e9c3f091d0800000000000000
+      internalID: -3345906474701879569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellWisp_3
+      rect:
+        serializedVersion: 2
+        x: 1017
+        y: 991
+        width: 166
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e8df7c74debaf510800000000000000
+      internalID: 1583788038805248232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellWisp_4
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 985
+        width: 165
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae67670cb846b76a0800000000000000
+      internalID: -6450451489885882646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellWisp_5
+      rect:
+        serializedVersion: 2
+        x: 1654
+        y: 985
+        width: 165
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45d4131cbe9fd6360800000000000000
+      internalID: 7164657373170191700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellWisp_6
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 671
+        width: 166
+        height: 223
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d2f41ba6a23d6800800000000000000
+      internalID: 607197216181121747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellWisp_7
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 678
+        width: 166
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02a4558bff7db4e60800000000000000
+      internalID: 7947683460734601760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellWisp_8
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 683
+        width: 168
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 239152baab9575c50800000000000000
+      internalID: 6653885632733321522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellWisp_9
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 689
+        width: 172
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e13273ac56485880800000000000000
+      internalID: -8622064122907708958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellWisp_10
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 327
+        width: 173
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc540ad7c5d8c3d60800000000000000
+      internalID: 7871321677120947663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellWisp_11
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 327
+        width: 173
+        height: 312
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 854fff8c4056f1140800000000000000
+      internalID: 4692580407969838168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellWisp_12
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 327
+        width: 173
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ef45a1aa37f1d7b0800000000000000
+      internalID: -5201104263444082720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellWisp_13
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 327
+        width: 173
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4598001c885fbad70800000000000000
+      internalID: 9055601443460909396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellWisp_14
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 327
+        width: 173
+        height: 312
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8917695b51256f50800000000000000
+      internalID: 6873937082476599690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellWisp_15
+      rect:
+        serializedVersion: 2
+        x: 1670
+        y: 327
+        width: 173
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d52a62af4b77ab860800000000000000
+      internalID: 7546475744787341917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellWisp_16
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 33
+        width: 168
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a15ab850e14c8a20800000000000000
+      internalID: 3065897878149550505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellWisp_17
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 33
+        width: 168
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4c286b8d1a2b98a0800000000000000
+      internalID: -6297393347566228406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BellWisp_0: -6023451119312391833
+      BellWisp_1: 5167716623833434957
+      BellWisp_10: 7871321677120947663
+      BellWisp_11: 4692580407969838168
+      BellWisp_12: -5201104263444082720
+      BellWisp_13: 9055601443460909396
+      BellWisp_14: 6873937082476599690
+      BellWisp_15: 7546475744787341917
+      BellWisp_16: 3065897878149550505
+      BellWisp_17: -6297393347566228406
+      BellWisp_2: -3345906474701879569
+      BellWisp_3: 1583788038805248232
+      BellWisp_4: -6450451489885882646
+      BellWisp_5: 7164657373170191700
+      BellWisp_6: 607197216181121747
+      BellWisp_7: 7947683460734601760
+      BellWisp_8: 6653885632733321522
+      BellWisp_9: -8622064122907708958
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

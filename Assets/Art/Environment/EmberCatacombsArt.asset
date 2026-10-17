@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4352ca70bca7b79419f6cdcfa2581bd5, type: 3}
+  m_Name: EmberCatacombsArt
+  m_EditorClassIdentifier: Roughlike.Utils::Roughlike.Utils.EnvironmentArt
+  wall: {fileID: 21300000, guid: 7b5401614bb014f4c95328c69f369975, type: 3}
+  floorTrim: {fileID: 21300000, guid: e4906057c9fabbc459bd8fdd89f950c9, type: 3}
+  platform: {fileID: 21300000, guid: a3fc1a5dc9abd6847ae0cf00a707140d, type: 3}
+  backdrop:
+  - name: Far haze and windows
+    sprite: {fileID: 21300000, guid: 18310c8d8bd88784986393dea21a625b, type: 3}
+    follow: 0.96
+    followY: 0.92
+    yOffset: 1.5
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sortingOrder: -60
+  - name: Colonnade
+    sprite: {fileID: 21300000, guid: d9b68c1fc70777d489eaa5ff698cbb5c, type: 3}
+    follow: 0.84
+    followY: 0.86
+    yOffset: 0.5
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sortingOrder: -50
+  - name: Hanging silhouettes
+    sprite: {fileID: 21300000, guid: 0843f557409cb81459b53651b60f8173, type: 3}
+    follow: 0.64
+    followY: 0.74
+    yOffset: 0
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sortingOrder: -40
+  ambient: {r: 0.42, g: 0.46, b: 0.62, a: 1}
+  ambientIntensity: 0.7
+  playerLight: {r: 1, g: 0.82, b: 0.55, a: 1}
+  torchLight: {r: 1, g: 0.6, b: 0.28, a: 1}
+  bloom: 0.9
+  vignette: 0.38
+  grain: 0.12
+  colourFilter: {r: 1, g: 0.97, b: 0.94, a: 1}
+  saturation: 14
+  contrast: 12
+  props: {fileID: 11400000, guid: 39fe8fd0c8aeb9b4aa80cda8393fde40, type: 2}
+  worldProps: {fileID: 11400000, guid: 7cc86d3be8583f642ab99f843ec351bb, type: 2}

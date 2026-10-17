@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0de942adc2ec4748b16e83df1836b0e, type: 3}
+  m_Name: ShellGuard
+  m_EditorClassIdentifier: Roughlike.Enemies::Roughlike.Enemies.EnemyDefinition
+  displayName: Shell Guard
+  archetype: 3
+  maxHealth: 90
+  size: {x: 1.1, y: 1.6}
+  art: {fileID: 11400000, guid: cce2a30e18c36b0448494f5456632750, type: 2}
+  sprite: {fileID: 0}
+  tint: {r: 0.5, g: 0.6, b: 0.75, a: 1}
+  minProgress: 0.25
+  maxPerRoom: 2
+  rewardMultiplier: 1.5
+  patrolSpeed: 1.2
+  chaseSpeed: 2.6
+  patrolRadius: 3
+  sightRange: 9
+  loseSightRange: 14
+  verticalSight: 2.5
+  rearAwareness: 1.5
+  attackRange: 1.8
+  telegraphTime: 0.8
+  activeTime: 0.15
+  recoverTime: 0.8
+  attackCooldown: 1.4
+  damage: 20
+  knockback: {x: 9, y: 4}
+  stagger: 20
+  hitOffset: {x: 1.1, y: 0.8}
+  hitSize: {x: 1.8, y: 1.4}
+  preferredMinDistance: 5
+  preferredMaxDistance: 8
+  projectileSpeed: 11
+  muzzleOffset: {x: 0.6, y: 0.9}
+  telegraphSize: {x: 2.2, y: 0.2}
+  aimLockFraction: 0.7
+  hoverHeight: 3.2
+  diveSpeed: 15
+  shieldReduction: 0.85
+  shieldBreakStagger: 18
+  shieldBreakTime: 3
+  backstabMultiplier: 1.3
+  chargeSpeed: 13
+  wallStunTime: 1.6
+  minion: {fileID: 0}
+  summonCount: 2
+  maxMinions: 4
+  explosionRadius: 2.6
+  staggerThreshold: 40
+  staggerTime: 0.5
+  knockbackResistance: 0.6
+  stunnedDamageMultiplier: 1.5

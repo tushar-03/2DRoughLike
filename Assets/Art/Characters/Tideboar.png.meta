@@ -1,0 +1,806 @@
+fileFormatVersion: 2
+guid: 6fa0de872b0332343ad704c5450b75ea
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4254131125745274991
+    second: Tideboar_0
+  - first:
+      213: -5442427489738496497
+    second: Tideboar_1
+  - first:
+      213: 2693096768472469093
+    second: Tideboar_2
+  - first:
+      213: 6308906834181254981
+    second: Tideboar_3
+  - first:
+      213: 5719328670237643177
+    second: Tideboar_4
+  - first:
+      213: 1791292001991597572
+    second: Tideboar_5
+  - first:
+      213: -6685973453513602622
+    second: Tideboar_6
+  - first:
+      213: 1060496881124784173
+    second: Tideboar_7
+  - first:
+      213: -5078945382597065623
+    second: Tideboar_8
+  - first:
+      213: 8097641115114527165
+    second: Tideboar_9
+  - first:
+      213: 6943064748463560953
+    second: Tideboar_10
+  - first:
+      213: -7881958336589279292
+    second: Tideboar_11
+  - first:
+      213: -52805139301843193
+    second: Tideboar_12
+  - first:
+      213: 4362974189115099613
+    second: Tideboar_13
+  - first:
+      213: -2104751960014268037
+    second: Tideboar_14
+  - first:
+      213: -3872116927262364947
+    second: Tideboar_15
+  - first:
+      213: 3805571128309369237
+    second: Tideboar_16
+  - first:
+      213: 189789530782860145
+    second: Tideboar_17
+  - first:
+      213: -7409581798860076571
+    second: Tideboar_18
+  - first:
+      213: 3616373117020528607
+    second: Tideboar_19
+  - first:
+      213: 587169232569693785
+    second: Tideboar_20
+  - first:
+      213: -431502322597396459
+    second: Tideboar_21
+  - first:
+      213: 41405948007305927
+    second: Tideboar_22
+  - first:
+      213: 7698656733595599232
+    second: Tideboar_23
+  - first:
+      213: 1077603748842260875
+    second: Tideboar_24
+  - first:
+      213: -1566693951863206501
+    second: Tideboar_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tideboar_0
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 1307
+        width: 245
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f60daf138b5b90b30800000000000000
+      internalID: 4254131125745274991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_1
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 1307
+        width: 245
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f06e056880d9874b0800000000000000
+      internalID: -5442427489738496497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_2
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 1307
+        width: 245
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56ecd860e3dcf5520800000000000000
+      internalID: 2693096768472469093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_3
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 1307
+        width: 245
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54f6864f65dbd8750800000000000000
+      internalID: 6308906834181254981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_4
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 1307
+        width: 245
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a1d83f8f132f5f40800000000000000
+      internalID: 5719328670237643177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_5
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 1307
+        width: 245
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40e15bbc592fbd810800000000000000
+      internalID: 1791292001991597572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_6
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 987
+        width: 245
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c941ad5196a633a0800000000000000
+      internalID: -6685973453513602622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_7
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 987
+        width: 245
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d283adc6b44a7be00800000000000000
+      internalID: 1060496881124784173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_8
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 987
+        width: 245
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96401bc7516f389b0800000000000000
+      internalID: -5078945382597065623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_9
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 987
+        width: 245
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db9dff8e0b9906070800000000000000
+      internalID: 8097641115114527165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_10
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 987
+        width: 245
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f815b05a98ba5060800000000000000
+      internalID: 6943064748463560953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_11
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 995
+        width: 245
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cfca2d37a8ad9290800000000000000
+      internalID: -7881958336589279292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_12
+      rect:
+        serializedVersion: 2
+        x: 1967
+        y: 987
+        width: 245
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70f399d6106644ff0800000000000000
+      internalID: -52805139301843193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_13
+      rect:
+        serializedVersion: 2
+        x: 2287
+        y: 987
+        width: 245
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd94762b8e56c8c30800000000000000
+      internalID: 4362974189115099613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_14
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 667
+        width: 245
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b79da0b6e3b6ac2e0800000000000000
+      internalID: -2104751960014268037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_15
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 667
+        width: 245
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: deaefb58b2a734ac0800000000000000
+      internalID: -3872116927262364947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_16
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 667
+        width: 245
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 599cc5647ca10d430800000000000000
+      internalID: 3805571128309369237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_17
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 667
+        width: 245
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 173866c929442a200800000000000000
+      internalID: 189789530782860145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_18
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 347
+        width: 245
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e9ceb09c90eb2990800000000000000
+      internalID: -7409581798860076571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_19
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 347
+        width: 249
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdfd7478030ff2230800000000000000
+      internalID: 3616373117020528607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_20
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 347
+        width: 257
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 956fa5a5e4b062800800000000000000
+      internalID: 587169232569693785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_21
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 347
+        width: 267
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51083dd7ceef20af0800000000000000
+      internalID: -431502322597396459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_22
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 362
+        width: 245
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c250968d7a139000800000000000000
+      internalID: 41405948007305927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_23
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 347
+        width: 245
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08182ad828f17da60800000000000000
+      internalID: 7698656733595599232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_24
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 27
+        width: 245
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b894f5276ea64fe00800000000000000
+      internalID: 1077603748842260875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tideboar_25
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 27
+        width: 245
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9dc077c62cf14ae0800000000000000
+      internalID: -1566693951863206501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Tideboar_0: 4254131125745274991
+      Tideboar_1: -5442427489738496497
+      Tideboar_10: 6943064748463560953
+      Tideboar_11: -7881958336589279292
+      Tideboar_12: -52805139301843193
+      Tideboar_13: 4362974189115099613
+      Tideboar_14: -2104751960014268037
+      Tideboar_15: -3872116927262364947
+      Tideboar_16: 3805571128309369237
+      Tideboar_17: 189789530782860145
+      Tideboar_18: -7409581798860076571
+      Tideboar_19: 3616373117020528607
+      Tideboar_2: 2693096768472469093
+      Tideboar_20: 587169232569693785
+      Tideboar_21: -431502322597396459
+      Tideboar_22: 41405948007305927
+      Tideboar_23: 7698656733595599232
+      Tideboar_24: 1077603748842260875
+      Tideboar_25: -1566693951863206501
+      Tideboar_3: 6308906834181254981
+      Tideboar_4: 5719328670237643177
+      Tideboar_5: 1791292001991597572
+      Tideboar_6: -6685973453513602622
+      Tideboar_7: 1060496881124784173
+      Tideboar_8: -5078945382597065623
+      Tideboar_9: 8097641115114527165
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

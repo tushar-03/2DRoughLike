@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Roughlike.Core;
+using Roughlike.Utils;
 
 namespace Roughlike.Player
 {
@@ -12,7 +13,7 @@ namespace Roughlike.Player
         public enum InputKind { Device, Scripted }
 
         public static PlayerController Build(MovementConfig config, InputKind input, Sprite bodySprite = null,
-            Vector2? position = null, string name = "Player")
+            Vector2? position = null, string name = "Player", CharacterArt art = null)
         {
             var go = new GameObject(name);
             go.SetActive(false); // configure before Awake runs
@@ -42,6 +43,12 @@ namespace Roughlike.Player
             var sr = visual.AddComponent<SpriteRenderer>();
             sr.sprite = bodySprite;
             sr.sortingOrder = 10;
+            if (art != null)
+            {
+                var animator = visual.AddComponent<SpriteAnimator>();
+                animator.Bind(art);
+                animator.Loop("idle");
+            }
             visual.AddComponent<PlayerVisual>();
             // PlayerVisual finds the controller in its parent and uses its own transform as the body.
 

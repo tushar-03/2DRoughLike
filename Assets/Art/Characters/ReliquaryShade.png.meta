@@ -1,0 +1,728 @@
+fileFormatVersion: 2
+guid: 311e0ef23335cdb4cb3220d1a7c05764
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5654272766970976501
+    second: ReliquaryShade_0
+  - first:
+      213: 6479426963654220393
+    second: ReliquaryShade_1
+  - first:
+      213: -8148204070004095918
+    second: ReliquaryShade_2
+  - first:
+      213: -4427582608639021946
+    second: ReliquaryShade_3
+  - first:
+      213: -7263123293183073690
+    second: ReliquaryShade_4
+  - first:
+      213: -5538720540245290294
+    second: ReliquaryShade_5
+  - first:
+      213: 7626332793386823944
+    second: ReliquaryShade_6
+  - first:
+      213: -148017877601697670
+    second: ReliquaryShade_7
+  - first:
+      213: 3155259843749214120
+    second: ReliquaryShade_8
+  - first:
+      213: 4863385118885213646
+    second: ReliquaryShade_9
+  - first:
+      213: 5998908391475836380
+    second: ReliquaryShade_10
+  - first:
+      213: 5595273919332775611
+    second: ReliquaryShade_11
+  - first:
+      213: 9196546333451821038
+    second: ReliquaryShade_12
+  - first:
+      213: 1996832966472077761
+    second: ReliquaryShade_13
+  - first:
+      213: -6419581611810661144
+    second: ReliquaryShade_14
+  - first:
+      213: 2668193617820253126
+    second: ReliquaryShade_15
+  - first:
+      213: -2236557888146496950
+    second: ReliquaryShade_16
+  - first:
+      213: 2426323382281838411
+    second: ReliquaryShade_17
+  - first:
+      213: 1884102853624284710
+    second: ReliquaryShade_18
+  - first:
+      213: -5673179846408066899
+    second: ReliquaryShade_19
+  - first:
+      213: 3244187100701124899
+    second: ReliquaryShade_20
+  - first:
+      213: -3628655375052267230
+    second: ReliquaryShade_21
+  - first:
+      213: -5003894496729512957
+    second: ReliquaryShade_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ReliquaryShade_0
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 1328
+        width: 97
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f8587abf13087e40800000000000000
+      internalID: 5654272766970976501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_1
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 1328
+        width: 97
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96a92b47e7c8be950800000000000000
+      internalID: 6479426963654220393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_2
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 1328
+        width: 97
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2548302c193cbee80800000000000000
+      internalID: -8148204070004095918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_3
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 1328
+        width: 97
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68caf5663111e82c0800000000000000
+      internalID: -4427582608639021946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_4
+      rect:
+        serializedVersion: 2
+        x: 1372
+        y: 1328
+        width: 96
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66225f5b8d3343b90800000000000000
+      internalID: -7263123293183073690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_5
+      rect:
+        serializedVersion: 2
+        x: 1692
+        y: 1328
+        width: 96
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac2158893038223b0800000000000000
+      internalID: -5538720540245290294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_6
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 1008
+        width: 99
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 801fbb0054d26d960800000000000000
+      internalID: 7626332793386823944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_7
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 1008
+        width: 99
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a70c429468222fdf0800000000000000
+      internalID: -148017877601697670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_8
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 1008
+        width: 99
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a7f9b05c1cb9cb20800000000000000
+      internalID: 3155259843749214120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_9
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 1008
+        width: 99
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec5f2119ff63e7340800000000000000
+      internalID: 4863385118885213646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_10
+      rect:
+        serializedVersion: 2
+        x: 1363
+        y: 1008
+        width: 103
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd5f6020667604350800000000000000
+      internalID: 5998908391475836380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_11
+      rect:
+        serializedVersion: 2
+        x: 1681
+        y: 1008
+        width: 107
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb676de0cf766ad40800000000000000
+      internalID: 5595273919332775611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_12
+      rect:
+        serializedVersion: 2
+        x: 2003
+        y: 1008
+        width: 109
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eef11d53a22b0af70800000000000000
+      internalID: 9196546333451821038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_13
+      rect:
+        serializedVersion: 2
+        x: 2327
+        y: 1008
+        width: 101
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c19b5ad00d26bb10800000000000000
+      internalID: 1996832966472077761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_14
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 688
+        width: 116
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ec5565598019e6a0800000000000000
+      internalID: -6419581611810661144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_15
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 691
+        width: 119
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cbf32e65f3570520800000000000000
+      internalID: 2668193617820253126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_16
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 697
+        width: 106
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a422e65537626f0e0800000000000000
+      internalID: -2236557888146496950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_17
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 703
+        width: 121
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4f122fc2480ca120800000000000000
+      internalID: 2426323382281838411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_18
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 383
+        width: 121
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 626439e109da52a10800000000000000
+      internalID: 1884102853624284710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_19
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 386
+        width: 103
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da821fbccf0d441b0800000000000000
+      internalID: -5673179846408066899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_20
+      rect:
+        serializedVersion: 2
+        x: 739
+        y: 386
+        width: 103
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 329e13acafaa50d20800000000000000
+      internalID: 3244187100701124899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_21
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 48
+        width: 147
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 221a2bd692d64adc0800000000000000
+      internalID: -3628655375052267230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ReliquaryShade_22
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 48
+        width: 149
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 304c7ec87789e8ab0800000000000000
+      internalID: -5003894496729512957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ReliquaryShade_0: 5654272766970976501
+      ReliquaryShade_1: 6479426963654220393
+      ReliquaryShade_10: 5998908391475836380
+      ReliquaryShade_11: 5595273919332775611
+      ReliquaryShade_12: 9196546333451821038
+      ReliquaryShade_13: 1996832966472077761
+      ReliquaryShade_14: -6419581611810661144
+      ReliquaryShade_15: 2668193617820253126
+      ReliquaryShade_16: -2236557888146496950
+      ReliquaryShade_17: 2426323382281838411
+      ReliquaryShade_18: 1884102853624284710
+      ReliquaryShade_19: -5673179846408066899
+      ReliquaryShade_2: -8148204070004095918
+      ReliquaryShade_20: 3244187100701124899
+      ReliquaryShade_21: -3628655375052267230
+      ReliquaryShade_22: -5003894496729512957
+      ReliquaryShade_3: -4427582608639021946
+      ReliquaryShade_4: -7263123293183073690
+      ReliquaryShade_5: -5538720540245290294
+      ReliquaryShade_6: 7626332793386823944
+      ReliquaryShade_7: -148017877601697670
+      ReliquaryShade_8: 3155259843749214120
+      ReliquaryShade_9: 4863385118885213646
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

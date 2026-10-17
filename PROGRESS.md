@@ -142,5 +142,47 @@ Built and verified: 88 PlayMode + 25 EditMode tests pass (stats, loot rolling, s
 - Status effects Shock, Freeze and Oil-and-fire, and more weapon types (bows, whips, throwables, magic) arrive with M6.
 - Item icons, the HUD and the menus are placeholder shapes and plain text; they get a full art pass in M5.
 
+## M4.5 - Menus, saves and settings (awaiting review)
+Built and verified in Play Mode and with tests: the main menu, pause menu, settings and controls screens, autosave and Continue.
+
+- **Scenes**: `MainMenu.unity` is scene 0. New Game, New Game from Seed and Continue go through `GameSession` and load `M4_LootRun`. Build settings order: MainMenu, M4_LootRun, M3_Run, M2_CombatArena, M1_Graybox.
+- **Saves** (`SaveService`, `RunSave`, `RunSaver`): atomic write (temp file then replace) with a `.bak` fallback when the main file is unreadable. A run save holds the seed, the room you are in and your progress; loading rebuilds the level from the seed and then restores state (cleared rooms, opened chests, used altars, shop stock, health, gold, Cells, scrolls, gear, weapons, skills, mutations, flask, stats). It autosaves on each room change and on save-and-quit, and is deleted on death or victory.
+- **Settings** (`GameSettings`, `SettingsService`): video, audio buses, gameplay toggles (screen shake, hitstop, flash, damage numbers, toggle block, assist mode) saved as JSON; `SettingsApplier` pushes them to the game on change.
+- **Controls**: `GameInput` is one shared, code-built action map with Keyboard and Mouse and Gamepad groups; all eight actions are rebindable in the Controls screen, with interactive capture, conflict swapping, and reset. Overrides are stored as plain (action, group, path) entries, not Input System IDs, because those change between sessions.
+- Tests use a `[SetUpFixture]` that redirects saves to a temp folder, so running them never touches a real save.
+
+### How to test M4.5
+1. Open `Assets/Scenes/MainMenu.unity` and press Play. Use arrows / Enter or the mouse.
+2. New Game, play a room or two, press `Esc`: Resume, Settings, Controls, Save and quit to menu.
+3. The menu now shows Continue with your seed and progress. Continue puts you back in the same level, room, with the same items.
+4. Settings: change a slider or toggle, quit to menu and reopen to see it persisted. Controls: select Jump, press a key, then try it in game; Reset restores defaults.
+5. Die: Continue disappears (the save is gone).
+
+## M5 - Eight enemy types and the art pass (awaiting review)
+Built and verified: 122 PlayMode + 38 EditMode tests pass; the scene was played live (combat against every archetype, loot, shop, altar, menus). Console clean.
+
+**Enemies**
+- `EnemyController` keeps the shared state machine (patrol, chase, telegraph, attack, recover, stagger, dead), poise, knockback, perception and death. What differs lives in an `EnemyBehavior` strategy chosen from `EnemyDefinition.archetype`: `MeleeBehavior`, `RangedBehavior`, `FlyerBehavior`, `ShieldBehavior`, `ChargerBehavior`, `SummonerBehavior`, `ExploderBehavior`, `SniperBehavior`. A behaviour decides when to attack, what the telegraph looks like (box, rotated line, or circle) and what the attack does.
+- New archetypes are mostly data: stat blocks live in `DefaultEnemies`, the editor builder saves them as assets, and a new enemy of an existing archetype is a new asset.
+- Spawn rules: `minProgress` (only deeper in a level), `maxPerRoom`, `rewardMultiplier` (summoned Wretches drop nothing). Summoned minions register with the room's clear tracker, so a room is not clear while one lives.
+- Tuning knobs per archetype are in `EnemyDefinition` (hover height and dive speed, shield reduction and break threshold, charge speed and wall stun, summon count and cap, explosion radius, sniper aim-lock fraction).
+
+**Art** (see the README for how it works)
+- Characters: the player (idle, run, jump, fall, roll, block, attack, hurt) and all nine enemies and minions, each with idle / walk / telegraph / attack / hurt. Enemy clips are driven by `EnemyAnimDriver`: the telegraph pose is scrubbed by telegraph progress, the attack by the attack timer.
+- Environment: tiled stone walls, floors with a mossy lip and gold-inlaid ledges; three parallax layers; flickering torches and braziers; the player carries a warm lantern; bloom, vignette, grading and grain from a global volume.
+- Props: exit portal, chest (closed and open), mutation altar, merchant, Shell Guard's separate shield that swaps to a cracked sprite when broken. The ornamental UI skin (`UiSkin`) restyles every panel and button, and the main menu uses the painted backdrop.
+- Gameplay is unchanged by art: a test builds the same seeds with and without art and compares every solid collider.
+
+### How to test M5
+1. Play from `MainMenu.unity` (or open `M4_LootRun.unity`). The first rooms use the Drowned Grunt and Spitter; later rooms add the rest.
+2. Watch for the telegraphs: a line from the Bell-Wisp, a long lane from the Tideboar, a growing circle on the Bloat, a laser on the Eel Archer. Each has a counter (see the README table).
+3. Hit a Shell Guard from the front (blocked), from behind (extra damage), with a heavy swing or a parry (shield breaks).
+4. `Roughlike > Art > Generate Characters` / `Generate Environment` regenerates the art; rebuild the scene with `Roughlike > Build > M4 Loot Run`.
+
+### Notes
+- Characters are posed, not hand-animated (limbs are driven by a pose function and IK), so motion reads clearly but is not final quality. Replace the sheets (same layout) with authored art when it exists.
+- Still placeholder: item icons and dropped-item visuals, the HUD widgets inside the new frames, VFX (hit sparks, slashes), and there is no custom shader yet (hit flash is a colour lerp; outlines are baked into the sprites).
+- `Assets/Screenshots` is ignored by git; the README images live in `docs/images`.
+
 ## Next
-M5 - Hades-style visual slice (biome 1) plus new enemy types.
+M6 - content expansion: more weapons, special rooms and challenge doors, more mutations and status effects.

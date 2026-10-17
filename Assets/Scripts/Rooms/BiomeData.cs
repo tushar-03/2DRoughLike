@@ -22,6 +22,10 @@ namespace Roughlike.Rooms
         [Tooltip("Enemies in a combat room near the exit. Rooms in between scale linearly.")]
         public int maxEnemies = 3;
 
+        [Header("Art")]
+        [Tooltip("Tiles, backdrop, lighting and post-processing. Leave empty for the plain graybox look.")]
+        public Roughlike.Utils.EnvironmentArt art;
+
         [Header("Graybox palette")]
         public Color ground = new Color(0.20f, 0.23f, 0.30f);
         public Color trim = new Color(0.34f, 0.38f, 0.48f);

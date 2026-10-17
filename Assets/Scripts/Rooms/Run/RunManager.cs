@@ -53,9 +53,9 @@ namespace Roughlike.Rooms
         public uint Seed { get; private set; }
         public LevelLayout Layout { get; private set; }
         public BuiltLevel Level { get; private set; }
-        public RunStats Stats { get; private set; } = new RunStats();
+        public RunStats Stats { get; internal set; } = new RunStats();
         public readonly HashSet<Vector2Int> Visited = new HashSet<Vector2Int>();
-        public Vector2Int CurrentRoom { get; private set; }
+        public Vector2Int CurrentRoom { get; internal set; }
         /// <summary>True once the end-of-run panel should be showing.</summary>
         public bool EndScreenVisible => (State == RunState.Dead || State == RunState.Complete) && _endTimer >= deathScreenDelay;
 
@@ -106,7 +106,36 @@ namespace Roughlike.Rooms
 
         void Start()
         {
+            // the main menu hands over its choice through GameSession
+            SessionMode mode = GameSession.Mode;
+            uint requestedSeed = GameSession.Seed;
+            GameSession.Clear();
+
+            if (mode == SessionMode.Continue && RunSave.TryLoad(out RunSave save))
+            {
+                StartRun((uint)save.seed, save);
+                return;
+            }
+            if (mode == SessionMode.NewRun)
+            {
+                StartRun(requestedSeed != 0 ? requestedSeed : RandomSeed());
+                return;
+            }
             if (autoStart && State == RunState.Idle) StartRandomRun();
+        }
+
+        // =====================================================================
+        // Saving
+        // =====================================================================
+
+        public Health PlayerHealth => _health;
+        public PlayerController Player => player;
+
+        /// <summary>Writes the current run to disk so the main menu can Continue it. Safe to call any time during a run.</summary>
+        public void SaveNow()
+        {
+            if (State != RunState.Running || Level == null || _health == null || _health.IsDead) return;
+            RunSaver.Capture(this).Write();
         }
 
         // =====================================================================
@@ -127,9 +156,13 @@ namespace Roughlike.Rooms
             if (SeedCode.TryParse(text, out uint seed)) StartRun(seed);
         }
 
-        public void StartRun(uint seed)
+        /// <summary>Starts a run. With a <paramref name="restore"/> save the level is rebuilt from the seed and the save is applied on top.</summary>
+        LevelAtmosphere _atmosphere;
+
+        public void StartRun(uint seed, RunSave restore = null)
         {
             if (player == null || biome == null) { Debug.LogError("RunManager needs a biome and a player."); return; }
+            if (restore == null) RunSave.Delete();   // starting fresh abandons the old saved run
             if (_health == null) { CachePlayer(); OnEnable(); }
 
             Level?.Destroy();
@@ -139,6 +172,7 @@ namespace Roughlike.Rooms
             Layout = LevelGenerator.Generate(seed, biome.generator);
             Level = LevelBuilder.Build(Layout, biome);
             Level.Exit.Activated += OnExitReached;
+            if (biome.art != null && _atmosphere == null) _atmosphere = LevelAtmosphere.Create(biome.art, player.transform);
 
             Stats = new RunStats();
             Visited.Clear();
@@ -161,7 +195,9 @@ namespace Roughlike.Rooms
             if (vcam != null) vcam.PreviousStateIsValid = false;   // snap the camera instead of panning across the map
 
             SetState(RunState.Running);
+            if (restore != null) RunSaver.Apply(this, restore);
             EventBus<RunStartedEvent>.Raise(new RunStartedEvent { Seed = seed });
+            SaveNow();
         }
 
         void SetState(RunState next)
@@ -190,6 +226,7 @@ namespace Roughlike.Rooms
         {
             if (State != RunState.Running) return;
             CaptureCurrency(false);   // unbanked Cells are lost on death
+            RunSave.Delete();         // permadeath: there is nothing to continue
             _endTimer = 0f;
             SetPlayerActive(false);
             SetState(RunState.Dead);
@@ -199,6 +236,7 @@ namespace Roughlike.Rooms
         {
             if (State != RunState.Running) return;
             CaptureCurrency(true);    // the exit door banks your Cells
+            RunSave.Delete();
             _endTimer = 0f;
             SetPlayerActive(false);
             SetState(RunState.Complete);
@@ -229,6 +267,7 @@ namespace Roughlike.Rooms
                 {
                     if (kb.rKey.wasPressedThisFrame) StartRandomRun();
                     if (kb.tKey.wasPressedThisFrame) RestartSameSeed();
+                    if (kb.mKey.wasPressedThisFrame) UnityEngine.SceneManagement.SceneManager.LoadScene(GameSession.MenuScene);
                 }
             }
 
@@ -243,6 +282,9 @@ namespace Roughlike.Rooms
             }
         }
 
+        /// <summary>Checks which room the player is in (runs each frame; public so tests can drive it).</summary>
+        public void RefreshRoom() => TrackRoom();
+
         void TrackRoom()
         {
             Vector2Int cell = ChunkMetrics.CellAt((Vector2)player.transform.position + Vector2.up);
@@ -250,6 +292,7 @@ namespace Roughlike.Rooms
             CurrentRoom = cell;
             if (Visited.Add(cell)) Stats.RoomsVisited++;
             if (lootDirector != null && Layout.TryGet(cell, out var c)) lootDirector.Progress = c.Progress;
+            SaveNow();   // autosave on every room change
         }
 
         void OnDestroy()
@@ -258,6 +301,7 @@ namespace Roughlike.Rooms
         }
     }
 }
+
 
 
 

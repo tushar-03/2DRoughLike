@@ -44,6 +44,19 @@ namespace Roughlike.Items
             return sr;
         }
 
+        /// <summary>A painted prop from the world sheet, pivoted at its feet like every other character.</summary>
+        static SpriteRenderer Painted(Transform parent, string clip, Vector2 pos, int order, float scale = 1f)
+        {
+            var go = new GameObject(clip);
+            go.transform.SetParent(parent, false);
+            go.transform.localPosition = pos;
+            go.transform.localScale = Vector3.one * scale;
+            var sr = go.AddComponent<SpriteRenderer>();
+            sr.sprite = WorldArt.Props.Prop(clip);
+            sr.sortingOrder = order;
+            return sr;
+        }
+
         // ------------------------------------------------------------------ dropped items
 
         public static WorldItem DropItem(ItemInstance item, Vector2 position)
@@ -130,6 +143,14 @@ namespace Roughlike.Items
         {
             var go = new GameObject("Chest");
             go.transform.position = feet;
+            if (WorldArt.Has("chest"))
+            {
+                var painted = Painted(go.transform, "chest", Vector2.zero, 8, 1.5f);
+                var pc = go.AddComponent<LootChest>();
+                pc.Init(contents, null);
+                pc.UsePaintedSprites(painted, WorldArt.Props.Prop("chest_open"));
+                return pc;
+            }
             var body = Shape(go.transform, ProceduralSprites.Square, new Color(0.62f, 0.42f, 0.18f), new Vector2(1.4f, 0.9f), new Vector2(0f, 0.45f), 8);
             var lid = Shape(go.transform, ProceduralSprites.Square, new Color(0.8f, 0.58f, 0.25f), new Vector2(1.5f, 0.3f), new Vector2(0f, 1.0f), 9);
             Shape(go.transform, ProceduralSprites.Square, new Color(1f, 0.85f, 0.35f), new Vector2(0.18f, 0.28f), new Vector2(0f, 0.8f), 10);
@@ -142,6 +163,14 @@ namespace Roughlike.Items
         {
             var go = new GameObject("Salvage Merchant");
             go.transform.position = feet;
+            if (WorldArt.Has("merchant"))
+            {
+                Painted(go.transform, "merchant", Vector2.zero, 8, 1.2f);
+                Label(go.transform, "SALVAGE", new Color(1f, 0.9f, 0.6f), 0.11f, new Vector3(0f, 2.9f, 0f));
+                var ps = go.AddComponent<ShopStand>();
+                ps.Init(stock);
+                return ps;
+            }
             Shape(go.transform, ProceduralSprites.Square, new Color(0.3f, 0.55f, 0.6f), new Vector2(0.9f, 1.5f), new Vector2(-0.9f, 0.75f), 8);
             Shape(go.transform, ProceduralSprites.Square, new Color(0.45f, 0.3f, 0.2f), new Vector2(2.2f, 0.8f), new Vector2(0.4f, 0.4f), 9);
             Shape(go.transform, ProceduralSprites.Square, new Color(0.9f, 0.7f, 0.3f), new Vector2(0.3f, 0.25f), new Vector2(0.1f, 0.95f), 10);
@@ -157,7 +186,8 @@ namespace Roughlike.Items
             var go = new GameObject("Mutation Altar");
             go.transform.position = feet;
             Color c = new Color(0.78f, 0.45f, 1f);
-            Shape(go.transform, ProceduralSprites.Square, new Color(0.3f, 0.22f, 0.4f), new Vector2(0.9f, 1.2f), new Vector2(0f, 0.6f), 8);
+            if (WorldArt.Has("altar")) Painted(go.transform, "altar", Vector2.zero, 8, 1.25f);
+            else Shape(go.transform, ProceduralSprites.Square, new Color(0.3f, 0.22f, 0.4f), new Vector2(0.9f, 1.2f), new Vector2(0f, 0.6f), 8);
             var glow = Shape(go.transform, ProceduralSprites.Circle, new Color(c.r, c.g, c.b, 0.55f), Vector2.one * 1.2f, new Vector2(0f, 1.6f), 9);
             Shape(go.transform, ProceduralSprites.Spark, c, Vector2.one * 0.8f, new Vector2(0f, 1.6f), 10);
             Label(go.transform, "MUTATION ALTAR", c, 0.1f, new Vector3(0f, 2.7f, 0f));

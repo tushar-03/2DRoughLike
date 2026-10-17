@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3125dbb4001f89f45aa1d68848f51d5d, type: 3}
+  m_Name: Props
+  m_EditorClassIdentifier: Roughlike.Utils::Roughlike.Utils.CharacterArt
+  sheet: {fileID: 2800000, guid: c68c22aa5ded69a4a889ab957908096e, type: 3}
+  frameWidth: 128
+  frameHeight: 192
+  pixelsPerUnit: 160
+  pivot: {x: 0.5, y: 0}
+  clips:
+  - name: torch
+    row: 0
+    frames: 4
+    fps: 8
+    loop: 1
+  - name: brazier
+    row: 1
+    frames: 4
+    fps: 8
+    loop: 1
