@@ -1,0 +1,15 @@
+﻿{
+  "name": "Roughlike.Player",
+  "rootNamespace": "Roughlike.Player",
+  "references": ["Roughlike.Utils", "Roughlike.Core", "Unity.InputSystem", "Unity.Cinemachine"],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
+

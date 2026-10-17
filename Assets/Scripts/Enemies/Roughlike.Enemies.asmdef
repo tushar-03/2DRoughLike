@@ -1,0 +1,14 @@
+﻿{
+  "name": "Roughlike.Enemies",
+  "rootNamespace": "Roughlike.Enemies",
+  "references": ["Roughlike.Utils", "Roughlike.Core"],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

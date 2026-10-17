@@ -1,0 +1,14 @@
+﻿{
+  "name": "Roughlike.Items",
+  "rootNamespace": "Roughlike.Items",
+  "references": ["Roughlike.Utils", "Roughlike.Core"],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

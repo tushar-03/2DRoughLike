@@ -1,0 +1,14 @@
+﻿{
+  "name": "Roughlike.Audio",
+  "rootNamespace": "Roughlike.Audio",
+  "references": ["Roughlike.Utils", "Roughlike.Core"],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
