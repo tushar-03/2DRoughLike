@@ -81,7 +81,7 @@ namespace Roughlike.Editor
         public static BiomeData BuildPromenade(LootDatabase db)
         {
             var biome = LoadOrCreateBiome("AshenPromenade", "Ashen Promenade");
-            biome.enemyPool = EnemyContentBuilder.BuildPool();
+            biome.enemyPool = EnemyContentBuilder.BuildPromenadePool();
             var art = EnvironmentBuilder.LoadPromenade() ?? EnvironmentBuilder.BuildPromenade();
             biome.art = art;
             biome.loot = db;
@@ -89,6 +89,7 @@ namespace Roughlike.Editor
             biome.minEnemies = 3;
             biome.maxEnemies = 6;
             biome.generator.minExitColumn = 6;
+            biome.windyAmbience = true;
             biome.accent = new Color(1f, 0.6f, 0.3f);
             biome.ground = new Color(0.30f, 0.22f, 0.22f);
             biome.trim = new Color(0.55f, 0.38f, 0.3f);

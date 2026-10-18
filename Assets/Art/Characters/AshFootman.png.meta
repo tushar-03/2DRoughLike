@@ -1,0 +1,728 @@
+fileFormatVersion: 2
+guid: fe719399a4bd41c4f8b0cb9b8711c962
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8446510240992993434
+    second: AshFootman_0
+  - first:
+      213: 5962760819328353731
+    second: AshFootman_1
+  - first:
+      213: -7673524215512531478
+    second: AshFootman_2
+  - first:
+      213: -2993703751352905710
+    second: AshFootman_3
+  - first:
+      213: -5801513587340421217
+    second: AshFootman_4
+  - first:
+      213: 129483386792997132
+    second: AshFootman_5
+  - first:
+      213: 5451852868329753674
+    second: AshFootman_6
+  - first:
+      213: -1554380990286696991
+    second: AshFootman_7
+  - first:
+      213: -5385911365259308957
+    second: AshFootman_8
+  - first:
+      213: 7948117661266650407
+    second: AshFootman_9
+  - first:
+      213: 7430199043924324166
+    second: AshFootman_10
+  - first:
+      213: 4347721508877210097
+    second: AshFootman_11
+  - first:
+      213: -8626209197756034695
+    second: AshFootman_12
+  - first:
+      213: 3140011097391040275
+    second: AshFootman_13
+  - first:
+      213: 7640770970172728895
+    second: AshFootman_14
+  - first:
+      213: -4627197738328589081
+    second: AshFootman_15
+  - first:
+      213: -2882166174868231715
+    second: AshFootman_16
+  - first:
+      213: 6978894575904261754
+    second: AshFootman_17
+  - first:
+      213: -2142031121597529155
+    second: AshFootman_18
+  - first:
+      213: 168974782602175249
+    second: AshFootman_19
+  - first:
+      213: 6281972609044962282
+    second: AshFootman_20
+  - first:
+      213: -1958603646493559476
+    second: AshFootman_21
+  - first:
+      213: 2012909535742124007
+    second: AshFootman_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AshFootman_0
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 1311
+        width: 126
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66fd9e5ffa7f7ca80800000000000000
+      internalID: -8446510240992993434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_1
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 1311
+        width: 123
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c50fa48f5bffb250800000000000000
+      internalID: 5962760819328353731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_2
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 1311
+        width: 123
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aed740fc16a228590800000000000000
+      internalID: -7673524215512531478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_3
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 1311
+        width: 126
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2101bd9ac4a3476d0800000000000000
+      internalID: -2993703751352905710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_4
+      rect:
+        serializedVersion: 2
+        x: 1373
+        y: 1311
+        width: 128
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f97d8fa4122ec7fa0800000000000000
+      internalID: -5801513587340421217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_5
+      rect:
+        serializedVersion: 2
+        x: 1693
+        y: 1311
+        width: 128
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c017c1a44740cc100800000000000000
+      internalID: 129483386792997132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_6
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 991
+        width: 131
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4c4d707c4fd8ab40800000000000000
+      internalID: 5451852868329753674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_7
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 991
+        width: 116
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ed675c89babd6ae0800000000000000
+      internalID: -1554380990286696991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_8
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 991
+        width: 113
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 360daf926266145b0800000000000000
+      internalID: -5385911365259308957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_9
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 991
+        width: 122
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 725aec8e6e26d4e60800000000000000
+      internalID: 7948117661266650407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_10
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 991
+        width: 139
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64f6e8fd9ae5d1760800000000000000
+      internalID: 7430199043924324166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_11
+      rect:
+        serializedVersion: 2
+        x: 1682
+        y: 991
+        width: 152
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f193f65da5365c30800000000000000
+      internalID: 4347721508877210097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_12
+      rect:
+        serializedVersion: 2
+        x: 2004
+        y: 991
+        width: 155
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9715b81307c894880800000000000000
+      internalID: -8626209197756034695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_13
+      rect:
+        serializedVersion: 2
+        x: 2328
+        y: 991
+        width: 146
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31707c2e47f839b20800000000000000
+      internalID: 3140011097391040275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_14
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 671
+        width: 155
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f36234ff6b8790a60800000000000000
+      internalID: 7640770970172728895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_15
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 671
+        width: 143
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ecfe654c24e8cfb0800000000000000
+      internalID: -4627197738328589081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_16
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 671
+        width: 126
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd92553622d7008d0800000000000000
+      internalID: -2882166174868231715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_17
+      rect:
+        serializedVersion: 2
+        x: 1028
+        y: 671
+        width: 125
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a768ca914a30ad060800000000000000
+      internalID: 6978894575904261754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_18
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 351
+        width: 129
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db3095b3b0af542e0800000000000000
+      internalID: -2142031121597529155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_19
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 351
+        width: 166
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11360056ba1585200800000000000000
+      internalID: 168974782602175249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_20
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 351
+        width: 164
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aebdbdafdcc0e2750800000000000000
+      internalID: 6281972609044962282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_21
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 31
+        width: 161
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4577f25c54a1d4e0800000000000000
+      internalID: -1958603646493559476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshFootman_22
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 31
+        width: 166
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7efd7e2de8a4feb10800000000000000
+      internalID: 2012909535742124007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      AshFootman_0: -8446510240992993434
+      AshFootman_1: 5962760819328353731
+      AshFootman_10: 7430199043924324166
+      AshFootman_11: 4347721508877210097
+      AshFootman_12: -8626209197756034695
+      AshFootman_13: 3140011097391040275
+      AshFootman_14: 7640770970172728895
+      AshFootman_15: -4627197738328589081
+      AshFootman_16: -2882166174868231715
+      AshFootman_17: 6978894575904261754
+      AshFootman_18: -2142031121597529155
+      AshFootman_19: 168974782602175249
+      AshFootman_2: -7673524215512531478
+      AshFootman_20: 6281972609044962282
+      AshFootman_21: -1958603646493559476
+      AshFootman_22: 2012909535742124007
+      AshFootman_3: -2993703751352905710
+      AshFootman_4: -5801513587340421217
+      AshFootman_5: 129483386792997132
+      AshFootman_6: 5451852868329753674
+      AshFootman_7: -1554380990286696991
+      AshFootman_8: -5385911365259308957
+      AshFootman_9: 7948117661266650407
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

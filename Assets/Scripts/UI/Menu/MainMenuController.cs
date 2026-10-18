@@ -199,15 +199,10 @@ namespace Roughlike.UI
 
         void BuildTitle(RectTransform parent)
         {
-            var title = UiKit.Label(parent, "Title", "THE DROWNED RELIQUARY", 104, new Color(1f, 0.88f, 0.55f), TextAnchor.MiddleCenter, true);
-            UiKit.Place(title.rectTransform, new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -86f), new Vector2(1800f, 140f));
-            title.horizontalOverflow = HorizontalWrapMode.Overflow;
-            var shadow = title.gameObject.AddComponent<Shadow>();
-            shadow.effectColor = new Color(0f, 0f, 0f, 0.85f);
-            shadow.effectDistance = new Vector2(5f, -5f);
+            TitleLogo.Create(parent, -40f);
 
-            var sub = UiKit.Label(parent, "Subtitle", "a bell-ringer's apprentice, a sunken city, and one more try", 34, new Color(0.75f, 0.85f, 0.9f, 0.9f), TextAnchor.MiddleCenter);
-            UiKit.Place(sub.rectTransform, new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -232f), new Vector2(1500f, 50f));
+            var sub = UiKit.Label(parent, "Subtitle", "two souls, one sunken city, and one more try", 36, new Color(0.75f, 0.85f, 0.9f, 0.9f), TextAnchor.MiddleCenter);
+            UiKit.Place(sub.rectTransform, new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -292f), new Vector2(1500f, 50f));
             var s2 = sub.gameObject.AddComponent<Shadow>();
             s2.effectColor = new Color(0f, 0f, 0f, 0.8f);
             s2.effectDistance = new Vector2(2f, -2f);
@@ -216,7 +211,7 @@ namespace Roughlike.UI
         void BuildButtons(RectTransform parent)
         {
             var column = UiKit.Node("Buttons", parent);
-            UiKit.Place(column, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0f, -120f), new Vector2(620f, 640f));
+            UiKit.Place(column, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0f, -156f), new Vector2(620f, 640f));
 
             bool hasSave = RunSave.TryLoad(out RunSave save);
             string summary = hasSave ? (string.IsNullOrEmpty(save.summary) ? "Resume your run" : save.summary) : "No saved run";
@@ -313,7 +308,8 @@ namespace Roughlike.UI
         static void StartNew(uint seed, Difficulty difficulty)
         {
             GameSession.StartNew(seed, difficulty);
-            ModalManager.LoadScene(GameSession.GameplayScene);
+            Roughlike.Items.LoadoutSelection.Index = -1;
+            ModalManager.LoadScene(GameSession.LoadoutScene);   // practice room first; its portal starts the run
         }
 
         // =====================================================================

@@ -37,6 +37,7 @@ namespace Roughlike.UI
             scaler.matchWidthOrHeight = 0.5f;
 
             gameObject.AddComponent<GraphicRaycaster>();
+            gameObject.AddComponent<UiSounds>();
 
             HudLayer = UiKit.Node("HUD", transform);
             UiKit.Stretch(HudLayer);

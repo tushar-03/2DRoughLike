@@ -19,8 +19,12 @@ MonoBehaviour:
   description: Tap to parry, hold to block. Heavy and dependable.
   sprite: {fileID: 21300000, guid: ef2fff92b69bb9b4987c96012253c2f5, type: 3}
   heldScale: 0.78
+  heldSprite: {fileID: 0}
+  dual: 0
   steps: []
   comboResetTime: 0.45
+  projectileSpeed: 26
+  pierce: 0
   shield:
     parryWindow: 0.18
     blockDamageReduction: 0.85

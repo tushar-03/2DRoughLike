@@ -1,0 +1,728 @@
+fileFormatVersion: 2
+guid: e21b2927b34018b4284dc9b3ebbb0fcc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3561337178591172250
+    second: BoneArcher_0
+  - first:
+      213: 9188659383514260866
+    second: BoneArcher_1
+  - first:
+      213: -2896008991403776133
+    second: BoneArcher_2
+  - first:
+      213: 1880691311869360760
+    second: BoneArcher_3
+  - first:
+      213: -3120069331443779460
+    second: BoneArcher_4
+  - first:
+      213: -1154291653377029082
+    second: BoneArcher_5
+  - first:
+      213: 8228947870460393419
+    second: BoneArcher_6
+  - first:
+      213: 5654271127621702614
+    second: BoneArcher_7
+  - first:
+      213: -4390262560040233290
+    second: BoneArcher_8
+  - first:
+      213: 3639982022724545345
+    second: BoneArcher_9
+  - first:
+      213: -8589400277748509146
+    second: BoneArcher_10
+  - first:
+      213: 5476104640531564198
+    second: BoneArcher_11
+  - first:
+      213: -4783904236081854443
+    second: BoneArcher_12
+  - first:
+      213: -2659145721568522809
+    second: BoneArcher_13
+  - first:
+      213: -7068999693994801350
+    second: BoneArcher_14
+  - first:
+      213: 2875502526922703059
+    second: BoneArcher_15
+  - first:
+      213: -2330102660477220083
+    second: BoneArcher_16
+  - first:
+      213: -7212195615999561215
+    second: BoneArcher_17
+  - first:
+      213: 7238237586856278387
+    second: BoneArcher_18
+  - first:
+      213: -1037032601032782811
+    second: BoneArcher_19
+  - first:
+      213: -6284597300951514882
+    second: BoneArcher_20
+  - first:
+      213: 8165870276687573520
+    second: BoneArcher_21
+  - first:
+      213: 5600773005989050512
+    second: BoneArcher_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BoneArcher_0
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 1311
+        width: 102
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a96915f8b496c6130800000000000000
+      internalID: 3561337178591172250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_1
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 1311
+        width: 101
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2856d64960da48f70800000000000000
+      internalID: 9188659383514260866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_2
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 1311
+        width: 101
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b776a018a2f4fc7d0800000000000000
+      internalID: -2896008991403776133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_3
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 1311
+        width: 102
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87af228a8ce891a10800000000000000
+      internalID: 1880691311869360760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_4
+      rect:
+        serializedVersion: 2
+        x: 1373
+        y: 1311
+        width: 102
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c78f3b0597943b4d0800000000000000
+      internalID: -3120069331443779460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_5
+      rect:
+        serializedVersion: 2
+        x: 1693
+        y: 1311
+        width: 102
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62c83416bd12bffe0800000000000000
+      internalID: -1154291653377029082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_6
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 991
+        width: 100
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc7bff54d78133270800000000000000
+      internalID: 8228947870460393419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_7
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 991
+        width: 88
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d393a902a1087e40800000000000000
+      internalID: 5654271127621702614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_8
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 991
+        width: 91
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b6da165677a213c0800000000000000
+      internalID: -4390262560040233290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_9
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 991
+        width: 97
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14bed4d3d50d38230800000000000000
+      internalID: 3639982022724545345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_10
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 991
+        width: 109
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 626982bb4f15cc880800000000000000
+      internalID: -8589400277748509146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_11
+      rect:
+        serializedVersion: 2
+        x: 1682
+        y: 991
+        width: 122
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a680cb28280ffb40800000000000000
+      internalID: 5476104640531564198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_12
+      rect:
+        serializedVersion: 2
+        x: 2004
+        y: 991
+        width: 125
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 518cad881782c9db0800000000000000
+      internalID: -4783904236081854443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_13
+      rect:
+        serializedVersion: 2
+        x: 2328
+        y: 991
+        width: 116
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cd88e31e01d81bd0800000000000000
+      internalID: -2659145721568522809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_14
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 671
+        width: 123
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3748124b3ed5ed90800000000000000
+      internalID: -7068999693994801350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_15
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 671
+        width: 130
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d047fb2056d7e720800000000000000
+      internalID: 2875502526922703059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_16
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 671
+        width: 173
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0b0018c9ffc9afd0800000000000000
+      internalID: -2330102660477220083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_17
+      rect:
+        serializedVersion: 2
+        x: 1061
+        y: 671
+        width: 173
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10277b19c4229eb90800000000000000
+      internalID: -7212195615999561215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_18
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 351
+        width: 173
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 379f2744cb2637460800000000000000
+      internalID: 7238237586856278387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_19
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 351
+        width: 154
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52c01f20858bb91f0800000000000000
+      internalID: -1037032601032782811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_20
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 351
+        width: 154
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef008605d00a8c8a0800000000000000
+      internalID: -6284597300951514882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_21
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 31
+        width: 162
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01232e380cff25170800000000000000
+      internalID: 8165870276687573520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoneArcher_22
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 31
+        width: 165
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 098f291ff51f9bd40800000000000000
+      internalID: 5600773005989050512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BoneArcher_0: 3561337178591172250
+      BoneArcher_1: 9188659383514260866
+      BoneArcher_10: -8589400277748509146
+      BoneArcher_11: 5476104640531564198
+      BoneArcher_12: -4783904236081854443
+      BoneArcher_13: -2659145721568522809
+      BoneArcher_14: -7068999693994801350
+      BoneArcher_15: 2875502526922703059
+      BoneArcher_16: -2330102660477220083
+      BoneArcher_17: -7212195615999561215
+      BoneArcher_18: 7238237586856278387
+      BoneArcher_19: -1037032601032782811
+      BoneArcher_2: -2896008991403776133
+      BoneArcher_20: -6284597300951514882
+      BoneArcher_21: 8165870276687573520
+      BoneArcher_22: 5600773005989050512
+      BoneArcher_3: 1880691311869360760
+      BoneArcher_4: -3120069331443779460
+      BoneArcher_5: -1154291653377029082
+      BoneArcher_6: 8228947870460393419
+      BoneArcher_7: 5654271127621702614
+      BoneArcher_8: -4390262560040233290
+      BoneArcher_9: 3639982022724545345
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

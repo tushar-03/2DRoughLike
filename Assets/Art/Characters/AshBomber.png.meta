@@ -1,0 +1,806 @@
+fileFormatVersion: 2
+guid: d4f77b189de133c43a0f0c3f7d0dc0e9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6635092491998091969
+    second: AshBomber_0
+  - first:
+      213: 7561218016145508108
+    second: AshBomber_1
+  - first:
+      213: 8634205374385634543
+    second: AshBomber_2
+  - first:
+      213: -4129952979615506665
+    second: AshBomber_3
+  - first:
+      213: -7280560684796658314
+    second: AshBomber_4
+  - first:
+      213: 6412187481300859876
+    second: AshBomber_5
+  - first:
+      213: -7564021677242293491
+    second: AshBomber_6
+  - first:
+      213: 2440974454616676076
+    second: AshBomber_7
+  - first:
+      213: -5818395187930820315
+    second: AshBomber_8
+  - first:
+      213: -4386182817417884377
+    second: AshBomber_9
+  - first:
+      213: -8695703751868143145
+    second: AshBomber_10
+  - first:
+      213: -5275197532135574702
+    second: AshBomber_11
+  - first:
+      213: -1982056822621640577
+    second: AshBomber_12
+  - first:
+      213: 7927068405006741034
+    second: AshBomber_13
+  - first:
+      213: 7466300030276624087
+    second: AshBomber_14
+  - first:
+      213: 7441190940475176690
+    second: AshBomber_15
+  - first:
+      213: -8603119889047794501
+    second: AshBomber_16
+  - first:
+      213: -4773169860193689375
+    second: AshBomber_17
+  - first:
+      213: 2387041069502115357
+    second: AshBomber_18
+  - first:
+      213: 4432959850222559321
+    second: AshBomber_19
+  - first:
+      213: 248174911601689934
+    second: AshBomber_20
+  - first:
+      213: 3188866871093528815
+    second: AshBomber_21
+  - first:
+      213: -4896987347863956177
+    second: AshBomber_22
+  - first:
+      213: -2999602583298322318
+    second: AshBomber_23
+  - first:
+      213: 4884341631851979560
+    second: AshBomber_24
+  - first:
+      213: -6705161055032703561
+    second: AshBomber_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AshBomber_0
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 1313
+        width: 140
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ca586d9775941c50800000000000000
+      internalID: 6635092491998091969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_1
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 1313
+        width: 138
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0703a189b7dee860800000000000000
+      internalID: 7561218016145508108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_2
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 1313
+        width: 138
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fec3602ca0cd2d770800000000000000
+      internalID: 8634205374385634543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_3
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 1313
+        width: 140
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71f93fe75a57fa6c0800000000000000
+      internalID: -4129952979615506665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_4
+      rect:
+        serializedVersion: 2
+        x: 1349
+        y: 1313
+        width: 142
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67d350991a046fa90800000000000000
+      internalID: -7280560684796658314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_5
+      rect:
+        serializedVersion: 2
+        x: 1669
+        y: 1313
+        width: 142
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ebf4208a8aacf850800000000000000
+      internalID: 6412187481300859876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_6
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 993
+        width: 140
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d036e964c52370790800000000000000
+      internalID: -7564021677242293491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_7
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 993
+        width: 148
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce6da39655510e120800000000000000
+      internalID: 2440974454616676076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_8
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 993
+        width: 140
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5219a8c5768e04fa0800000000000000
+      internalID: -5818395187930820315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_9
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 993
+        width: 134
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72d82ef67f52123c0800000000000000
+      internalID: -4386182817417884377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_10
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 993
+        width: 140
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d92edd6287a25780800000000000000
+      internalID: -8695703751868143145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_11
+      rect:
+        serializedVersion: 2
+        x: 1666
+        y: 993
+        width: 148
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 253ba013bcbbac6b0800000000000000
+      internalID: -5275197532135574702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_12
+      rect:
+        serializedVersion: 2
+        x: 1990
+        y: 993
+        width: 140
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f786ffa32d15e74e0800000000000000
+      internalID: -1982056822621640577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_13
+      rect:
+        serializedVersion: 2
+        x: 2313
+        y: 993
+        width: 134
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2e26a607ba920e60800000000000000
+      internalID: 7927068405006741034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_14
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 673
+        width: 140
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7de5023c150ad9760800000000000000
+      internalID: 7466300030276624087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_15
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 673
+        width: 146
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f6b0e83cbb644760800000000000000
+      internalID: 7441190940475176690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_16
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 673
+        width: 151
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbc453dca049b9880800000000000000
+      internalID: -8603119889047794501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_17
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 673
+        width: 156
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e0ed8e2d4b42cdb0800000000000000
+      internalID: -4773169860193689375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_18
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 353
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1e21f3a439702120800000000000000
+      internalID: 2387041069502115357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_19
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 353
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 950a5183f79058d30800000000000000
+      internalID: 4432959850222559321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_20
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 353
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e45ce2864c1b17300800000000000000
+      internalID: 248174911601689934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_21
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 353
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe88a8f1681214c20800000000000000
+      internalID: 3188866871093528815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_22
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 353
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f259cf4d3f76a0cb0800000000000000
+      internalID: -4896987347863956177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_23
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 353
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 270d823d7554f56d0800000000000000
+      internalID: -2999602583298322318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_24
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 33
+        width: 156
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8236038f5daa8c340800000000000000
+      internalID: 4884341631851979560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshBomber_25
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 33
+        width: 156
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b50ef0cb8b72f2a0800000000000000
+      internalID: -6705161055032703561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      AshBomber_0: 6635092491998091969
+      AshBomber_1: 7561218016145508108
+      AshBomber_10: -8695703751868143145
+      AshBomber_11: -5275197532135574702
+      AshBomber_12: -1982056822621640577
+      AshBomber_13: 7927068405006741034
+      AshBomber_14: 7466300030276624087
+      AshBomber_15: 7441190940475176690
+      AshBomber_16: -8603119889047794501
+      AshBomber_17: -4773169860193689375
+      AshBomber_18: 2387041069502115357
+      AshBomber_19: 4432959850222559321
+      AshBomber_2: 8634205374385634543
+      AshBomber_20: 248174911601689934
+      AshBomber_21: 3188866871093528815
+      AshBomber_22: -4896987347863956177
+      AshBomber_23: -2999602583298322318
+      AshBomber_24: 4884341631851979560
+      AshBomber_25: -6705161055032703561
+      AshBomber_3: -4129952979615506665
+      AshBomber_4: -7280560684796658314
+      AshBomber_5: 6412187481300859876
+      AshBomber_6: -7564021677242293491
+      AshBomber_7: 2440974454616676076
+      AshBomber_8: -5818395187930820315
+      AshBomber_9: -4386182817417884377
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

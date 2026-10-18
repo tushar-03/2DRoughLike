@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Roughlike.Combat
 {
-    public enum WeaponKind { Melee, Shield }
+    public enum WeaponKind { Melee, Shield, Bow }
 
     /// <summary>One hit of a combo. All timings in seconds, all offsets in world units relative to the player's feet.</summary>
     [Serializable]
@@ -79,11 +79,21 @@ namespace Roughlike.Combat
         public Sprite sprite;
         [Tooltip("Size of the sprite when carried (1 = as painted).")]
         public float heldScale = 1f;
+        [Tooltip("What is drawn in the hand when it differs from the item art (the twin blades are one icon but two swords).")]
+        public Sprite heldSprite;
+        [Tooltip("A second copy is drawn in the off hand.")]
+        public bool dual;
 
         [Header("Melee")]
         public AttackStep[] steps = { new AttackStep() };
         [Tooltip("Idle time after the last swing before the combo restarts from the first hit.")]
         public float comboResetTime = 0.45f;
+
+        [Header("Bow")]
+        [Tooltip("Arrow speed in units per second (bows only).")]
+        public float projectileSpeed = 26f;
+        [Tooltip("How many enemies an arrow passes through before it stops.")]
+        public int pierce;
 
         [Header("Shield")]
         public ShieldSettings shield = new ShieldSettings();

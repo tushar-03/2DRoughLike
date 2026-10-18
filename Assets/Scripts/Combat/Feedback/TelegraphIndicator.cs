@@ -5,9 +5,10 @@ using Roughlike.Utils;
 namespace Roughlike.Combat
 {
     /// <summary>
-    /// Consistent visual language for incoming attacks: a dotted outline of the danger area. The dots light up from the attacker
-    /// toward the far edge and are all bright exactly when the hit lands. Lasers are a single dotted line, explosions a dotted
-    /// ring that fills inward-out. Readable by shape and motion, not only by colour (colourblind-safe), and it hides far less of
+    /// Consistent visual language for incoming attacks, all made of dots that pop in, shimmer and light up as the hit approaches
+    /// and flash white exactly when it lands. Melee swings are ONE dotted arc around the reach of the blow, sweeping from top to
+    /// bottom like the slash itself; lasers and shots are a dotted line that ends in an arrowhead; explosions are a dotted ring
+    /// that fills inward-out. Readable by shape and motion, not only by colour (colourblind-safe), and it hides far less of
     /// the scene than a filled box. The same indicator is used by every enemy and boss.
     /// </summary>
     public class TelegraphIndicator : MonoBehaviour
@@ -22,6 +23,8 @@ namespace Roughlike.Combat
         readonly List<SpriteRenderer> _dots = new List<SpriteRenderer>();
         readonly List<Vector2> _points = new List<Vector2>();     // local positions
         readonly List<float> _phase = new List<float>();          // 0..1: when each dot lights up
+        readonly List<float> _wave = new List<float>();           // position used for the travelling shimmer
+        readonly List<float> _big = new List<float>();            // 1 for the arrowhead dots, which are drawn larger
         Vector2 _size;
         int _facing = 1;
         float _duration, _elapsed;
@@ -101,15 +104,19 @@ namespace Roughlike.Combat
         {
             _points.Clear();
             _phase.Clear();
-            if (_circle) LayoutRing(); else if (_size.y < 0.45f) LayoutLine(); else LayoutRectangle();
+            _wave.Clear();
+            _big.Clear();
+            if (_circle) LayoutRing(); else if (_size.y < 0.45f) LayoutLine(); else LayoutArc();
             EnsureDots(_points.Count);
         }
 
-        void Add(Vector2 p, float phase)
+        void Add(Vector2 p, float phase, float wave = -1f, float big = 0f)
         {
             if (_points.Count >= MaxDots) return;
             _points.Add(p);
             _phase.Add(Mathf.Clamp01(phase));
+            _wave.Add(wave < 0f ? phase : wave);
+            _big.Add(big);
         }
 
         /// <summary>When a point along the attack direction lights up: the attacker's side first.</summary>
@@ -127,24 +134,29 @@ namespace Roughlike.Combat
                 float x = Mathf.Lerp(-_size.x * 0.5f, _size.x * 0.5f, i / (float)n);
                 Add(new Vector2(x, 0f), AlongPhase(x));
             }
+            // arrowhead pointing the way the shot travels
+            float tip = _size.x * 0.5f * _facing;
+            for (int k = 1; k <= 3; k++)
+            {
+                float back = -k * 0.2f * _facing;
+                Add(new Vector2(tip + back, k * 0.13f), 1f, 1f, 1f);
+                Add(new Vector2(tip + back, -k * 0.13f), 1f, 1f, 1f);
+            }
         }
 
-        void LayoutRectangle()
+        /// <summary>A single dotted crescent covering the blow's reach, drawn top to bottom like the swing.</summary>
+        void LayoutArc()
         {
             float hw = _size.x * 0.5f, hh = _size.y * 0.5f;
-            int nx = Mathf.Max(2, Mathf.CeilToInt(_size.x / Spacing));
-            int ny = Mathf.Max(2, Mathf.CeilToInt(_size.y / Spacing));
-            for (int i = 0; i <= nx; i++)
+            // half an ellipse that starts at the attacker's edge: x from -hw out to +hw at the middle, y over the full height
+            float length = Mathf.PI * Mathf.Sqrt((hw * hw + hh * hh) * 0.5f * 2f) * 0.5f * 1.1f;
+            int n = Mathf.Clamp(Mathf.CeilToInt(length / Spacing), 8, 70);
+            for (int i = 0; i <= n; i++)
             {
-                float x = Mathf.Lerp(-hw, hw, i / (float)nx);
-                Add(new Vector2(x, hh), AlongPhase(x));
-                Add(new Vector2(x, -hh), AlongPhase(x));
-            }
-            for (int j = 1; j < ny; j++)
-            {
-                float y = Mathf.Lerp(-hh, hh, j / (float)ny);
-                Add(new Vector2(-hw, y), AlongPhase(-hw));
-                Add(new Vector2(hw, y), AlongPhase(hw));
+                float u = i / (float)n;
+                float a = Mathf.Lerp(Mathf.PI * 0.5f, -Mathf.PI * 0.5f, u);
+                float x = (-hw + 2f * hw * Mathf.Cos(a)) * _facing;
+                Add(new Vector2(x, hh * Mathf.Sin(a)), u);
             }
         }
 
@@ -155,7 +167,7 @@ namespace Roughlike.Combat
             for (int i = 0; i < n; i++)
             {
                 float a = i / (float)n * Mathf.PI * 2f;
-                Add(new Vector2(Mathf.Cos(a), Mathf.Sin(a)) * r, 0f);
+                Add(new Vector2(Mathf.Cos(a), Mathf.Sin(a)) * r, 0f, i / (float)n);
             }
             // an inner ring that sweeps outward as the blast charges (phase = its radius fraction)
             for (float f = 0.25f; f < 0.99f; f += 0.25f)
@@ -173,6 +185,9 @@ namespace Roughlike.Combat
 
         void Apply(float t)
         {
+            float clock = Time.time;
+            float pop = Mathf.Clamp01(_elapsed / 0.18f);
+            float popScale = pop < 1f ? Mathf.Sin(pop * Mathf.PI * 0.5f) * (1f + 0.35f * Mathf.Sin(pop * Mathf.PI)) : 1f;
             for (int i = 0; i < _dots.Count; i++)
             {
                 var dot = _dots[i];
@@ -182,18 +197,30 @@ namespace Roughlike.Combat
                     continue;
                 }
                 if (!dot.gameObject.activeSelf) dot.gameObject.SetActive(true);
-                dot.transform.localPosition = _points[i];
 
-                float lit = Mathf.Clamp01((t - _phase[i]) * 8f + 1f);   // 0 = not reached yet, 1 = fully lit
-                bool inner = _circle && _phase[i] > 0.01f;
-                float size = DotSize * Mathf.Lerp(1f, 1.5f, lit);
+                float phase = _phase[i];
+                bool inner = _circle && phase > 0.01f;
+                float lit = Mathf.Clamp01((t - phase) * 8f + 1f);       // 0 = not reached yet, 1 = fully lit
+                if (_circle) lit = inner ? (t >= phase ? 1f : 0.12f) : Mathf.Lerp(0.45f, 1f, t);
+
+                // a shimmer travels along the dots toward the target; it speeds up as the hit gets close
+                float speed = Mathf.Lerp(7f, 15f, t);
+                float wave = 0.5f + 0.5f * Mathf.Sin(clock * speed - _wave[i] * (_circle ? 18f : 11f));
+                // the leading edge of the fill glows
+                float head = _circle ? 0f : Mathf.Clamp01(1f - Mathf.Abs(t - phase) * 7f);
+
+                float size = DotSize * Mathf.Lerp(1f, 1.45f, lit) * (1f + 0.4f * wave * lit) * (1f + 0.55f * head);
+                if (_big[i] > 0f) size *= 1.25f;
                 if (inner) size *= 0.8f;
-                dot.transform.localScale = Vector3.one * size;
+                if (t > 0.92f) size *= 1f + (t - 0.92f) * 9f;                // the dots swell as the blow lands
+                dot.transform.localPosition = _points[i];
+                dot.transform.localScale = Vector3.one * size * popScale;
 
                 Color c = _colour;
-                if (_circle) lit = inner ? (t >= _phase[i] ? 1f : 0.12f) : Mathf.Lerp(0.45f, 1f, t);
-                c.a = Mathf.Lerp(0.25f, 0.95f, lit);
-                if (t > 0.92f) c = Color.Lerp(c, Color.white, (t - 0.92f) * 8f * 0.7f);   // flash white right before the hit
+                c.a = Mathf.Lerp(0.22f, 0.95f, lit) * Mathf.Lerp(0.8f, 1f, wave);
+                c = Color.Lerp(c, Color.white, head * 0.6f);
+                if (t > 0.92f) c = Color.Lerp(c, Color.white, (t - 0.92f) * 8f * 0.8f);   // flash white right before the hit
+                c.a = Mathf.Clamp01(c.a);
                 dot.color = c;
             }
         }

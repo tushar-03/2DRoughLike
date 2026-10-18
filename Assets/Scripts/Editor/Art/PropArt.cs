@@ -37,6 +37,20 @@ namespace Roughlike.Editor.Art
             return p.Render(2.6f, Ink);
         }
 
+        /// <summary>A free-standing fire for the top of a stone post: a bed of embers and a tall flame.</summary>
+        public static Color32[] Flame(int i, int n)
+        {
+            var p = new Painter(W, H);
+            float ph = (float)i / n * Mathf.PI * 2f;
+            Mat ember = Mat.Of(new Color(0.9f, 0.34f, 0.1f), new Color(1f, 0.8f, 0.4f), 3f);
+            Mat coal = Mat.Of(new Color(0.22f, 0.1f, 0.1f), new Color(0.9f, 0.4f, 0.2f), 2.5f);
+            p.Ellipse(new Vector2(64f, 6f), 30f, 9f, 0f, coal);
+            p.Circle(new Vector2(52f, 8f), 8f, ember);
+            p.Circle(new Vector2(72f, 9f), 9f, ember);
+            Flame(p, new Vector2(64f, 8f), 1.9f, ph);
+            return p.Render(2.6f, Ink);
+        }
+
         public static Color32[] Brazier(int i, int n)
         {
             var p = new Painter(W, H);

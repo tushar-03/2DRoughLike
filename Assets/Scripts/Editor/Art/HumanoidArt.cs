@@ -165,7 +165,25 @@ namespace Roughlike.Editor.Art
                     return Attack(s, s.Attack == AttackStyle.Swing ? 0.34f + t * 0.66f : 0.34f + t * 0.66f, false);
                 case "player_attack":
                     return Attack(s, t, false);
+                case "player_shoot":
+                    return Shoot(s, t, 0f);
             }
+            return p;
+        }
+
+        /// <summary>Raise the bow, draw the string back, release. Used by archers and by the player's bow.</summary>
+        static Pose Shoot(HumanoidSpec s, float t, float shake)
+        {
+            Pose p = Stand(s);
+            float hy = p.Hip.y;
+            float aim = Smooth(Mathf.Clamp01(t / 0.2f));
+            float draw = t < 0.34f ? Smooth(Mathf.Clamp01((t - 0.1f) / 0.24f)) : Mathf.Max(0f, 1f - (t - 0.34f) * 7f);
+            p.Lean = Mathf.Lerp(2f, 6f, aim);
+            p.HandF = new Vector2(Mathf.Lerp(26f, 84f, aim), Mathf.Lerp(hy + 6f, hy + TorsoLen(s) * 0.8f, aim));
+            p.HandB = new Vector2(Mathf.Lerp(-20f, 84f - draw * 62f, aim), p.HandF.y + shake);
+            p.Draw = draw;
+            p.FootF = new Vector2(26f, Ankle); p.FootB = new Vector2(-20f, Ankle);
+            p.WeaponAngle = 90f; p.Sway = -4f;
             return p;
         }
 
@@ -179,18 +197,7 @@ namespace Roughlike.Editor.Art
             switch (s.Attack)
             {
                 case AttackStyle.Shoot:
-                {
-                    // raise the bow, draw the string back, release
-                    float aim = Smooth(Mathf.Clamp01(t / 0.2f));
-                    float draw = t < 0.34f ? Smooth(Mathf.Clamp01((t - 0.1f) / 0.24f)) : Mathf.Max(0f, 1f - (t - 0.34f) * 7f);
-                    p.Lean = Mathf.Lerp(2f, 6f, aim);
-                    p.HandF = new Vector2(Mathf.Lerp(26f, 84f, aim), Mathf.Lerp(hy + 6f, hy + TorsoLen(s) * 0.8f, aim));
-                    p.HandB = new Vector2(Mathf.Lerp(-20f, 84f - draw * 62f, aim), p.HandF.y + shake);
-                    p.Draw = draw;
-                    p.FootF = new Vector2(26f, Ankle); p.FootB = new Vector2(-20f, Ankle);
-                    p.WeaponAngle = 90f; p.Sway = -4f;
-                    return p;
-                }
+                    return Shoot(s, t, shake);
                 case AttackStyle.Spit:
                 {
                     float back = Smooth(Mathf.Clamp01(t / 0.32f));
@@ -403,6 +410,8 @@ namespace Roughlike.Editor.Art
                     valid = true,
                     hand = handF * s.Scale,
                     angle = p.WeaponAngle,
+                    handB = handB * s.Scale,
+                    angleB = p.WeaponAngle * 0.75f - 25f,
                     shieldUp = p.ShieldUp,
                     shield = (O + new Vector2(60f, hipY + torso * 0.3f)) * s.Scale,
                     stow = (O + new Vector2(-36f, hipY + torso * 0.5f)) * s.Scale

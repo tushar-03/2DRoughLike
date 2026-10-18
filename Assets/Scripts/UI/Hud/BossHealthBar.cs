@@ -90,13 +90,25 @@ namespace Roughlike.UI
 
         void Update()
         {
-            if (_boss == null) return;
+            if (_boss == null)
+            {
+                // the boss is gone (killed, or the whole level was rebuilt for a restart)
+                if (_panel.gameObject.activeSelf) _panel.gameObject.SetActive(false);
+                return;
+            }
             if (_boss.Dead || _boss.Health == null)
             {
                 if (_panel.gameObject.activeSelf) _panel.gameObject.SetActive(false);
                 _boss = null;
                 return;
             }
+            var player = Roughlike.Combat.Health.Player;
+            if (player != null && player.IsDead)
+            {
+                if (_panel.gameObject.activeSelf) _panel.gameObject.SetActive(false);
+                return;
+            }
+            if (!_panel.gameObject.activeSelf) _panel.gameObject.SetActive(true);
             float f = _boss.Health.Fraction;
             SetFill(_fill, f);
             _lagValue = Mathf.MoveTowards(_lagValue, f, Time.unscaledDeltaTime * 0.35f);

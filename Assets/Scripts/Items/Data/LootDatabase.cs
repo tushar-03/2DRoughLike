@@ -13,6 +13,8 @@ namespace Roughlike.Items
         public GearData[] outfits;
         public AffixData[] affixes;
         public MutationData[] mutations;
+        [Tooltip("Starting loadouts offered in the practice room before a new run.")]
+        public LoadoutData[] loadouts;
 
         [Header("Starting loadout")]
         public WeaponData startingWeapon1;

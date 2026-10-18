@@ -87,7 +87,7 @@ namespace Roughlike.Editor
 
         static void ConfigurePlayerSettings()
         {
-            PlayerSettings.productName = "The Drowned Reliquary";
+            PlayerSettings.productName = "Two Souls";
             PlayerSettings.WebGL.template = "PROJECT:Roughlike";
             PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Brotli;
             PlayerSettings.WebGL.decompressionFallback = false;

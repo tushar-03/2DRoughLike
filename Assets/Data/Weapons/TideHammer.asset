@@ -19,6 +19,8 @@ MonoBehaviour:
   description: Slow, heavy, and it staggers everything it touches.
   sprite: {fileID: 21300000, guid: 431f469550ca00b45b27bd9963b642f5, type: 3}
   heldScale: 1.1
+  heldSprite: {fileID: 0}
+  dual: 0
   steps:
   - name: Smash
     damage: 30
@@ -49,6 +51,8 @@ MonoBehaviour:
     lunge: 2
     moveScale: 0.15
   comboResetTime: 0.6
+  projectileSpeed: 26
+  pierce: 0
   shield:
     parryWindow: 0.18
     blockDamageReduction: 0.85

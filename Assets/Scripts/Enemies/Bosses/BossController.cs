@@ -28,11 +28,14 @@ namespace Roughlike.Enemies
         public bool Engaged { get; private set; }
         public bool Dead { get; private set; }
         public bool Stunned => _stun > 0f;
+        /// <summary>True while she has dropped to the ground and is open to attack.</summary>
+        public bool Exposed => _exposed > 0f;
         public Vector2 Position => transform.position;
         public Transform Visual { get; private set; }
         public float FloorY => Arena.yMin;
 
         [Tooltip("Run from Update. Tests turn this off and drive Tick(dt) themselves.")]
+        float _exposed;
         public bool autoTick = true;
 
         public event Action<int> PhaseChanged;
@@ -114,6 +117,7 @@ namespace Roughlike.Enemies
             if (Dead || dt <= 0f) return;
             dt = Mathf.Min(dt, 1f / 20f);
             if (_stun > 0f) _stun -= dt;
+            if (_exposed > 0f) _exposed -= dt;
 
             Vector2 v = _vel;
             if (!_busy && !Stunned && Engaged) v = Brain.IdleVelocity(dt);
@@ -228,6 +232,9 @@ namespace Roughlike.Enemies
         /// <summary>While true, a successful parry of this boss's melee stuns it.</summary>
         public void SetParryable(bool on) => _parryable = on;
 
+        /// <summary>Takes extra damage for a while (a flying boss that has landed), without being stunned.</summary>
+        public void Expose(float seconds) => _exposed = seconds;
+
         public void Loop(string clip) { if (_anim != null && _anim.Art != null && _anim.Art.Has(clip)) _anim.Loop(clip); }
         public void PlayOnce(string clip, float duration) { if (_anim != null && _anim.Art != null && _anim.Art.Has(clip)) _anim.PlayOnce(clip, duration); }
         public void Scrub(string clip, float progress) { if (_anim != null && _anim.Art != null && _anim.Art.Has(clip)) _anim.Scrub(clip, progress); }
@@ -252,6 +259,7 @@ namespace Roughlike.Enemies
             var ind = GetIndicator();
             ind.transform.SetParent(null, true);   // world space: it must not follow or flip with the boss
             ind.Begin(centre, size, Facing, seconds, unparryable, angle, false);
+            Roughlike.Utils.Sfx.PlayAt(Roughlike.Utils.SfxId.EnemyTelegraph, centre, 0.6f);
             return ind;
         }
 
@@ -291,6 +299,7 @@ namespace Roughlike.Enemies
         public int StrikeBox(Vector2 centre, Vector2 size, float mult, Vector2 knockback)
         {
             _hitSet.Clear();
+            Roughlike.Utils.Sfx.PlayAt(Roughlike.Utils.SfxId.BossSlam, centre, 0.7f);
             var info = Template(mult, DamageTags.Melee, new Vector2(knockback.x * Facing, knockback.y));
             return MeleeStrike.Strike(centre, size, LayerMask.GetMask(GameLayers.PlayerName), info, _hitSet);
         }
@@ -320,7 +329,7 @@ namespace Roughlike.Enemies
         public HitResult Filter(ref DamageInfo info)
         {
             if (_invulnerable) return HitResult.Ignored;
-            if (Stunned) info.Amount *= 1.5f;
+            if (Stunned || Exposed) info.Amount *= 1.5f;
             return HitResult.Hit;
         }
 

@@ -45,6 +45,34 @@ MonoBehaviour:
     yOffset: 0
     tint: {r: 1, g: 1, b: 1, a: 1}
     sortingOrder: -35
+  - name: Distant arches
+    sprite: {fileID: 21300000, guid: 5505a3c66d78d8b4d8eb38cb2eaaae61, type: 3}
+    follow: 0.93
+    followY: 0.9
+    yOffset: 0.6
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sortingOrder: -57
+  - name: Far mist
+    sprite: {fileID: 21300000, guid: b1e9557df8083b94b9f04bb77c38be61, type: 3}
+    follow: 0.8
+    followY: 0.85
+    yOffset: 0
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sortingOrder: -55
+  - name: Near mist
+    sprite: {fileID: 21300000, guid: ca6ad10274ac41849bcd0620dbef30aa, type: 3}
+    follow: 0.5
+    followY: 0.7
+    yOffset: -0.5
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sortingOrder: -38
+  - name: Foreground columns
+    sprite: {fileID: 21300000, guid: a46df7ce7ecfb3649871bbae13f709ec, type: 3}
+    follow: -0.85
+    followY: 1
+    yOffset: 0
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sortingOrder: 58
   - name: Foreground rubble
     sprite: {fileID: 21300000, guid: d6546612f046dff449f17c30f72d39ae, type: 3}
     follow: -0.35
@@ -70,6 +98,6 @@ MonoBehaviour:
   saturation: 14
   contrast: 12
   moteColour: {r: 0.65, g: 0.9, b: 1, a: 0.55}
-  moteCount: 34
+  moteCount: 50
   props: {fileID: 11400000, guid: 39fe8fd0c8aeb9b4aa80cda8393fde40, type: 2}
   worldProps: {fileID: 11400000, guid: 7cc86d3be8583f642ab99f843ec351bb, type: 2}

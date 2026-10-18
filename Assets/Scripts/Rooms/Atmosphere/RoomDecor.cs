@@ -76,6 +76,8 @@ namespace Roughlike.Rooms
                 post.transform.localScale = new Vector3(1f, (y - F + 0.05f) / 3.125f, 1f);
             }
 
+            // a fire burns on the post; older art sheets without the flame clip keep the wall torch sprite
+            string drawn = clip == "torch" && art.props.Has("flame") ? "flame" : clip;
             var go = new GameObject(clip);
             go.transform.SetParent(chunk.transform, false);
             go.transform.localPosition = new Vector3(x, y, 0f);
@@ -83,9 +85,9 @@ namespace Roughlike.Rooms
             sr.sortingOrder = -8;
             var anim = go.AddComponent<SpriteAnimator>();
             anim.Bind(art.props);
-            anim.Loop(clip);
-            sr.sprite = art.props.Prop(clip);
-            go.transform.localScale = Vector3.one * (clip == "brazier" ? 1.15f : 1f);
+            anim.Loop(drawn);
+            sr.sprite = art.props.Prop(drawn);
+            go.transform.localScale = Vector3.one * (clip == "brazier" ? 1.15f : drawn == "flame" ? 0.8f : 1f);
 
             var lightGo = new GameObject("Light");
             lightGo.transform.SetParent(go.transform, false);

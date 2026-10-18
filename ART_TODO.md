@@ -34,3 +34,7 @@ All art sits behind prefab / Sprite Library / ScriptableObject slots so replacem
 | Ashen Promenade tiles and backdrop (`Assets/Art/Environment/Promenade*.png`) | as the first biome | Procedural rust basalt, sunset sky, ruined towers. Needs authored art and its own enemy roster | Medium |
 | Weapon sprites (`Assets/Art/Weapons/*.png`) | Melee: blade pointing up, pivot at the grip, 160 PPU. Shields: face-on, pivot centre | Painted procedurally by `WeaponArt`. Replace with authored art, keep the orientation and pivot, then assign on the `WeaponData` asset | High |
 | Parallax planes (`Assets/Art/Environment/*Foreground*.png`, `BackdropLanterns.png`, `PromenadeIslands.png`) | 1280x768, tileable horizontally, 32 PPU | Foreground planes use negative follow and draw above the player; keep the silhouettes in the bottom and top bands | Medium |
+| Sound effects (`SfxSynth`) | Mono clips, 44.1 kHz | All sounds are generated in code. To use recorded audio, return a clip for that `SfxId` from `SfxSynth.Make` (or load it from Resources) | High |
+| Fonts (`Assets/Resources/Fonts`) | TTF | Cinzel Decorative and Almendra (OFL). Replace the files keeping the names Heading, Display, Body, BodyBold | Low |
+| Promenade enemy sheets (`AshFootman`, `EmberImp`, `BoneArcher`, `RustSentinel`, `AshPriest`, `AshHusk`, `EmberWisp`, `CinderBoar`, `AshBomber`) | Same layout as the Catacombs enemies | Procedural repaints; need authored art | High |
+| Bow, Twin Blades, Greatsword sprites | Same rules as the other weapon art | Procedural | High |

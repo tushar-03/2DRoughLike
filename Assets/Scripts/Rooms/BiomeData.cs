@@ -25,6 +25,8 @@ namespace Roughlike.Rooms
         [Header("Boss")]
         [Tooltip("The boss waiting in the final room. Leave empty for a plain exit.")]
         public BossDefinition boss;
+        [Tooltip("Ambient sound: false is the low cavern drone, true is wind over open ruins.")]
+        public bool windyAmbience;
 
         [Header("Art")]
         [Tooltip("Tiles, backdrop, lighting and post-processing. Leave empty for the plain graybox look.")]

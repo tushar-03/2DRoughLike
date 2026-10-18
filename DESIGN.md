@@ -70,6 +70,11 @@ Every generated level must be finishable with the base kit, and the rule is enfo
 - A boss is a controller plus a brain. The controller owns health, phases, stun, telegraph pooling and death; the brain owns movement between attacks and the attacks, as coroutines that must show a dotted telegraph before anything damaging. Parryable melee attacks open a parry window; area blasts are marked unparryable.
 - A run is a list of biomes. Each biome is a generated level whose last room is the boss arena.
 
+## Run start, sound and gear
+- A new run begins in the practice room (`LoadoutDirector`); the chosen `LoadoutData` is stored in `LoadoutSelection` and read by `PlayerInventory.ResetForRun`, so a retry with the same seed keeps it.
+- Audio is event driven: `GameAudio` (UI assembly) turns player events and the event bus into `Sfx.Play`; a few leaf spots (pickups, chests, projectiles, telegraphs) call it directly. Bus volumes (effects, interface, ambience) come from `GameSettings`.
+- Weapons are data (`WeaponData`): melee steps, bow steps (an arrow instead of a hitbox), shields. Held art is drawn from per-frame anchors on the player's sheet.
+
 ## Milestones
 M0 Setup · M1 Movement · M2 Combat · M3 Level gen · M4 Loot/stats · M4.5 Menus/saves · M5 Visual slice + enemies · M6 Content · M7 Boss/biome 1 · M8 Meta/hub/story · M9 Biomes 2-3 · M10 Polish.
 Review stop after each.

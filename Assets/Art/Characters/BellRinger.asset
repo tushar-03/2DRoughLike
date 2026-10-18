@@ -27,36 +27,48 @@ MonoBehaviour:
     - valid: 1
       hand: {x: 164, y: 128.97011}
       angle: 55
+      handB: {x: 122, y: 124.97011}
+      angleB: 16.25
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
       hand: {x: 164, y: 131.13516}
       angle: 57.165062
+      handB: {x: 122, y: 126.702156}
+      angleB: 17.873796
       shieldUp: 0
       shield: {x: 200, y: 178.92995}
       stow: {x: 104, y: 193.86395}
     - valid: 1
       hand: {x: 164, y: 131.13516}
       angle: 57.165062
+      handB: {x: 122, y: 126.702156}
+      angleB: 17.873796
       shieldUp: 0
       shield: {x: 200, y: 178.92995}
       stow: {x: 104, y: 193.86395}
     - valid: 1
       hand: {x: 164, y: 128.97011}
       angle: 55
+      handB: {x: 122, y: 124.97011}
+      angleB: 16.25
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
       hand: {x: 164, y: 126.805046}
       angle: 52.834938
+      handB: {x: 122, y: 123.23806}
+      angleB: 14.626204
       shieldUp: 0
       shield: {x: 200, y: 175.81226}
       stow: {x: 104, y: 190.74626}
     - valid: 1
       hand: {x: 164, y: 126.805046}
       angle: 52.834938
+      handB: {x: 122, y: 123.23806}
+      angleB: 14.626204
       shieldUp: 0
       shield: {x: 200, y: 175.81226}
       stow: {x: 104, y: 190.74626}
@@ -69,48 +81,64 @@ MonoBehaviour:
     - valid: 1
       hand: {x: 162, y: 170.97011}
       angle: 30
+      handB: {x: 124, y: 154.97011}
+      angleB: -2.5
       shieldUp: 0
       shield: {x: 200, y: 175.37111}
       stow: {x: 104, y: 190.30511}
     - valid: 1
       hand: {x: 137.95836, y: 167.16249}
       angle: 30
+      handB: {x: 148.04163, y: 154.67722}
+      angleB: -2.5
       shieldUp: 0
       shield: {x: 200, y: 173.32085}
       stow: {x: 104, y: 188.25485}
     - valid: 1
       hand: {x: 128, y: 157.97011}
       angle: 30
+      handB: {x: 158, y: 153.97011}
+      angleB: -2.5
       shieldUp: 0
       shield: {x: 200, y: 168.37111}
       stow: {x: 104, y: 183.30511}
     - valid: 1
       hand: {x: 137.95837, y: 158.67722}
       angle: 30
+      handB: {x: 148.04163, y: 163.16249}
+      angleB: -2.5
       shieldUp: 0
       shield: {x: 200, y: 173.32085}
       stow: {x: 104, y: 188.25485}
     - valid: 1
       hand: {x: 162, y: 158.97011}
       angle: 30
+      handB: {x: 124, y: 166.97011}
+      angleB: -2.5
       shieldUp: 0
       shield: {x: 200, y: 175.37111}
       stow: {x: 104, y: 190.30511}
     - valid: 1
       hand: {x: 186.04163, y: 158.67722}
       angle: 30
+      handB: {x: 99.95837, y: 163.16249}
+      angleB: -2.5
       shieldUp: 0
       shield: {x: 200, y: 173.32085}
       stow: {x: 104, y: 188.25485}
     - valid: 1
       hand: {x: 196, y: 157.97011}
       angle: 30
+      handB: {x: 90, y: 153.97011}
+      angleB: -2.5
       shieldUp: 0
       shield: {x: 200, y: 168.37111}
       stow: {x: 104, y: 183.30511}
     - valid: 1
       hand: {x: 186.04161, y: 167.1625}
       angle: 30
+      handB: {x: 99.958374, y: 154.67722}
+      angleB: -2.5
       shieldUp: 0
       shield: {x: 200, y: 173.32086}
       stow: {x: 104, y: 188.25485}
@@ -123,6 +151,8 @@ MonoBehaviour:
     - valid: 1
       hand: {x: 176, y: 220.97011}
       angle: 70
+      handB: {x: 110, y: 202.97011}
+      angleB: 27.5
       shieldUp: 0
       shield: {x: 200, y: 181.37111}
       stow: {x: 104, y: 196.30511}
@@ -135,6 +165,8 @@ MonoBehaviour:
     - valid: 1
       hand: {x: 180, y: 206.97011}
       angle: 80
+      handB: {x: 104, y: 198.97011}
+      angleB: 35
       shieldUp: 0
       shield: {x: 200, y: 179.37111}
       stow: {x: 104, y: 194.30511}
@@ -147,36 +179,48 @@ MonoBehaviour:
     - valid: 0
       hand: {x: 0, y: 0}
       angle: 0
+      handB: {x: 0, y: 0}
+      angleB: 0
       shieldUp: 0
       shield: {x: 0, y: 0}
       stow: {x: 0, y: 0}
     - valid: 0
       hand: {x: 0, y: 0}
       angle: 0
+      handB: {x: 0, y: 0}
+      angleB: 0
       shieldUp: 0
       shield: {x: 0, y: 0}
       stow: {x: 0, y: 0}
     - valid: 0
       hand: {x: 0, y: 0}
       angle: 0
+      handB: {x: 0, y: 0}
+      angleB: 0
       shieldUp: 0
       shield: {x: 0, y: 0}
       stow: {x: 0, y: 0}
     - valid: 0
       hand: {x: 0, y: 0}
       angle: 0
+      handB: {x: 0, y: 0}
+      angleB: 0
       shieldUp: 0
       shield: {x: 0, y: 0}
       stow: {x: 0, y: 0}
     - valid: 0
       hand: {x: 0, y: 0}
       angle: 0
+      handB: {x: 0, y: 0}
+      angleB: 0
       shieldUp: 0
       shield: {x: 0, y: 0}
       stow: {x: 0, y: 0}
     - valid: 0
       hand: {x: 0, y: 0}
       angle: 0
+      handB: {x: 0, y: 0}
+      angleB: 0
       shieldUp: 0
       shield: {x: 0, y: 0}
       stow: {x: 0, y: 0}
@@ -189,6 +233,8 @@ MonoBehaviour:
     - valid: 1
       hand: {x: 188, y: 194.97011}
       angle: 80
+      handB: {x: 180, y: 184.97011}
+      angleB: 35
       shieldUp: 1
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
@@ -201,41 +247,107 @@ MonoBehaviour:
     - valid: 1
       hand: {x: 178.32294, y: 259.40323}
       angle: 55
+      handB: {x: 120, y: 196.0386}
+      angleB: 16.25
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
       hand: {x: 144.36447, y: 275.88443}
       angle: 125.37037
+      handB: {x: 140.74074, y: 196.0386}
+      angleB: 69.02778
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
       hand: {x: 156.86748, y: 273.27747}
       angle: 102.03704
+      handB: {x: 148, y: 196.0386}
+      angleB: 51.52778
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
       hand: {x: 191.43726, y: 213.6681}
       angle: -35
+      handB: {x: 148, y: 196.0386}
+      angleB: -51.25
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
       hand: {x: 190.49423, y: 209.66321}
       angle: -42.5
+      handB: {x: 148, y: 196.0386}
+      angleB: -56.875
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
       hand: {x: 189.2399, y: 205.74464}
       angle: -50
+      handB: {x: 148, y: 196.0386}
+      angleB: -62.5
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+  - name: shoot
+    row: 7
+    frames: 6
+    fps: 12
+    loop: 0
+    anchors:
+    - valid: 1
+      hand: {x: 166, y: 160.97011}
+      angle: 90
+      handB: {x: 120, y: 160.97011}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 224, y: 214.7061}
+      angle: 90
+      handB: {x: 200.67824, y: 214.7061}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 224, y: 214.7061}
+      angle: 90
+      handB: {x: 188.04001, y: 214.7061}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 224, y: 214.7061}
+      angle: 90
+      handB: {x: 224, y: 214.7061}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 224, y: 214.7061}
+      angle: 90
+      handB: {x: 224, y: 214.7061}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 224, y: 214.7061}
+      angle: 90
+      handB: {x: 224, y: 214.7061}
+      angleB: 42.5
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
   - name: hurt
-    row: 7
+    row: 8
     frames: 2
     fps: 8
     loop: 0
@@ -243,12 +355,16 @@ MonoBehaviour:
     - valid: 1
       hand: {x: 174, y: 216.97011}
       angle: 110
+      handB: {x: 106, y: 200.97011}
+      angleB: 57.5
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
       hand: {x: 174, y: 216.97011}
       angle: 110
+      handB: {x: 106, y: 200.97011}
+      angleB: 57.5
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}

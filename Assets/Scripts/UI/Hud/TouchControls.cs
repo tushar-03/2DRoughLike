@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -9,15 +10,45 @@ using Roughlike.Utils;
 
 namespace Roughlike.UI
 {
+    /// <summary>Where one on-screen control sits by default and what it looks like (1920x1080 reference units).</summary>
+    public sealed class TouchSpec
+    {
+        public string Id, Label, Path;
+        public Vector2 Anchor, Pivot, Position;
+        public float Size;
+        public Color Tint;
+        public bool IsStick;
+    }
+
     /// <summary>
     /// On-screen controls for phones and tablets: a floating-style stick on the left and action buttons on the right.
     /// They drive a virtual gamepad through the Input System's on-screen controls, so the whole game (movement, combat,
     /// menus, the pause button) works unchanged and honours the player's gamepad bindings.
-    /// Shown automatically on touch devices (and always or never from the settings).
+    /// Shown automatically on touch devices (and always or never from the settings). Every control can be moved and resized
+    /// in the settings (<see cref="TouchLayoutEditor"/>); the layout is saved with the other settings.
     /// </summary>
     public sealed class TouchControls : MonoBehaviour
     {
+        static readonly Vector2 BR = new Vector2(1f, 0f), Centre = new Vector2(0.5f, 0.5f);
+
+        /// <summary>Every control, in draw order.</summary>
+        public static readonly TouchSpec[] Specs =
+        {
+            new TouchSpec { Id = "stick", Label = "MOVE", IsStick = true, Anchor = Vector2.zero, Pivot = Centre, Position = new Vector2(270f, 380f), Size = 300f, Tint = Color.white },
+            new TouchSpec { Id = "attack", Label = "ATTACK", Path = "<Gamepad>/buttonWest", Anchor = BR, Pivot = Centre, Position = new Vector2(-250f, 250f), Size = 170f, Tint = new Color(1f, 0.55f, 0.35f) },
+            new TouchSpec { Id = "jump", Label = "JUMP", Path = "<Gamepad>/buttonSouth", Anchor = BR, Pivot = Centre, Position = new Vector2(-110f, 150f), Size = 150f, Tint = new Color(0.55f, 0.85f, 1f) },
+            new TouchSpec { Id = "roll", Label = "ROLL", Path = "<Gamepad>/buttonEast", Anchor = BR, Pivot = Centre, Position = new Vector2(-410f, 150f), Size = 140f, Tint = new Color(0.7f, 1f, 0.7f) },
+            new TouchSpec { Id = "shield", Label = "SHIELD", Path = "<Gamepad>/buttonNorth", Anchor = BR, Pivot = Centre, Position = new Vector2(-110f, 340f), Size = 140f, Tint = new Color(0.8f, 0.85f, 1f) },
+            new TouchSpec { Id = "skill1", Label = "SKILL 1", Path = "<Gamepad>/leftTrigger", Anchor = BR, Pivot = Centre, Position = new Vector2(-540f, 300f), Size = 110f, Tint = new Color(1f, 0.85f, 0.4f) },
+            new TouchSpec { Id = "skill2", Label = "SKILL 2", Path = "<Gamepad>/rightTrigger", Anchor = BR, Pivot = Centre, Position = new Vector2(-410f, 410f), Size = 110f, Tint = new Color(1f, 0.85f, 0.4f) },
+            new TouchSpec { Id = "use", Label = "USE", Path = "<Gamepad>/leftShoulder", Anchor = BR, Pivot = Centre, Position = new Vector2(-560f, 150f), Size = 120f, Tint = new Color(0.9f, 0.8f, 1f) },
+            new TouchSpec { Id = "flask", Label = "FLASK", Path = "<Gamepad>/rightStickPress", Anchor = BR, Pivot = Centre, Position = new Vector2(-250f, 450f), Size = 100f, Tint = new Color(0.5f, 1f, 0.6f) },
+            new TouchSpec { Id = "pause", Label = "II", Path = "<Gamepad>/start", Anchor = Vector2.one, Pivot = Vector2.one, Position = new Vector2(-24f, -200f), Size = 84f, Tint = Color.white }
+        };
+
         RectTransform _layer;
+        CanvasGroup _group;
+        readonly Dictionary<string, RectTransform> _controls = new Dictionary<string, RectTransform>();
         bool _visible;
 
         /// <summary>True when the overlay should be on for this device and these settings.</summary>
@@ -33,6 +64,7 @@ namespace Roughlike.UI
         }
 
         public bool Visible => _visible;
+        public RectTransform Control(string id) => _controls.TryGetValue(id, out var r) ? r : null;
 
         public static TouchControls Create(UiRoot root)
         {
@@ -65,6 +97,7 @@ namespace Roughlike.UI
             if (_layer != null) _layer.gameObject.SetActive(show);
             InputDevices.TouchUiActive = show;
             if (show && InputDevices.Scheme != InputScheme.Touch && !InputDevices.HasRealGamepad) InputDevices.Set(InputScheme.Touch);
+            ApplyLayout();
         }
 
         // ------------------------------------------------------------------ layout (1920x1080 reference)
@@ -75,48 +108,75 @@ namespace Roughlike.UI
             UiKit.Stretch(rt);
             _layer = UiKit.Node("Layer", rt);
             UiKit.Stretch(_layer);
+            _group = _layer.gameObject.AddComponent<CanvasGroup>();
 
-            // stick, bottom left (above the weapon slots)
-            BuildStick(new Vector2(270f, 380f), 300f);
-
-            // face buttons, bottom right, laid out like a gamepad: attack where the thumb rests
-            Button("ATTACK", "<Gamepad>/buttonWest", new Vector2(-250f, 250f), 170f, new Color(1f, 0.55f, 0.35f));
-            Button("JUMP", "<Gamepad>/buttonSouth", new Vector2(-110f, 150f), 150f, new Color(0.55f, 0.85f, 1f));
-            Button("ROLL", "<Gamepad>/buttonEast", new Vector2(-410f, 150f), 140f, new Color(0.7f, 1f, 0.7f));
-            Button("SHIELD", "<Gamepad>/buttonNorth", new Vector2(-110f, 340f), 140f, new Color(0.8f, 0.85f, 1f));
-
-            // skills and utilities
-            Button("SKILL 1", "<Gamepad>/leftTrigger", new Vector2(-540f, 300f), 110f, new Color(1f, 0.85f, 0.4f));
-            Button("SKILL 2", "<Gamepad>/rightTrigger", new Vector2(-410f, 410f), 110f, new Color(1f, 0.85f, 0.4f));
-            Button("USE", "<Gamepad>/leftShoulder", new Vector2(-560f, 150f), 120f, new Color(0.9f, 0.8f, 1f));
-            Button("FLASK", "<Gamepad>/rightStickPress", new Vector2(-250f, 450f), 100f, new Color(0.5f, 1f, 0.6f));
-
-            // pause, top right
-            var pause = Button("II", "<Gamepad>/start", Vector2.zero, 84f, new Color(1f, 1f, 1f), topRight: true);
-            UiKit.Place((RectTransform)pause.transform, new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(-24f, -200f), new Vector2(84f, 84f));
+            foreach (var spec in Specs) _controls[spec.Id] = BuildVisual(_layer, spec, true);
+            ApplyLayout();
         }
 
-        void BuildStick(Vector2 centre, float size)
+        /// <summary>Puts each control at its saved (or default) place, size and opacity.</summary>
+        public void ApplyLayout()
         {
-            var ring = UiKit.Image(_layer, "Stick Base", new Color(1f, 1f, 1f, 0.12f), ProceduralSprites.Circle);
-            UiKit.Place(ring.rectTransform, new Vector2(0f, 0f), new Vector2(0f, 0f), new Vector2(0.5f, 0.5f), centre, new Vector2(size, size));
+            var s = SettingsService.Current;
+            if (_group != null) _group.alpha = s.touchOpacity;
+            foreach (var spec in Specs)
+            {
+                if (!_controls.TryGetValue(spec.Id, out var rt) || rt == null) continue;
+                Place(rt, spec, s);
+            }
+        }
+
+        /// <summary>Position, scale and size factor of one control from the settings.</summary>
+        public static void Place(RectTransform rt, TouchSpec spec, GameSettings s)
+        {
+            var item = s.FindTouch(spec.Id);
+            Vector2 pos = item != null ? new Vector2(item.x, item.y) : spec.Position;
+            float scale = (item != null ? item.scale : 1f) * s.touchScale;
+            rt.anchorMin = spec.Anchor;
+            rt.anchorMax = spec.Anchor;
+            rt.pivot = spec.Pivot;
+            rt.anchoredPosition = pos;
+            rt.sizeDelta = new Vector2(spec.Size, spec.Size);
+            rt.localScale = Vector3.one * scale;
+        }
+
+        /// <summary>Draws one control. <paramref name="interactive"/> wires it to the virtual gamepad; the layout editor draws inert copies.</summary>
+        public static RectTransform BuildVisual(Transform parent, TouchSpec spec, bool interactive)
+        {
+            return spec.IsStick ? BuildStick(parent, spec, interactive) : BuildButton(parent, spec, interactive);
+        }
+
+        static RectTransform BuildStick(Transform parent, TouchSpec spec, bool interactive)
+        {
+            float size = spec.Size;
+            var ring = UiKit.Image(parent, "Stick Base", new Color(1f, 1f, 1f, 0.12f), ProceduralSprites.Circle);
+            ring.raycastTarget = !interactive;   // the editor drags the base; in play only the knob takes touches
 
             var knob = UiKit.Image(ring.transform, "Stick", new Color(1f, 1f, 1f, 0.35f), ProceduralSprites.Circle);
-            knob.raycastTarget = true;
+            knob.raycastTarget = interactive;
             UiKit.Place(knob.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(size * 0.5f, size * 0.5f));
 
-            var stick = knob.gameObject.AddComponent<OnScreenStick>();
-            stick.movementRange = size * 0.38f;
-            stick.controlPath = "<Gamepad>/leftStick";
-            knob.gameObject.AddComponent<TouchPressFeedback>().Bind(knob, 0.35f, 0.65f, false);
+            if (interactive)
+            {
+                var stick = knob.gameObject.AddComponent<OnScreenStick>();
+                stick.movementRange = size * 0.38f;
+                stick.controlPath = "<Gamepad>/leftStick";
+                knob.gameObject.AddComponent<TouchPressFeedback>().Bind(knob, 0.35f, 0.65f, false);
+            }
+            else
+            {
+                var text = UiKit.Label(ring.transform, "Label", spec.Label, 34, Color.white, TextAnchor.MiddleCenter, true);
+                UiKit.Stretch(text.rectTransform);
+            }
+            return ring.rectTransform;
         }
 
-        Image Button(string label, string controlPath, Vector2 fromBottomRight, float size, Color tint, bool topRight = false)
+        static RectTransform BuildButton(Transform parent, TouchSpec spec, bool interactive)
         {
-            var img = UiKit.Image(_layer, "Touch " + label, new Color(tint.r, tint.g, tint.b, 0.28f), ProceduralSprites.Circle);
+            Color tint = spec.Tint;
+            float size = spec.Size;
+            var img = UiKit.Image(parent, "Touch " + spec.Label, new Color(tint.r, tint.g, tint.b, 0.28f), ProceduralSprites.Circle);
             img.raycastTarget = true;
-            if (!topRight)
-                UiKit.Place(img.rectTransform, new Vector2(1f, 0f), new Vector2(1f, 0f), new Vector2(0.5f, 0.5f), new Vector2(fromBottomRight.x, fromBottomRight.y), new Vector2(size, size));
 
             var ring = UiKit.Image(img.transform, "Ring", new Color(tint.r, tint.g, tint.b, 0.55f), ProceduralSprites.Circle);
             ring.raycastTarget = false;
@@ -124,13 +184,16 @@ namespace Roughlike.UI
             var inner = UiKit.Image(ring.transform, "Fill", new Color(0.05f, 0.06f, 0.1f, 0.55f), ProceduralSprites.Circle);
             UiKit.Stretch(inner.rectTransform, size * 0.035f);
 
-            var text = UiKit.Label(img.transform, "Label", label, Mathf.RoundToInt(size * (label.Length > 5 ? 0.17f : 0.22f)), Color.white, TextAnchor.MiddleCenter, true);
+            var text = UiKit.Label(img.transform, "Label", spec.Label, Mathf.RoundToInt(size * (spec.Label.Length > 5 ? 0.17f : 0.22f)), Color.white, TextAnchor.MiddleCenter, true);
             UiKit.Stretch(text.rectTransform);
 
-            var button = img.gameObject.AddComponent<OnScreenButton>();
-            button.controlPath = controlPath;
-            img.gameObject.AddComponent<TouchPressFeedback>().Bind(img, 0.28f, 0.6f, true);
-            return img;
+            if (interactive)
+            {
+                var button = img.gameObject.AddComponent<OnScreenButton>();
+                button.controlPath = spec.Path;
+                img.gameObject.AddComponent<TouchPressFeedback>().Bind(img, 0.28f, 0.6f, true);
+            }
+            return img.rectTransform;
         }
     }
 

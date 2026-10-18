@@ -9,7 +9,7 @@ namespace Roughlike.UI
 {
     /// <summary>
     /// Small helpers for building uGUI in code (the whole UI is generated, so layouts live next to their logic and
-    /// there are no scene assets to keep in sync). Text uses the built-in font until the art pass brings real fonts.
+    /// there are no scene assets to keep in sync). Text uses the game's fonts (see GameFonts).
     /// </summary>
     public static class UiKit
     {
@@ -22,16 +22,7 @@ namespace Roughlike.UI
         static Font _font;
         public static Font Font => _font != null ? _font : (_font = LoadFont());
 
-        static Font LoadFont()
-        {
-            // a classical serif if the machine has one, otherwise the built-in font
-            Font os = null;
-            // browsers and phones have no installed fonts to pick from
-            if (Roughlike.Utils.WebBridge.IsWebGL || Application.isMobilePlatform) return Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            try { os = Font.CreateDynamicFontFromOSFont(new[] { "Palatino Linotype", "Book Antiqua", "Georgia", "Cambria", "Times New Roman" }, 32); }
-            catch (System.Exception) { }
-            return os != null ? os : Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-        }
+        static Font LoadFont() => Roughlike.Utils.GameFonts.Body;
 
         public static RectTransform Node(string name, Transform parent)
         {
@@ -71,12 +62,13 @@ namespace Roughlike.UI
         {
             var rt = Node(name, parent);
             var t = rt.gameObject.AddComponent<Text>();
-            t.font = Font;
+            // bold labels (titles, buttons, numbers) use the engraved heading face; it is wide, so it is set a touch smaller
+            t.font = bold ? Roughlike.Utils.GameFonts.Heading : Font;
             t.text = text;
-            t.fontSize = size;
+            t.fontSize = bold ? Mathf.Max(10, Mathf.RoundToInt(size * 0.9f)) : size;
             t.color = colour;
             t.alignment = anchor;
-            t.fontStyle = bold ? FontStyle.Bold : FontStyle.Normal;
+            t.fontStyle = FontStyle.Normal;
             t.horizontalOverflow = HorizontalWrapMode.Wrap;
             t.verticalOverflow = VerticalWrapMode.Overflow;
             t.raycastTarget = false;
@@ -118,6 +110,7 @@ namespace Roughlike.UI
             colours.colorMultiplier = 1f;
             b.colors = colours;
             if (onClick != null) b.onClick.AddListener(onClick);
+            b.onClick.AddListener(() => Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.UiClick));
             return b;
         }
 
@@ -150,7 +143,7 @@ namespace Roughlike.UI
                         img.sprite = w.sprite;
                         img.color = Color.white;
                         img.preserveAspect = true;
-                        if (w.kind == Roughlike.Combat.WeaponKind.Melee)
+                        if (w.kind != Roughlike.Combat.WeaponKind.Shield)
                         {
                             // the classic inventory pose: the blade laid diagonally
                             rt.localRotation = Quaternion.Euler(0f, 0f, -45f);

@@ -22,6 +22,7 @@ namespace Roughlike.UI
 
             // audio (a mixer with per-group volumes arrives with the audio pass; master works now)
             AudioListener.volume = s.master;
+            Roughlike.Utils.Sfx.SetVolumes(s.sfx, s.ui, s.ambient);
 
             // keep controllers working when the window or browser tab loses focus for a moment
             UnityEngine.InputSystem.InputSystem.settings.backgroundBehavior = UnityEngine.InputSystem.InputSettings.BackgroundBehavior.IgnoreFocus;

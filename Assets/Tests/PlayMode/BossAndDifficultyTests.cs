@@ -351,12 +351,12 @@ namespace Roughlike.Tests.PlayMode
 
             t.Begin(Vector2.zero, new Vector2(4f, 2f), 1, 1f);
             int box = go.GetComponentsInChildren<SpriteRenderer>().Count(sr => sr.gameObject.activeSelf);
-            Assert.Greater(box, 12, "a ring of dots");
-            Assert.Less(box, 120, "an outline, not a fill");
+            Assert.Greater(box, 8, "a row of dots");
+            Assert.Less(box, 80, "one dotted arc, not a fill");
 
             t.Begin(Vector2.zero, new Vector2(8f, 0.1f), 1, 1f);
             int line = go.GetComponentsInChildren<SpriteRenderer>().Count(sr => sr.gameObject.activeSelf);
-            Assert.Less(line, box, "a laser is a single dotted line");
+            Assert.Less(line, 50, "a laser is a single dotted line with an arrowhead");
 
             t.Begin(Vector2.zero, new Vector2(5f, 5f), 1, 1f, true, 0f, true);
             int ring = go.GetComponentsInChildren<SpriteRenderer>().Count(sr => sr.gameObject.activeSelf);

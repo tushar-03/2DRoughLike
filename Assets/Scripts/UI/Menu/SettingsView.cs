@@ -12,7 +12,7 @@ namespace Roughlike.UI
     /// </summary>
     public sealed class SettingsView
     {
-        public static readonly string[] TabNames = { "Video", "Audio", "Gameplay" };
+        public static readonly string[] TabNames = { "Video", "Audio", "Gameplay", "Touch" };
 
         readonly RectTransform _rows;
         readonly List<Button> _tabs = new List<Button>();
@@ -39,7 +39,7 @@ namespace Roughlike.UI
                 int index = i;
                 var b = MenuKit.ListButton(window, TabNames[i], null, new Vector2(240f, 48f), () => ShowTab(index), 26);
                 UiKit.Place((RectTransform)b.transform, new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0.5f, 1f),
-                    new Vector2((i - 1) * 256f, -70f), new Vector2(240f, 48f));
+                    new Vector2((i - (TabNames.Length - 1) * 0.5f) * 256f, -70f), new Vector2(240f, 48f));
                 _tabs.Add(b);
             }
 
@@ -96,7 +96,8 @@ namespace Roughlike.UI
             {
                 case 0: BuildVideo(); break;
                 case 1: BuildAudio(); break;
-                default: BuildGameplay(); break;
+                case 2: BuildGameplay(); break;
+                default: BuildTouch(); break;
             }
             _rows.sizeDelta = new Vector2(0f, Mathf.Max(300f, _rows.childCount * (MenuKit.RowSize.y + 8f) + 20f));
             _rows.anchoredPosition = Vector2.zero;
@@ -184,7 +185,7 @@ namespace Roughlike.UI
             AddSlider("Interface", 3, s.ui, v => { s.ui = v; SettingsService.NotifyChanged(); });
             AddSlider("Ambience", 4, s.ambient, v => { s.ambient = v; SettingsService.NotifyChanged(); });
 
-            var note = UiKit.Label(_rows, "Note", "Master volume applies now. Music, effects, interface and ambience take effect when the audio pass lands.", 20, UiKit.Muted, TextAnchor.UpperLeft);
+            var note = UiKit.Label(_rows, "Note", "Sound effects, interface sounds and ambience each have their own volume. Music is not in the game yet.", 20, UiKit.Muted, TextAnchor.UpperLeft);
             UiKit.Place(note.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, RowY(5) - 6f), new Vector2(-20f, 56f));
         }
 
@@ -209,6 +210,41 @@ namespace Roughlike.UI
             AddSlider("Vibration strength", 7, s.hapticStrength, v => { s.hapticStrength = v; SettingsService.NotifyChanged(); });
             slot = MenuKit.Row(_rows, "Touch controls", RowY(8), out _);
             AddCycle(slot, new[] { "Automatic", "Always on", "Off" }, s.touchControls, i => { s.touchControls = i; SettingsService.NotifyChanged(); });
+        }
+
+        // ------------------------------------------------------------------ touch
+
+        void BuildTouch()
+        {
+            var s = SettingsService.Current;
+            var slot = MenuKit.Row(_rows, "Touch controls", RowY(0), out _);
+            AddCycle(slot, new[] { "Automatic", "Always on", "Off" }, s.touchControls, i => { s.touchControls = i; SettingsService.NotifyChanged(); });
+            AddSlider("Button size", 1, Mathf.InverseLerp(0.7f, 1.5f, s.touchScale), v => { s.touchScale = Mathf.Lerp(0.7f, 1.5f, v); SettingsService.NotifyChanged(); });
+            AddSlider("Opacity", 2, Mathf.InverseLerp(0.25f, 1f, s.touchOpacity), v => { s.touchOpacity = Mathf.Lerp(0.25f, 1f, v); SettingsService.NotifyChanged(); });
+
+            slot = MenuKit.Row(_rows, "Move and resize buttons", RowY(3), out _);
+            var edit = MenuKit.Action(slot, "Edit layout", new Vector2(240f, 48f), OpenLayoutEditor);
+            UiKit.Place((RectTransform)edit.transform, new Vector2(1f, 0.5f), new Vector2(1f, 0.5f), new Vector2(1f, 0.5f), new Vector2(-12f, 0f), new Vector2(240f, 48f));
+            _first.Add(edit);
+            slot = MenuKit.Row(_rows, "Default positions", RowY(4), out _);
+            var reset = MenuKit.Action(slot, "Reset layout", new Vector2(240f, 48f), () =>
+            {
+                s.touchLayout = new TouchItem[0]; s.touchScale = 1f; s.touchOpacity = 1f;
+                SettingsService.NotifyChanged();
+                ShowTab(_tab);
+            });
+            UiKit.Place((RectTransform)reset.transform, new Vector2(1f, 0.5f), new Vector2(1f, 0.5f), new Vector2(1f, 0.5f), new Vector2(-12f, 0f), new Vector2(240f, 48f));
+            _first.Add(reset);
+
+            var note = UiKit.Label(_rows, "Note", "Edit layout shows every button; drag to move, tap to select and resize. The controls appear on touch screens, or switch Touch controls to Always on to try it with a mouse.", 22, UiKit.Muted, TextAnchor.UpperLeft);
+            UiKit.Place(note.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, RowY(5) - 6f), new Vector2(-20f, 84f));
+        }
+
+        void OpenLayoutEditor()
+        {
+            var root = _rows.GetComponentInParent<UiRoot>();
+            if (root == null) return;
+            TouchLayoutEditor.Open(root, () => { if (_rows != null) ShowTab(_tab); });
         }
 
         // ------------------------------------------------------------------ row helpers

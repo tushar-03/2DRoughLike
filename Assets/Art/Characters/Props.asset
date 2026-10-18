@@ -30,3 +30,9 @@ MonoBehaviour:
     fps: 8
     loop: 1
     anchors: []
+  - name: flame
+    row: 2
+    frames: 4
+    fps: 9
+    loop: 1
+    anchors: []

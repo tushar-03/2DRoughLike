@@ -124,7 +124,7 @@ namespace Roughlike.Enemies
             labelGo.transform.SetParent(go.transform, false);
             labelGo.transform.localPosition = new Vector3(0f, size.y + 0.7f, 0f);
             var tm = labelGo.AddComponent<TextMesh>();
-            var font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            var font = Roughlike.Utils.GameFonts.Heading;
             tm.font = font;
             tm.anchor = TextAnchor.MiddleCenter;
             tm.characterSize = 0.1f;

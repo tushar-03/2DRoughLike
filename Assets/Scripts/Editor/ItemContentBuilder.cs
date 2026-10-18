@@ -45,12 +45,26 @@ namespace Roughlike.Editor
             db.startingWeapon1 = Find(weapons, start1);
             db.startingWeapon2 = Find(weapons, start2);
             db.startingOutfit = Find(outfits, startOutfit);
+            db.loadouts = BuildLoadouts(weapons);
             EditorUtility.SetDirty(db);
 
             Roughlike.Editor.Art.WeaponArtBuilder.Assign();
             AssetDatabase.SaveAssets();
             Debug.Log("[Items] Item content assets built.");
             return db;
+        }
+
+        /// <summary>The four starting loadouts of the practice room.</summary>
+        static LoadoutData[] BuildLoadouts(WeaponData[] weapons)
+        {
+            WeaponData W(string name) => Find(weapons, name);
+            return new[]
+            {
+                new LoadoutData { id = "bow", displayName = "Bow", description = "Shoot from a distance. Two quick arrows and a piercing heavy shot. A dagger for close calls.", slot1 = W("HuntersBow"), slot2 = W("RustedDagger") },
+                new LoadoutData { id = "dual", displayName = "Dual Swords", description = "A relentless four-hit flurry. A buckler for parrying.", slot1 = W("TwinBlades"), slot2 = W("Buckler") },
+                new LoadoutData { id = "greatsword", displayName = "Greatsword", description = "Slow, wide and heavy. Staggers whatever it hits. A dagger as a sidearm.", slot1 = W("Greatsword"), slot2 = W("RustedDagger") },
+                new LoadoutData { id = "sword_shield", displayName = "Sword & Shield", description = "Balanced and safe: a three-hit sword and a tower shield for blocking and parrying.", slot1 = W("BellringerSword"), slot2 = W("TowerShield") }
+            };
         }
 
         static T Find<T>(T[] list, string name) where T : Object

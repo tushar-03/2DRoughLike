@@ -1,0 +1,806 @@
+fileFormatVersion: 2
+guid: adfb1d801254c814b968b733c00a7c26
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8831956000239536738
+    second: CinderBoar_0
+  - first:
+      213: 1560902721239694
+    second: CinderBoar_1
+  - first:
+      213: -8430973427515255537
+    second: CinderBoar_2
+  - first:
+      213: 976544507715999237
+    second: CinderBoar_3
+  - first:
+      213: -646953295520443813
+    second: CinderBoar_4
+  - first:
+      213: -6811327742292100104
+    second: CinderBoar_5
+  - first:
+      213: 3134380309410378258
+    second: CinderBoar_6
+  - first:
+      213: -613215397016344034
+    second: CinderBoar_7
+  - first:
+      213: 3352407128198777034
+    second: CinderBoar_8
+  - first:
+      213: -957541617287517787
+    second: CinderBoar_9
+  - first:
+      213: -8323679795999154965
+    second: CinderBoar_10
+  - first:
+      213: 4892801169439677910
+    second: CinderBoar_11
+  - first:
+      213: -1631229868244674156
+    second: CinderBoar_12
+  - first:
+      213: 5857411041247046056
+    second: CinderBoar_13
+  - first:
+      213: -1285035537058079237
+    second: CinderBoar_14
+  - first:
+      213: 8214889050217858629
+    second: CinderBoar_15
+  - first:
+      213: -4881183774644887584
+    second: CinderBoar_16
+  - first:
+      213: 2118112140460939005
+    second: CinderBoar_17
+  - first:
+      213: -7004052800615817164
+    second: CinderBoar_18
+  - first:
+      213: -4582067602445146752
+    second: CinderBoar_19
+  - first:
+      213: -3823723723115792809
+    second: CinderBoar_20
+  - first:
+      213: 3883440831454324204
+    second: CinderBoar_21
+  - first:
+      213: 7616729990524421827
+    second: CinderBoar_22
+  - first:
+      213: -7242341501796455619
+    second: CinderBoar_23
+  - first:
+      213: -4308820270906831395
+    second: CinderBoar_24
+  - first:
+      213: -4445699781911339936
+    second: CinderBoar_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CinderBoar_0
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 1307
+        width: 245
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e95b7ddbfc69e6580800000000000000
+      internalID: -8831956000239536738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_1
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 1307
+        width: 245
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8a7a3cf1ab850000800000000000000
+      internalID: 1560902721239694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_2
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 1307
+        width: 245
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f05123e365a2ffa80800000000000000
+      internalID: -8430973427515255537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_3
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 1307
+        width: 245
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50655c94e026d8d00800000000000000
+      internalID: 976544507715999237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_4
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 1307
+        width: 245
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b525c3ac76f8507f0800000000000000
+      internalID: -646953295520443813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_5
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 1307
+        width: 245
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fb7aef918d4971a0800000000000000
+      internalID: -6811327742292100104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_6
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 987
+        width: 245
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2127265e84e8f7b20800000000000000
+      internalID: 3134380309410378258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_7
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 987
+        width: 245
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1a6a0a68db6d77f0800000000000000
+      internalID: -613215397016344034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_8
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 987
+        width: 245
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac886c27584268e20800000000000000
+      internalID: 3352407128198777034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_9
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 987
+        width: 245
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a9acebe8f026b2f0800000000000000
+      internalID: -957541617287517787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_10
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 987
+        width: 245
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: becdf5783595c7c80800000000000000
+      internalID: -8323679795999154965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_11
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 995
+        width: 245
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dd511d8db8b6e340800000000000000
+      internalID: 4892801169439677910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_12
+      rect:
+        serializedVersion: 2
+        x: 1967
+        y: 987
+        width: 245
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 499d444d315bc59e0800000000000000
+      internalID: -1631229868244674156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_13
+      rect:
+        serializedVersion: 2
+        x: 2287
+        y: 987
+        width: 245
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a92bf0ee44b94150800000000000000
+      internalID: 5857411041247046056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_14
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 667
+        width: 245
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfd56e9ccf2aa2ee0800000000000000
+      internalID: -1285035537058079237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_15
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 667
+        width: 245
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5464b7b1116210270800000000000000
+      internalID: 8214889050217858629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_16
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 667
+        width: 245
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ef14e4f73d824cb0800000000000000
+      internalID: -4881183774644887584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_17
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 667
+        width: 245
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df6dd9ef4cb056d10800000000000000
+      internalID: 2118112140460939005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_18
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 347
+        width: 245
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 430e63f361b9cce90800000000000000
+      internalID: -7004052800615817164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_19
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 347
+        width: 249
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0856e6bdac93960c0800000000000000
+      internalID: -4582067602445146752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_20
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 347
+        width: 257
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 756f27468876feac0800000000000000
+      internalID: -3823723723115792809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_21
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 347
+        width: 267
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce525116cd0c4e530800000000000000
+      internalID: 3883440831454324204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_22
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 362
+        width: 245
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c6c54b329f04b960800000000000000
+      internalID: 7616729990524421827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_23
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 347
+        width: 245
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3b6a5396c80e7b90800000000000000
+      internalID: -7242341501796455619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_24
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 27
+        width: 245
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddd889feacef334c0800000000000000
+      internalID: -4308820270906831395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderBoar_25
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 27
+        width: 245
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06c94294a93bd42c0800000000000000
+      internalID: -4445699781911339936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      CinderBoar_0: -8831956000239536738
+      CinderBoar_1: 1560902721239694
+      CinderBoar_10: -8323679795999154965
+      CinderBoar_11: 4892801169439677910
+      CinderBoar_12: -1631229868244674156
+      CinderBoar_13: 5857411041247046056
+      CinderBoar_14: -1285035537058079237
+      CinderBoar_15: 8214889050217858629
+      CinderBoar_16: -4881183774644887584
+      CinderBoar_17: 2118112140460939005
+      CinderBoar_18: -7004052800615817164
+      CinderBoar_19: -4582067602445146752
+      CinderBoar_2: -8430973427515255537
+      CinderBoar_20: -3823723723115792809
+      CinderBoar_21: 3883440831454324204
+      CinderBoar_22: 7616729990524421827
+      CinderBoar_23: -7242341501796455619
+      CinderBoar_24: -4308820270906831395
+      CinderBoar_25: -4445699781911339936
+      CinderBoar_3: 976544507715999237
+      CinderBoar_4: -646953295520443813
+      CinderBoar_5: -6811327742292100104
+      CinderBoar_6: 3134380309410378258
+      CinderBoar_7: -613215397016344034
+      CinderBoar_8: 3352407128198777034
+      CinderBoar_9: -957541617287517787
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

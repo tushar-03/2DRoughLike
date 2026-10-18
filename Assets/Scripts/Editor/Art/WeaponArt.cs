@@ -236,7 +236,7 @@ namespace Roughlike.Editor.Art
 
         struct Plan
         {
-            public string Asset, File, Kind;
+            public string Asset, File, Kind, HeldFile;
             public float Len, Scale, Held;
             public bool Shield;
         }
@@ -248,8 +248,21 @@ namespace Roughlike.Editor.Art
             new Plan { Asset = "TideHammer",      File = "Warhammer",   Kind = "warhammer", Len = 96f,  Scale = 1f, Held = 1.1f },
             new Plan { Asset = "Boathook",        File = "Boathook",    Kind = "polearm",   Len = 150f, Scale = 1f, Held = 0.95f },
             new Plan { Asset = "TowerShield",     File = "TowerShield", Kind = "tower",     Scale = 1f, Held = 0.78f, Shield = true },
-            new Plan { Asset = "Buckler",         File = "Buckler",     Kind = "buckler",   Scale = 1f, Held = 1.15f, Shield = true }
+            new Plan { Asset = "Buckler",         File = "Buckler",     Kind = "buckler",   Scale = 1f, Held = 1.15f, Shield = true },
+            new Plan { Asset = "HuntersBow",      File = "HuntersBow",  Kind = "bow",       Len = 130f, Scale = 1f, Held = 1.25f },
+            new Plan { Asset = "TwinBlades",      File = "TwinBlades",  Kind = "twin",      Len = 96f,  Scale = 1f, Held = 1.15f, HeldFile = "TwinBlade" },
+            new Plan { Asset = "Greatsword",      File = "Greatsword",  Kind = "greatsword", Len = 150f, Scale = 1f, Held = 1.15f }
         };
+
+        /// <summary>A lighter, bluer sword for the twin blades.</summary>
+        static WeaponPalette Twin()
+        {
+            var p = WeaponPalette.Steel;
+            p.Metal = Mat.Of(new Color(0.66f, 0.76f, 0.9f), Color.white, 3.5f);
+            p.Trim = Mat.Of(new Color(0.82f, 0.86f, 0.95f), Color.white, 3f);
+            p.Leather = Mat.Of(new Color(0.16f, 0.2f, 0.34f));
+            return p;
+        }
 
         [MenuItem("Roughlike/Art/Generate Weapon Sprites")]
         public static void Build()
@@ -272,12 +285,28 @@ namespace Roughlike.Editor.Art
                         pivot = new Vector2(W * 0.5f, H * 0.5f);
                         WeaponArt.Round(pt, pivot, 44f, pal);
                         break;
+                    case "twin":
+                    {
+                        // item icon: two blades crossed
+                        var tp = Twin();
+                        WeaponArt.Draw(pt, "sword", hand, new Vector2(Mathf.Sin(-0.4f), Mathf.Cos(-0.4f)), plan.Len, tp);
+                        WeaponArt.Draw(pt, "sword", hand, new Vector2(Mathf.Sin(0.4f), Mathf.Cos(0.4f)), plan.Len, tp);
+                        break;
+                    }
                     default:
                         WeaponArt.Draw(pt, plan.Kind, hand, Vector2.up, plan.Len, pal);
                         break;
                 }
                 Color32[] px = pt.Render(3.2f, new Color(0.07f, 0.05f, 0.1f));
-                Write(plan, px, W, H, pivot);
+                Write(plan.File, px, W, H, pivot);
+
+                if (plan.HeldFile != null)
+                {
+                    // what is actually carried: a single slim blade, pivot at the grip
+                    var single = new Painter(W, H);
+                    WeaponArt.Draw(single, "sword", hand, Vector2.up, plan.Len, Twin());
+                    Write(plan.HeldFile, single.Render(3.2f, new Color(0.07f, 0.05f, 0.1f)), W, H, hand);
+                }
             }
             AssetDatabase.SaveAssets();
         }
@@ -286,7 +315,7 @@ namespace Roughlike.Editor.Art
         public static void Assign()
         {
             bool missing = false;
-            foreach (var plan in Plans) if (!File.Exists($"{Folder}/{plan.File}.png")) missing = true;
+            foreach (var plan in Plans) if (!File.Exists($"{Folder}/{plan.File}.png") || (plan.HeldFile != null && !File.Exists($"{Folder}/{plan.HeldFile}.png"))) missing = true;
             if (missing) Build();
 
             foreach (var plan in Plans)
@@ -296,12 +325,13 @@ namespace Roughlike.Editor.Art
                 if (weapon == null || sprite == null) continue;
                 weapon.sprite = sprite;
                 weapon.heldScale = plan.Held;
+                weapon.heldSprite = plan.HeldFile != null ? AssetDatabase.LoadAssetAtPath<Sprite>($"{Folder}/{plan.HeldFile}.png") : null;
                 EditorUtility.SetDirty(weapon);
             }
             AssetDatabase.SaveAssets();
         }
 
-        static void Write(Plan plan, Color32[] px, int w, int h, Vector2 pivotPx)
+        static void Write(string file, Color32[] px, int w, int h, Vector2 pivotPx)
         {
             // crop to the painted area so the sprite (and the icon) is as tight as possible
             int minX = w, minY = h, maxX = -1, maxY = -1;
@@ -314,7 +344,7 @@ namespace Roughlike.Editor.Art
             for (int y = 0; y < ch; y++)
                 for (int x = 0; x < cw; x++) crop[y * cw + x] = px[(y + minY) * w + x + minX];
 
-            string path = $"{Folder}/{plan.File}.png";
+            string path = $"{Folder}/{file}.png";
             var tex = new Texture2D(cw, ch, TextureFormat.RGBA32, false);
             tex.SetPixels32(crop);
             File.WriteAllBytes(path, tex.EncodeToPNG());

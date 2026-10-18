@@ -73,7 +73,7 @@ namespace Roughlike.Rooms
             label.transform.SetParent(go.transform, false);
             label.transform.localPosition = new Vector3(0f, 3.9f, 0f);
             var tm = label.AddComponent<TextMesh>();
-            var font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            var font = Roughlike.Utils.GameFonts.Heading;
             tm.font = font; tm.fontSize = 48; tm.characterSize = 0.1f; tm.anchor = TextAnchor.MiddleCenter;
             tm.text = "EXIT"; tm.color = new Color(1f, 1f, 1f, 0.9f);
             label.GetComponent<MeshRenderer>().sharedMaterial = font.material;
@@ -95,6 +95,7 @@ namespace Roughlike.Rooms
             if (player != null && player.LastIntent.UpHeld())
             {
                 _used = true;
+                Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.Portal);
                 Activated?.Invoke();
             }
         }
@@ -104,7 +105,8 @@ namespace Roughlike.Rooms
         {
             if (_used) return;
             _used = true;
-            Activated?.Invoke();
+            Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.Portal);
+                Activated?.Invoke();
         }
 
         void OnDrawGizmosSelected()

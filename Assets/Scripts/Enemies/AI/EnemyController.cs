@@ -233,6 +233,7 @@ namespace Roughlike.Enemies
 
             TelegraphSpec spec = _behavior.Telegraph();
             _unparryable = spec.Unparryable;
+            Roughlike.Utils.Sfx.PlayAt(Roughlike.Utils.SfxId.EnemyTelegraph, transform.position, 0.6f);
             if (_telegraph != null)
             {
                 int facing = Mathf.Abs(spec.Angle) > 0.01f ? 1 : Facing;

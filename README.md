@@ -1,4 +1,4 @@
-# The Drowned Reliquary
+# Two Souls
 
 A fast, fluid **2D action-platformer roguelite** built in Unity 6. Gameplay follows *Dead Cells* (tight platforming, an invulnerable roll, two weapon slots, procedurally assembled levels, permadeath). The art direction targets *Hades* (bold outlines, saturated mythic palettes, painterly backdrops).
 
@@ -100,6 +100,19 @@ Later enemies appear deeper in a level (`minProgress`), with per-room caps, so e
 - **Torches stand on stone posts** instead of hanging in the air.
 - **Weapons are painted and visible.** You see the sword, dagger, hammer or boathook you are holding (it swings with the attack animation), and the shield you carry rides on your back until you raise it. Swap a weapon at a chest and the sprite changes. The same art shows in the HUD slots, item cards, shop rows and as items on the ground. Weapons are European arms: arming sword, rondel dagger, warhammer, halberd-style boathook, heater/kite shield and round buckler. Enemies carry matching flanged maces, nailed clubs, bows and shields.
 
+**Two Souls: loadouts, new foes, sound and depth**
+- **Practice room and loadout.** A new game starts in a quiet practice hall with two training dummies. Pick **Bow**, **Dual Swords**, **Greatsword** or **Sword & Shield** (click, 1-4, or the shoulder buttons), try it, then walk into the portal to begin. It appears once per New Game; Continue skips it.
+- **New weapons.** The Hunter's Bow (arrows, a piercing heavy shot), Twin Blades (a sword in each hand) and the Greatsword join the loot pool too.
+- **Each world has its own enemies.** The Ashen Promenade fields Ash Footmen, Ember Imps, Ember Wisps, Rust Sentinels, Cinder Boars, Ash Bombers, Bone Archers and Ash Priests (with Ash Husks), the same eight behaviours in new bodies and a little tougher.
+- **The Hag lands.** She regularly dives at a marked spot, blasts the floor and stays on the ground for a few seconds, taking extra damage, before floating up again.
+- **Sound for everything**, synthesised in code: movement, every weapon, hits, parries, enemies, bosses, items, doors, menus, plus ambient drones and torch crackle, each on its own volume slider (effects, interface, ambience).
+- **Fonts and logo.** Cinzel Decorative and Almendra (both free OFL fonts) throughout, and a new TWO SOULS logo with two flickering soul flames.
+- **More parallax**: mist planes, distant arches or broken columns, and heavy columns sweeping past in front, plus more drifting motes.
+- **Fire on the posts** instead of torches in the air.
+- **Touch layout editor** (Settings > Touch): move and resize every on-screen button, set their opacity, reset.
+- **Telegraphs** are animated dots: melee swings are one dotted arc, shots a dotted line with an arrowhead, blasts a ring.
+- Fixed: the tutorial's blue barrier after the chest, and the boss health bar lingering after you die and replay.
+
 **Browser, phone and controller support**
 - **Plays in a browser** (WebGL 2) on desktop and phones, hostable for free on Vercel; progress is saved locally in the browser. See [docs/WEB.md](docs/WEB.md).
 - **Touch controls** (stick and action buttons) appear automatically on phones and tablets; they drive a virtual gamepad so every binding and menu works.
@@ -185,7 +198,7 @@ Modules are separate assemblies (`Roughlike.*`) with a one-way dependency direct
 
 ## Tests
 
-158 PlayMode tests and 38 EditMode tests cover movement feel (jump height, roll distance, coyote time, wall-jump chains), combat (combos, parry, block, i-frames, telegraph timing), each of the eight enemy archetypes (dive, shield break, wall stun, summoning, explosions, sniper lock), level generation (determinism and structural validity across 1000 seeds, spawn rules), loot, status effects, skills, mutations, run flow, saves and loading, settings and rebinding, the menus, sprite animation, that painted levels have exactly the same solid geometry as graybox ones, that every generated level is traversable, the menu-stacking regression, haptics, touch controls, the tutorial flow, difficulty scaling, both bosses, multi-biome runs and saves, dotted telegraphs and the swap-drop fix.
+173 PlayMode tests and 38 EditMode tests cover movement feel (jump height, roll distance, coyote time, wall-jump chains), combat (combos, parry, block, i-frames, telegraph timing), each of the eight enemy archetypes (dive, shield break, wall stun, summoning, explosions, sniper lock), level generation (determinism and structural validity across 1000 seeds, spawn rules), loot, status effects, skills, mutations, run flow, saves and loading, settings and rebinding, the menus, sprite animation, that painted levels have exactly the same solid geometry as graybox ones, that every generated level is traversable, the menu-stacking regression, haptics, touch controls, the tutorial flow, difficulty scaling, both bosses, multi-biome runs and saves, dotted telegraphs and the swap-drop fix.
 
 Run them in the Unity Test Runner (`Window > General > Test Runner`), or from the command line with the Unity CLI:
 

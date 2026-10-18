@@ -28,17 +28,18 @@ MonoBehaviour:
     variantCount: 4
   loot: {fileID: 11400000, guid: d269542f687b9df4fbb2022483bfc6f0, type: 2}
   enemyPool:
-  - {fileID: 11400000, guid: 5ecbd5e680ec8974a90d3a95eba2447d, type: 2}
-  - {fileID: 11400000, guid: de7140fa076e3a34cb2b8b77f4ee77be, type: 2}
-  - {fileID: 11400000, guid: 0c811f5604630184d9b8ebbb6a17c688, type: 2}
-  - {fileID: 11400000, guid: 1d30dea80f8b9c54e94405cdc6b4ecf7, type: 2}
-  - {fileID: 11400000, guid: d97225aa78af93f49a0215348b202bc8, type: 2}
-  - {fileID: 11400000, guid: c104e4b792c06a449aeff6221b72fe88, type: 2}
-  - {fileID: 11400000, guid: f164eed040485a747b33dd2b3161c029, type: 2}
-  - {fileID: 11400000, guid: f9d91334a9694ee478aba0842d3a6eec, type: 2}
+  - {fileID: 11400000, guid: d1d33b84d53411f43b34c6a614bf29a6, type: 2}
+  - {fileID: 11400000, guid: 4511d469b502e24439f37a009e2970c4, type: 2}
+  - {fileID: 11400000, guid: 19d381b414957f447acf86f737090b0a, type: 2}
+  - {fileID: 11400000, guid: ac1289a9858829a40af2c18632c2b1c9, type: 2}
+  - {fileID: 11400000, guid: c1170d73fc398a84ca941ee9a88bb22c, type: 2}
+  - {fileID: 11400000, guid: f784acba271ac8f4dbcd7e215a8a5df6, type: 2}
+  - {fileID: 11400000, guid: 47552c9f99ba43e48be62860748030b8, type: 2}
+  - {fileID: 11400000, guid: 0631dc3bdba71d94c8213855d7f55858, type: 2}
   minEnemies: 3
   maxEnemies: 6
   boss: {fileID: 11400000, guid: e427d91f165b630469f08bdec9d5b9fc, type: 2}
+  windyAmbience: 1
   art: {fileID: 11400000, guid: ba6154ffd069e7247bf13a022510f89e, type: 2}
   ground: {r: 0.3, g: 0.22, b: 0.22, a: 1}
   trim: {r: 0.55, g: 0.38, b: 0.3, a: 1}

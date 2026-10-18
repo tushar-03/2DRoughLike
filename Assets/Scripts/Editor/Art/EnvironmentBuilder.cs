@@ -35,6 +35,10 @@ namespace Roughlike.Editor.Art
             Sprite lanterns = Write("BackdropLanterns", EnvironmentPainter.BackdropLanterns(), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
             Sprite fgBottom = Write("ForegroundBottom", EnvironmentPainter.ForegroundBottomCatacombs(), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
             Sprite fgTop = Write("ForegroundTop", EnvironmentPainter.ForegroundTopCatacombs(), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
+            Sprite arches = Write("BackdropArches", EnvironmentPainter.BackdropArches(), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
+            Sprite fogFar = Write("FogFar", EnvironmentPainter.FogBands(new Color(0.45f, 0.55f, 0.75f), 0.45f, 11), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
+            Sprite fogNear = Write("FogNear", EnvironmentPainter.FogBands(new Color(0.3f, 0.36f, 0.5f), 0.5f, 23), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
+            Sprite pillars = Write("ForegroundPillars", EnvironmentPainter.ForegroundPillarsCatacombs(), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
 
             var art = Load();
             bool created = art == null;
@@ -52,11 +56,15 @@ namespace Roughlike.Editor.Art
                 new EnvironmentArt.BackdropLayer { name = "Colonnade", sprite = mid, follow = 0.84f, followY = 0.86f, yOffset = 0.5f, sortingOrder = -50 },
                 new EnvironmentArt.BackdropLayer { name = "Hanging silhouettes", sprite = near, follow = 0.64f, followY = 0.74f, yOffset = 0f, sortingOrder = -40 },
                 new EnvironmentArt.BackdropLayer { name = "Lanterns", sprite = lanterns, follow = 0.55f, followY = 0.7f, yOffset = 0f, sortingOrder = -35 },
+                new EnvironmentArt.BackdropLayer { name = "Distant arches", sprite = arches, follow = 0.93f, followY = 0.9f, yOffset = 0.6f, sortingOrder = -57 },
+                new EnvironmentArt.BackdropLayer { name = "Far mist", sprite = fogFar, follow = 0.8f, followY = 0.85f, yOffset = 0f, sortingOrder = -55 },
+                new EnvironmentArt.BackdropLayer { name = "Near mist", sprite = fogNear, follow = 0.5f, followY = 0.7f, yOffset = -0.5f, sortingOrder = -38 },
+                new EnvironmentArt.BackdropLayer { name = "Foreground columns", sprite = pillars, follow = -0.85f, followY = 1f, yOffset = 0f, sortingOrder = 58 },
                 new EnvironmentArt.BackdropLayer { name = "Foreground rubble", sprite = fgBottom, follow = -0.35f, followY = 1f, yOffset = 5.3f, sortingOrder = 60 },
                 new EnvironmentArt.BackdropLayer { name = "Foreground roots and chains", sprite = fgTop, follow = -0.5f, followY = 1f, yOffset = -5.1f, sortingOrder = 61 }
             };
             art.moteColour = new Color(0.65f, 0.9f, 1f, 0.55f);
-            art.moteCount = 34;
+            art.moteCount = 50;
             if (created) AssetDatabase.CreateAsset(art, AssetPath);
             else EditorUtility.SetDirty(art);
             AssetDatabase.SaveAssets();
@@ -82,6 +90,10 @@ namespace Roughlike.Editor.Art
                 Sprite islands = Write("PromenadeIslands", EnvironmentPainter.BackdropIslands(), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
                 Sprite fgBottom = Write("PromenadeForegroundBottom", EnvironmentPainter.ForegroundBottomPromenade(), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
                 Sprite fgTop = Write("PromenadeForegroundTop", EnvironmentPainter.ForegroundTopPromenade(), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
+                Sprite columns = Write("PromenadeColumns", EnvironmentPainter.BackdropBrokenColumns(), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
+                Sprite fogFar = Write("PromenadeFogFar", EnvironmentPainter.FogBands(new Color(1f, 0.55f, 0.35f), 0.4f, 31), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
+                Sprite fogNear = Write("PromenadeFogNear", EnvironmentPainter.FogBands(new Color(0.75f, 0.32f, 0.22f), 0.45f, 43), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
+                Sprite pillars = Write("PromenadeForegroundPillars", EnvironmentPainter.ForegroundPillarsPromenade(), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
 
                 var art = LoadPromenade();
                 bool created = art == null;
@@ -108,11 +120,15 @@ namespace Roughlike.Editor.Art
                     new EnvironmentArt.BackdropLayer { name = "Ruined gates", sprite = mid, follow = 0.85f, followY = 0.86f, yOffset = 0.4f, sortingOrder = -50 },
                     new EnvironmentArt.BackdropLayer { name = "Beams and chains", sprite = near, follow = 0.64f, followY = 0.74f, yOffset = 0f, sortingOrder = -40 },
                     new EnvironmentArt.BackdropLayer { name = "Floating ruins", sprite = islands, follow = 0.91f, followY = 0.88f, yOffset = 0.5f, sortingOrder = -58, tint = new Color(0.85f, 0.7f, 0.72f) },
+                    new EnvironmentArt.BackdropLayer { name = "Broken columns", sprite = columns, follow = 0.94f, followY = 0.9f, yOffset = 0.4f, sortingOrder = -57, tint = new Color(0.9f, 0.8f, 0.8f) },
+                    new EnvironmentArt.BackdropLayer { name = "Far haze", sprite = fogFar, follow = 0.8f, followY = 0.85f, yOffset = 0f, sortingOrder = -55 },
+                    new EnvironmentArt.BackdropLayer { name = "Near haze", sprite = fogNear, follow = 0.5f, followY = 0.7f, yOffset = -0.5f, sortingOrder = -38 },
+                    new EnvironmentArt.BackdropLayer { name = "Foreground columns", sprite = pillars, follow = -0.85f, followY = 1f, yOffset = 0f, sortingOrder = 58 },
                     new EnvironmentArt.BackdropLayer { name = "Foreground weeds and posts", sprite = fgBottom, follow = -0.35f, followY = 1f, yOffset = 5.3f, sortingOrder = 60 },
                     new EnvironmentArt.BackdropLayer { name = "Foreground banners", sprite = fgTop, follow = -0.5f, followY = 1f, yOffset = -5.1f, sortingOrder = 61 }
                 };
                 art.moteColour = new Color(1f, 0.6f, 0.25f, 0.7f);
-                art.moteCount = 40;
+                art.moteCount = 56;
                 if (created) AssetDatabase.CreateAsset(art, PromenadeAssetPath);
                 else EditorUtility.SetDirty(art);
                 AssetDatabase.SaveAssets();

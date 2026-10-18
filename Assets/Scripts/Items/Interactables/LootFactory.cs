@@ -17,7 +17,7 @@ namespace Roughlike.Items
             go.transform.SetParent(parent, false);
             go.transform.localPosition = localPos;
             var tm = go.AddComponent<TextMesh>();
-            var font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            var font = Roughlike.Utils.GameFonts.Heading;
             tm.font = font;
             tm.text = text;
             tm.fontSize = 48;

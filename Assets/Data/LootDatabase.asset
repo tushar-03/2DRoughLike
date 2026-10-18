@@ -19,6 +19,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5bc25c3daa706174cb3096b65902cbdb, type: 2}
   - {fileID: 11400000, guid: 50df0fe6c359efa409d60f604019b49d, type: 2}
   - {fileID: 11400000, guid: 7ee09ad5900ed4e4fb3fe3d95922c41d, type: 2}
+  - {fileID: 11400000, guid: eeed96a696f52a94a9e1cdac836dc025, type: 2}
+  - {fileID: 11400000, guid: 25e61dea2f95bcd4d8c008c2dece9831, type: 2}
+  - {fileID: 11400000, guid: ffd513eb9d9f2c845bf256a74578fbfe, type: 2}
   skills:
   - {fileID: 11400000, guid: 9879e572de7d7b54ba4cf0fb4ca0c216, type: 2}
   - {fileID: 11400000, guid: a56d72b940f770c4b8666020fd2e0f50, type: 2}
@@ -71,6 +74,29 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 04c6c9d6f19e28448b76241ffeba7753, type: 2}
   - {fileID: 11400000, guid: a0d3e71879906e54298a658a4401b80c, type: 2}
   - {fileID: 11400000, guid: 4b6f3e1d55d1d2a46b81e541e3541e30, type: 2}
+  loadouts:
+  - id: bow
+    displayName: Bow
+    description: Shoot from a distance. Two quick arrows and a piercing heavy shot.
+      A dagger for close calls.
+    slot1: {fileID: 11400000, guid: eeed96a696f52a94a9e1cdac836dc025, type: 2}
+    slot2: {fileID: 11400000, guid: f95b6fe96d0f598438abe4bd16e69262, type: 2}
+  - id: dual
+    displayName: Dual Swords
+    description: A relentless four-hit flurry. A buckler for parrying.
+    slot1: {fileID: 11400000, guid: 25e61dea2f95bcd4d8c008c2dece9831, type: 2}
+    slot2: {fileID: 11400000, guid: 7ee09ad5900ed4e4fb3fe3d95922c41d, type: 2}
+  - id: greatsword
+    displayName: Greatsword
+    description: Slow, wide and heavy. Staggers whatever it hits. A dagger as a sidearm.
+    slot1: {fileID: 11400000, guid: ffd513eb9d9f2c845bf256a74578fbfe, type: 2}
+    slot2: {fileID: 11400000, guid: f95b6fe96d0f598438abe4bd16e69262, type: 2}
+  - id: sword_shield
+    displayName: Sword & Shield
+    description: 'Balanced and safe: a three-hit sword and a tower shield for blocking
+      and parrying.'
+    slot1: {fileID: 11400000, guid: e6a7800316360b648af553b684e5a0a1, type: 2}
+    slot2: {fileID: 11400000, guid: 50df0fe6c359efa409d60f604019b49d, type: 2}
   startingWeapon1: {fileID: 11400000, guid: e6a7800316360b648af553b684e5a0a1, type: 2}
   startingWeapon2: {fileID: 11400000, guid: 50df0fe6c359efa409d60f604019b49d, type: 2}
   startingOutfit: {fileID: 11400000, guid: 39dd090d26cff634fbb160ff29a79bb5, type: 2}

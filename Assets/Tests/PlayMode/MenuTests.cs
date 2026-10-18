@@ -128,7 +128,7 @@ namespace Roughlike.Tests.PlayMode
             FindButton("Skip it").onClick.Invoke();
             Assert.IsTrue(SettingsService.Current.tutorialSeen);
             FindButton("Normal").onClick.Invoke();   // then the difficulty
-            CollectionAssert.AreEqual(new[] { GameSession.GameplayScene }, _loaded);
+            CollectionAssert.AreEqual(new[] { GameSession.LoadoutScene }, _loaded);
         }
 
         [Test]

@@ -252,5 +252,32 @@ Built and verified: 122 PlayMode + 38 EditMode tests pass; the scene was played 
 - Weapon art is generated like all other art (see ART_TODO); final art replaces the PNGs and keeps the pivot at the grip (shield: centre).
 - Only the starting weapons are painted; a new `WeaponData` without a sprite falls back to the old placeholder shapes and shows nothing in the hand.
 
+## M5.4 - Two Souls: loadouts, bow, biome rosters, sound, depth (awaiting review)
+**Fixed**
+- Tutorial gate after the chest: the swapped-out weapon also lands on the floor and the step waited for *no* item on the floor. It now waits for the chest's own item to be taken.
+- Boss bar stayed on screen after a restart (the destroyed boss compared as null and the bar returned before hiding). It hides whenever there is no live boss or the player is dead.
+
+**Added**
+- Name and look: "Two Souls", `TitleLogo` (two procedural soul flames, divider), `GameFonts` (Resources/Fonts: Cinzel Decorative, Almendra) used by `UiKit` and the world text.
+- `Sfx` + `SfxSynth` (every `SfxId` is built from oscillators, noise and filters), `GameAudio` (events to sounds), `UiSounds`, ambience loops per biome, volumes from the settings. See `docs/` and `ART_TODO.md` for swapping in recorded clips.
+- Weapons: `WeaponKind.Bow` (arrows via `Projectile.SetArrow`, pierce), dual-wield (`WeaponData.dual`, off-hand anchors), `heldSprite`, Greatsword, Twin Blades, Hunter's Bow with painted art; player `shoot` clip.
+- Practice room: `LoadoutDirector` (Rooms), `LoadoutHud`, `LoadoutSceneBuilder` (scene `Loadout`), `LoadoutData` on `LootDatabase`, `LoadoutSelection` read by `PlayerInventory.ResetForRun`. Menu flow: New Game > (tutorial offer) > difficulty > practice room > run.
+- Biome rosters: eight `Variant` enemies for the Ashen Promenade, repainted creatures (`CreatureArt` themes), new humanoid specs.
+- Witch dive (`DiveLunge`, `BossController.Expose`).
+- Parallax: `FogBands`, distant arches / broken columns, foreground columns, more motes.
+- Fire posts (`PropArt.Flame`), animated telegraphs (`TelegraphIndicator` arc, arrowhead, shimmer).
+- Touch layout: `TouchSpec` list, saved `touchLayout` / `touchScale` / `touchOpacity`, `TouchLayoutEditor`, a Touch tab in settings.
+
+### How to test M5.4
+1. New Game: the practice room opens. Try all four loadouts on the dummies, then the portal starts the run.
+2. Fight the Hag: after a few attacks she dives and sits on the floor for a few seconds.
+3. Reach the second world: the enemies are new. Die to a boss and replay: the boss bar is gone.
+4. Tutorial: take the chest item, swap a weapon: the barrier opens.
+5. Settings > Touch > Edit layout (set Touch controls to Always on to see them with a mouse).
+
+### Notes
+- Sounds are synthesised; they are placeholders in the same spirit as the painted art. Music is not in yet.
+- Promenade enemies are repaints with tuned stats, not new behaviours.
+
 ## Next
 M6 - content expansion: more weapons, special rooms and challenge doors, more mutations and status effects.

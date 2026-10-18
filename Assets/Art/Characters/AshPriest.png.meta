@@ -1,0 +1,728 @@
+fileFormatVersion: 2
+guid: efc40fe7a979f2440a0b9e7bef45bed0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4546727567433502401
+    second: AshPriest_0
+  - first:
+      213: -9109805238902717472
+    second: AshPriest_1
+  - first:
+      213: -3371059567104413275
+    second: AshPriest_2
+  - first:
+      213: 3881844935515104919
+    second: AshPriest_3
+  - first:
+      213: -5658924558669893982
+    second: AshPriest_4
+  - first:
+      213: -2758265454977753162
+    second: AshPriest_5
+  - first:
+      213: 6123920935741721944
+    second: AshPriest_6
+  - first:
+      213: -6472345550989260296
+    second: AshPriest_7
+  - first:
+      213: 1511865965349510047
+    second: AshPriest_8
+  - first:
+      213: -1974277940000793848
+    second: AshPriest_9
+  - first:
+      213: -7809513937862572872
+    second: AshPriest_10
+  - first:
+      213: 4914134938807502276
+    second: AshPriest_11
+  - first:
+      213: -8770749766327584454
+    second: AshPriest_12
+  - first:
+      213: 8258091846931190140
+    second: AshPriest_13
+  - first:
+      213: -3468889189403817985
+    second: AshPriest_14
+  - first:
+      213: 1158238621828503833
+    second: AshPriest_15
+  - first:
+      213: -66557246992745145
+    second: AshPriest_16
+  - first:
+      213: -749899340805718213
+    second: AshPriest_17
+  - first:
+      213: 7454895923036835042
+    second: AshPriest_18
+  - first:
+      213: -3952717490064189051
+    second: AshPriest_19
+  - first:
+      213: -5686775958792094120
+    second: AshPriest_20
+  - first:
+      213: 5009859618826306226
+    second: AshPriest_21
+  - first:
+      213: -8676562671560466974
+    second: AshPriest_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AshPriest_0
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 1328
+        width: 97
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ce895b02a8391f30800000000000000
+      internalID: 4546727567433502401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_1
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 1328
+        width: 97
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e3063aa668739180800000000000000
+      internalID: -9109805238902717472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_2
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 1328
+        width: 97
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a13f023f279731d0800000000000000
+      internalID: -3371059567104413275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_3
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 1328
+        width: 97
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 796e686e6651fd530800000000000000
+      internalID: 3881844935515104919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_4
+      rect:
+        serializedVersion: 2
+        x: 1372
+        y: 1328
+        width: 96
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ae2fbd98167771b0800000000000000
+      internalID: -5658924558669893982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_5
+      rect:
+        serializedVersion: 2
+        x: 1692
+        y: 1328
+        width: 96
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bfd1dfbe2ca8b9d0800000000000000
+      internalID: -2758265454977753162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_6
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 1008
+        width: 99
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85d867725a98cf450800000000000000
+      internalID: 6123920935741721944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_7
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 1008
+        width: 99
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f984b9630c9d26a0800000000000000
+      internalID: -6472345550989260296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_8
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 1008
+        width: 99
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9b19a4d51a3bf410800000000000000
+      internalID: 1511865965349510047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_9
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 1008
+        width: 99
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80bdc5a7ca4f994e0800000000000000
+      internalID: -1974277940000793848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_10
+      rect:
+        serializedVersion: 2
+        x: 1363
+        y: 1008
+        width: 103
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b44d3933780f9390800000000000000
+      internalID: -7809513937862572872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_11
+      rect:
+        serializedVersion: 2
+        x: 1681
+        y: 1008
+        width: 107
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c505fdc0b3823440800000000000000
+      internalID: 4914134938807502276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_12
+      rect:
+        serializedVersion: 2
+        x: 2003
+        y: 1008
+        width: 109
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3934349e89084680800000000000000
+      internalID: -8770749766327584454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_13
+      rect:
+        serializedVersion: 2
+        x: 2327
+        y: 1008
+        width: 101
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7112e218c2aa9270800000000000000
+      internalID: 8258091846931190140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_14
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 688
+        width: 116
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff7846449a70cdfc0800000000000000
+      internalID: -3468889189403817985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_15
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 691
+        width: 119
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 919d933d3e3e21010800000000000000
+      internalID: 1158238621828503833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_16
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 697
+        width: 98
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74df4c7598a831ff0800000000000000
+      internalID: -66557246992745145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_17
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 703
+        width: 120
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3fb9fdc582d795f0800000000000000
+      internalID: -749899340805718213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_18
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 383
+        width: 120
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ec4e12285c157760800000000000000
+      internalID: 7454895923036835042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_19
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 386
+        width: 93
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 589104b92602529c0800000000000000
+      internalID: -3952717490064189051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_20
+      rect:
+        serializedVersion: 2
+        x: 739
+        y: 386
+        width: 93
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85e37f235638411b0800000000000000
+      internalID: -5686775958792094120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_21
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 48
+        width: 147
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b247baa7c8968540800000000000000
+      internalID: 5009859618826306226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshPriest_22
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 48
+        width: 149
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ed593a7838a69780800000000000000
+      internalID: -8676562671560466974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      AshPriest_0: 4546727567433502401
+      AshPriest_1: -9109805238902717472
+      AshPriest_10: -7809513937862572872
+      AshPriest_11: 4914134938807502276
+      AshPriest_12: -8770749766327584454
+      AshPriest_13: 8258091846931190140
+      AshPriest_14: -3468889189403817985
+      AshPriest_15: 1158238621828503833
+      AshPriest_16: -66557246992745145
+      AshPriest_17: -749899340805718213
+      AshPriest_18: 7454895923036835042
+      AshPriest_19: -3952717490064189051
+      AshPriest_2: -3371059567104413275
+      AshPriest_20: -5686775958792094120
+      AshPriest_21: 5009859618826306226
+      AshPriest_22: -8676562671560466974
+      AshPriest_3: 3881844935515104919
+      AshPriest_4: -5658924558669893982
+      AshPriest_5: -2758265454977753162
+      AshPriest_6: 6123920935741721944
+      AshPriest_7: -6472345550989260296
+      AshPriest_8: 1511865965349510047
+      AshPriest_9: -1974277940000793848
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

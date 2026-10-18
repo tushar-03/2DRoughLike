@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Roughlike.Combat;
 using Roughlike.Core;
@@ -45,6 +46,7 @@ namespace Roughlike.Rooms
         TrainingDummy _dummy;
         EnemyController _grunt;
         LootChest _chest;
+        ItemInstance _chestItem;
         MutationAltar _altar;
         ExitDoor _exit;
         GameObject _marker;
@@ -177,9 +179,11 @@ namespace Roughlike.Rooms
                     begin: () =>
                     {
                         var item = LootRoller.Roll(biome.loot, new SeededRng(11), 0.3f, null, 0.6f);
+                        _chestItem = item;
                         _chest = LootFactory.SpawnChest(new Vector2(195f, Floor), item);
                     },
-                    done: () => _chest != null && _chest.Opened && FindAnyObjectByType<WorldItem>() == null, gate: 208f);
+                    // done once the chest's own item has been taken; a weapon swapped out of a full slot also lands on the floor and must not hold the gate shut
+                    done: () => _chest != null && _chest.Opened && !FindObjectsByType<WorldItem>().Any(w => w.Item == _chestItem), gate: 208f);
 
             // 7 skills and flask
             Add("Skills and flask", () => $"Skills run on cooldowns. {InputDevices.PressVerb} {P("Skill1")} to throw your Powder Keg. Your health flask ({P("Flask")}) heals you; merchants refill it.",

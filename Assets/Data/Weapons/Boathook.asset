@@ -19,6 +19,8 @@ MonoBehaviour:
   description: Long reach. Keep your distance and poke.
   sprite: {fileID: 21300000, guid: ff1ca5273b193b54ca339ca69fe1c71b, type: 3}
   heldScale: 0.95
+  heldSprite: {fileID: 0}
+  dual: 0
   steps:
   - name: Poke
     damage: 10
@@ -63,6 +65,8 @@ MonoBehaviour:
     lunge: 2.5
     moveScale: 0.4
   comboResetTime: 0.45
+  projectileSpeed: 26
+  pierce: 0
   shield:
     parryWindow: 0.18
     blockDamageReduction: 0.85

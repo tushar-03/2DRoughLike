@@ -20,6 +20,7 @@ namespace Roughlike.Enemies
 
         readonly List<EnemyController> _minions = new List<EnemyController>();
         float _time;
+        int _attacks;
         string _last = "";
 
         public override bool Flying => true;
@@ -52,6 +53,7 @@ namespace Roughlike.Enemies
             if (phase >= 2) { options.Add("scatter"); if (D.minion != null && LiveMinions < 3) options.Add("summon"); }
             options.Remove(_last);
             string pick = options[Random.Range(0, options.Count)];
+            if (++_attacks % 3 == 0) pick = "dive";        // she regularly drops to the floor, so she can be fought at all
             _last = pick;
             switch (pick)
             {
@@ -59,6 +61,7 @@ namespace Roughlike.Enemies
                 case "orbs": return SoulOrbs(phase);
                 case "blink": return BlinkSlash(phase);
                 case "summon": return Summon(phase);
+                case "dive": return DiveLunge(phase);
                 default: return Scatter(phase);
             }
         }
@@ -188,6 +191,50 @@ namespace Roughlike.Enemies
             yield return Fade(1f, 0f, 0.2f);
             B.TeleportTo(HoverPoint(_time));
             yield return Fade(0f, 1f, 0.2f);
+        }
+
+        /// <summary>
+        /// Marks a spot under you, winds up, then plunges at it. On landing she blasts the ground, throws a low shockwave each way
+        /// and stays on the floor for a few seconds, taking extra damage, before floating back up.
+        /// </summary>
+        IEnumerator DiveLunge(int phase)
+        {
+            B.SetVelocity(Vector2.zero);
+            Rect a = B.Arena;
+            float tel = B.Tel(1.2f);
+            Vector2 land = new Vector2(Mathf.Clamp(B.TargetFeet.x, a.xMin + 2f, a.xMax - 2f), B.FloorY + 0.1f);
+            var mark = B.ShowCircle(land, 2.1f, tel, true);
+            for (float t = 0f; t < tel; t += Time.deltaTime)
+            {
+                if (t < tel * 0.65f)
+                {
+                    land.x = Mathf.Clamp(B.TargetFeet.x, a.xMin + 2f, a.xMax - 2f);   // the mark follows you, then locks
+                    mark.transform.position = land;
+                }
+                B.SetVelocity(new Vector2(0f, t < tel * 0.55f ? 1.8f : 0f));
+                B.SetFacing(land.x >= B.Position.x ? 1 : -1);
+                B.Scrub("telegraph", t / tel);
+                yield return null;
+            }
+            mark.Hide();
+
+            B.PlayOnce("attack", 0.5f);
+            Vector2 dest = new Vector2(land.x, B.FloorY + 0.45f);
+            for (float guard = 0f; Vector2.Distance(B.Position, dest) > 0.4f && guard < 1.5f; guard += Time.deltaTime)
+            {
+                B.SetVelocity((dest - B.Position).normalized * B.Spd(27f));
+                yield return null;
+            }
+            B.TeleportTo(dest);
+            B.SetVelocity(Vector2.zero);
+            B.StrikeCircle(land, 2.4f, 1.25f, new Vector2(9f, 7f), Violet);
+            B.Shoot(land + Vector2.up * 0.4f, new Vector2(B.Spd(9f), 0f), 0.7f, Violet, 0.3f, 2.4f);
+            B.Shoot(land + Vector2.up * 0.4f, new Vector2(-B.Spd(9f), 0f), 0.7f, Violet, 0.3f, 2.4f);
+
+            float stay = Mathf.Max(2.2f, 3.6f - 0.5f * phase);
+            B.Expose(stay);
+            B.Loop("idle");
+            yield return B.WaitSeconds(stay);
         }
 
         IEnumerator Summon(int phase)

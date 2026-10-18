@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Roughlike.Editor.Art
 {
-    /// <summary>Non-humanoid bodies: the floating bell-wisp, the charging boar and the swollen bloat.</summary>
+    /// <summary>Non-humanoid bodies: the floating bell-wisp, the charging boar and the swollen bloat, each also in a second-biome costume.</summary>
     public static class CreatureArt
     {
         const int F = HumanoidArt.FrameSize;
@@ -10,12 +10,33 @@ namespace Roughlike.Editor.Art
         const float CentreX = 140f;
         static readonly Color Ink = new Color(0.07f, 0.05f, 0.1f);
 
+        /// <summary>The colours of one creature costume, so the same body can be repainted for another biome.</summary>
+        struct Theme
+        {
+            public Color Body, Accent, Flame, Dark, Eye;
+        }
+
+        static readonly Theme WispDrowned = new Theme { Body = new Color(0.55f, 0.78f, 0.92f), Accent = new Color(0.95f, 0.75f, 0.32f), Flame = new Color(0.45f, 0.9f, 1f), Eye = new Color(0.15f, 0.2f, 0.4f) };
+        static readonly Theme WispEmber = new Theme { Body = new Color(0.62f, 0.3f, 0.22f), Accent = new Color(0.35f, 0.3f, 0.3f), Flame = new Color(1f, 0.5f, 0.12f), Eye = new Color(0.4f, 0.1f, 0.05f) };
+        static readonly Theme BoarDrowned = new Theme { Body = new Color(0.56f, 0.38f, 0.28f), Dark = new Color(0.28f, 0.18f, 0.2f), Eye = new Color(1f, 0.45f, 0.18f) };
+        static readonly Theme BoarCinder = new Theme { Body = new Color(0.3f, 0.26f, 0.28f), Dark = new Color(0.55f, 0.18f, 0.1f), Eye = new Color(1f, 0.8f, 0.2f) };
+        static readonly Theme BloatDrowned = new Theme { Body = new Color(0.72f, 0.78f, 0.36f), Eye = new Color(0.9f, 0.3f, 0.15f) };
+        static readonly Theme BloatAsh = new Theme { Body = new Color(0.42f, 0.38f, 0.4f), Eye = new Color(1f, 0.55f, 0.12f) };
+        static Theme T;
+
+        public static Color32[] Wisp(string clip, float t) { T = WispDrowned; return WispPaint(clip, t); }
+        public static Color32[] EmberWisp(string clip, float t) { T = WispEmber; return WispPaint(clip, t); }
+        public static Color32[] Boar(string clip, float t) { T = BoarDrowned; return BoarPaint(clip, t); }
+        public static Color32[] CinderBoar(string clip, float t) { T = BoarCinder; return BoarPaint(clip, t); }
+        public static Color32[] Bloat(string clip, float t) { T = BloatDrowned; return BloatPaint(clip, t); }
+        public static Color32[] AshBomber(string clip, float t) { T = BloatAsh; return BloatPaint(clip, t); }
+
         static float Smooth(float t) => t * t * (3f - 2f * t);
         static Vector2 Dir(float deg) { float r = deg * Mathf.Deg2Rad; return new Vector2(Mathf.Cos(r), Mathf.Sin(r)); }
 
         // ====================================================================== bell-wisp
 
-        public static Color32[] Wisp(string clip, float t)
+        static Color32[] WispPaint(string clip, float t)
         {
             var pt = new Painter(F, F);
             float ph = t * Mathf.PI * 2f;
@@ -31,10 +52,10 @@ namespace Roughlike.Editor.Art
 
             Vector2 c = new Vector2(CentreX + shake, FloorY + 80f + bob);
             float w = 64f / Mathf.Sqrt(squash), h = 72f * squash;
-            Color aqua = Color.Lerp(new Color(0.55f, 0.78f, 0.92f), Color.white, glowBoost * 0.35f);
+            Color aqua = Color.Lerp(T.Body, Color.white, glowBoost * 0.35f);
             Mat body = Mat.Of(aqua, new Color(0.9f, 1f, 1f));
-            Mat gold = Mat.Of(new Color(0.95f, 0.75f, 0.32f), Color.white);
-            Mat flameMat = Mat.Glow(Color.Lerp(new Color(0.45f, 0.9f, 1f), Color.white, 0.25f + glowBoost * 0.5f));
+            Mat gold = Mat.Of(T.Accent, Color.white);
+            Mat flameMat = Mat.Glow(Color.Lerp(T.Flame, Color.white, 0.25f + glowBoost * 0.5f));
             Mat flameCore = Mat.Glow(Color.white);
 
             // flames licking up from the crown
@@ -65,7 +86,7 @@ namespace Roughlike.Editor.Art
             }
             else
             {
-                Mat eye = Mat.Glow(Color.Lerp(new Color(0.15f, 0.2f, 0.4f), new Color(1f, 0.6f, 0.2f), glowBoost));
+                Mat eye = Mat.Glow(Color.Lerp(T.Eye, new Color(1f, 0.6f, 0.2f), glowBoost));
                 pt.Ellipse(e1, 8f, 11f, 0f, eye); pt.Ellipse(e2, 8f, 11f, 0f, eye);
                 pt.Circle(e1 + new Vector2(2f, 3f), 2.6f, Mat.Glow(Color.white)); pt.Circle(e2 + new Vector2(2f, 3f), 2.6f, Mat.Glow(Color.white));
             }
@@ -74,17 +95,17 @@ namespace Roughlike.Editor.Art
 
         // ====================================================================== tideboar
 
-        public static Color32[] Boar(string clip, float t)
+        static Color32[] BoarPaint(string clip, float t)
         {
             var pt = new Painter(F, F);
             float ph = t * Mathf.PI * 2f;
-            Color fur = new Color(0.56f, 0.38f, 0.28f);
+            Color fur = T.Body;
             Mat body = Mat.Of(fur, new Color(1f, 0.8f, 0.55f));
-            Mat dark = Mat.Of(new Color(0.34f, 0.22f, 0.2f));
-            Mat bristle = Mat.Of(new Color(0.28f, 0.18f, 0.2f), new Color(0.9f, 0.6f, 0.4f));
+            Mat dark = Mat.Of(Color.Lerp(T.Dark, T.Body, 0.25f));
+            Mat bristle = Mat.Of(T.Dark, new Color(0.9f, 0.6f, 0.4f));
             Mat tusk = Mat.Of(new Color(0.95f, 0.9f, 0.76f), Color.white);
             Mat hoof = Mat.Of(new Color(0.2f, 0.15f, 0.15f));
-            Mat glowEye = Mat.Glow(new Color(1f, 0.45f, 0.18f));
+            Mat glowEye = Mat.Glow(T.Eye);
 
             float bodyY = FloorY + 66f, stride = 0f, lift = 0f, headDrop = 0f, bounce = 0f, rear = 0f, pawX = 0f, pawLift = 0f;
             bool closed = false;
@@ -154,7 +175,7 @@ namespace Roughlike.Editor.Art
 
         // ====================================================================== bloat
 
-        public static Color32[] Bloat(string clip, float t)
+        static Color32[] BloatPaint(string clip, float t)
         {
             var pt = new Painter(F, F);
             float ph = t * Mathf.PI * 2f;
@@ -169,12 +190,12 @@ namespace Roughlike.Editor.Art
                 case "hurt": sx = 1.12f; sy = 0.86f; closed = true; break;
             }
 
-            Color sick = Color.Lerp(new Color(0.72f, 0.78f, 0.36f), Color.white, flash * 0.45f);
+            Color sick = Color.Lerp(T.Body, Color.white, flash * 0.45f);
             Mat body = Mat.Of(sick, new Color(1f, 0.95f, 0.6f));
             Mat belly = Mat.Of(Color.Lerp(sick, new Color(0.95f, 0.9f, 0.6f), 0.5f));
             Mat pus = Mat.Of(new Color(0.95f, 0.88f, 0.45f), Color.white);
             Mat foot = Mat.Of(new Color(0.4f, 0.4f, 0.28f));
-            Mat glowRed = Mat.Glow(Color.Lerp(new Color(0.9f, 0.3f, 0.15f), new Color(1f, 0.9f, 0.4f), crack));
+            Mat glowRed = Mat.Glow(Color.Lerp(T.Eye, new Color(1f, 0.9f, 0.4f), crack));
 
             Vector2 c = new Vector2(CentreX + shake, FloorY + 66f * sy + 8f);
             pt.Capsule(new Vector2(CentreX - 24f, FloorY + 14f + stepL), new Vector2(CentreX - 28f, FloorY + 40f), 11f, foot);

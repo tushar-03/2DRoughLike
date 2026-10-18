@@ -48,6 +48,7 @@ namespace Roughlike.Editor.Art
                 plan.Add("roll", 6, 16f, true, (i, n) => HumanoidArt.RenderRoll(s, T(i, n)));
                 plan.Add("block", 1, 1f, false, (i, n) => HumanoidArt.Render(s, "block", 0f));
                 plan.Add("attack", 6, 12f, false, (i, n) => HumanoidArt.Render(s, "player_attack", TEnd(i, n)));
+                plan.Add("shoot", 6, 12f, false, (i, n) => HumanoidArt.Render(s, "player_shoot", TEnd(i, n)));
                 plan.Add("hurt", 2, 8f, false, (i, n) => HumanoidArt.Render(s, "hurt", TEnd(i, n)));
             }
             else
@@ -120,6 +121,46 @@ namespace Roughlike.Editor.Art
                 Trim = new Color(0.46f, 0.92f, 1f), Glow = new Color(0.5f, 0.96f, 1f), Boot = new Color(0.14f, 0.2f, 0.3f), Rim = new Color(0.75f, 1f, 1f)
             };
 
+            // ---- the Ashen Promenade roster: the same eight behaviours in new bodies
+            var footman = new HumanoidSpec
+            {
+                Name = "AshFootman", Height = 250f, HeadR = 28f, Bulk = 1.18f, Helmet = true, Weapon = "sword", WeaponLen = 88f, Mouth = false,
+                Skin = new Color(0.62f, 0.55f, 0.5f), Cloth = new Color(0.58f, 0.26f, 0.2f), Cloth2 = new Color(0.3f, 0.14f, 0.12f),
+                Trim = new Color(0.9f, 0.62f, 0.28f), Metal = new Color(0.66f, 0.62f, 0.6f), Glow = new Color(1f, 0.55f, 0.2f),
+                Boot = new Color(0.22f, 0.15f, 0.13f), Rim = new Color(1f, 0.8f, 0.55f)
+            };
+            var imp = new HumanoidSpec
+            {
+                Name = "EmberImp", Height = 205f, HeadR = 32f, Hunch = 8f, Horns = true, Mouth = true, Weapon = "none", Attack = AttackStyle.Spit,
+                Skin = new Color(0.86f, 0.38f, 0.22f), Cloth = new Color(0.4f, 0.14f, 0.12f), Cloth2 = new Color(0.24f, 0.08f, 0.08f),
+                Trim = new Color(1f, 0.78f, 0.3f), Glow = new Color(1f, 0.9f, 0.3f), Boot = new Color(0.2f, 0.09f, 0.08f), Rim = new Color(1f, 0.8f, 0.5f)
+            };
+            var bones = new HumanoidSpec
+            {
+                Name = "BoneArcher", Height = 255f, HeadR = 27f, Mouth = true, Weapon = "bow", Attack = AttackStyle.Shoot,
+                Skin = new Color(0.9f, 0.87f, 0.78f), Cloth = new Color(0.38f, 0.28f, 0.22f), Cloth2 = new Color(0.22f, 0.16f, 0.14f),
+                Trim = new Color(0.8f, 0.7f, 0.5f), Glow = new Color(1f, 0.3f, 0.2f), Boot = new Color(0.2f, 0.15f, 0.12f), Rim = new Color(1f, 0.9f, 0.7f)
+            };
+            var sentinel = new HumanoidSpec
+            {
+                Name = "RustSentinel", Height = 262f, HeadR = 29f, Bulk = 1.55f, Helmet = true, Weapon = "sword", WeaponLen = 84f, EnemyShield = true,
+                Skin = new Color(0.55f, 0.42f, 0.38f), Cloth = new Color(0.5f, 0.3f, 0.22f), Cloth2 = new Color(0.28f, 0.16f, 0.13f),
+                Trim = new Color(0.95f, 0.6f, 0.25f), Metal = new Color(0.62f, 0.5f, 0.44f), Glow = new Color(1f, 0.5f, 0.2f),
+                Boot = new Color(0.2f, 0.14f, 0.12f), Rim = new Color(1f, 0.78f, 0.5f)
+            };
+            var priest = new HumanoidSpec
+            {
+                Name = "AshPriest", Height = 262f, HeadR = 28f, Hood = true, Robe = true, Floating = true, Weapon = "none", Attack = AttackStyle.Cast, Cloak = false,
+                Skin = new Color(0.55f, 0.45f, 0.42f), Cloth = new Color(0.62f, 0.24f, 0.2f), Cloth2 = new Color(0.26f, 0.1f, 0.1f),
+                Trim = new Color(1f, 0.72f, 0.3f), Glow = new Color(1f, 0.55f, 0.2f), Boot = new Color(0.22f, 0.1f, 0.1f), Rim = new Color(1f, 0.78f, 0.55f)
+            };
+            var husk = new HumanoidSpec
+            {
+                Name = "AshHusk", Height = 172f, HeadR = 25f, Hunch = 14f, Weapon = "dagger", WeaponLen = 76f, Mouth = true, Bulk = 0.9f,
+                Skin = new Color(0.5f, 0.46f, 0.44f), Cloth = new Color(0.34f, 0.3f, 0.3f), Cloth2 = new Color(0.2f, 0.18f, 0.18f),
+                Trim = new Color(0.6f, 0.3f, 0.2f), Glow = new Color(1f, 0.6f, 0.2f), Boot = new Color(0.18f, 0.16f, 0.15f), Rim = new Color(1f, 0.9f, 0.8f)
+            };
+
             // bosses are drawn at 1.7x on a bigger canvas
             const float BossScale = 1.7f;
             var witch = new HumanoidSpec
@@ -149,7 +190,16 @@ namespace Roughlike.Editor.Art
                 Humanoid(eel, false),
                 Creature("BellWisp", CreatureArt.Wisp, false),
                 Creature("Tideboar", CreatureArt.Boar, true),
-                Creature("Bloat", CreatureArt.Bloat, true)
+                Creature("Bloat", CreatureArt.Bloat, true),
+                Humanoid(footman, false),
+                Humanoid(imp, false),
+                Humanoid(bones, false),
+                Humanoid(sentinel, false),
+                Humanoid(priest, false),
+                Humanoid(husk, false),
+                Creature("EmberWisp", CreatureArt.EmberWisp, false),
+                Creature("CinderBoar", CreatureArt.CinderBoar, true),
+                Creature("AshBomber", CreatureArt.AshBomber, true)
             };
 
             foreach (var boss in new[] { Humanoid(witch, false), Humanoid(warden, false) })
@@ -164,11 +214,15 @@ namespace Roughlike.Editor.Art
             // the guard's shield is a separate prop so it can break
             list[4].Add("shield", 1, 1f, false, (i, n) => CreatureArt.ShieldProp(false));
             list[4].Add("shield_broken", 1, 1f, false, (i, n) => CreatureArt.ShieldProp(true));
+            var sentinelPlan = list.Find(p => p.Name == "RustSentinel");
+            sentinelPlan.Add("shield", 1, 1f, false, (i, n) => CreatureArt.ShieldProp(false));
+            sentinelPlan.Add("shield_broken", 1, 1f, false, (i, n) => CreatureArt.ShieldProp(true));
             _ = ink;
 
             var props = new CharacterPlan { Name = "Props", FrameW = PropArt.W, FrameH = PropArt.H, Pivot = new Vector2(0.5f, 0f) };
             props.Add("torch", 4, 8f, true, (i, n) => PropArt.Torch(i, n));
             props.Add("brazier", 4, 8f, true, (i, n) => PropArt.Brazier(i, n));
+            props.Add("flame", 4, 9f, true, (i, n) => PropArt.Flame(i, n));
             list.Add(props);
 
             var world = new CharacterPlan { Name = "WorldProps", FrameW = WorldPropArt.W, FrameH = WorldPropArt.H, Pivot = new Vector2(0.5f, WorldPropArt.Floor / (float)WorldPropArt.H) };

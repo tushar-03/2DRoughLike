@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17eaa9fb0ad48754cb57f92726c0f32e, type: 3}
+  m_Name: Greatsword
+  m_EditorClassIdentifier: Roughlike.Combat::Roughlike.Combat.WeaponData
+  displayName: Greatsword
+  kind: 0
+  tint: {r: 1, g: 0.8, b: 0.5, a: 1}
+  affinity: 1
+  description: Two hands, two slow cleaves. Hits hard and wide, and knocks enemies
+    back.
+  sprite: {fileID: 21300000, guid: 5fe197d426294fc499591e974da94cc3, type: 3}
+  heldScale: 1.15
+  heldSprite: {fileID: 0}
+  dual: 0
+  steps:
+  - name: Cleave
+    damage: 26
+    windup: 0.22
+    active: 0.1
+    recovery: 0.4
+    chainFraction: 0.5
+    hitOffset: {x: 1.3, y: 0.95}
+    hitSize: {x: 2.8, y: 1.7}
+    knockback: {x: 9, y: 4}
+    stagger: 24
+    hitStop: 0.11
+    shake: 0.45
+    lunge: 2.5
+    moveScale: 0.25
+  - name: Overhead
+    damage: 40
+    windup: 0.34
+    active: 0.11
+    recovery: 0.55
+    chainFraction: 0.55
+    hitOffset: {x: 1.4, y: 1}
+    hitSize: {x: 3, y: 2.1}
+    knockback: {x: 11, y: 7}
+    stagger: 38
+    hitStop: 0.16
+    shake: 0.6
+    lunge: 2
+    moveScale: 0.2
+  comboResetTime: 0.6
+  projectileSpeed: 26
+  pierce: 0
+  shield:
+    parryWindow: 0.18
+    blockDamageReduction: 0.85
+    moveScale: 0.4
+    parryStun: 1.2
+    parryInvulnerability: 0.35
+    blockPushback: 4
+    parryHitStop: 0.12
+    parryShake: 0.5
+    lowerTime: 0.08

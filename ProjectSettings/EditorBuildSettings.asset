@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorial.unity
     guid: baf0ff906c24ae94d8ce6744a88af7ff
   - enabled: 1
+    path: Assets/Scenes/Loadout.unity
+    guid: 05295809655a44e4bb735c2d49ccf702
+  - enabled: 1
     path: Assets/Scenes/M3_Run.unity
     guid: e4d87cccf6e17f1458599130e2109c45
   - enabled: 1

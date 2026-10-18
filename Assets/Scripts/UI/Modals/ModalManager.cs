@@ -101,6 +101,9 @@ namespace Roughlike.UI
         Window Push(string title, Vector2 size, Action cancel, out RectTransform content)
         {
             if (_stack.Count > 0) _stack.Peek().Root.SetActive(false);
+            Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.UiOpen, 0.6f);
+            var sounds = _root.GetComponent<UiSounds>();
+            if (sounds != null) sounds.Quiet();
 
             var dim = UiKit.Image(_root.ModalLayer, "Modal", new Color(0f, 0f, 0f, _pauseGame ? 0.72f : 0.9f));
             dim.raycastTarget = true;
@@ -132,6 +135,7 @@ namespace Roughlike.UI
         {
             if (_stack.Count == 0) return;
             Window w = _stack.Pop();
+            Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.UiBack, 0.6f);
             w.Root.SetActive(false);   // gone at once; destroyed at the end of the frame
             Destroy(w.Root);
             if (w.Pauses) PauseGate.Pop();

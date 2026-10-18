@@ -25,6 +25,9 @@ namespace Roughlike.Combat
         LayerMask _groundMask;
         Color? _tint;
         float _turnRate, _homeUntil;
+        int _pierce;
+        bool _arrow;
+        static Sprite _arrowSprite;
 
         public Vector2 Velocity => _velocity;
         public Team Team => _team;
@@ -58,15 +61,58 @@ namespace Roughlike.Combat
             p._tint = tint;
             p._turnRate = 0f;
             p._homeUntil = 0f;
+            p._pierce = 0;
+            p._arrow = false;
+            p._sr.sprite = ProceduralSprites.Circle;
+            p.transform.rotation = Quaternion.identity;
             p._hit.Clear();
+            if (team != Team.Player) Roughlike.Utils.Sfx.PlayAt(Roughlike.Utils.SfxId.EnemyShoot, position, 0.55f);
             p._groundMask = GameLayers.GroundMask;
             p.transform.localScale = Vector3.one * radius * 2.2f;
             p.Recolour();
             return p;
         }
 
+        /// <summary>Turns the projectile into an arrow that points along its flight and passes through <paramref name="pierce"/> enemies.</summary>
+        public void SetArrow(int pierce)
+        {
+            _arrow = true;
+            _pierce = pierce;
+            _sr.sprite = ArrowSprite();
+            transform.localScale = Vector3.one * 0.9f;
+            Recolour();
+            Face();
+        }
+
+        void Face()
+        {
+            if (!_arrow || _velocity.sqrMagnitude < 0.001f) return;
+            transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(_velocity.y, _velocity.x) * Mathf.Rad2Deg);
+        }
+
+        static Sprite ArrowSprite()
+        {
+            if (_arrowSprite != null) return _arrowSprite;
+            const int W = 40, H = 10;
+            var tex = new Texture2D(W, H, TextureFormat.RGBA32, false) { filterMode = FilterMode.Bilinear, wrapMode = TextureWrapMode.Clamp };
+            var clear = new Color(0f, 0f, 0f, 0f);
+            for (int y = 0; y < H; y++) for (int x = 0; x < W; x++) tex.SetPixel(x, y, clear);
+            Color shaft = new Color(0.8f, 0.62f, 0.38f), steel = new Color(0.86f, 0.9f, 0.96f), fletch = new Color(0.9f, 0.25f, 0.2f);
+            for (int x = 4; x < 32; x++) { tex.SetPixel(x, 5, shaft); tex.SetPixel(x, 4, shaft * 0.8f); }
+            for (int i = 0; i < 8; i++)                                  // steel head
+                for (int y = 5 - (7 - i) / 2; y <= 4 + (7 - i) / 2; y++) tex.SetPixel(32 + i, y, steel);
+            for (int i = 0; i < 6; i++)                                  // fletching
+            {
+                tex.SetPixel(1 + i, 5 + 1 + i / 2, fletch); tex.SetPixel(1 + i, 4 - 1 - i / 2, fletch);
+                tex.SetPixel(2 + i, 5 + (i / 2), fletch); tex.SetPixel(2 + i, 4 - (i / 2), fletch);
+            }
+            tex.Apply(false, true);
+            return _arrowSprite = Sprite.Create(tex, new Rect(0, 0, W, H), new Vector2(0.5f, 0.5f), 24f);
+        }
+
         void Recolour()
         {
+            if (_arrow) { _sr.color = Color.white; return; }
             _sr.color = _team == Team.Player ? new Color(1f, 0.9f, 0.4f) : (_tint ?? new Color(1f, 0.45f, 0.15f));
         }
 
@@ -96,6 +142,7 @@ namespace Roughlike.Combat
                 _velocity = (Vector2)(Quaternion.Euler(0f, 0f, turn) * _velocity.normalized) * speed;
             }
             transform.position += (Vector3)(_velocity * dt);
+            Face();
 
             LayerMask targets = LayerMask.GetMask(_team == Team.Player ? GameLayers.EnemyName : GameLayers.PlayerName);
             var filter = new ContactFilter2D { useLayerMask = true, layerMask = _groundMask | targets, useTriggers = true };
@@ -126,7 +173,12 @@ namespace Roughlike.Combat
                 Team before = _team;
                 HitResult result = h.TakeHit(info);
                 if (result == HitResult.Parried || _team != before) return;   // reflected, keep flying
-                if (result != HitResult.Ignored) { Despawn(); return; }
+                if (result != HitResult.Ignored)
+                {
+                    if (_pierce > 0) { _pierce--; continue; }
+                    Despawn();
+                    return;
+                }
             }
         }
 

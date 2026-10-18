@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17eaa9fb0ad48754cb57f92726c0f32e, type: 3}
+  m_Name: TwinBlades
+  m_EditorClassIdentifier: Roughlike.Combat::Roughlike.Combat.WeaponData
+  displayName: Twin Blades
+  kind: 0
+  tint: {r: 0.75, g: 0.88, b: 1, a: 1}
+  affinity: 2
+  description: A sword in each hand. A relentless four-hit flurry that ends in a
+    spinning slash.
+  sprite: {fileID: 21300000, guid: 74c9ea0ecc184e5439a0ab5ecab8fe01, type: 3}
+  heldScale: 1.15
+  heldSprite: {fileID: 21300000, guid: ad14ca00620f0944b9ea4e11deb0b220, type: 3}
+  dual: 1
+  steps:
+  - name: Slash
+    damage: 8
+    windup: 0.04
+    active: 0.06
+    recovery: 0.1
+    chainFraction: 0.3
+    hitOffset: {x: 0.95, y: 0.9}
+    hitSize: {x: 1.7, y: 1.2}
+    knockback: {x: 3.5, y: 1.5}
+    stagger: 6
+    hitStop: 0.03
+    shake: 0.1
+    lunge: 3
+    moveScale: 0.5
+  - name: Slash
+    damage: 8
+    windup: 0.04
+    active: 0.06
+    recovery: 0.1
+    chainFraction: 0.3
+    hitOffset: {x: 0.95, y: 0.9}
+    hitSize: {x: 1.7, y: 1.2}
+    knockback: {x: 3.5, y: 1.5}
+    stagger: 6
+    hitStop: 0.03
+    shake: 0.1
+    lunge: 3
+    moveScale: 0.5
+  - name: Cross
+    damage: 10
+    windup: 0.05
+    active: 0.07
+    recovery: 0.12
+    chainFraction: 0.3
+    hitOffset: {x: 1, y: 0.9}
+    hitSize: {x: 2, y: 1.3}
+    knockback: {x: 4.5, y: 2}
+    stagger: 8
+    hitStop: 0.04
+    shake: 0.14
+    lunge: 3.5
+    moveScale: 0.45
+  - name: Whirl
+    damage: 16
+    windup: 0.09
+    active: 0.1
+    recovery: 0.3
+    chainFraction: 0.5
+    hitOffset: {x: 0.4, y: 0.9}
+    hitSize: {x: 3, y: 1.5}
+    knockback: {x: 7, y: 4}
+    stagger: 16
+    hitStop: 0.08
+    shake: 0.3
+    lunge: 2
+    moveScale: 0.4
+  comboResetTime: 0.4
+  projectileSpeed: 26
+  pierce: 0
+  shield:
+    parryWindow: 0.18
+    blockDamageReduction: 0.85
+    moveScale: 0.4
+    parryStun: 1.2
+    parryInvulnerability: 0.35
+    blockPushback: 4
+    parryHitStop: 0.12
+    parryShake: 0.5
+    lowerTime: 0.08

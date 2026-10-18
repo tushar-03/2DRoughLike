@@ -86,8 +86,8 @@ namespace Roughlike.Combat
             get
             {
                 WeaponData first = _lastSlot == 1 ? slot2 : slot1, second = _lastSlot == 1 ? slot1 : slot2;
-                if (first != null && first.kind == WeaponKind.Melee) return first;
-                if (second != null && second.kind == WeaponKind.Melee) return second;
+                if (first != null && first.kind != WeaponKind.Shield) return first;
+                if (second != null && second.kind != WeaponKind.Shield) return second;
                 return null;
             }
         }
@@ -255,7 +255,7 @@ namespace Roughlike.Combat
         void TryStartFromBuffer()
         {
             WeaponData w = GetWeapon(_buffered);
-            if (w == null || w.kind != WeaponKind.Melee || w.steps.Length == 0) { _buffered = -1; return; }
+            if (w == null || w.kind == WeaponKind.Shield || w.steps.Length == 0) { _buffered = -1; return; }
 
             int index = (_buffered == _lastSlot && _comboTimer > 0f && _combo < w.steps.Length) ? _combo : 0;
             StartAttack(_buffered, index);
@@ -303,6 +303,8 @@ namespace Roughlike.Combat
             _pc.AddImpulse(new Vector2(_pc.Facing * step.lunge, 0f));
             if (_visual != null) _visual.Punch(new Vector2(0.88f, 1.12f));
 
+            if (GetWeapon(_slot).kind == WeaponKind.Bow) FireArrow(step);
+
             EventBus<SwingEvent>.Raise(new SwingEvent
             {
                 Position = HitCentre(step),
@@ -316,8 +318,25 @@ namespace Roughlike.Combat
         Vector2 HitCentre(AttackStep step)
             => (Vector2)transform.position + new Vector2(step.hitOffset.x * _pc.Facing, step.hitOffset.y);
 
+        /// <summary>A bow shoots an arrow when its draw completes instead of swinging a hitbox.</summary>
+        void FireArrow(AttackStep step)
+        {
+            WeaponData w = GetWeapon(_slot);
+            WeaponMods mods = Modifiers != null ? Modifiers.GetWeaponMods(_slot) : WeaponMods.Neutral;
+            float amount = step.damage * DamageMultiplier * mods.DamageMultiplier * _swingBonus;
+            bool crit = mods.CritChance > 0f && UnityEngine.Random.value < mods.CritChance;
+            if (crit) amount *= mods.CritMultiplier;
+
+            Vector2 from = (Vector2)transform.position + new Vector2(0.55f * _pc.Facing, 1.15f);
+            Projectile arrow = Projectile.Spawn(from, new Vector2(_pc.Facing * w.projectileSpeed, 0f), amount, Team.Player,
+                step.knockback.x, step.stagger, 1.4f, 0.22f, w.tint);
+            arrow.SetArrow(w.pierce + (step.damage >= 22f ? 1 : 0));
+            Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.BowRelease, 0.85f);
+        }
+
         void Strike(AttackStep step)
         {
+            if (GetWeapon(_slot).kind == WeaponKind.Bow) return;
             Vector2 centre = HitCentre(step);
             if (showHitboxes) MeleeStrike.DrawDebug(centre, step.hitSize, Color.red);
 

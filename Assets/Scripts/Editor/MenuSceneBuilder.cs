@@ -44,6 +44,7 @@ namespace Roughlike.Editor
                 MenuScenePath,
                 "Assets/Scenes/M4_LootRun.unity",
                 TutorialSceneBuilder.ScenePath,
+                LoadoutSceneBuilder.ScenePath,
                 "Assets/Scenes/M3_Run.unity",
                 "Assets/Scenes/M2_CombatArena.unity",
                 "Assets/Scenes/M1_Graybox.unity"

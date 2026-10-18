@@ -14,7 +14,7 @@ namespace Roughlike.Combat
         SpriteAnimator _anim;
         SpriteRenderer _body;
         PlayerCombat _combat;
-        SpriteRenderer _weapon, _shield;
+        SpriteRenderer _weapon, _shield, _offhand;
 
         void Awake()
         {
@@ -23,6 +23,7 @@ namespace Roughlike.Combat
             _combat = GetComponentInParent<PlayerCombat>();
             _weapon = MakeRenderer("Held Weapon");
             _shield = MakeRenderer("Held Shield");
+            _offhand = MakeRenderer("Held Offhand");
         }
 
         SpriteRenderer MakeRenderer(string label)
@@ -36,6 +37,7 @@ namespace Roughlike.Combat
 
         /// <summary>The weapon sprite currently shown (null when hidden); a test seam.</summary>
         public Sprite ShownWeapon => _weapon != null && _weapon.enabled ? _weapon.sprite : null;
+        public Sprite ShownOffhand => _offhand != null && _offhand.enabled ? _offhand.sprite : null;
         public Sprite ShownShield => _shield != null && _shield.enabled ? _shield.sprite : null;
         public bool ShieldRaised { get; private set; }
 
@@ -48,18 +50,34 @@ namespace Roughlike.Combat
             Material mat = _body != null ? _body.sharedMaterial : null;
 
             WeaponData melee = _combat.HeldMelee;
-            if (melee != null && melee.sprite != null)
+            Sprite handSprite = melee != null ? (melee.heldSprite != null ? melee.heldSprite : melee.sprite) : null;
+            if (handSprite != null)
             {
+                bool bow = melee.kind == WeaponKind.Bow;
                 _weapon.enabled = true;
-                _weapon.sprite = melee.sprite;
+                _weapon.sprite = handSprite;
                 if (mat != null) _weapon.sharedMaterial = mat;
                 _weapon.sortingOrder = order + 1;
                 Transform t = _weapon.transform;
                 t.localPosition = _anim.Art.PixelToLocal(a.hand);
-                t.localRotation = Quaternion.Euler(0f, 0f, a.angle - 90f);
+                // a bow stays upright in the fist; blades follow the pose
+                t.localRotation = bow ? Quaternion.identity : Quaternion.Euler(0f, 0f, a.angle - 90f);
                 t.localScale = Vector3.one * melee.heldScale;
+
+                bool offhand = melee.dual && !a.shieldUp;
+                _offhand.enabled = offhand;
+                if (offhand)
+                {
+                    _offhand.sprite = handSprite;
+                    if (mat != null) _offhand.sharedMaterial = mat;
+                    _offhand.sortingOrder = order - 1;               // behind the body: it is the far hand
+                    Transform o = _offhand.transform;
+                    o.localPosition = _anim.Art.PixelToLocal(a.handB);
+                    o.localRotation = Quaternion.Euler(0f, 0f, a.angleB - 90f);
+                    o.localScale = Vector3.one * melee.heldScale;
+                }
             }
-            else _weapon.enabled = false;
+            else { _weapon.enabled = false; _offhand.enabled = false; }
 
             WeaponData shield = _combat.HeldShield;
             ShieldRaised = a.shieldUp;
@@ -92,6 +110,7 @@ namespace Roughlike.Combat
         {
             if (_weapon != null) _weapon.enabled = false;
             if (_shield != null) _shield.enabled = false;
+            if (_offhand != null) _offhand.enabled = false;
             ShieldRaised = false;
         }
     }

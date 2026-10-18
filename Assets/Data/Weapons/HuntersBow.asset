@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17eaa9fb0ad48754cb57f92726c0f32e, type: 3}
+  m_Name: HuntersBow
+  m_EditorClassIdentifier: Roughlike.Combat::Roughlike.Combat.WeaponData
+  displayName: Hunter's Bow
+  kind: 2
+  tint: {r: 0.95, g: 0.85, b: 0.55, a: 1}
+  affinity: 4
+  description: Shoot from a distance. Two quick arrows, then a heavy shot that passes
+    through enemies.
+  sprite: {fileID: 21300000, guid: ccd285e5b59f0b44784d79227a7b755d, type: 3}
+  heldScale: 1.25
+  heldSprite: {fileID: 0}
+  dual: 0
+  steps:
+  - name: Shot
+    damage: 11
+    windup: 0.2
+    active: 0.04
+    recovery: 0.2
+    chainFraction: 0.45
+    hitOffset: {x: 1, y: 1.1}
+    hitSize: {x: 1, y: 1}
+    knockback: {x: 3, y: 1}
+    stagger: 8
+    hitStop: 0.03
+    shake: 0.08
+    lunge: 0
+    moveScale: 0.5
+  - name: Shot
+    damage: 11
+    windup: 0.2
+    active: 0.04
+    recovery: 0.2
+    chainFraction: 0.45
+    hitOffset: {x: 1, y: 1.1}
+    hitSize: {x: 1, y: 1}
+    knockback: {x: 3, y: 1}
+    stagger: 8
+    hitStop: 0.03
+    shake: 0.08
+    lunge: 0
+    moveScale: 0.5
+  - name: Heavy Shot
+    damage: 24
+    windup: 0.4
+    active: 0.05
+    recovery: 0.34
+    chainFraction: 0.5
+    hitOffset: {x: 1, y: 1.1}
+    hitSize: {x: 1, y: 1}
+    knockback: {x: 8, y: 2}
+    stagger: 22
+    hitStop: 0.07
+    shake: 0.2
+    lunge: -1.5
+    moveScale: 0.3
+  comboResetTime: 0.5
+  projectileSpeed: 28
+  pierce: 0
+  shield:
+    parryWindow: 0.18
+    blockDamageReduction: 0.85
+    moveScale: 0.4
+    parryStun: 1.2
+    parryInvulnerability: 0.35
+    blockPushback: 4
+    parryHitStop: 0.12
+    parryShake: 0.5
+    lowerTime: 0.08

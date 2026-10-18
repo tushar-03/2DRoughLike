@@ -599,5 +599,107 @@ namespace Roughlike.Editor.Art
             }
             return Fade(p.Render(0f, Color.black), 0.7f);
         }
+
+        // ------------------------------------------------------------------ more planes of depth
+
+        /// <summary>Soft horizontal bands of mist that tile sideways. Layered between the other planes they separate near from far.</summary>
+        public static Color32[] FogBands(Color tint, float strength, int seed)
+        {
+            var px = new Color32[BackW * BackH];
+            var rng = new System.Random(seed);
+            // a few bands at different heights, each with its own slow ripple that repeats exactly across the tile width
+            int bands = 4;
+            float[] y = new float[bands], thick = new float[bands], phase = new float[bands], amp = new float[bands];
+            for (int b = 0; b < bands; b++)
+            {
+                y[b] = Mathf.Lerp(190f, 560f, (b + (float)rng.NextDouble() * 0.6f) / bands);
+                thick[b] = 34f + (float)rng.NextDouble() * 38f;
+                phase[b] = (float)rng.NextDouble() * 6.28f;
+                amp[b] = 0.55f + (float)rng.NextDouble() * 0.45f;
+            }
+            for (int py = 0; py < BackH; py++)
+                for (int pxx = 0; pxx < BackW; pxx++)
+                {
+                    float a = 0f;
+                    float u = pxx / (float)BackW * Mathf.PI * 2f;
+                    for (int b = 0; b < bands; b++)
+                    {
+                        float wobble = Mathf.Sin(u * (2 + b) + phase[b]) * 18f + Mathf.Sin(u * (5 + b * 2) + phase[b] * 2f) * 7f;
+                        float d = (py - y[b] - wobble) / thick[b];
+                        float body = Mathf.Exp(-d * d);
+                        float density = 0.5f + 0.5f * Mathf.Sin(u * (3 + b) + phase[b] * 3f);
+                        a += body * Mathf.Lerp(0.35f, 1f, density) * amp[b];
+                    }
+                    a = Mathf.Clamp01(a * strength);
+                    px[py * BackW + pxx] = new Color32((byte)(tint.r * 255f), (byte)(tint.g * 255f), (byte)(tint.b * 255f), (byte)(a * 255f));
+                }
+            return px;
+        }
+
+        /// <summary>Catacombs: a distant arcade of pointed arches, dark blue against the haze.</summary>
+        public static Color32[] BackdropArches()
+        {
+            var p = new Painter(BackW, BackH);
+            Mat stone = Mat.Glow(new Color(0.10f, 0.12f, 0.2f));
+            Mat rib = Mat.Glow(new Color(0.13f, 0.15f, 0.25f));
+            for (int i = 0; i < 4; i++)
+            {
+                float x = i * 320f;
+                p.Capsule(new Vector2(x + 24f, 130f), new Vector2(x + 24f, 430f), 22f, 18f, stone);
+                p.Capsule(new Vector2(x + 24f, 430f), new Vector2(x + 24f + 140f, 560f), 12f, 7f, rib);
+                p.Capsule(new Vector2(x + 24f + 280f, 430f), new Vector2(x + 24f + 140f, 560f), 12f, 7f, rib);
+                p.Capsule(new Vector2(x + 24f + 280f, 130f), new Vector2(x + 24f + 280f, 430f), 22f, 18f, stone);
+                p.Circle(new Vector2(x + 164f, 330f), 34f, rib);                                  // rose window ghost
+            }
+            return Fade(p.Render(0f, Color.black), 0.8f);
+        }
+
+        /// <summary>Catacombs: thick near-black columns that sweep past in front of the player, fading toward the sides.</summary>
+        public static Color32[] ForegroundPillarsCatacombs()
+        {
+            var p = new Painter(BackW, BackH);
+            Mat col = Dark(0.8f);
+            float[] xs = { 150f, 760f };
+            for (int i = 0; i < xs.Length; i++)
+            {
+                float x = xs[i], w = 54f + i * 14f;
+                p.Poly(new[] { new Vector2(x - w, 0f), new Vector2(x + w, 0f), new Vector2(x + w * 0.85f, BackH), new Vector2(x - w * 0.85f, BackH) }, col);
+                p.Poly(new[] { new Vector2(x - w * 1.5f, 120f), new Vector2(x + w * 1.5f, 120f), new Vector2(x + w, 170f), new Vector2(x - w, 170f) }, col);   // base block
+                p.Poly(new[] { new Vector2(x - w * 1.5f, BackH - 150f), new Vector2(x + w * 1.5f, BackH - 150f), new Vector2(x + w, BackH - 200f), new Vector2(x - w, BackH - 200f) }, col);   // capital
+            }
+            return Fade(p.Render(0f, Color.black), 0.62f);
+        }
+
+        /// <summary>Promenade: a skyline of broken columns and leaning arches far behind the ruins.</summary>
+        public static Color32[] BackdropBrokenColumns()
+        {
+            var p = new Painter(BackW, BackH);
+            Mat far = Mat.Glow(new Color(0.34f, 0.14f, 0.18f));
+            float[] xs = { 90f, 250f, 470f, 640f, 860f, 1060f, 1210f };
+            for (int i = 0; i < xs.Length; i++)
+            {
+                float x = xs[i], top = 330f + (i * 71 % 180);
+                p.Poly(new[] { new Vector2(x - 24f, 100f), new Vector2(x + 24f, 100f), new Vector2(x + 20f, top), new Vector2(x + 6f, top + 22f), new Vector2(x - 4f, top + 6f), new Vector2(x - 20f, top + 30f) }, far);
+                if (i % 2 == 0) p.Capsule(new Vector2(x + 24f, top - 6f), new Vector2(x + 120f, top - 52f), 10f, 6f, far);   // a fallen architrave leaning on its neighbour
+            }
+            return Fade(p.Render(0f, Color.black), 0.75f);
+        }
+
+        /// <summary>Promenade: heavy broken columns in the foreground, edges catching the sunset.</summary>
+        public static Color32[] ForegroundPillarsPromenade()
+        {
+            var p = new Painter(BackW, BackH);
+            Mat col = Dark(1.1f);
+            Mat edge = Mat.Glow(new Color(0.5f, 0.2f, 0.1f));
+            float[] xs = { 260f, 900f };
+            for (int i = 0; i < xs.Length; i++)
+            {
+                float x = xs[i], w = 50f + i * 18f, top = BackH - 130f - i * 60f;
+                p.Poly(new[] { new Vector2(x - w, 0f), new Vector2(x + w, 0f), new Vector2(x + w * 0.9f, top), new Vector2(x + w * 0.4f, top + 40f), new Vector2(x - w * 0.2f, top - 20f), new Vector2(x - w * 0.9f, top + 30f) }, col);
+                p.Capsule(new Vector2(x - w * 0.95f, 40f), new Vector2(x - w * 0.88f, top + 20f), 3f, edge);    // sunlit rim
+                p.Poly(new[] { new Vector2(x - w * 1.5f, 90f), new Vector2(x + w * 1.5f, 90f), new Vector2(x + w, 150f), new Vector2(x - w, 150f) }, col);
+            }
+            return Fade(p.Render(0f, Color.black), 0.66f);
+        }
     }
 }

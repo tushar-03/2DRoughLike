@@ -113,6 +113,7 @@ namespace Roughlike.Items
             FlaskCharges--;
             health.Heal(health.Max * healFraction);
             Changed?.Invoke();
+            Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.Flask);
             EventBus<ToastEvent>.Raise(new ToastEvent { Text = "Flask", Colour = new Color(0.5f, 1f, 0.6f) });
             return true;
         }
@@ -258,8 +259,12 @@ namespace Roughlike.Items
 
             if (db != null)
             {
-                if (db.startingWeapon1 != null) Weapons[0] = ItemInstance.ForWeapon(db.startingWeapon1);
-                if (db.startingWeapon2 != null) Weapons[1] = ItemInstance.ForWeapon(db.startingWeapon2);
+                // the loadout picked in the practice room wins over the database default
+                LoadoutData picked = LoadoutSelection.Get(db);
+                var first = picked != null ? picked.slot1 : db.startingWeapon1;
+                var second = picked != null ? picked.slot2 : db.startingWeapon2;
+                if (first != null) Weapons[0] = ItemInstance.ForWeapon(first);
+                if (second != null) Weapons[1] = ItemInstance.ForWeapon(second);
                 if (db.startingOutfit != null) Outfit = ItemInstance.ForGear(db.startingOutfit);
             }
 

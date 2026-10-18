@@ -96,6 +96,60 @@ namespace Roughlike.Items
             return w;
         }
 
+        public static WeaponData Bow()
+        {
+            var w = Make<WeaponData>("HuntersBow");
+            w.displayName = "Hunter's Bow";
+            w.kind = WeaponKind.Bow;
+            w.tint = new Color(0.95f, 0.85f, 0.55f);
+            w.affinity = StatColor.Moss;
+            w.comboResetTime = 0.5f;
+            w.projectileSpeed = 28f;
+            w.description = "Shoot from a distance. Two quick arrows, then a heavy shot that passes through enemies.";
+            w.steps = new[]
+            {
+                Step("Shot", 11f, 0.2f, 0.04f, 0.2f, 0.45f, new Vector2(1f, 1.1f), Vector2.one, new Vector2(3f, 1f), 8f, 0.03f, 0.08f, 0f, 0.5f),
+                Step("Shot", 11f, 0.2f, 0.04f, 0.2f, 0.45f, new Vector2(1f, 1.1f), Vector2.one, new Vector2(3f, 1f), 8f, 0.03f, 0.08f, 0f, 0.5f),
+                Step("Heavy Shot", 24f, 0.4f, 0.05f, 0.34f, 0.5f, new Vector2(1f, 1.1f), Vector2.one, new Vector2(8f, 2f), 22f, 0.07f, 0.2f, -1.5f, 0.3f)
+            };
+            return w;
+        }
+
+        public static WeaponData TwinBlades()
+        {
+            var w = Make<WeaponData>("TwinBlades");
+            w.displayName = "Twin Blades";
+            w.dual = true;
+            w.tint = new Color(0.75f, 0.88f, 1f);
+            w.affinity = StatColor.Brine;
+            w.comboResetTime = 0.4f;
+            w.description = "A sword in each hand. A relentless four-hit flurry that ends in a spinning slash.";
+            w.steps = new[]
+            {
+                Step("Slash", 8f, 0.04f, 0.06f, 0.10f, 0.3f, new Vector2(0.95f, 0.9f), new Vector2(1.7f, 1.2f), new Vector2(3.5f, 1.5f), 6f, 0.03f, 0.1f, 3f, 0.5f),
+                Step("Slash", 8f, 0.04f, 0.06f, 0.10f, 0.3f, new Vector2(0.95f, 0.9f), new Vector2(1.7f, 1.2f), new Vector2(3.5f, 1.5f), 6f, 0.03f, 0.1f, 3f, 0.5f),
+                Step("Cross", 10f, 0.05f, 0.07f, 0.12f, 0.3f, new Vector2(1.0f, 0.9f), new Vector2(2.0f, 1.3f), new Vector2(4.5f, 2f), 8f, 0.04f, 0.14f, 3.5f, 0.45f),
+                Step("Whirl", 16f, 0.09f, 0.10f, 0.30f, 0.5f, new Vector2(0.4f, 0.9f), new Vector2(3.0f, 1.5f), new Vector2(7f, 4f), 16f, 0.08f, 0.3f, 2f, 0.4f)
+            };
+            return w;
+        }
+
+        public static WeaponData Greatsword()
+        {
+            var w = Make<WeaponData>("Greatsword");
+            w.displayName = "Greatsword";
+            w.tint = new Color(1f, 0.8f, 0.5f);
+            w.affinity = StatColor.Ember;
+            w.comboResetTime = 0.6f;
+            w.description = "Two hands, two slow cleaves. Hits hard and wide, and knocks enemies back.";
+            w.steps = new[]
+            {
+                Step("Cleave", 26f, 0.22f, 0.10f, 0.40f, 0.5f, new Vector2(1.3f, 0.95f), new Vector2(2.8f, 1.7f), new Vector2(9f, 4f), 24f, 0.11f, 0.45f, 2.5f, 0.25f),
+                Step("Overhead", 40f, 0.34f, 0.11f, 0.55f, 0.55f, new Vector2(1.4f, 1.0f), new Vector2(3.0f, 2.1f), new Vector2(11f, 7f), 38f, 0.16f, 0.6f, 2f, 0.2f)
+            };
+            return w;
+        }
+
         public static WeaponData Shield()
         {
             var w = Make<WeaponData>("TowerShield");
@@ -272,7 +326,7 @@ namespace Roughlike.Items
             var sword = Sword();
             var shield = Shield();
             var outfits = Outfits();
-            db.weapons = new[] { Dagger(), sword, Hammer(), Boathook(), shield, Buckler() };
+            db.weapons = new[] { Dagger(), sword, Hammer(), Boathook(), shield, Buckler(), Bow(), TwinBlades(), Greatsword() };
             db.skills = Skills();
             db.amulets = Amulets();
             db.outfits = outfits;

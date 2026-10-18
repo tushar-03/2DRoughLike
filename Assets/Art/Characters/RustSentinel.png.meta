@@ -1,0 +1,780 @@
+fileFormatVersion: 2
+guid: df23ffbd96501b743befe033bc16e631
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9039438928708649651
+    second: RustSentinel_0
+  - first:
+      213: 1459559574296835203
+    second: RustSentinel_1
+  - first:
+      213: -7306122306789876436
+    second: RustSentinel_2
+  - first:
+      213: 2306659409632346317
+    second: RustSentinel_3
+  - first:
+      213: 2930621262296407726
+    second: RustSentinel_4
+  - first:
+      213: 8937005586961557006
+    second: RustSentinel_5
+  - first:
+      213: -1700912693064686963
+    second: RustSentinel_6
+  - first:
+      213: -569491046955295430
+    second: RustSentinel_7
+  - first:
+      213: 5405705723213431269
+    second: RustSentinel_8
+  - first:
+      213: 3137173411354695536
+    second: RustSentinel_9
+  - first:
+      213: 170270753418639865
+    second: RustSentinel_10
+  - first:
+      213: 2086315438162277458
+    second: RustSentinel_11
+  - first:
+      213: -4520778002311632306
+    second: RustSentinel_12
+  - first:
+      213: -5564376909303583048
+    second: RustSentinel_13
+  - first:
+      213: 5840983004193450331
+    second: RustSentinel_14
+  - first:
+      213: -3961451104530012573
+    second: RustSentinel_15
+  - first:
+      213: 5819558517854541682
+    second: RustSentinel_16
+  - first:
+      213: 824409748345227539
+    second: RustSentinel_17
+  - first:
+      213: -6634563744681775022
+    second: RustSentinel_18
+  - first:
+      213: 767492621298438873
+    second: RustSentinel_19
+  - first:
+      213: -3599262504795729620
+    second: RustSentinel_20
+  - first:
+      213: 8944647800922791512
+    second: RustSentinel_21
+  - first:
+      213: -2522940977506514178
+    second: RustSentinel_22
+  - first:
+      213: -362129060298026668
+    second: RustSentinel_23
+  - first:
+      213: 5721795740428300338
+    second: RustSentinel_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RustSentinel_0
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 1951
+        width: 127
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4dbb75ff267d8280800000000000000
+      internalID: -9039438928708649651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_1
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 1951
+        width: 124
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 384bb7223b5614410800000000000000
+      internalID: 1459559574296835203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_2
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 1951
+        width: 124
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2d5b32b8707b9a90800000000000000
+      internalID: -7306122306789876436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_3
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 1951
+        width: 127
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc0c2f80386e20020800000000000000
+      internalID: 2306659409632346317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_4
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 1951
+        width: 130
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eae526ec288aba820800000000000000
+      internalID: 2930621262296407726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_5
+      rect:
+        serializedVersion: 2
+        x: 1689
+        y: 1951
+        width: 130
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0666862b3f960c70800000000000000
+      internalID: 8937005586961557006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_6
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 1631
+        width: 131
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d822defdae42568e0800000000000000
+      internalID: -1700912693064686963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_7
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1631
+        width: 117
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3dd67bf8e2c818f0800000000000000
+      internalID: -569491046955295430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_8
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 1631
+        width: 118
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e1ce60f6bce40b40800000000000000
+      internalID: 5405705723213431269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_9
+      rect:
+        serializedVersion: 2
+        x: 1046
+        y: 1631
+        width: 123
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 077d89e989a798b20800000000000000
+      internalID: 3137173411354695536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_10
+      rect:
+        serializedVersion: 2
+        x: 1361
+        y: 1631
+        width: 139
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f9f72d195cec5200800000000000000
+      internalID: 170270753418639865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_11
+      rect:
+        serializedVersion: 2
+        x: 1679
+        y: 1631
+        width: 152
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 254731556d414fc10800000000000000
+      internalID: 2086315438162277458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_12
+      rect:
+        serializedVersion: 2
+        x: 1999
+        y: 1631
+        width: 157
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4aa0d7eb58f241c0800000000000000
+      internalID: -4520778002311632306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_13
+      rect:
+        serializedVersion: 2
+        x: 2324
+        y: 1631
+        width: 147
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bee29caeac57c2b0800000000000000
+      internalID: -5564376909303583048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_14
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 1311
+        width: 157
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b596b0078175f0150800000000000000
+      internalID: 5840983004193450331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_15
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 1311
+        width: 151
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 366e86785391609c0800000000000000
+      internalID: -3961451104530012573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_16
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 1311
+        width: 136
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 277915e73a933c050800000000000000
+      internalID: 5819558517854541682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_17
+      rect:
+        serializedVersion: 2
+        x: 1035
+        y: 1311
+        width: 142
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3198c775c44e07b00800000000000000
+      internalID: 824409748345227539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_18
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 991
+        width: 146
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 250be86fc6b4de3a0800000000000000
+      internalID: -6634563744681775022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_19
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 991
+        width: 168
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d21a34097ea6aa00800000000000000
+      internalID: 767492621298438873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_20
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 991
+        width: 166
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c21944452d9dc0ec0800000000000000
+      internalID: -3599262504795729620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_21
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 671
+        width: 168
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85e5bfeb8c5c12c70800000000000000
+      internalID: 8944647800922791512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_22
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 671
+        width: 170
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efa827e4c86bcfcd0800000000000000
+      internalID: -2522940977506514178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_23
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 356
+        width: 64
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 451171ec98579faf0800000000000000
+      internalID: -362129060298026668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustSentinel_24
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 36
+        width: 64
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 230729919e6e76f40800000000000000
+      internalID: 5721795740428300338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      RustSentinel_0: -9039438928708649651
+      RustSentinel_1: 1459559574296835203
+      RustSentinel_10: 170270753418639865
+      RustSentinel_11: 2086315438162277458
+      RustSentinel_12: -4520778002311632306
+      RustSentinel_13: -5564376909303583048
+      RustSentinel_14: 5840983004193450331
+      RustSentinel_15: -3961451104530012573
+      RustSentinel_16: 5819558517854541682
+      RustSentinel_17: 824409748345227539
+      RustSentinel_18: -6634563744681775022
+      RustSentinel_19: 767492621298438873
+      RustSentinel_2: -7306122306789876436
+      RustSentinel_20: -3599262504795729620
+      RustSentinel_21: 8944647800922791512
+      RustSentinel_22: -2522940977506514178
+      RustSentinel_23: -362129060298026668
+      RustSentinel_24: 5721795740428300338
+      RustSentinel_3: 2306659409632346317
+      RustSentinel_4: 2930621262296407726
+      RustSentinel_5: 8937005586961557006
+      RustSentinel_6: -1700912693064686963
+      RustSentinel_7: -569491046955295430
+      RustSentinel_8: 5405705723213431269
+      RustSentinel_9: 3137173411354695536
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

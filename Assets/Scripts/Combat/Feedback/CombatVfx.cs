@@ -105,7 +105,7 @@ namespace Roughlike.Combat
         {
             _release = release;
             _text = gameObject.AddComponent<TextMesh>();
-            var font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            var font = Roughlike.Utils.GameFonts.Heading;
             _text.font = font;
             _text.anchor = TextAnchor.MiddleCenter;
             _text.alignment = TextAlignment.Center;

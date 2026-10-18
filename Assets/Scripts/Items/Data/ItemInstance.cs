@@ -102,8 +102,8 @@ namespace Roughlike.Items
             switch (Kind)
             {
                 case ItemKind.Weapon when Weapon != null:
-                    lines.Add(Weapon.kind == WeaponKind.Shield ? "Shield" : $"{Weapon.steps.Length}-hit combo");
-                    if (Weapon.kind == WeaponKind.Melee && Weapon.steps.Length > 0)
+                    lines.Add(Weapon.kind == WeaponKind.Shield ? "Shield" : Weapon.kind == WeaponKind.Bow ? $"Bow, {Weapon.steps.Length}-shot combo" : $"{Weapon.steps.Length}-hit combo");
+                    if (Weapon.kind != WeaponKind.Shield && Weapon.steps.Length > 0)
                         lines.Add($"Damage {Mathf.RoundToInt(Weapon.steps[0].damage * Power)} per hit");
                     break;
                 case ItemKind.Skill when Skill != null:

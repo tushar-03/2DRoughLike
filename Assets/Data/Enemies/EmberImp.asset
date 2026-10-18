@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0de942adc2ec4748b16e83df1836b0e, type: 3}
+  m_Name: EmberImp
+  m_EditorClassIdentifier: Roughlike.Enemies::Roughlike.Enemies.EnemyDefinition
+  displayName: Ember Imp
+  archetype: 1
+  maxHealth: 36
+  size: {x: 0.7, y: 1.5}
+  art: {fileID: 11400000, guid: 9ef54e100c6197749b3c8414313c4147, type: 2}
+  sprite: {fileID: 21300000, guid: 92b9a99aaf54de9468f7a1161195d595, type: 3}
+  tint: {r: 0.9, g: 0.4, b: 0.2, a: 1}
+  minProgress: 0
+  maxPerRoom: 3
+  rewardMultiplier: 1
+  patrolSpeed: 1.5
+  chaseSpeed: 3.5
+  patrolRadius: 3
+  sightRange: 12
+  loseSightRange: 16
+  verticalSight: 2.5
+  rearAwareness: 1.5
+  attackRange: 1.6
+  telegraphTime: 0.7
+  activeTime: 0.1
+  recoverTime: 0.5
+  attackCooldown: 1.6
+  damage: 11
+  knockback: {x: 5, y: 3}
+  stagger: 8
+  hitOffset: {x: 1, y: 0.75}
+  hitSize: {x: 1.6, y: 1.3}
+  preferredMinDistance: 4.5
+  preferredMaxDistance: 8.5
+  projectileSpeed: 10
+  muzzleOffset: {x: 0.6, y: 0.9}
+  telegraphSize: {x: 2.2, y: 0.2}
+  aimLockFraction: 0.7
+  hoverHeight: 3.2
+  diveSpeed: 15
+  shieldReduction: 0.85
+  shieldBreakStagger: 20
+  shieldBreakTime: 3
+  backstabMultiplier: 1.3
+  chargeSpeed: 13
+  wallStunTime: 1.6
+  minion: {fileID: 0}
+  summonCount: 2
+  maxMinions: 4
+  explosionRadius: 2.6
+  staggerThreshold: 14
+  staggerTime: 0.5
+  knockbackResistance: 0
+  stunnedDamageMultiplier: 1.5

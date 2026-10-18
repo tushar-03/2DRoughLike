@@ -1,0 +1,728 @@
+fileFormatVersion: 2
+guid: aae247fea6b4b204d9a0fbe34d18fe75
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8332934579657640513
+    second: AshHusk_0
+  - first:
+      213: -3001962918065767110
+    second: AshHusk_1
+  - first:
+      213: 6353274734760722858
+    second: AshHusk_2
+  - first:
+      213: 2304729692700206975
+    second: AshHusk_3
+  - first:
+      213: 7539143017519044537
+    second: AshHusk_4
+  - first:
+      213: 5379054902974319668
+    second: AshHusk_5
+  - first:
+      213: 2424184476826270732
+    second: AshHusk_6
+  - first:
+      213: -2379600881033186913
+    second: AshHusk_7
+  - first:
+      213: -2995275049219694582
+    second: AshHusk_8
+  - first:
+      213: 7592742304894963234
+    second: AshHusk_9
+  - first:
+      213: 7982136058235478171
+    second: AshHusk_10
+  - first:
+      213: -11097793072333215
+    second: AshHusk_11
+  - first:
+      213: 4463382444599156567
+    second: AshHusk_12
+  - first:
+      213: -7733761156573876497
+    second: AshHusk_13
+  - first:
+      213: 6159945623170838368
+    second: AshHusk_14
+  - first:
+      213: 8468871109920548126
+    second: AshHusk_15
+  - first:
+      213: 4639325533489984058
+    second: AshHusk_16
+  - first:
+      213: 5137302096815896099
+    second: AshHusk_17
+  - first:
+      213: -7178330043588938737
+    second: AshHusk_18
+  - first:
+      213: -7091911940035920912
+    second: AshHusk_19
+  - first:
+      213: -7521394200762806051
+    second: AshHusk_20
+  - first:
+      213: 8050074044085581510
+    second: AshHusk_21
+  - first:
+      213: 6328799940563520243
+    second: AshHusk_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AshHusk_0
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 1311
+        width: 92
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14a0015b9d784a370800000000000000
+      internalID: 8332934579657640513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_1
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 1311
+        width: 90
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3d7bcf81a2e656d0800000000000000
+      internalID: -3001962918065767110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_2
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 1311
+        width: 90
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa180edc5bd5b2850800000000000000
+      internalID: 6353274734760722858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_3
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 1311
+        width: 92
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f77e0bcc17b0cff10800000000000000
+      internalID: 2304729692700206975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_4
+      rect:
+        serializedVersion: 2
+        x: 1387
+        y: 1311
+        width: 93
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b7d61e51aa60a860800000000000000
+      internalID: 7539143017519044537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_5
+      rect:
+        serializedVersion: 2
+        x: 1707
+        y: 1311
+        width: 93
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43c8b1f4fed36aa40800000000000000
+      internalID: 5379054902974319668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_6
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 991
+        width: 101
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0cfe3310fe64a120800000000000000
+      internalID: 2424184476826270732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_7
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 991
+        width: 83
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f917fca3b95f9fed0800000000000000
+      internalID: -2379600881033186913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_8
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 991
+        width: 81
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a006bae5635ae66d0800000000000000
+      internalID: -2995275049219694582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_9
+      rect:
+        serializedVersion: 2
+        x: 1061
+        y: 991
+        width: 88
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22e4852f5e6de5960800000000000000
+      internalID: 7592742304894963234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_10
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 991
+        width: 104
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9066fb247e36ce60800000000000000
+      internalID: 7982136058235478171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_11
+      rect:
+        serializedVersion: 2
+        x: 1695
+        y: 991
+        width: 117
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16ef122bd9298dff0800000000000000
+      internalID: -11097793072333215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_12
+      rect:
+        serializedVersion: 2
+        x: 2015
+        y: 991
+        width: 121
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75f1c037fae11fd30800000000000000
+      internalID: 4463382444599156567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_13
+      rect:
+        serializedVersion: 2
+        x: 2340
+        y: 991
+        width: 112
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fee23bc04392ca490800000000000000
+      internalID: -7733761156573876497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_14
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 671
+        width: 104
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06fe1d058e58c7550800000000000000
+      internalID: 6159945623170838368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_15
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 671
+        width: 107
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e15e16b8769778570800000000000000
+      internalID: 8468871109920548126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_16
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 671
+        width: 91
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a32f1151ef1326040800000000000000
+      internalID: 4639325533489984058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_17
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 671
+        width: 94
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 326b498d90d5b4740800000000000000
+      internalID: 5137302096815896099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_18
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 351
+        width: 95
+        height: 203
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f04fd579bd2716c90800000000000000
+      internalID: -7178330043588938737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_19
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 351
+        width: 122
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fbbec34aa7749d90800000000000000
+      internalID: -7091911940035920912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_20
+      rect:
+        serializedVersion: 2
+        x: 739
+        y: 351
+        width: 112
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd099df03d3ae9790800000000000000
+      internalID: -7521394200762806051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_21
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 31
+        width: 109
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c6305521bb97bf60800000000000000
+      internalID: 8050074044085581510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AshHusk_22
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 31
+        width: 112
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fa4dc7b30a64d750800000000000000
+      internalID: 6328799940563520243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      AshHusk_0: 8332934579657640513
+      AshHusk_1: -3001962918065767110
+      AshHusk_10: 7982136058235478171
+      AshHusk_11: -11097793072333215
+      AshHusk_12: 4463382444599156567
+      AshHusk_13: -7733761156573876497
+      AshHusk_14: 6159945623170838368
+      AshHusk_15: 8468871109920548126
+      AshHusk_16: 4639325533489984058
+      AshHusk_17: 5137302096815896099
+      AshHusk_18: -7178330043588938737
+      AshHusk_19: -7091911940035920912
+      AshHusk_2: 6353274734760722858
+      AshHusk_20: -7521394200762806051
+      AshHusk_21: 8050074044085581510
+      AshHusk_22: 6328799940563520243
+      AshHusk_3: 2304729692700206975
+      AshHusk_4: 7539143017519044537
+      AshHusk_5: 5379054902974319668
+      AshHusk_6: 2424184476826270732
+      AshHusk_7: -2379600881033186913
+      AshHusk_8: -2995275049219694582
+      AshHusk_9: 7592742304894963234
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,598 @@
+fileFormatVersion: 2
+guid: 3cbb5e3163e526c4b90a8540c40d53cc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8442708455717014904
+    second: EmberWisp_0
+  - first:
+      213: -61364414135696577
+    second: EmberWisp_1
+  - first:
+      213: -7642732400570365957
+    second: EmberWisp_2
+  - first:
+      213: 2252317607760499344
+    second: EmberWisp_3
+  - first:
+      213: 5014248383700264518
+    second: EmberWisp_4
+  - first:
+      213: 2981701216710901278
+    second: EmberWisp_5
+  - first:
+      213: 6645214952227072216
+    second: EmberWisp_6
+  - first:
+      213: -2236001684096393320
+    second: EmberWisp_7
+  - first:
+      213: -4426347366947836587
+    second: EmberWisp_8
+  - first:
+      213: 897650649764263745
+    second: EmberWisp_9
+  - first:
+      213: 2860305901681710481
+    second: EmberWisp_10
+  - first:
+      213: -664342076159742885
+    second: EmberWisp_11
+  - first:
+      213: 1700815580268598199
+    second: EmberWisp_12
+  - first:
+      213: 2061425139542091680
+    second: EmberWisp_13
+  - first:
+      213: 8605153648160058600
+    second: EmberWisp_14
+  - first:
+      213: 6776764900130349351
+    second: EmberWisp_15
+  - first:
+      213: -925280558106409253
+    second: EmberWisp_16
+  - first:
+      213: -1947222638887394860
+    second: EmberWisp_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: EmberWisp_0
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 991
+        width: 166
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87d033deb968a2570800000000000000
+      internalID: 8442708455717014904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmberWisp_1
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 997
+        width: 165
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f338795f36df52ff0800000000000000
+      internalID: -61364414135696577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmberWisp_2
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 997
+        width: 165
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf782a6ef5f8fe590800000000000000
+      internalID: -7642732400570365957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmberWisp_3
+      rect:
+        serializedVersion: 2
+        x: 1017
+        y: 991
+        width: 166
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0921ce35ee6d14f10800000000000000
+      internalID: 2252317607760499344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmberWisp_4
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 985
+        width: 165
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 646e70e9650369540800000000000000
+      internalID: 5014248383700264518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmberWisp_5
+      rect:
+        serializedVersion: 2
+        x: 1654
+        y: 985
+        width: 165
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1e37687571216920800000000000000
+      internalID: 2981701216710901278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmberWisp_6
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 671
+        width: 166
+        height: 223
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d8eb9b8acb883c50800000000000000
+      internalID: 6645214952227072216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmberWisp_7
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 678
+        width: 166
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89f524ea05028f0e0800000000000000
+      internalID: -2236001684096393320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmberWisp_8
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 683
+        width: 168
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55da69485847292c0800000000000000
+      internalID: -4426347366947836587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmberWisp_9
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 689
+        width: 172
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 147f89f8288157c00800000000000000
+      internalID: 897650649764263745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmberWisp_10
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 327
+        width: 173
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19511b22019d1b720800000000000000
+      internalID: 2860305901681710481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmberWisp_11
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 327
+        width: 173
+        height: 312
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5c272dc668c7c6f0800000000000000
+      internalID: -664342076159742885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmberWisp_12
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 327
+        width: 173
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b31c5a42c28a9710800000000000000
+      internalID: 1700815580268598199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmberWisp_13
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 327
+        width: 173
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a767751e37ab9c10800000000000000
+      internalID: 2061425139542091680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmberWisp_14
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 327
+        width: 173
+        height: 312
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ecac34a6a5ab6770800000000000000
+      internalID: 8605153648160058600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmberWisp_15
+      rect:
+        serializedVersion: 2
+        x: 1670
+        y: 327
+        width: 173
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 721ea9695c7eb0e50800000000000000
+      internalID: 6776764900130349351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmberWisp_16
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 33
+        width: 168
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd60e781c3eb823f0800000000000000
+      internalID: -925280558106409253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmberWisp_17
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 33
+        width: 168
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d1a486a3531af4e0800000000000000
+      internalID: -1947222638887394860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      EmberWisp_0: 8442708455717014904
+      EmberWisp_1: -61364414135696577
+      EmberWisp_10: 2860305901681710481
+      EmberWisp_11: -664342076159742885
+      EmberWisp_12: 1700815580268598199
+      EmberWisp_13: 2061425139542091680
+      EmberWisp_14: 8605153648160058600
+      EmberWisp_15: 6776764900130349351
+      EmberWisp_16: -925280558106409253
+      EmberWisp_17: -1947222638887394860
+      EmberWisp_2: -7642732400570365957
+      EmberWisp_3: 2252317607760499344
+      EmberWisp_4: 5014248383700264518
+      EmberWisp_5: 2981701216710901278
+      EmberWisp_6: 6645214952227072216
+      EmberWisp_7: -2236001684096393320
+      EmberWisp_8: -4426347366947836587
+      EmberWisp_9: 897650649764263745
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

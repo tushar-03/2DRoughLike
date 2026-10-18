@@ -139,9 +139,9 @@ namespace Roughlike.Items
             _collected = true;
             switch (_kind)
             {
-                case CollectibleKind.Gold: _target.AddGold(_value); break;
-                case CollectibleKind.Cell: _target.AddCells(_value); break;
-                case CollectibleKind.Scroll: _target.AddScroll(_colour); break;
+                case CollectibleKind.Gold: _target.AddGold(_value); Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.GoldPickup, 0.7f, 1f, 0.12f); break;
+                case CollectibleKind.Cell: _target.AddCells(_value); Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.CellPickup, 0.8f); break;
+                case CollectibleKind.Scroll: _target.AddScroll(_colour); Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.ScrollPickup); break;
             }
             Destroy(gameObject);
         }
@@ -194,6 +194,7 @@ namespace Roughlike.Items
             if (_opened) return;
             _opened = true;
             ShowOpen();
+            Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.ChestOpen);
             if (_contents != null) LootFactory.DropItem(_contents, (Vector2)transform.position + new Vector2(0f, 0.2f));
         }
     }

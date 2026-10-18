@@ -19,8 +19,12 @@ MonoBehaviour:
   description: A generous parry window, but it barely blocks.
   sprite: {fileID: 21300000, guid: 94f913113b378fc48a12966750e2351b, type: 3}
   heldScale: 1.15
+  heldSprite: {fileID: 0}
+  dual: 0
   steps: []
   comboResetTime: 0.45
+  projectileSpeed: 26
+  pierce: 0
   shield:
     parryWindow: 0.28
     blockDamageReduction: 0.55

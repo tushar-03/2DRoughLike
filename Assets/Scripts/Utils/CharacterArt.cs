@@ -33,6 +33,9 @@ namespace Roughlike.Utils
             public Vector2 hand;
             [Tooltip("Direction the held weapon points, degrees from +x (forward).")]
             public float angle;
+            [Tooltip("The off hand, for dual-wielded weapons.")]
+            public Vector2 handB;
+            public float angleB;
             public bool shieldUp;
             public Vector2 shield;
             [Tooltip("Where a lowered shield is carried (on the back).")]

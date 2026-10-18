@@ -68,8 +68,12 @@ namespace Roughlike.Combat
         void OnAttack(WeaponData weapon, AttackStep step, int index)
         {
             Haptics.Play(HapticKind.Attack);
-            if (_anim == null || !_anim.Art.Has("attack")) return;
-            _anim.PlayOnce("attack", Mathf.Max(0.12f, step.windup + step.active + step.recovery * 0.7f));
+            if (weapon == null || weapon.kind != WeaponKind.Bow) Roughlike.Utils.Sfx.Play(step.damage >= 22f ? Roughlike.Utils.SfxId.SwingHeavy : Roughlike.Utils.SfxId.SwingLight, 0.8f);
+            else Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.SwingBow, 0.8f);
+            if (_anim == null) return;
+            string clip = weapon != null && weapon.kind == WeaponKind.Bow && _anim.Art.Has("shoot") ? "shoot" : "attack";
+            if (!_anim.Art.Has(clip)) return;
+            _anim.PlayOnce(clip, Mathf.Max(0.12f, step.windup + step.active + step.recovery * 0.7f));
         }
 
         void OnHit(HitReport r)
