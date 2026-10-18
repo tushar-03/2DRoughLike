@@ -38,7 +38,6 @@ namespace Roughlike.Editor.Art
             Sprite arches = Write("BackdropArches", EnvironmentPainter.BackdropArches(), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
             Sprite fogFar = Write("FogFar", EnvironmentPainter.FogBands(new Color(0.45f, 0.55f, 0.75f), 0.45f, 11), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
             Sprite fogNear = Write("FogNear", EnvironmentPainter.FogBands(new Color(0.3f, 0.36f, 0.5f), 0.5f, 23), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
-            Sprite pillars = Write("ForegroundPillars", EnvironmentPainter.ForegroundPillarsCatacombs(), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
 
             var art = Load();
             bool created = art == null;
@@ -59,7 +58,6 @@ namespace Roughlike.Editor.Art
                 new EnvironmentArt.BackdropLayer { name = "Distant arches", sprite = arches, follow = 0.93f, followY = 0.9f, yOffset = 0.6f, sortingOrder = -57 },
                 new EnvironmentArt.BackdropLayer { name = "Far mist", sprite = fogFar, follow = 0.8f, followY = 0.85f, yOffset = 0f, sortingOrder = -55 },
                 new EnvironmentArt.BackdropLayer { name = "Near mist", sprite = fogNear, follow = 0.5f, followY = 0.7f, yOffset = -0.5f, sortingOrder = -38 },
-                new EnvironmentArt.BackdropLayer { name = "Foreground columns", sprite = pillars, follow = -0.85f, followY = 1f, yOffset = 0f, sortingOrder = 58 },
                 new EnvironmentArt.BackdropLayer { name = "Foreground rubble", sprite = fgBottom, follow = -0.35f, followY = 1f, yOffset = 5.3f, sortingOrder = 60 },
                 new EnvironmentArt.BackdropLayer { name = "Foreground roots and chains", sprite = fgTop, follow = -0.5f, followY = 1f, yOffset = -5.1f, sortingOrder = 61 }
             };
@@ -93,7 +91,6 @@ namespace Roughlike.Editor.Art
                 Sprite columns = Write("PromenadeColumns", EnvironmentPainter.BackdropBrokenColumns(), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
                 Sprite fogFar = Write("PromenadeFogFar", EnvironmentPainter.FogBands(new Color(1f, 0.55f, 0.35f), 0.4f, 31), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
                 Sprite fogNear = Write("PromenadeFogNear", EnvironmentPainter.FogBands(new Color(0.75f, 0.32f, 0.22f), 0.45f, 43), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
-                Sprite pillars = Write("PromenadeForegroundPillars", EnvironmentPainter.ForegroundPillarsPromenade(), EnvironmentPainter.BackW, EnvironmentPainter.BackH, 32f, true);
 
                 var art = LoadPromenade();
                 bool created = art == null;
@@ -123,7 +120,6 @@ namespace Roughlike.Editor.Art
                     new EnvironmentArt.BackdropLayer { name = "Broken columns", sprite = columns, follow = 0.94f, followY = 0.9f, yOffset = 0.4f, sortingOrder = -57, tint = new Color(0.9f, 0.8f, 0.8f) },
                     new EnvironmentArt.BackdropLayer { name = "Far haze", sprite = fogFar, follow = 0.8f, followY = 0.85f, yOffset = 0f, sortingOrder = -55 },
                     new EnvironmentArt.BackdropLayer { name = "Near haze", sprite = fogNear, follow = 0.5f, followY = 0.7f, yOffset = -0.5f, sortingOrder = -38 },
-                    new EnvironmentArt.BackdropLayer { name = "Foreground columns", sprite = pillars, follow = -0.85f, followY = 1f, yOffset = 0f, sortingOrder = 58 },
                     new EnvironmentArt.BackdropLayer { name = "Foreground weeds and posts", sprite = fgBottom, follow = -0.35f, followY = 1f, yOffset = 5.3f, sortingOrder = 60 },
                     new EnvironmentArt.BackdropLayer { name = "Foreground banners", sprite = fgTop, follow = -0.5f, followY = 1f, yOffset = -5.1f, sortingOrder = 61 }
                 };

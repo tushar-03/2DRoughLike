@@ -92,19 +92,45 @@ namespace Roughlike.Items
                     }
                     break;
                 case ItemKind.Skill:
-                    Shape(icon, ProceduralSprites.Circle, item.Skill != null ? item.Skill.tint : Color.white, Vector2.one * 0.6f, Vector2.zero, 6);
+                {
+                    var art = item.Skill != null ? GameIcons.Sprite("skill_" + item.Skill.name) : null;
+                    if (art != null) Shape(icon, art, Color.white, Vector2.one * 0.85f, Vector2.zero, 6);
+                    else Shape(icon, ProceduralSprites.Circle, item.Skill != null ? item.Skill.tint : Color.white, Vector2.one * 0.6f, Vector2.zero, 6);
                     break;
+                }
                 case ItemKind.Amulet:
-                    Shape(icon, ProceduralSprites.Spark, item.Gear != null ? item.Gear.tint : Color.white, Vector2.one * 0.85f, Vector2.zero, 6);
+                {
+                    var art = item.Gear != null ? GameIcons.Sprite("gear_" + item.Gear.name) : null;
+                    if (art != null) Shape(icon, art, Color.white, Vector2.one * 0.85f, Vector2.zero, 6);
+                    else Shape(icon, ProceduralSprites.Spark, item.Gear != null ? item.Gear.tint : Color.white, Vector2.one * 0.85f, Vector2.zero, 6);
                     break;
+                }
                 default:
-                    Shape(icon, ProceduralSprites.Square, item.Gear != null ? item.Gear.tint : Color.white, new Vector2(0.55f, 0.65f), Vector2.zero, 6);
+                {
+                    var art = item.Gear != null ? GameIcons.Sprite("gear_" + item.Gear.name) : null;
+                    if (art != null) Shape(icon, art, Color.white, Vector2.one * 0.85f, Vector2.zero, 6);
+                    else Shape(icon, ProceduralSprites.Square, item.Gear != null ? item.Gear.tint : Color.white, new Vector2(0.55f, 0.65f), Vector2.zero, 6);
                     break;
+                }
             }
             Label(go.transform, item.DisplayName, rc, 0.1f, new Vector3(0f, 1.9f, 0f));
 
             wi.Init(item, icon);
             return wi;
+        }
+
+        /// <summary>A looping painted animation from the icon sheets.</summary>
+        static void Animated(Transform parent, string clip, float size, int order)
+        {
+            var go = new GameObject(clip);
+            go.transform.SetParent(parent, false);
+            go.transform.localScale = Vector3.one * size;
+            var sr = go.AddComponent<SpriteRenderer>();
+            sr.sortingOrder = order;
+            var anim = go.AddComponent<SpriteAnimator>();
+            anim.Bind(GameIcons.Sheet(clip));
+            anim.Loop(clip);
+            sr.sprite = GameIcons.Sprite(clip);
         }
 
         // ------------------------------------------------------------------ currency drops
@@ -113,7 +139,8 @@ namespace Roughlike.Items
         {
             var go = new GameObject("Gold");
             go.transform.position = position;
-            Shape(go.transform, ProceduralSprites.Circle, new Color(1f, 0.82f, 0.25f), Vector2.one * 0.32f, Vector2.zero, 20);
+            if (GameIcons.Has("coin")) Animated(go.transform, "coin", 0.42f, 20);
+            else Shape(go.transform, ProceduralSprites.Circle, new Color(1f, 0.82f, 0.25f), Vector2.one * 0.32f, Vector2.zero, 20);
             var c = go.AddComponent<Collectible>();
             c.Init(CollectibleKind.Gold, value, StatColor.None, true);
             return c;
@@ -123,7 +150,8 @@ namespace Roughlike.Items
         {
             var go = new GameObject("Cell");
             go.transform.position = position;
-            Shape(go.transform, ProceduralSprites.Spark, new Color(0.4f, 0.95f, 1f), Vector2.one * 0.55f, Vector2.zero, 20);
+            if (GameIcons.Has("cell")) Animated(go.transform, "cell", 0.55f, 20);
+            else Shape(go.transform, ProceduralSprites.Spark, new Color(0.4f, 0.95f, 1f), Vector2.one * 0.55f, Vector2.zero, 20);
             var c = go.AddComponent<Collectible>();
             c.Init(CollectibleKind.Cell, value, StatColor.None, true);
             return c;
@@ -134,9 +162,14 @@ namespace Roughlike.Items
             var go = new GameObject(colour + " Scroll");
             go.transform.position = position + Vector2.up * 0.4f;
             Color c = StatNames.Colour(colour);
-            Shape(go.transform, ProceduralSprites.Square, new Color(0.95f, 0.9f, 0.75f), new Vector2(0.38f, 0.65f), Vector2.zero, 20);
-            Shape(go.transform, ProceduralSprites.Square, c, new Vector2(0.44f, 0.12f), new Vector2(0f, 0.3f), 21);
-            Shape(go.transform, ProceduralSprites.Square, c, new Vector2(0.44f, 0.12f), new Vector2(0f, -0.3f), 21);
+            var scrollArt = GameIcons.Sprite("scroll_" + colour);
+            if (scrollArt != null) Shape(go.transform, scrollArt, Color.white, Vector2.one * 0.75f, Vector2.zero, 20);
+            else
+            {
+                Shape(go.transform, ProceduralSprites.Square, new Color(0.95f, 0.9f, 0.75f), new Vector2(0.38f, 0.65f), Vector2.zero, 20);
+                Shape(go.transform, ProceduralSprites.Square, c, new Vector2(0.44f, 0.12f), new Vector2(0f, 0.3f), 21);
+                Shape(go.transform, ProceduralSprites.Square, c, new Vector2(0.44f, 0.12f), new Vector2(0f, -0.3f), 21);
+            }
             Shape(go.transform, ProceduralSprites.Circle, new Color(c.r, c.g, c.b, 0.35f), Vector2.one * 1.4f, Vector2.zero, 19);
             Label(go.transform, colour.ToString(), c, 0.09f, new Vector3(0f, 0.85f, 0f));
             var col = go.AddComponent<Collectible>();

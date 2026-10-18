@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3125dbb4001f89f45aa1d68848f51d5d, type: 3}
+  m_Name: ItemIcons
+  m_EditorClassIdentifier: Roughlike.Utils::Roughlike.Utils.CharacterArt
+  sheet: {fileID: 2800000, guid: 76488936f24727c41bbe4eb8ac0ee900, type: 3}
+  frameWidth: 128
+  frameHeight: 128
+  pixelsPerUnit: 160
+  pivot: {x: 0.5, y: 0.5}
+  clips:
+  - name: skill_PowderKeg
+    row: 0
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: skill_BellTurret
+    row: 1
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: skill_SnareTrap
+    row: 2
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: skill_VenomFlask
+    row: 3
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: gear_FerrymansCoin
+    row: 4
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: gear_CrackedReliquary
+    row: 5
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: gear_BellFragment
+    row: 6
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: gear_LanternCharm
+    row: 7
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: gear_TideLocket
+    row: 8
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: gear_EmberSigil
+    row: 9
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: gear_ApprenticeRobes
+    row: 10
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: gear_DrownedVestments
+    row: 11
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: gear_BoathookHarness
+    row: 12
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: gear_AshCowl
+    row: 13
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: gear_VerdigrisMantle
+    row: 14
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: mut_TemperedFrame
+    row: 15
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: mut_FleetFoot
+    row: 16
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: mut_Recklessness
+    row: 17
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: mut_Bloodletter
+    row: 18
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: mut_Counterstrike
+    row: 19
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: mut_Momentum
+    row: 20
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: mut_SecondWind
+    row: 21
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  - name: mut_Gilded
+    row: 22
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  companions: []

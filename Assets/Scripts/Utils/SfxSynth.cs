@@ -184,10 +184,16 @@ namespace Roughlike.Utils
                     NoiseBurst(b, 0.005f, 0.12f, 0.3f, 0.001f, 0.03f, 4000f, 1500f);
                     break;
                 case SfxId.Charge:
-                    b = Buf(1.3f);
-                    Tone(b, 0f, 1.2f, 140f, 520f, Wave.Triangle, 0.5f, 0.2f, 0.9f, 7f, 0.03f);
-                    NoiseBurst(b, 0f, 1.1f, 0.12f, 0.3f, 0.6f, 600f, 3500f);
-                    LowPass(b, 3500f);
+                    // a soft, low swell: felt more than heard
+                    b = Buf(0.7f);
+                    Tone(b, 0f, 0.65f, 95f, 150f, Wave.Sine, 0.6f, 0.25f, 0.4f);
+                    NoiseBurst(b, 0f, 0.6f, 0.05f, 0.25f, 0.3f, 300f, 700f);
+                    LowPass(b, 700f);
+                    break;
+                case SfxId.ChargeReady:
+                    b = Buf(0.3f);
+                    Tone(b, 0f, 0.25f, 880f, Wave.Sine, 0.5f, 0.002f, 0.07f);
+                    Tone(b, 0.03f, 0.22f, 1320f, Wave.Sine, 0.25f, 0.002f, 0.06f);
                     break;
                 case SfxId.Hit:
                     b = Buf(0.2f);

@@ -70,7 +70,8 @@ namespace Roughlike.Tests.EditMode
                 else back++;
             }
             Assert.GreaterOrEqual(back, 7, "many background planes");
-            Assert.GreaterOrEqual(front, 3, "foreground planes in front of the player");
+            Assert.GreaterOrEqual(front, 2, "foreground planes in front of the player");
+            foreach (var l in art.backdrop) if (l.follow < 0f) StringAssert.DoesNotContain("column", l.name.ToLower(), "no big dark columns drawn over the action");
             Assert.Greater(art.moteCount, 0, "drifting motes");
         }
 
@@ -109,6 +110,20 @@ namespace Roughlike.Tests.EditMode
             var inBuild = System.Array.ConvertAll(EditorBuildSettings.scenes, s => s.path);
             foreach (var scene in new[] { Roughlike.Rooms.GameSession.MenuScene, Roughlike.Rooms.GameSession.GameplayScene, Roughlike.Rooms.GameSession.TutorialScene, Roughlike.Rooms.GameSession.LoadoutScene })
                 CollectionAssert.Contains(inBuild, $"Assets/Scenes/{scene}.unity", scene + " is in the build settings");
+        }
+
+        [Test]
+        public void EveryItemSkillAndMutationHasAPaintedIcon()
+        {
+            Roughlike.Utils.GameIcons.Reload();
+            var db = AssetDatabase.LoadAssetAtPath<Roughlike.Items.LootDatabase>("Assets/Data/LootDatabase.asset");
+            foreach (var sk in db.skills) Assert.IsTrue(Roughlike.Utils.GameIcons.Has("skill_" + sk.name), sk.name);
+            foreach (var g in db.amulets) Assert.IsTrue(Roughlike.Utils.GameIcons.Has("gear_" + g.name), g.name);
+            foreach (var g in db.outfits) Assert.IsTrue(Roughlike.Utils.GameIcons.Has("gear_" + g.name), g.name);
+            foreach (var m in db.mutations) Assert.IsTrue(Roughlike.Utils.GameIcons.Has("mut_" + m.name), m.name);
+            foreach (var clip in new[] { "coin", "cell", "scroll_Ember", "scroll_Brine", "scroll_Moss", "flask_full", "flask_empty", "trap_set" })
+                Assert.IsTrue(Roughlike.Utils.GameIcons.Has(clip), clip);
+            Assert.AreEqual(6, Roughlike.Utils.GameIcons.Frames("coin").Length, "the coin spins");
         }
 
         [Test]

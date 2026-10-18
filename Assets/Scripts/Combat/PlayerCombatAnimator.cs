@@ -19,6 +19,7 @@ namespace Roughlike.Combat
         string _clip;
         AttackStep _step;
         bool _tinted;
+        bool _chargeReadyPlayed;
         SpriteRenderer _sr;
         const float WindFraction = 0.36f;
 
@@ -72,7 +73,7 @@ namespace Roughlike.Combat
             return Pick(shield != null && !string.IsNullOrEmpty(shield.blockClip) ? shield.blockClip : "block_tower", "block_tower");
         }
 
-        void OnChargeStarted() => Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.Charge, 0.6f, 1f, 0f);
+        void OnChargeStarted() => Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.Charge, 0.22f, 1f, 0f);
 
         void OnChargeReleased(float level)
         {
@@ -87,9 +88,18 @@ namespace Roughlike.Combat
         void Update()
         {
             bool charging = _combat != null && _combat.Charging;
-            if (_visual != null) _visual.HoldClip = charging;
-            if (charging && _anim != null && !string.IsNullOrEmpty(_clip) && _anim.Art.Has(_clip))
+            // standing still the coiled pose is held; walking, the run cycle plays (the glow still shows the charge), so the legs never freeze
+            bool moving = _controller != null && Mathf.Abs(_controller.Velocity.x) > 0.5f;
+            if (_visual != null) _visual.HoldClip = charging && !moving;
+            if (charging && !moving && _anim != null && !string.IsNullOrEmpty(_clip) && _anim.Art.Has(_clip))
                 _anim.Scrub(_clip, WindFraction);
+            else if (charging && moving && _anim != null && _anim.IsPlayingOnce) _anim.Loop(_anim.Art.Has("run") ? "run" : "idle");
+            if (charging && _combat.ChargeLevel >= 1f && !_chargeReadyPlayed)
+            {
+                _chargeReadyPlayed = true;
+                Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.ChargeReady, 0.5f);
+            }
+            if (!charging) _chargeReadyPlayed = false;
         }
 
         void LateUpdate()

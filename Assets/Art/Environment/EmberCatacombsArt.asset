@@ -66,13 +66,6 @@ MonoBehaviour:
     yOffset: -0.5
     tint: {r: 1, g: 1, b: 1, a: 1}
     sortingOrder: -38
-  - name: Foreground columns
-    sprite: {fileID: 21300000, guid: a46df7ce7ecfb3649871bbae13f709ec, type: 3}
-    follow: -0.85
-    followY: 1
-    yOffset: 0
-    tint: {r: 1, g: 1, b: 1, a: 1}
-    sortingOrder: 58
   - name: Foreground rubble
     sprite: {fileID: 21300000, guid: d6546612f046dff449f17c30f72d39ae, type: 3}
     follow: -0.35

@@ -26,7 +26,7 @@ namespace Roughlike.Combat
         Color? _tint;
         float _turnRate, _homeUntil;
         int _pierce;
-        bool _arrow;
+        bool _arrow, _bolt;
         static Sprite _arrowSprite;
 
         public Vector2 Velocity => _velocity;
@@ -63,13 +63,15 @@ namespace Roughlike.Combat
             p._homeUntil = 0f;
             p._pierce = 0;
             p._arrow = false;
-            p._sr.sprite = ProceduralSprites.Circle;
+            p._bolt = velocity.sqrMagnitude > 18f * 18f && team != Team.Player;   // fast shots are streaks, slow ones are orbs
+            p._sr.sprite = p._bolt ? ProceduralSprites.Bolt : ProceduralSprites.Orb;
             p.transform.rotation = Quaternion.identity;
             p._hit.Clear();
             if (team != Team.Player) Roughlike.Utils.Sfx.PlayAt(Roughlike.Utils.SfxId.EnemyShoot, position, 0.55f);
             p._groundMask = GameLayers.GroundMask;
-            p.transform.localScale = Vector3.one * radius * 2.2f;
+            p.transform.localScale = Vector3.one * radius * (p._bolt ? 3.4f : 2.8f);
             p.Recolour();
+            p.Face();
             return p;
         }
 
@@ -86,7 +88,7 @@ namespace Roughlike.Combat
 
         void Face()
         {
-            if (!_arrow || _velocity.sqrMagnitude < 0.001f) return;
+            if (!(_arrow || _bolt) || _velocity.sqrMagnitude < 0.001f) return;
             transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(_velocity.y, _velocity.x) * Mathf.Rad2Deg);
         }
 

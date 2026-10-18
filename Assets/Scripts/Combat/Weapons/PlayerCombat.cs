@@ -36,7 +36,7 @@ namespace Roughlike.Combat
     {
         [SerializeField] WeaponData slot1;
         [SerializeField] WeaponData slot2;
-        [SerializeField] float attackBufferTime = 0.25f;
+        [SerializeField] float attackBufferTime = 0.35f;
         [SerializeField] bool showHitboxes;
         [Tooltip("Run from Update. Tests turn this off and call Tick(dt) themselves.")]
         public bool autoTick = true;
@@ -272,7 +272,7 @@ namespace Roughlike.Combat
                 {
                     _phaseTimer += dt;
                     AttackStep step = PreviousStep();
-                    if (_buffered >= 0 && _phaseTimer >= step.recovery * step.chainFraction)
+                    if (_buffered >= 0 && _phaseTimer >= step.recovery * step.chainFraction * 0.7f)
                     {
                         ChainFromBuffer();
                     }
@@ -446,7 +446,7 @@ namespace Roughlike.Combat
                 SourcePosition = transform.position,
                 Knockback = new Vector2(step.knockback.x * _pc.Facing, step.knockback.y) * power,
                 Stagger = step.stagger * power,
-                HitStop = step.hitStop * (crit ? 1.5f : 1f) * power,
+                HitStop = step.hitStop * 0.7f * (crit ? 1.5f : 1f) * power,
                 Shake = step.shake * (crit ? 1.4f : 1f) * power,
                 Tags = DamageTags.Melee,
                 IsCrit = crit,
@@ -589,7 +589,8 @@ namespace Roughlike.Combat
             if (_phase != AttackPhase.None)
             {
                 AttackStep step = _phase == AttackPhase.Recovery ? PreviousStep() : CurrentStep();
-                _pc.MoveSpeedScale = step.moveScale;
+                // swinging should not root you to the spot: keep most of the run speed so movement and attacks flow together
+                _pc.MoveSpeedScale = Mathf.Min(0.9f, step.moveScale * 1.5f + 0.1f);
                 _pc.FacingLocked = _phase == AttackPhase.Windup || _phase == AttackPhase.Charging || _phase == AttackPhase.Active;
             }
             else if (_shieldPhase == ShieldPhase.Parry || _shieldPhase == ShieldPhase.Block)

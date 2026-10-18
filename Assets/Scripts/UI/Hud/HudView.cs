@@ -84,14 +84,15 @@ namespace Roughlike.UI
             for (int i = 0; i < 4; i++)
             {
                 var pip = UiKit.Image(topLeft, "Flask " + i, new Color(0.5f, 1f, 0.6f), ProceduralSprites.Circle);
-                UiKit.Place(pip.rectTransform, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(i * 34f, -44f), new Vector2(28f, 28f));
+                if (UiKit.TryPainted(pip, "flask_full")) pip.preserveAspect = true;
+                UiKit.Place(pip.rectTransform, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(i * 38f, -42f), new Vector2(42f, 42f));
                 _flaskPips.Add(pip);
             }
 
             for (int i = 0; i < PlayerInventory.MaxMutations; i++)
             {
                 var box = UiKit.Image(topLeft, "Mutation " + i, new Color(1f, 1f, 1f, 0.1f));
-                UiKit.Place(box.rectTransform, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(170f + i * 44f, -42f), new Vector2(38f, 38f));
+                UiKit.Place(box.rectTransform, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(190f + i * 50f, -42f), new Vector2(44f, 44f));
                 var letter = UiKit.Label(box.transform, "Letter", "", 24, new Color(0.05f, 0.05f, 0.08f), TextAnchor.MiddleCenter, true);
                 UiKit.Stretch(letter.rectTransform);
                 _mutationBoxes.Add(box);
@@ -103,12 +104,14 @@ namespace Roughlike.UI
             UiKit.Place(topRight, new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(-36f, -28f), new Vector2(360f, 150f));
 
             var coin = UiKit.Image(topRight, "Coin", UiKit.Gold, ProceduralSprites.Circle);
-            UiKit.Place(coin.rectTransform, new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(-130f, -2f), new Vector2(30f, 30f));
+            UiKit.TryPainted(coin, "coin");
+            UiKit.Place(coin.rectTransform, new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(-124f, 0f), new Vector2(40f, 40f));
             _goldText = UiKit.Label(topRight, "Gold", "0", 32, UiKit.Gold, TextAnchor.MiddleRight, true);
             UiKit.Place(_goldText.rectTransform, new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(0f, 0f), new Vector2(120f, 34f));
 
             var cell = UiKit.Image(topRight, "Cell", new Color(0.4f, 0.95f, 1f), ProceduralSprites.Spark);
-            UiKit.Place(cell.rectTransform, new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(-130f, -40f), new Vector2(34f, 34f));
+            UiKit.TryPainted(cell, "cell");
+            UiKit.Place(cell.rectTransform, new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(-124f, -40f), new Vector2(44f, 44f));
             _cellText = UiKit.Label(topRight, "Cells", "0", 28, new Color(0.4f, 0.95f, 1f), TextAnchor.MiddleRight, true);
             UiKit.Place(_cellText.rectTransform, new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(0f, -38f), new Vector2(120f, 34f));
 
@@ -196,12 +199,25 @@ namespace Roughlike.UI
                 bool exists = i < _inv.MaxFlaskCharges;
                 _flaskPips[i].gameObject.SetActive(exists);
                 if (!exists) continue;
-                _flaskPips[i].color = i < _inv.FlaskCharges ? new Color(0.5f, 1f, 0.6f) : new Color(0.25f, 0.3f, 0.27f, 0.8f);
+                bool painted = GameIcons.Has("flask_full");
+                bool full = i < _inv.FlaskCharges;
+                if (painted) { _flaskPips[i].sprite = GameIcons.Sprite(full ? "flask_full" : "flask_empty"); _flaskPips[i].color = full ? Color.white : new Color(1f, 1f, 1f, 0.55f); }
+                else _flaskPips[i].color = full ? new Color(0.5f, 1f, 0.6f) : new Color(0.25f, 0.3f, 0.27f, 0.8f);
             }
 
             for (int i = 0; i < _mutationBoxes.Count; i++)
             {
                 bool has = i < _inv.Mutations.Count;
+                var icon = has ? GameIcons.Sprite("mut_" + _inv.Mutations[i].name) : null;
+                if (icon != null)
+                {
+                    _mutationBoxes[i].sprite = icon;
+                    _mutationBoxes[i].color = Color.white;
+                    _mutationBoxes[i].preserveAspect = true;
+                    _mutationLetters[i].text = "";
+                    continue;
+                }
+                _mutationBoxes[i].sprite = ProceduralSprites.Square;
                 _mutationBoxes[i].color = has ? _inv.Mutations[i].tint : new Color(1f, 1f, 1f, 0.1f);
                 _mutationLetters[i].text = has ? _inv.Mutations[i].displayName.Substring(0, 1) : "";
             }

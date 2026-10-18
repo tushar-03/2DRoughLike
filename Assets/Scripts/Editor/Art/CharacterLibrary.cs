@@ -86,6 +86,46 @@ namespace Roughlike.Editor.Art
                 ("poke", 24f), ("poke_b", 24f), ("sweep", 20f), ("shoot_b", 14f), ("shoot_c", 12f));
         }
 
+        /// <summary>The painted icons for items, pickups and props (their own sheets: 128 px frames, centred).</summary>
+        static IEnumerable<CharacterPlan> IconPlans()
+        {
+            var icons = new CharacterPlan { Name = "ItemIcons", FrameW = IconArt.S, FrameH = IconArt.S, Pivot = new Vector2(0.5f, 0.5f) };
+            foreach (var id in new[] { "PowderKeg", "BellTurret", "SnareTrap", "VenomFlask" })
+            {
+                string n = id;
+                icons.Add("skill_" + n, 1, 1f, false, (i, c) => IconArt.Skill(n));
+            }
+            foreach (var id in new[] { "FerrymansCoin", "CrackedReliquary", "BellFragment", "LanternCharm", "TideLocket", "EmberSigil",
+                                       "ApprenticeRobes", "DrownedVestments", "BoathookHarness", "AshCowl", "VerdigrisMantle" })
+            {
+                string n = id;
+                icons.Add("gear_" + n, 1, 1f, false, (i, c) => IconArt.Gear(n));
+            }
+            var tints = new Dictionary<string, Color>
+            {
+                { "TemperedFrame", new Color(0.9f, 0.4f, 0.4f) }, { "FleetFoot", new Color(1f, 0.8f, 0.3f) }, { "Recklessness", new Color(1f, 0.35f, 0.25f) },
+                { "Bloodletter", new Color(0.9f, 0.2f, 0.3f) }, { "Counterstrike", new Color(0.5f, 0.85f, 1f) }, { "Momentum", new Color(1f, 0.6f, 0.2f) },
+                { "SecondWind", new Color(1f, 0.9f, 0.5f) }, { "Gilded", new Color(1f, 0.85f, 0.3f) }
+            };
+            foreach (var kv in tints)
+            {
+                string n = kv.Key; Color t = kv.Value;
+                icons.Add("mut_" + n, 1, 1f, false, (i, c) => IconArt.Mutation(n, t));
+            }
+            yield return icons;
+
+            var pickups = new CharacterPlan { Name = "Pickups", FrameW = IconArt.S, FrameH = IconArt.S, Pivot = new Vector2(0.5f, 0.5f) };
+            pickups.Add("coin", 6, 10f, true, (i, n) => IconArt.Coin(i, n));
+            pickups.Add("cell", 6, 8f, true, (i, n) => IconArt.Cell(i, n));
+            pickups.Add("scroll_Ember", 1, 1f, false, (i, n) => IconArt.Scroll(new Color(0.9f, 0.3f, 0.25f)));
+            pickups.Add("scroll_Brine", 1, 1f, false, (i, n) => IconArt.Scroll(new Color(0.3f, 0.7f, 0.95f)));
+            pickups.Add("scroll_Moss", 1, 1f, false, (i, n) => IconArt.Scroll(new Color(0.4f, 0.85f, 0.4f)));
+            pickups.Add("flask_full", 1, 1f, false, (i, n) => IconArt.Flask(true));
+            pickups.Add("flask_empty", 1, 1f, false, (i, n) => IconArt.Flask(false));
+            pickups.Add("trap_set", 1, 1f, false, (i, n) => IconArt.TrapSet());
+            yield return pickups;
+        }
+
         static CharacterPlan Creature(string name, Func<string, float, Color32[]> paint, bool hasWalk)
         {
             var plan = new CharacterPlan { Name = name };
@@ -128,7 +168,7 @@ namespace Roughlike.Editor.Art
             };
             var guard = new HumanoidSpec
             {
-                Name = "ShellGuard", Height = 262f, HeadR = 29f, Bulk = 1.5f, Helmet = true, Weapon = "mace", WeaponLen = 92f, EnemyShield = true,
+                Name = "ShellGuard", Height = 262f, HeadR = 29f, Bulk = 1.5f, Helmet = true, Weapon = "mace", WeaponLen = 92f,
                 Skin = new Color(0.6f, 0.5f, 0.45f), Cloth = new Color(0.44f, 0.54f, 0.7f), Cloth2 = new Color(0.26f, 0.32f, 0.46f),
                 Trim = new Color(0.9f, 0.78f, 0.44f), Metal = new Color(0.62f, 0.72f, 0.82f), Glow = new Color(0.55f, 0.88f, 1f),
                 Boot = new Color(0.2f, 0.22f, 0.3f), Rim = new Color(0.85f, 0.95f, 1f)
@@ -168,7 +208,7 @@ namespace Roughlike.Editor.Art
             };
             var sentinel = new HumanoidSpec
             {
-                Name = "RustSentinel", Height = 262f, HeadR = 29f, Bulk = 1.55f, Helmet = true, Weapon = "sword", WeaponLen = 84f, EnemyShield = true,
+                Name = "RustSentinel", Height = 262f, HeadR = 29f, Bulk = 1.55f, Helmet = true, Weapon = "sword", WeaponLen = 84f,
                 Skin = new Color(0.55f, 0.42f, 0.38f), Cloth = new Color(0.5f, 0.3f, 0.22f), Cloth2 = new Color(0.28f, 0.16f, 0.13f),
                 Trim = new Color(0.95f, 0.6f, 0.25f), Metal = new Color(0.62f, 0.5f, 0.44f), Glow = new Color(1f, 0.5f, 0.2f),
                 Boot = new Color(0.2f, 0.14f, 0.12f), Rim = new Color(1f, 0.78f, 0.5f)
@@ -228,6 +268,7 @@ namespace Roughlike.Editor.Art
             };
 
             list.AddRange(CombatPlans(player));
+            list.AddRange(IconPlans());
 
             foreach (var boss in new[] { Humanoid(witch, false), Humanoid(warden, false) })
             {

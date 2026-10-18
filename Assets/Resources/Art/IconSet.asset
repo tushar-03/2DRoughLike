@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f862ff124d046ef41aa6ff28308277fb, type: 3}
+  m_Name: IconSet
+  m_EditorClassIdentifier: Roughlike.Utils::Roughlike.Utils.GameIconSet
+  sheets:
+  - {fileID: 11400000, guid: 2b3fe61a6dfc3334587e79dae91d861c, type: 2}
+  - {fileID: 11400000, guid: 5c66961d7f2bed74ebdc49de03ad737e, type: 2}

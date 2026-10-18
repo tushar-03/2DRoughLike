@@ -9,7 +9,7 @@ namespace Roughlike.Utils
         // player movement
         Jump, DoubleJump, WallJump, Land, Roll, Footstep, LedgeGrab,
         // combat
-        SwingLight, SwingHeavy, SwingBow, BowRelease, Charge, Hit, HitHeavy, Crit, Parry, Block, ShieldRaise, PlayerHurt, PlayerDeath,
+        SwingLight, SwingHeavy, SwingBow, BowRelease, Charge, ChargeReady, Hit, HitHeavy, Crit, Parry, Block, ShieldRaise, PlayerHurt, PlayerDeath,
         EnemyDeath, EnemyTelegraph, EnemyShoot, Explosion, Burn, Poison,
         // bosses
         BossRoar, BossSlam, BossPhase, BossDeath, BossCharge,

@@ -65,7 +65,9 @@ namespace Roughlike.Items
             var g = go.AddComponent<GrenadeProjectile>();
             g._p = payload;
             g._velocity = velocity;
-            SkillVisuals.Sprite(go.transform, ProceduralSprites.Circle, payload.Tint, Vector3.one * 0.45f, Vector3.zero, 35);
+            var art = GameIcons.Sprite("skill_" + payload.Data.name);
+            if (art != null) SkillVisuals.Sprite(go.transform, art, Color.white, Vector3.one * 0.7f, Vector3.zero, 35);
+            else SkillVisuals.Sprite(go.transform, ProceduralSprites.Circle, payload.Tint, Vector3.one * 0.45f, Vector3.zero, 35);
             return g;
         }
 
@@ -115,6 +117,16 @@ namespace Roughlike.Items
             var t = go.AddComponent<TurretEntity>();
             t._p = payload;
             t._life = payload.Data.duration;
+            var art = GameIcons.Sprite("skill_" + payload.Data.name);
+            if (art != null)
+            {
+                // the painted turret already has its barrel; a tiny empty transform keeps the aiming code happy
+                SkillVisuals.Sprite(go.transform, art, Color.white, Vector3.one * 1.1f, new Vector3(0f, 0.62f, 0f), 12);
+                t._barrel = new GameObject("Barrel").transform;
+                t._barrel.SetParent(go.transform, false);
+                t._barrel.localPosition = new Vector3(0.45f, 0.7f, 0f);
+                return t;
+            }
             SkillVisuals.Sprite(go.transform, ProceduralSprites.Square, payload.Tint * 0.7f, new Vector3(0.8f, 0.5f, 1f), new Vector3(0f, 0.25f, 0f), 12);
             var dome = SkillVisuals.Sprite(go.transform, ProceduralSprites.Circle, payload.Tint, new Vector3(0.7f, 0.7f, 1f), new Vector3(0f, 0.6f, 0f), 13);
             t._barrel = SkillVisuals.Sprite(go.transform, ProceduralSprites.Square, Color.white, new Vector3(0.6f, 0.14f, 1f), new Vector3(0.3f, 0.7f, 0f), 14).transform;
@@ -185,7 +197,10 @@ namespace Roughlike.Items
             go.transform.position = feetPosition;
             var t = go.AddComponent<TrapEntity>();
             t._p = payload;
-            t._sr = SkillVisuals.Sprite(go.transform, ProceduralSprites.Spark, payload.Tint, new Vector3(1.1f, 0.5f, 1f), new Vector3(0f, 0.12f, 0f), 11);
+            var trapArt = GameIcons.Sprite("trap_set");
+            t._sr = trapArt != null
+                ? SkillVisuals.Sprite(go.transform, trapArt, Color.white, Vector3.one * 0.9f, new Vector3(0f, 0.3f, 0f), 11)
+                : SkillVisuals.Sprite(go.transform, ProceduralSprites.Spark, payload.Tint, new Vector3(1.1f, 0.5f, 1f), new Vector3(0f, 0.12f, 0f), 11);
             return t;
         }
 

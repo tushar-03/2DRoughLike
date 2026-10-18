@@ -318,5 +318,12 @@ Built and verified: 122 PlayMode + 38 EditMode tests pass; the scene was played 
 ### Notes
 - Dying is still permadeath: it deletes the save. Checkpoints protect against quitting, not against dying.
 
+## M5.7 - Painted items, feel fixes (awaiting review)
+- `IconArt` paints 23 item icons plus coin, Cell, scrolls, flasks and the trap prop into two sheets (`ItemIcons`, `Pickups`) listed in `Resources/Art/IconSet.asset` (`GameIconSet`, looked up by `GameIcons`). `UiKit.FillIcon`, the HUD, the altar, `LootFactory` and `SkillEntities` use them and fall back to the old shapes.
+- `ProceduralSprites.Orb` and `.Bolt` for enemy and boss projectiles (fast shots are oriented streaks).
+- Removed the foreground column planes; `EnemyShield` is no longer baked into the sheets (the runtime shield prop is the one shield).
+- `PlayerCombatAnimator`: while charging and moving the run cycle plays; the charge sound is quieter, with `ChargeReady`.
+- `PlayerCombat`: move scale during swings, buffer 0.35 s, earlier chain, less hit-stop.
+
 ## Next
 M6 - content expansion: more weapons, special rooms and challenge doors, more mutations and status effects.

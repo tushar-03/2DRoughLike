@@ -211,6 +211,46 @@ namespace Roughlike.Tests.PlayMode
         }
 
         [Test]
+        public void ItemIconsAreThePaintedOnesAndDropsAndPickupsUseThem()
+        {
+            GameIcons.Reload();
+            var db = Own(DefaultContent.CreateDatabase());
+            var go = new GameObject("icon", typeof(RectTransform));
+            _spawned.Add(go);
+            var img = go.AddComponent<Image>();
+
+            UiKit.FillIcon(img, ItemInstance.ForSkill(db.skills[0], ItemRarity.Common));
+            Assert.AreSame(GameIcons.Sprite("skill_" + db.skills[0].name), img.sprite, "skills show their painting");
+            UiKit.FillIcon(img, ItemInstance.ForGear(db.amulets[0]));
+            Assert.AreSame(GameIcons.Sprite("gear_" + db.amulets[0].name), img.sprite);
+            UiKit.FillIcon(img, ItemInstance.ForGear(db.outfits[1]));
+            Assert.AreSame(GameIcons.Sprite("gear_" + db.outfits[1].name), img.sprite);
+
+            var gold = LootFactory.SpawnGold(Vector2.zero, 5);
+            _spawned.Add(gold.gameObject);
+            Assert.IsTrue(gold.GetComponentInChildren<SpriteAnimator>() != null, "a coin spins");
+            var scroll = LootFactory.SpawnScroll(Vector2.zero, StatColor.Brine);
+            _spawned.Add(scroll.gameObject);
+            Assert.IsTrue(scroll.GetComponentsInChildren<SpriteRenderer>().Any(sr => sr.sprite == GameIcons.Sprite("scroll_Brine")), "the scroll is the painted one");
+            var drop = LootFactory.DropItem(ItemInstance.ForGear(db.amulets[2]), Vector2.zero);
+            _spawned.Add(drop.gameObject);
+            Assert.IsTrue(drop.GetComponentsInChildren<SpriteRenderer>().Any(sr => sr.sprite == GameIcons.Sprite("gear_" + db.amulets[2].name)));
+        }
+
+        [Test]
+        public void EnemyShotsAreOrbsAndStreaksNotPlainCircles()
+        {
+            var slow = Projectile.Spawn(Vector2.zero, new Vector2(6f, 0f), 5f, Team.Enemy);
+            var fast = Projectile.Spawn(Vector2.zero, new Vector2(26f, 0f), 5f, Team.Enemy);
+            try
+            {
+                Assert.AreSame(ProceduralSprites.Orb, slow.GetComponent<SpriteRenderer>().sprite);
+                Assert.AreSame(ProceduralSprites.Bolt, fast.GetComponent<SpriteRenderer>().sprite);
+            }
+            finally { Object.DestroyImmediate(slow.gameObject); Object.DestroyImmediate(fast.gameObject); }
+        }
+
+        [Test]
         public void ARollUnderALowCeilingCrawls()
         {
             Physics2D.SyncTransforms();

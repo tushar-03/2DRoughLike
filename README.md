@@ -130,6 +130,12 @@ Later enemies appear deeper in a level (`minProgress`), with per-room caps, so e
 - **Three flowing attacks per weapon**: each hit of a combo starts where the last one ended (sword, dagger, dual swords, hammer, greatsword, boathook, bow).
 - Controller and keyboard menus move along rows with left/right and between rows with up/down, and settings tabs switch as you move onto them.
 
+**Painted items and a smoother fight**
+- Every skill, amulet, outfit and mutation has a painted icon (HUD slots, item cards, the shop, the altar, drops on the floor); coins spin, Cells shimmer, scrolls and flasks are painted, skills leave painted props (keg, bell turret, snare trap), and enemy shots are glowing orbs and fast streaks instead of plain circles.
+- The big dark foreground columns are gone, and the shield bearers carry one shield, not two.
+- Walking while holding a charge keeps the run animation; the charge sound is a soft low swell with a small chime at full charge.
+- Attacks keep more of your run speed, buffer a little longer and chain a little sooner.
+
 **Browser, phone and controller support**
 - **Plays in a browser** (WebGL 2) on desktop and phones, hostable for free on Vercel; progress is saved locally in the browser. See [docs/WEB.md](docs/WEB.md).
 - **Touch controls** (stick and action buttons) appear automatically on phones and tablets; they drive a virtual gamepad so every binding and menu works.
@@ -215,7 +221,7 @@ Modules are separate assemblies (`Roughlike.*`) with a one-way dependency direct
 
 ## Tests
 
-197 PlayMode tests and 38 EditMode tests cover movement feel (jump height, roll distance, coyote time, wall-jump chains), combat (combos, parry, block, i-frames, telegraph timing), each of the eight enemy archetypes (dive, shield break, wall stun, summoning, explosions, sniper lock), level generation (determinism and structural validity across 1000 seeds, spawn rules), loot, status effects, skills, mutations, run flow, saves and loading, settings and rebinding, the menus, sprite animation, that painted levels have exactly the same solid geometry as graybox ones, that every generated level is traversable, the menu-stacking regression, haptics, touch controls, the tutorial flow, difficulty scaling, both bosses, multi-biome runs and saves, dotted telegraphs and the swap-drop fix.
+199 PlayMode tests and 38 EditMode tests cover movement feel (jump height, roll distance, coyote time, wall-jump chains), combat (combos, parry, block, i-frames, telegraph timing), each of the eight enemy archetypes (dive, shield break, wall stun, summoning, explosions, sniper lock), level generation (determinism and structural validity across 1000 seeds, spawn rules), loot, status effects, skills, mutations, run flow, saves and loading, settings and rebinding, the menus, sprite animation, that painted levels have exactly the same solid geometry as graybox ones, that every generated level is traversable, the menu-stacking regression, haptics, touch controls, the tutorial flow, difficulty scaling, both bosses, multi-biome runs and saves, dotted telegraphs and the swap-drop fix.
 
 Run them in the Unity Test Runner (`Window > General > Test Runner`), or from the command line with the Unity CLI:
 

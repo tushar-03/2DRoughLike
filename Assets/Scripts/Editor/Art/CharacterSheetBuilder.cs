@@ -101,6 +101,21 @@ namespace Roughlike.Editor.Art
                 art.companions = list.ToArray();
                 EditorUtility.SetDirty(art);
             }
+
+            // the icon sheets are listed in a Resources asset so scenes and builds can find them by name
+            var icons = Load("ItemIcons");
+            var pickups = Load("Pickups");
+            if (icons != null && pickups != null)
+            {
+                const string folder = "Assets/Resources/Art";
+                Directory.CreateDirectory(folder);
+                var set = AssetDatabase.LoadAssetAtPath<GameIconSet>(folder + "/IconSet.asset");
+                bool created = set == null;
+                if (created) set = ScriptableObject.CreateInstance<GameIconSet>();
+                set.sheets = new[] { icons, pickups };
+                if (created) AssetDatabase.CreateAsset(set, folder + "/IconSet.asset"); else EditorUtility.SetDirty(set);
+                GameIcons.Reload();
+            }
             AssetDatabase.SaveAssets();
         }
 

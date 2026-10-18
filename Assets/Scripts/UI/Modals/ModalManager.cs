@@ -317,13 +317,21 @@ namespace Roughlike.UI
 
                 var swatch = UiKit.Image(b.transform, "Swatch", m.tint);
                 UiKit.Place(swatch.rectTransform, new Vector2(0f, 0.5f), new Vector2(0f, 0.5f), new Vector2(0f, 0.5f), new Vector2(16f, 0f), new Vector2(18f, 80f));
+                var mutIcon = Roughlike.Utils.GameIcons.Sprite("mut_" + m.name);
+                if (mutIcon != null)
+                {
+                    swatch.sprite = mutIcon;
+                    swatch.color = Color.white;
+                    swatch.preserveAspect = true;
+                    UiKit.Place(swatch.rectTransform, new Vector2(0f, 0.5f), new Vector2(0f, 0.5f), new Vector2(0f, 0.5f), new Vector2(12f, 0f), new Vector2(88f, 88f));
+                }
                 var name = UiKit.Label(b.transform, "Name", m.displayName, 32, m.tint, TextAnchor.UpperLeft, true);
                 UiKit.Place(name.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(0.5f, 0.5f), Vector2.zero, Vector2.zero);
-                name.rectTransform.offsetMin = new Vector2(52f, 12f);
+                name.rectTransform.offsetMin = new Vector2(112f, 12f);
                 name.rectTransform.offsetMax = new Vector2(-16f, -10f);
                 var desc = UiKit.Label(b.transform, "Desc", m.description, 22, Color.white, TextAnchor.LowerLeft);
                 UiKit.Place(desc.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(0.5f, 0.5f), Vector2.zero, Vector2.zero);
-                desc.rectTransform.offsetMin = new Vector2(52f, 10f);
+                desc.rectTransform.offsetMin = new Vector2(112f, 10f);
                 desc.rectTransform.offsetMax = new Vector2(-16f, -48f);
                 if (first == null) first = b;
             }

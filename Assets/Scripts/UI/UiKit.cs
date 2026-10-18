@@ -125,14 +125,17 @@ namespace Roughlike.UI
             switch (item.Kind)
             {
                 case ItemKind.Skill:
+                    if (TryPainted(img, item.Skill != null ? "skill_" + item.Skill.name : null)) break;
                     img.sprite = ProceduralSprites.Circle;
                     img.color = item.Skill != null ? item.Skill.tint : Color.white;
                     break;
                 case ItemKind.Amulet:
+                    if (TryPainted(img, item.Gear != null ? "gear_" + item.Gear.name : null)) break;
                     img.sprite = ProceduralSprites.Spark;
                     img.color = item.Gear != null ? item.Gear.tint : Color.white;
                     break;
                 case ItemKind.Outfit:
+                    if (TryPainted(img, item.Gear != null ? "gear_" + item.Gear.name : null)) break;
                     img.sprite = ProceduralSprites.Square;
                     img.color = item.Gear != null ? item.Gear.tint : Color.white;
                     break;
@@ -155,6 +158,18 @@ namespace Roughlike.UI
                     img.color = w != null ? w.tint : Color.white;
                     break;
             }
+        }
+
+        /// <summary>Shows the painted icon <paramref name="clip"/> in the image. False (image untouched) when there is none.</summary>
+        public static bool TryPainted(Image img, string clip)
+        {
+            if (clip == null) return false;
+            var sprite = GameIcons.Sprite(clip);
+            if (sprite == null) return false;
+            img.sprite = sprite;
+            img.color = Color.white;
+            img.preserveAspect = true;
+            return true;
         }
 
         public static string Hex(Color c) => ColorUtility.ToHtmlStringRGB(c);
