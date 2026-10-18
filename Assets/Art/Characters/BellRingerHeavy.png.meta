@@ -1,0 +1,1378 @@
+fileFormatVersion: 2
+guid: fecd468b2391bef47ab67464fd18f195
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6219820286685023366
+    second: BellRingerHeavy_0
+  - first:
+      213: -2950849846110892951
+    second: BellRingerHeavy_1
+  - first:
+      213: -2982639374392008427
+    second: BellRingerHeavy_2
+  - first:
+      213: 2075071931505946129
+    second: BellRingerHeavy_3
+  - first:
+      213: 3813160910443236418
+    second: BellRingerHeavy_4
+  - first:
+      213: 5394476972407021495
+    second: BellRingerHeavy_5
+  - first:
+      213: 8694604251597125478
+    second: BellRingerHeavy_6
+  - first:
+      213: 8906002241595643189
+    second: BellRingerHeavy_7
+  - first:
+      213: 753325213743704798
+    second: BellRingerHeavy_8
+  - first:
+      213: 5232018843763935800
+    second: BellRingerHeavy_9
+  - first:
+      213: 644274012732124179
+    second: BellRingerHeavy_10
+  - first:
+      213: 8805689115344175955
+    second: BellRingerHeavy_11
+  - first:
+      213: 516141399895367850
+    second: BellRingerHeavy_12
+  - first:
+      213: 7413334807897263155
+    second: BellRingerHeavy_13
+  - first:
+      213: -1058839244765857099
+    second: BellRingerHeavy_14
+  - first:
+      213: -7041213439115297877
+    second: BellRingerHeavy_15
+  - first:
+      213: 2305613790801814363
+    second: BellRingerHeavy_16
+  - first:
+      213: 4075518096751208665
+    second: BellRingerHeavy_17
+  - first:
+      213: -8783753765994475865
+    second: BellRingerHeavy_18
+  - first:
+      213: 8224108948901647164
+    second: BellRingerHeavy_19
+  - first:
+      213: 9156563685481063978
+    second: BellRingerHeavy_20
+  - first:
+      213: -5053641291306688374
+    second: BellRingerHeavy_21
+  - first:
+      213: -1401333387430054291
+    second: BellRingerHeavy_22
+  - first:
+      213: 5586532059392246113
+    second: BellRingerHeavy_23
+  - first:
+      213: -6281055072129854342
+    second: BellRingerHeavy_24
+  - first:
+      213: 1507760467483939698
+    second: BellRingerHeavy_25
+  - first:
+      213: 1504332437759355538
+    second: BellRingerHeavy_26
+  - first:
+      213: -6735567227933977382
+    second: BellRingerHeavy_27
+  - first:
+      213: 949591175490876316
+    second: BellRingerHeavy_28
+  - first:
+      213: -5302354396824805137
+    second: BellRingerHeavy_29
+  - first:
+      213: 1544985615919361657
+    second: BellRingerHeavy_30
+  - first:
+      213: 573852120563271270
+    second: BellRingerHeavy_31
+  - first:
+      213: 9045203993734361070
+    second: BellRingerHeavy_32
+  - first:
+      213: 7520943458019522998
+    second: BellRingerHeavy_33
+  - first:
+      213: -2180361385676304296
+    second: BellRingerHeavy_34
+  - first:
+      213: 5102972428503802738
+    second: BellRingerHeavy_35
+  - first:
+      213: -3046426316210234824
+    second: BellRingerHeavy_36
+  - first:
+      213: 662088924581562933
+    second: BellRingerHeavy_37
+  - first:
+      213: -785648032698248526
+    second: BellRingerHeavy_38
+  - first:
+      213: 177804246282419804
+    second: BellRingerHeavy_39
+  - first:
+      213: -883116830128590442
+    second: BellRingerHeavy_40
+  - first:
+      213: 8153188280921733872
+    second: BellRingerHeavy_41
+  - first:
+      213: -464159714382472673
+    second: BellRingerHeavy_42
+  - first:
+      213: 7199871182316528760
+    second: BellRingerHeavy_43
+  - first:
+      213: -1603225208781836639
+    second: BellRingerHeavy_44
+  - first:
+      213: 3142262652921910744
+    second: BellRingerHeavy_45
+  - first:
+      213: 5685040656299539526
+    second: BellRingerHeavy_46
+  - first:
+      213: 7855772093387077212
+    second: BellRingerHeavy_47
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BellRingerHeavy_0
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1631
+        width: 140
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a73fe5d3762cea9a0800000000000000
+      internalID: -6219820286685023366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_1
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 1631
+        width: 132
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96c4b0103b97c07d0800000000000000
+      internalID: -2950849846110892951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_2
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 1631
+        width: 148
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 511654caa498b96d0800000000000000
+      internalID: -2982639374392008427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_3
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 1631
+        width: 151
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11eabc07de22ccc10800000000000000
+      internalID: 2075071931505946129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_4
+      rect:
+        serializedVersion: 2
+        x: 1345
+        y: 1631
+        width: 189
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24ccf5225a11be430800000000000000
+      internalID: 3813160910443236418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_5
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 1631
+        width: 190
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bf5859a9380dda40800000000000000
+      internalID: 5394476972407021495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_6
+      rect:
+        serializedVersion: 2
+        x: 1975
+        y: 1631
+        width: 193
+        height: 271
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6673c07308079a870800000000000000
+      internalID: 8694604251597125478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_7
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 1631
+        width: 140
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 535142b4ad9789b70800000000000000
+      internalID: 8906002241595643189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_8
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1311
+        width: 140
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edae9856a49547a00800000000000000
+      internalID: 753325213743704798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_9
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 1311
+        width: 139
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83a03b00b6ddb9840800000000000000
+      internalID: 5232018843763935800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_10
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 1311
+        width: 159
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31ce9e21dcbe0f800800000000000000
+      internalID: 644274012732124179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_11
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 1311
+        width: 163
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3530d9a8897143a70800000000000000
+      internalID: 8805689115344175955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_12
+      rect:
+        serializedVersion: 2
+        x: 1352
+        y: 1311
+        width: 131
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa0e2aa5ed3b92700800000000000000
+      internalID: 516141399895367850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_13
+      rect:
+        serializedVersion: 2
+        x: 1663
+        y: 1311
+        width: 191
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33c41c1fab471e660800000000000000
+      internalID: 7413334807897263155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_14
+      rect:
+        serializedVersion: 2
+        x: 1979
+        y: 1311
+        width: 194
+        height: 268
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bafc7d115f3e41f0800000000000000
+      internalID: -1058839244765857099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_15
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 1311
+        width: 140
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bab73dddea5984e90800000000000000
+      internalID: -7041213439115297877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_16
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 991
+        width: 140
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b53ebfde68f2fff10800000000000000
+      internalID: 2305613790801814363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_17
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 991
+        width: 124
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d82880bd162f8830800000000000000
+      internalID: 4075518096751208665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_18
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 991
+        width: 135
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ae4667fc76d91680800000000000000
+      internalID: -8783753765994475865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_19
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 991
+        width: 133
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c33d46d0487e12270800000000000000
+      internalID: 8224108948901647164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_20
+      rect:
+        serializedVersion: 2
+        x: 1341
+        y: 991
+        width: 205
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a26275c8826a21f70800000000000000
+      internalID: 9156563685481063978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_21
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 991
+        width: 201
+        height: 271
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a802b69550cddd9b0800000000000000
+      internalID: -5053641291306688374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_22
+      rect:
+        serializedVersion: 2
+        x: 1979
+        y: 991
+        width: 195
+        height: 273
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d66365e65b67d8ce0800000000000000
+      internalID: -1401333387430054291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_23
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 991
+        width: 140
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 161086e2f49578d40800000000000000
+      internalID: 5586532059392246113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_24
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 671
+        width: 140
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a74d80bb0b535d8a0800000000000000
+      internalID: -6281055072129854342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_25
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 671
+        width: 133
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 273d1ce1824ace410800000000000000
+      internalID: 1507760467483939698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_26
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 671
+        width: 150
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29a6eb0c16670e410800000000000000
+      internalID: 1504332437759355538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_27
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 671
+        width: 155
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad49b32fa457682a0800000000000000
+      internalID: -6735567227933977382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_28
+      rect:
+        serializedVersion: 2
+        x: 1357
+        y: 671
+        width: 148
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c93baf89420ad2d00800000000000000
+      internalID: 949591175490876316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_29
+      rect:
+        serializedVersion: 2
+        x: 1660
+        y: 671
+        width: 190
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe0e608e4c04a66b0800000000000000
+      internalID: -5302354396824805137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_30
+      rect:
+        serializedVersion: 2
+        x: 1977
+        y: 671
+        width: 192
+        height: 271
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97e26f36b34e07510800000000000000
+      internalID: 1544985615919361657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_31
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 671
+        width: 140
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66647c7967bb6f700800000000000000
+      internalID: 573852120563271270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_32
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 351
+        width: 124
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eef2b77db15078d70800000000000000
+      internalID: 9045203993734361070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_33
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 351
+        width: 113
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b93d073a32cf5860800000000000000
+      internalID: 7520943458019522998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_34
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 351
+        width: 118
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85019cc2fdccdb1e0800000000000000
+      internalID: -2180361385676304296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_35
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 351
+        width: 140
+        height: 268
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 273e493136661d640800000000000000
+      internalID: 5102972428503802738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_36
+      rect:
+        serializedVersion: 2
+        x: 1337
+        y: 351
+        width: 216
+        height: 271
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83a13e3f76be8b5d0800000000000000
+      internalID: -3046426316210234824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_37
+      rect:
+        serializedVersion: 2
+        x: 1653
+        y: 351
+        width: 217
+        height: 273
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53a87677e56303900800000000000000
+      internalID: 662088924581562933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_38
+      rect:
+        serializedVersion: 2
+        x: 1984
+        y: 351
+        width: 168
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b2598cd641d815f0800000000000000
+      internalID: -785648032698248526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_39
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 351
+        width: 124
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5e383b1500b77200800000000000000
+      internalID: 177804246282419804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_40
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 31
+        width: 151
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69134050ce98eb3f0800000000000000
+      internalID: -883116830128590442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_41
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 31
+        width: 128
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fab7374b81f52170800000000000000
+      internalID: 8153188280921733872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_42
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 31
+        width: 128
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1a9f21f239fe89f0800000000000000
+      internalID: -464159714382472673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_43
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 31
+        width: 125
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8746c8a91b41be360800000000000000
+      internalID: 7199871182316528760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_44
+      rect:
+        serializedVersion: 2
+        x: 1336
+        y: 31
+        width: 200
+        height: 268
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ae6b97ba2330c9e0800000000000000
+      internalID: -1603225208781836639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_45
+      rect:
+        serializedVersion: 2
+        x: 1652
+        y: 31
+        width: 201
+        height: 272
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d513620c3f8b9b20800000000000000
+      internalID: 3142262652921910744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_46
+      rect:
+        serializedVersion: 2
+        x: 1978
+        y: 31
+        width: 189
+        height: 273
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64c33643b5255ee40800000000000000
+      internalID: 5685040656299539526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BellRingerHeavy_47
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 31
+        width: 151
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5673c6e81f450d60800000000000000
+      internalID: 7855772093387077212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BellRingerHeavy_0: -6219820286685023366
+      BellRingerHeavy_1: -2950849846110892951
+      BellRingerHeavy_10: 644274012732124179
+      BellRingerHeavy_11: 8805689115344175955
+      BellRingerHeavy_12: 516141399895367850
+      BellRingerHeavy_13: 7413334807897263155
+      BellRingerHeavy_14: -1058839244765857099
+      BellRingerHeavy_15: -7041213439115297877
+      BellRingerHeavy_16: 2305613790801814363
+      BellRingerHeavy_17: 4075518096751208665
+      BellRingerHeavy_18: -8783753765994475865
+      BellRingerHeavy_19: 8224108948901647164
+      BellRingerHeavy_2: -2982639374392008427
+      BellRingerHeavy_20: 9156563685481063978
+      BellRingerHeavy_21: -5053641291306688374
+      BellRingerHeavy_22: -1401333387430054291
+      BellRingerHeavy_23: 5586532059392246113
+      BellRingerHeavy_24: -6281055072129854342
+      BellRingerHeavy_25: 1507760467483939698
+      BellRingerHeavy_26: 1504332437759355538
+      BellRingerHeavy_27: -6735567227933977382
+      BellRingerHeavy_28: 949591175490876316
+      BellRingerHeavy_29: -5302354396824805137
+      BellRingerHeavy_3: 2075071931505946129
+      BellRingerHeavy_30: 1544985615919361657
+      BellRingerHeavy_31: 573852120563271270
+      BellRingerHeavy_32: 9045203993734361070
+      BellRingerHeavy_33: 7520943458019522998
+      BellRingerHeavy_34: -2180361385676304296
+      BellRingerHeavy_35: 5102972428503802738
+      BellRingerHeavy_36: -3046426316210234824
+      BellRingerHeavy_37: 662088924581562933
+      BellRingerHeavy_38: -785648032698248526
+      BellRingerHeavy_39: 177804246282419804
+      BellRingerHeavy_4: 3813160910443236418
+      BellRingerHeavy_40: -883116830128590442
+      BellRingerHeavy_41: 8153188280921733872
+      BellRingerHeavy_42: -464159714382472673
+      BellRingerHeavy_43: 7199871182316528760
+      BellRingerHeavy_44: -1603225208781836639
+      BellRingerHeavy_45: 3142262652921910744
+      BellRingerHeavy_46: 5685040656299539526
+      BellRingerHeavy_47: 7855772093387077212
+      BellRingerHeavy_5: 5394476972407021495
+      BellRingerHeavy_6: 8694604251597125478
+      BellRingerHeavy_7: 8906002241595643189
+      BellRingerHeavy_8: 753325213743704798
+      BellRingerHeavy_9: 5232018843763935800
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

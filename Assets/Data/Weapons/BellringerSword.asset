@@ -23,6 +23,7 @@ MonoBehaviour:
   dual: 0
   steps:
   - name: Slash
+    clip: slash1
     damage: 14
     windup: 0.09
     active: 0.08
@@ -37,6 +38,7 @@ MonoBehaviour:
     lunge: 3
     moveScale: 0.35
   - name: Backslash
+    clip: slash2
     damage: 14
     windup: 0.08
     active: 0.08
@@ -51,6 +53,7 @@ MonoBehaviour:
     lunge: 3
     moveScale: 0.35
   - name: Cleave
+    clip: overhead
     damage: 24
     windup: 0.14
     active: 0.1
@@ -77,3 +80,4 @@ MonoBehaviour:
     parryHitStop: 0.12
     parryShake: 0.5
     lowerTime: 0.08
+  blockClip: block_tower

@@ -38,6 +38,8 @@ namespace Roughlike.Player
         public int Facing { get; private set; } = 1;
         public bool IsInvulnerable { get; private set; }
         public bool PassesThroughEnemies => State == PlayerState.Rolling;
+        /// <summary>Still rolling after the roll has run its course: stuck under a low ceiling, crawling out.</summary>
+        public bool IsCrawling => State == PlayerState.Rolling && _rollTimer >= config.rollDuration;
         public float RollProgress => State == PlayerState.Rolling ? Mathf.Clamp01(_rollTimer / config.rollDuration) : 0f;
         public MovementConfig Config => config;
         public KinematicMotor2D Motor => _motor;

@@ -53,6 +53,61 @@ namespace Roughlike.Editor.Art
             return p.Render(3.2f, Ink);
         }
 
+        // ------------------------------------------------------------------ training dummy
+
+        /// <summary>A wooden practice dummy: crossed feet, a post with a padded sack body bearing a painted target, a stitched head and bound arms.</summary>
+        public static Color32[] Dummy()
+        {
+            var p = new Painter(W, H);
+            Mat wood = Wood, dark = Mat.Of(new Color(0.34f, 0.2f, 0.13f), new Color(0.9f, 0.55f, 0.3f), 3f);
+            Mat sack = Mat.Of(new Color(0.78f, 0.66f, 0.45f), new Color(1f, 0.92f, 0.7f), 4f);
+            Mat sackDark = Mat.Of(new Color(0.6f, 0.48f, 0.32f));
+            Mat red = Mat.Of(new Color(0.78f, 0.18f, 0.16f), new Color(1f, 0.5f, 0.4f), 3f);
+            Mat white = Mat.Of(new Color(0.95f, 0.92f, 0.82f), Color.white, 3f);
+            Mat straw = Mat.Of(new Color(0.9f, 0.78f, 0.35f), Color.white, 3f);
+            Mat rope = Mat.Of(new Color(0.55f, 0.42f, 0.25f));
+            float y0 = Floor;
+
+            // crossed feet and the post
+            p.Capsule(new Vector2(CX - 64f, y0 + 6f), new Vector2(CX + 64f, y0 + 6f), 11f, dark);
+            p.Capsule(new Vector2(CX - 48f, y0 + 4f), new Vector2(CX + 8f, y0 + 40f), 9f, dark);
+            p.Capsule(new Vector2(CX, y0), new Vector2(CX, y0 + 236f), 13f, wood);
+
+            // arms: a crossbar with straw poking out of the ends, bound with rope
+            p.Capsule(new Vector2(CX - 78f, y0 + 176f), new Vector2(CX + 78f, y0 + 176f), 10f, wood);
+            foreach (float s in new[] { -1f, 1f })
+            {
+                float x = CX + s * 80f;
+                for (int k = -1; k <= 1; k++) p.Capsule(new Vector2(x, y0 + 176f), new Vector2(x + s * 24f, y0 + 176f + k * 12f), 4f, straw);
+                p.Capsule(new Vector2(CX + s * 60f, y0 + 190f), new Vector2(CX + s * 60f, y0 + 162f), 5f, rope);
+            }
+
+            // padded torso with a painted target
+            Vector2 c = new Vector2(CX, y0 + 140f);
+            p.Ellipse(c, 50f, 66f, 0f, sack);
+            p.Ellipse(c + new Vector2(-14f, -26f), 24f, 36f, 0f, sackDark);
+            p.Circle(c + new Vector2(0f, 6f), 36f, red);
+            p.Circle(c + new Vector2(0f, 6f), 27f, white);
+            p.Circle(c + new Vector2(0f, 6f), 18f, red);
+            p.Circle(c + new Vector2(0f, 6f), 9f, white);
+            p.Capsule(c + new Vector2(-56f, -22f), c + new Vector2(56f, -22f), 4.5f, rope);    // belt of rope
+            p.Capsule(c + new Vector2(-48f, 40f), c + new Vector2(48f, 40f), 4.5f, rope);
+
+            // head: a stitched sack with button eyes
+            Vector2 h = new Vector2(CX, y0 + 262f);
+            p.Capsule(new Vector2(CX, y0 + 214f), new Vector2(CX, y0 + 232f), 12f, rope);
+            p.Circle(h, 32f, sack);
+            p.Ellipse(h + new Vector2(-8f, -10f), 18f, 20f, 0f, sackDark);
+            p.Capsule(h + new Vector2(-12f, 6f), h + new Vector2(-4f, -2f), 2.6f, Mat.Glow(new Color(0.12f, 0.08f, 0.1f)));
+            p.Capsule(h + new Vector2(-12f, -2f), h + new Vector2(-4f, 6f), 2.6f, Mat.Glow(new Color(0.12f, 0.08f, 0.1f)));
+            p.Capsule(h + new Vector2(8f, 6f), h + new Vector2(16f, -2f), 2.6f, Mat.Glow(new Color(0.12f, 0.08f, 0.1f)));
+            p.Capsule(h + new Vector2(8f, -2f), h + new Vector2(16f, 6f), 2.6f, Mat.Glow(new Color(0.12f, 0.08f, 0.1f)));
+            p.Capsule(h + new Vector2(-14f, -18f), h + new Vector2(16f, -14f), 2f, Mat.Glow(new Color(0.12f, 0.08f, 0.1f)));   // stitched mouth
+            for (int k = 0; k < 3; k++) p.Capsule(h + new Vector2(-10f + k * 10f, -22f), h + new Vector2(-10f + k * 10f, -10f), 1.6f, Mat.Glow(new Color(0.12f, 0.08f, 0.1f)));
+            p.Poly(new[] { h + new Vector2(-24f, 26f), h + new Vector2(0f, 46f), h + new Vector2(22f, 24f), h + new Vector2(8f, 30f), h + new Vector2(-6f, 28f) }, straw);   // a tuft of straw on top
+            return p.Render(3.2f, Ink);
+        }
+
         // ------------------------------------------------------------------ chest
 
         public static Color32[] Chest(bool open)

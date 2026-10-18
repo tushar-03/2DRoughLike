@@ -118,12 +118,25 @@ namespace Roughlike.UI
             var w = new Window { Root = dim.gameObject, Cancel = cancel, Pauses = _pauseGame };
             _stack.Push(w);
             if (w.Pauses) PauseGate.Push();
+            SetBackgroundInteractive(false);
             _openedAt = Time.unscaledTime;   // the key press that opened a menu must not also close it
             content = inner;
             return w;
         }
 
         float _openedAt = -1f;
+
+        /// <summary>
+        /// While a menu is open the screen behind it (the main menu's buttons, the HUD) must not be reachable: automatic
+        /// navigation with a controller or the arrow keys would otherwise jump to the nearest button, which could be behind the
+        /// window. A non-interactable canvas group takes its buttons out of navigation.
+        /// </summary>
+        void SetBackgroundInteractive(bool on)
+        {
+            if (_root == null || _root.HudLayer == null) return;
+            if (!_root.HudLayer.TryGetComponent<CanvasGroup>(out var g)) g = _root.HudLayer.gameObject.AddComponent<CanvasGroup>();
+            g.interactable = on;
+        }
 
         void Focus(Window w, Selectable first)
         {
@@ -140,7 +153,7 @@ namespace Roughlike.UI
             Destroy(w.Root);
             if (w.Pauses) PauseGate.Pop();
             InputGate.Block(3);
-            if (_stack.Count == 0) LastEmptiedAt = Time.unscaledTime;
+            if (_stack.Count == 0) { LastEmptiedAt = Time.unscaledTime; SetBackgroundInteractive(true); }
             if (_stack.Count > 0)
             {
                 Window prev = _stack.Peek();

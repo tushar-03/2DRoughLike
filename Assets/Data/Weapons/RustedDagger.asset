@@ -23,6 +23,7 @@ MonoBehaviour:
   dual: 0
   steps:
   - name: Jab
+    clip: jab
     damage: 7
     windup: 0.03
     active: 0.06
@@ -37,6 +38,7 @@ MonoBehaviour:
     lunge: 3.5
     moveScale: 0.6
   - name: Jab
+    clip: jab2
     damage: 7
     windup: 0.03
     active: 0.06
@@ -51,6 +53,7 @@ MonoBehaviour:
     lunge: 3.5
     moveScale: 0.6
   - name: Flurry
+    clip: flurry
     damage: 11
     windup: 0.05
     active: 0.07
@@ -77,3 +80,4 @@ MonoBehaviour:
     parryHitStop: 0.12
     parryShake: 0.5
     lowerTime: 0.08
+  blockClip: block_tower

@@ -22,6 +22,8 @@ namespace Roughlike.Editor.Art
         public readonly List<ClipPlan> Clips = new List<ClipPlan>();
         /// <summary>Record hand and shield anchors for every frame (the player's gear is drawn separately at runtime).</summary>
         public bool Anchors;
+        /// <summary>Names of further sheets this one links to (more clips with the same frame size).</summary>
+        public string[] Companions;
 
         public CharacterPlan Add(string name, int frames, float fps, bool loop, Func<int, int, Color32[]> paint)
         {
@@ -46,10 +48,14 @@ namespace Roughlike.Editor.Art
                 plan.Add("jump", 1, 1f, false, (i, n) => HumanoidArt.Render(s, "jump", 0f));
                 plan.Add("fall", 1, 1f, false, (i, n) => HumanoidArt.Render(s, "fall", 0f));
                 plan.Add("roll", 6, 16f, true, (i, n) => HumanoidArt.RenderRoll(s, T(i, n)));
-                plan.Add("block", 1, 1f, false, (i, n) => HumanoidArt.Render(s, "block", 0f));
+                plan.Add("crawl", 6, 9f, true, (i, n) => HumanoidArt.Render(s, "crawl", T(i, n)));
+                plan.Add("block_tower", 4, 20f, false, (i, n) => HumanoidArt.Render(s, "block_tower", TEnd(i, n)));
+                plan.Add("block_buckler", 4, 22f, false, (i, n) => HumanoidArt.Render(s, "block_buckler", TEnd(i, n)));
+                plan.Add("parry", 4, 24f, false, (i, n) => HumanoidArt.Render(s, "parry", TEnd(i, n)));
                 plan.Add("attack", 6, 12f, false, (i, n) => HumanoidArt.Render(s, "player_attack", TEnd(i, n)));
                 plan.Add("shoot", 6, 12f, false, (i, n) => HumanoidArt.Render(s, "player_shoot", TEnd(i, n)));
                 plan.Add("hurt", 2, 8f, false, (i, n) => HumanoidArt.Render(s, "hurt", TEnd(i, n)));
+                plan.Companions = new[] { s.Name + "Blades", s.Name + "Heavy" };
             }
             else
             {
@@ -59,6 +65,24 @@ namespace Roughlike.Editor.Art
                 plan.Add("hurt", 2, 8f, false, (i, n) => HumanoidArt.Render(s, "hurt", TEnd(i, n)));
             }
             return plan;
+        }
+
+        /// <summary>The player's attack animations, split over two extra sheets so every texture stays under 4096 pixels.</summary>
+        static IEnumerable<CharacterPlan> CombatPlans(HumanoidSpec s)
+        {
+            CharacterPlan Make(string suffix, params (string clip, float fps)[] clips)
+            {
+                var plan = new CharacterPlan { Name = s.Name + suffix, Anchors = true };
+                foreach (var (clip, fps) in clips)
+                {
+                    string c = clip;
+                    plan.Add(c, 8, fps, false, (i, n) => HumanoidArt.Render(s, c, TEnd(i, n)));
+                }
+                return plan;
+            }
+            yield return Make("Blades", ("slash1", 24f), ("slash2", 24f), ("overhead", 22f), ("jab", 30f), ("jab2", 30f), ("flurry", 28f),
+                ("dual_a", 26f), ("dual_b", 26f), ("dual_cross", 24f), ("whirl", 22f));
+            yield return Make("Heavy", ("smash", 18f), ("slam", 16f), ("great_sweep", 18f), ("great_overhead", 17f), ("poke", 24f), ("sweep", 20f));
         }
 
         static CharacterPlan Creature(string name, Func<string, float, Color32[]> paint, bool hasWalk)
@@ -202,6 +226,8 @@ namespace Roughlike.Editor.Art
                 Creature("AshBomber", CreatureArt.AshBomber, true)
             };
 
+            list.AddRange(CombatPlans(player));
+
             foreach (var boss in new[] { Humanoid(witch, false), Humanoid(warden, false) })
             {
                 int canvas = Mathf.RoundToInt(HumanoidArt.FrameSize * BossScale);
@@ -228,6 +254,7 @@ namespace Roughlike.Editor.Art
             var world = new CharacterPlan { Name = "WorldProps", FrameW = WorldPropArt.W, FrameH = WorldPropArt.H, Pivot = new Vector2(0.5f, WorldPropArt.Floor / (float)WorldPropArt.H) };
             world.Add("door", 4, 6f, true, (i, n) => WorldPropArt.Door(i, n));
             world.Add("chest", 1, 1f, false, (i, n) => WorldPropArt.Chest(false));
+            world.Add("dummy", 1, 1f, false, (i, n) => WorldPropArt.Dummy());
             world.Add("chest_open", 1, 1f, false, (i, n) => WorldPropArt.Chest(true));
             world.Add("altar", 1, 1f, false, (i, n) => WorldPropArt.Altar());
             world.Add("merchant", 1, 1f, false, (i, n) => WorldPropArt.Merchant());

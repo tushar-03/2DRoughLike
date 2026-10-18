@@ -74,6 +74,7 @@ namespace Roughlike.Rooms
         void BuildRoom()
         {
             var root = new GameObject("Practice Room").transform;
+            TerrainFill.BuildFor(new[] { Vector2Int.zero }, root, biome);
             var cell = new LevelCell { Pos = Vector2Int.zero, Index = 0, Role = RoomRole.Start, Mask = (Openings)0, OnMainPath = true, Progress = 0f };
             RoomChunk chunk = ChunkBuilder.Build(cell, root, biome);
             RoomDecor.Populate(chunk, cell, biome);

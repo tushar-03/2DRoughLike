@@ -279,5 +279,22 @@ Built and verified: 122 PlayMode + 38 EditMode tests pass; the scene was played 
 - Sounds are synthesised; they are placeholders in the same spirit as the painted art. Music is not in yet.
 - Promenade enemies are repaints with tuned stats, not new behaviours.
 
+## M5.5 - Web playtest fixes and combat animation (awaiting review)
+**Fixed**
+- Web: `Loadout` was not in the build's scene list, so New Game hung at the menu; `WebBuild` now lists it (and has a prompt-free menu entry for scripted builds). Sound: the scenes had no `AudioListener`, so nothing was ever audible; `Sfx` now supplies one when none is active and steps aside when a camera has one. The play rate limiter also treated a restarted clock as "just played".
+- Navigation: `ModalManager` makes the HUD layer non-interactive while any menu is open (and `TouchLayoutEditor` freezes the window under it), so automatic navigation cannot jump to the buttons behind.
+- Witch aim line: a rotated line is no longer mirrored by the boss's facing, so the arrowhead points at the player.
+- Floors in the air: `TerrainFill.BuildFor` also surrounds the tutorial hall and the practice room, and the margin is 4 cells.
+
+**Added**
+- Combat animation: `HumanoidArt.Moves.cs` (anticipation, strike, follow-through, recovery; hips, front foot and cloak move with the arm), 16 attack clips on two companion sheets (`BellRingerBlades`, `BellRingerHeavy`, linked through `CharacterArt.companions` so each texture stays under 4096 px), `AttackStep.clip` per combo step, `WeaponData.blockClip`, new `block_tower`, `block_buckler`, `parry` and `crawl` clips (`PlayerController.IsCrawling`).
+- Painted training dummy (`WorldPropArt.Dummy`).
+
+### How to test M5.5
+1. Web build: New Game > difficulty > practice room > portal starts the run; sounds play after the first click.
+2. Open Settings from the main menu and use the stick or arrow keys: the selection stays in the window.
+3. Swing each loadout on the dummies and compare the combos; raise the tower shield and the buckler; roll into a low tunnel and keep going.
+4. Fight the Hag: the aim line arrow points at you.
+
 ## Next
 M6 - content expansion: more weapons, special rooms and challenge doors, more mutations and status effects.

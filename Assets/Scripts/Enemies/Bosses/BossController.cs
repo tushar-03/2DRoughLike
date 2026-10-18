@@ -258,7 +258,8 @@ namespace Roughlike.Enemies
         {
             var ind = GetIndicator();
             ind.transform.SetParent(null, true);   // world space: it must not follow or flip with the boss
-            ind.Begin(centre, size, Facing, seconds, unparryable, angle, false);
+            // a rotated line already points the way it is aimed; mirroring it by the boss's facing would put the arrowhead on the boss
+            ind.Begin(centre, size, Mathf.Abs(angle) > 0.01f ? 1 : Facing, seconds, unparryable, angle, false);
             Roughlike.Utils.Sfx.PlayAt(Roughlike.Utils.SfxId.EnemyTelegraph, centre, 0.6f);
             return ind;
         }

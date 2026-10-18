@@ -1,0 +1,441 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3125dbb4001f89f45aa1d68848f51d5d, type: 3}
+  m_Name: BellRingerHeavy
+  m_EditorClassIdentifier: Roughlike.Utils::Roughlike.Utils.CharacterArt
+  sheet: {fileID: 2800000, guid: fecd468b2391bef47ab67464fd18f195, type: 3}
+  frameWidth: 320
+  frameHeight: 320
+  pixelsPerUnit: 160
+  pivot: {x: 0.4375, y: 0.10625}
+  clips:
+  - name: smash
+    row: 0
+    frames: 8
+    fps: 18
+    loop: 0
+    anchors:
+    - valid: 1
+      hand: {x: 198.55684, y: 260.0367}
+      angle: 55
+      handB: {x: 187.08531, y: 243.65367}
+      angleB: 16.25
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 135.45618, y: 273.27142}
+      angle: 132.31322
+      handB: {x: 148.91985, y: 258.4819}
+      angleB: 74.23491
+      shieldUp: 0
+      shield: {x: 200, y: 167.95906}
+      stow: {x: 104, y: 182.89307}
+    - valid: 1
+      hand: {x: 107.20929, y: 267.46353}
+      angle: 163.74525
+      handB: {x: 126.40983, y: 261.86536}
+      angleB: 97.808945
+      shieldUp: 0
+      shield: {x: 200, y: 164.13255}
+      stow: {x: 104, y: 179.06656}
+    - valid: 1
+      hand: {x: 101.71137, y: 265.51306}
+      angle: 169.96332
+      handB: {x: 121.405304, y: 262.02747}
+      angleB: 102.47249
+      shieldUp: 0
+      shield: {x: 200, y: 163.37556}
+      stow: {x: 104, y: 178.30957}
+    - valid: 1
+      hand: {x: 239.42892, y: 194.33499}
+      angle: -35.214466
+      handB: {x: 223.08894, y: 205.86777}
+      angleB: -51.41085
+      shieldUp: 0
+      shield: {x: 200, y: 169.82071}
+      stow: {x: 104, y: 184.7547}
+    - valid: 1
+      hand: {x: 231.7894, y: 173.75137}
+      angle: -79.57269
+      handB: {x: 228.16963, y: 193.42108}
+      angleB: -84.67952
+      shieldUp: 0
+      shield: {x: 200, y: 174.5961}
+      stow: {x: 104, y: 189.5301}
+    - valid: 1
+      hand: {x: 233.32509, y: 185.41144}
+      angle: -65.1274
+      handB: {x: 224.91306, y: 203.55634}
+      angleB: -73.84555
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 198.55684, y: 260.0367}
+      angle: 55
+      handB: {x: 187.08531, y: 243.65367}
+      angleB: 16.25
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+  - name: slam
+    row: 1
+    frames: 8
+    fps: 16
+    loop: 0
+    anchors:
+    - valid: 1
+      hand: {x: 200.08331, y: 261.32898}
+      angle: 55
+      handB: {x: 188.61179, y: 244.94592}
+      angleB: 16.25
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 129.27153, y: 273.00894}
+      angle: 137.6239
+      handB: {x: 144.04626, y: 259.52905}
+      angleB: 78.217926
+      shieldUp: 0
+      shield: {x: 200, y: 165.93088}
+      stow: {x: 104, y: 180.86487}
+    - valid: 1
+      hand: {x: 94.803894, y: 262.80862}
+      angle: 174.76677
+      handB: {x: 114.72053, y: 260.98444}
+      angleB: 106.07507
+      shieldUp: 0
+      shield: {x: 200, y: 160.78802}
+      stow: {x: 104, y: 175.72202}
+    - valid: 1
+      hand: {x: 86.01133, y: 258.46082}
+      angle: 184.62099
+      handB: {x: 105.94632, y: 260.07208}
+      angleB: 113.465744
+      shieldUp: 0
+      shield: {x: 200, y: 159.42358}
+      stow: {x: 104, y: 174.35757}
+    - valid: 1
+      hand: {x: 162.43478, y: 265.54684}
+      angle: 104.82502
+      handB: {x: 167.55214, y: 246.21262}
+      angleB: 53.618767
+      shieldUp: 0
+      shield: {x: 200, y: 162.31085}
+      stow: {x: 104, y: 177.24486}
+    - valid: 1
+      hand: {x: 239.13243, y: 161.26674}
+      angle: -93.13411
+      handB: {x: 240.22589, y: 181.23682}
+      angleB: -94.850586
+      shieldUp: 0
+      shield: {x: 200, y: 172.74254}
+      stow: {x: 104, y: 187.67654}
+    - valid: 1
+      hand: {x: 238.24661, y: 168.72208}
+      angle: -90.203156
+      handB: {x: 238.31754, y: 188.72195}
+      angleB: -92.65237
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 200.08331, y: 261.32898}
+      angle: 55
+      handB: {x: 188.61179, y: 244.94592}
+      angleB: 16.25
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+  - name: great_sweep
+    row: 2
+    frames: 8
+    fps: 18
+    loop: 0
+    anchors:
+    - valid: 1
+      hand: {x: 201.60977, y: 262.62122}
+      angle: 55
+      handB: {x: 190.13824, y: 246.23817}
+      angleB: 16.25
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 134.05576, y: 281.61905}
+      angle: 139.44789
+      handB: {x: 149.25206, y: 268.61627}
+      angleB: 79.58592
+      shieldUp: 0
+      shield: {x: 200, y: 171.49648}
+      stow: {x: 104, y: 186.43048}
+    - valid: 1
+      hand: {x: 109.4804, y: 277.5995}
+      angle: 167.31778
+      handB: {x: 128.99245, y: 273.20862}
+      angleB: 100.488335
+      shieldUp: 0
+      shield: {x: 200, y: 169.5577}
+      stow: {x: 104, y: 184.4917}
+    - valid: 1
+      hand: {x: 112.17692, y: 277.97455}
+      angle: 165.03183
+      handB: {x: 131.4983, y: 272.8089}
+      angleB: 98.77387
+      shieldUp: 0
+      shield: {x: 200, y: 169.49602}
+      stow: {x: 104, y: 184.43002}
+    - valid: 1
+      hand: {x: 251.23398, y: 209.88934}
+      angle: -16.219896
+      handB: {x: 232.03004, y: 215.47583}
+      angleB: -37.16492
+      shieldUp: 0
+      shield: {x: 200, y: 174.20627}
+      stow: {x: 104, y: 189.14027}
+    - valid: 1
+      hand: {x: 243.24762, y: 199.96428}
+      angle: -38.74597
+      handB: {x: 227.64905, y: 212.48166}
+      angleB: -54.05948
+      shieldUp: 0
+      shield: {x: 200, y: 176.1843}
+      stow: {x: 104, y: 191.11829}
+    - valid: 1
+      hand: {x: 239.60916, y: 213.63593}
+      angle: -21.16618
+      handB: {x: 220.95842, y: 220.8574}
+      angleB: -40.874634
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 201.60977, y: 262.62122}
+      angle: 55
+      handB: {x: 190.13824, y: 246.23817}
+      angleB: 16.25
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+  - name: great_overhead
+    row: 3
+    frames: 8
+    fps: 17
+    loop: 0
+    anchors:
+    - valid: 1
+      hand: {x: 200.08331, y: 261.32898}
+      angle: 55
+      handB: {x: 188.61179, y: 244.94592}
+      angleB: 16.25
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 132.88458, y: 275.59265}
+      angle: 135.37904
+      handB: {x: 147.11996, y: 261.54437}
+      angleB: 76.53429
+      shieldUp: 0
+      shield: {x: 200, y: 168.22227}
+      stow: {x: 104, y: 183.15628}
+    - valid: 1
+      hand: {x: 101.35276, y: 268.31073}
+      angle: 169.84349
+      handB: {x: 121.03935, y: 264.78397}
+      angleB: 102.382614
+      shieldUp: 0
+      shield: {x: 200, y: 164.29948}
+      stow: {x: 104, y: 179.23349}
+    - valid: 1
+      hand: {x: 94.22429, y: 265.4295}
+      angle: 177.84872
+      handB: {x: 114.21019, y: 264.67874}
+      angleB: 108.38654
+      shieldUp: 0
+      shield: {x: 200, y: 163.38832}
+      stow: {x: 104, y: 178.32233}
+    - valid: 1
+      hand: {x: 210.74117, y: 246.89766}
+      angle: 46.696644
+      handB: {x: 197.02394, y: 232.343}
+      angleB: 10.022483
+      shieldUp: 0
+      shield: {x: 200, y: 167.41525}
+      stow: {x: 104, y: 182.34924}
+    - valid: 1
+      hand: {x: 235.8265, y: 168.48703}
+      angle: -85.70046
+      handB: {x: 234.32709, y: 188.43074}
+      angleB: -89.275345
+      shieldUp: 0
+      shield: {x: 200, y: 174.0711}
+      stow: {x: 104, y: 189.0051}
+    - valid: 1
+      hand: {x: 235.101, y: 173.87805}
+      angle: -83.42701
+      handB: {x: 232.81161, y: 193.74658}
+      angleB: -87.57026
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 200.08331, y: 261.32898}
+      angle: 55
+      handB: {x: 188.61179, y: 244.94592}
+      angleB: 16.25
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+  - name: poke
+    row: 4
+    frames: 8
+    fps: 24
+    loop: 0
+    anchors:
+    - valid: 1
+      hand: {x: 178.99796, y: 231.76155}
+      angle: 25
+      handB: {x: 160.87181, y: 223.30919}
+      angleB: -6.25
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 163.5341, y: 220.59589}
+      angle: 19.18746
+      handB: {x: 144.64514, y: 214.02269}
+      angleB: -10.6094055
+      shieldUp: 0
+      shield: {x: 200, y: 170.7282}
+      stow: {x: 104, y: 185.6622}
+    - valid: 1
+      hand: {x: 160.30872, y: 218.34564}
+      angle: 18.00861
+      handB: {x: 141.28851, y: 212.16245}
+      angleB: -11.493543
+      shieldUp: 0
+      shield: {x: 200, y: 169.38095}
+      stow: {x: 104, y: 184.31494}
+    - valid: 1
+      hand: {x: 204.24742, y: 223.079}
+      angle: 12.382396
+      handB: {x: 184.71266, y: 218.79028}
+      angleB: -15.713203
+      shieldUp: 0
+      shield: {x: 200, y: 171.13664}
+      stow: {x: 104, y: 186.07065}
+    - valid: 1
+      hand: {x: 258.14874, y: 227.06085}
+      angle: 8.576612
+      handB: {x: 238.3724, y: 224.07822}
+      angleB: -18.567541
+      shieldUp: 0
+      shield: {x: 200, y: 175.14253}
+      stow: {x: 104, y: 190.07654}
+    - valid: 1
+      hand: {x: 255.27335, y: 231.39038}
+      angle: 9.999919
+      handB: {x: 235.57718, y: 227.91745}
+      angleB: -17.500061
+      shieldUp: 0
+      shield: {x: 200, y: 177.28539}
+      stow: {x: 104, y: 192.21939}
+    - valid: 1
+      hand: {x: 217.7916, y: 235.21544}
+      angle: 17.27044
+      handB: {x: 198.69331, y: 229.2778}
+      angleB: -12.047171
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 178.99796, y: 231.76155}
+      angle: 25
+      handB: {x: 160.87181, y: 223.30919}
+      angleB: -6.25
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+  - name: sweep
+    row: 5
+    frames: 8
+    fps: 20
+    loop: 0
+    anchors:
+    - valid: 1
+      hand: {x: 212.2553, y: 245.58481}
+      angle: 25
+      handB: {x: 194.12914, y: 237.13245}
+      angleB: -6.25
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 152.62463, y: 278.5516}
+      angle: 114.763626
+      handB: {x: 161.00215, y: 260.39075}
+      angleB: 61.07272
+      shieldUp: 0
+      shield: {x: 200, y: 171.12668}
+      stow: {x: 104, y: 186.06068}
+    - valid: 1
+      hand: {x: 132.35866, y: 279.46887}
+      angle: 138.98958
+      handB: {x: 147.45045, y: 266.34494}
+      angleB: 79.24219
+      shieldUp: 0
+      shield: {x: 200, y: 169.44139}
+      stow: {x: 104, y: 184.3754}
+    - valid: 1
+      hand: {x: 150.55157, y: 278.94598}
+      angle: 121.58017
+      handB: {x: 161.02539, y: 261.90784}
+      angleB: 66.18513
+      shieldUp: 0
+      shield: {x: 200, y: 169.99455}
+      stow: {x: 104, y: 184.92856}
+    - valid: 1
+      hand: {x: 241.93121, y: 219.04738}
+      angle: -6.931913
+      handB: {x: 222.0774, y: 221.46118}
+      angleB: -30.198935
+      shieldUp: 0
+      shield: {x: 200, y: 174.4832}
+      stow: {x: 104, y: 189.4172}
+    - valid: 1
+      hand: {x: 238.26561, y: 210.49706}
+      angle: -24.434898
+      handB: {x: 220.05698, y: 218.77023}
+      angleB: -43.32617
+      shieldUp: 0
+      shield: {x: 200, y: 176.46121}
+      stow: {x: 104, y: 191.39522}
+    - valid: 1
+      hand: {x: 232.82034, y: 221.17175}
+      angle: -10.868155
+      handB: {x: 213.17908, y: 224.94275}
+      angleB: -33.151115
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 212.2553, y: 245.58481}
+      angle: 25
+      handB: {x: 194.12914, y: 237.13245}
+      angleB: -6.25
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+  companions: []

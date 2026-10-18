@@ -23,6 +23,7 @@ namespace Roughlike.UI
         Action _closed;
         bool _building;
         CanvasGroup _group;
+        readonly List<CanvasGroup> _frozen = new List<CanvasGroup>();
 
         public string Selected => _selected;
         public RectTransform Copy(string id) => _copies.TryGetValue(id, out var r) ? r : null;
@@ -41,6 +42,15 @@ namespace Roughlike.UI
         {
             _building = true;
             var rt = (RectTransform)transform;
+            // everything underneath (the settings window) stops taking navigation while this editor is open
+            foreach (Transform sibling in transform.parent)
+            {
+                if (sibling == transform) continue;
+                if (!sibling.TryGetComponent<CanvasGroup>(out var cg)) cg = sibling.gameObject.AddComponent<CanvasGroup>();
+                if (!cg.interactable) continue;
+                cg.interactable = false;
+                _frozen.Add(cg);
+            }
             UiKit.Stretch(rt);
 
             var dim = UiKit.Image(rt, "Dim", new Color(0.02f, 0.03f, 0.06f, 0.94f));
@@ -188,8 +198,17 @@ namespace Roughlike.UI
             SettingsService.NotifyChanged();
         }
 
+        void OnDestroy() => Unfreeze();
+
+        void Unfreeze()
+        {
+            foreach (var cg in _frozen) if (cg != null) cg.interactable = true;
+            _frozen.Clear();
+        }
+
         public void Close()
         {
+            Unfreeze();
             Destroy(gameObject);
             _closed?.Invoke();
         }

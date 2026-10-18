@@ -23,6 +23,7 @@ MonoBehaviour:
   dual: 0
   steps:
   - name: Smash
+    clip: smash
     damage: 30
     windup: 0.28
     active: 0.1
@@ -37,6 +38,7 @@ MonoBehaviour:
     lunge: 2
     moveScale: 0.2
   - name: Slam
+    clip: slam
     damage: 46
     windup: 0.4
     active: 0.12
@@ -63,3 +65,4 @@ MonoBehaviour:
     parryHitStop: 0.12
     parryShake: 0.5
     lowerTime: 0.08
+  blockClip: block_tower

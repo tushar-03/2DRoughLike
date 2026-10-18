@@ -21,6 +21,7 @@ namespace Roughlike.Editor.Art
             foreach (var plan in CharacterLibrary.All()) Build(plan);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
+            LinkCompanions();
             Debug.Log("[Art] characters generated in " + Folder);
         }
 
@@ -35,9 +36,12 @@ namespace Roughlike.Editor.Art
                 Build(plan);
                 any = true;
             }
-            if (!any) return;
-            AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
+            if (any)
+            {
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
+            }
+            LinkCompanions();
         }
 
         /// <summary>Paints a single character by name (fast iteration) and writes a contact sheet PNG for review when a path is given.</summary>
@@ -50,6 +54,7 @@ namespace Roughlike.Editor.Art
                 Build(plan, previewPath);
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
+                LinkCompanions();
                 return;
             }
             Debug.LogError("[Art] no character named " + name);
@@ -81,6 +86,22 @@ namespace Roughlike.Editor.Art
             byte[] png = t.EncodeToPNG();
             Object.DestroyImmediate(t);
             return png;
+        }
+
+        /// <summary>Points each sheet at the companion sheets its plan lists (done once every sheet exists).</summary>
+        public static void LinkCompanions()
+        {
+            foreach (var plan in CharacterLibrary.All())
+            {
+                if (plan.Companions == null) continue;
+                var art = Load(plan.Name);
+                if (art == null) continue;
+                var list = new System.Collections.Generic.List<CharacterArt>();
+                foreach (var n in plan.Companions) { var c = Load(n); if (c != null) list.Add(c); }
+                art.companions = list.ToArray();
+                EditorUtility.SetDirty(art);
+            }
+            AssetDatabase.SaveAssets();
         }
 
         static void Build(CharacterPlan plan, string previewPath = null)

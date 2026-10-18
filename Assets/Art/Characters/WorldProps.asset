@@ -30,21 +30,28 @@ MonoBehaviour:
     fps: 1
     loop: 0
     anchors: []
-  - name: chest_open
+  - name: dummy
     row: 2
     frames: 1
     fps: 1
     loop: 0
     anchors: []
-  - name: altar
+  - name: chest_open
     row: 3
     frames: 1
     fps: 1
     loop: 0
     anchors: []
-  - name: merchant
+  - name: altar
     row: 4
     frames: 1
     fps: 1
     loop: 0
     anchors: []
+  - name: merchant
+    row: 5
+    frames: 1
+    fps: 1
+    loop: 0
+    anchors: []
+  companions: []

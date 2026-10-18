@@ -41,12 +41,17 @@ namespace Roughlike.Tests.EditMode
                 Assert.AreEqual(clip.frames, clip.anchors.Length, clip.name);
                 foreach (var a in clip.anchors) Assert.IsTrue(a.valid, clip.name);
             }
-            Assert.IsTrue(art.TryAnchor("block", 0, out var block));
+            Assert.IsTrue(art.TryAnchor("block_tower", 3, out var block));
             Assert.IsTrue(block.shieldUp, "the block pose raises the shield");
             Assert.IsTrue(art.TryAnchor("idle", 0, out var idle));
             Assert.IsFalse(idle.shieldUp);
             Assert.IsFalse(art.TryAnchor("roll", 0, out _));
             Assert.IsTrue(art.Has("shoot"), "the bow has its own draw-and-release animation");
+            foreach (var clip in new[] { "crawl", "block_buckler", "parry", "slash1", "slash2", "overhead", "jab", "jab2", "flurry", "dual_a", "dual_b", "dual_cross", "whirl", "smash", "slam", "great_sweep", "great_overhead", "poke", "sweep" })
+                Assert.IsTrue(art.Has(clip), clip + " is reachable through the companion sheets");
+            Assert.IsTrue(art.TryAnchor("whirl", 4, out var whirl));
+            Assert.AreNotEqual(whirl.angle, whirl.angleB, "the two swords of a spin point different ways");
+            foreach (var sheet in art.companions) Assert.LessOrEqual(sheet.sheet.height, 4096, sheet.name + " fits browsers");
             Assert.IsTrue(art.TryAnchor("attack", 3, out var swing));
             Assert.AreNotEqual(swing.hand, swing.handB, "the off hand is tracked for dual blades");
         }
@@ -67,6 +72,40 @@ namespace Roughlike.Tests.EditMode
             Assert.GreaterOrEqual(back, 7, "many background planes");
             Assert.GreaterOrEqual(front, 3, "foreground planes in front of the player");
             Assert.Greater(art.moteCount, 0, "drifting motes");
+        }
+
+        [TestCase("RustedDagger", "jab", "jab2", "flurry")]
+        [TestCase("BellringerSword", "slash1", "slash2", "overhead")]
+        [TestCase("TideHammer", "smash", "slam", null)]
+        [TestCase("Boathook", "poke", "poke", "sweep")]
+        [TestCase("TwinBlades", "dual_a", "dual_b", "dual_cross")]
+        [TestCase("Greatsword", "great_sweep", "great_overhead", null)]
+        public void EveryComboStepHasItsOwnAnimation(string asset, string a, string b, string c)
+        {
+            var w = AssetDatabase.LoadAssetAtPath<WeaponData>($"Assets/Data/Weapons/{asset}.asset");
+            var art = AssetDatabase.LoadAssetAtPath<CharacterArt>("Assets/Art/Characters/BellRinger.asset");
+            Assert.AreEqual(a, w.steps[0].clip);
+            Assert.AreEqual(b, w.steps[1].clip);
+            if (c != null) Assert.AreEqual(c, w.steps[2].clip);
+            foreach (var step in w.steps) Assert.IsTrue(art.Has(step.clip), asset + " " + step.name + " plays " + step.clip);
+        }
+
+        [Test]
+        public void ShieldsRaiseWithTheirOwnAnimation()
+        {
+            Assert.AreEqual("block_tower", AssetDatabase.LoadAssetAtPath<WeaponData>("Assets/Data/Weapons/TowerShield.asset").blockClip);
+            Assert.AreEqual("block_buckler", AssetDatabase.LoadAssetAtPath<WeaponData>("Assets/Data/Weapons/Buckler.asset").blockClip);
+        }
+
+        [Test]
+        public void WebBuildIncludesEverySceneTheGameLoads()
+        {
+            string src = System.IO.File.ReadAllText("Assets/Scripts/Editor/WebBuild.cs");
+            foreach (var scene in new[] { "MainMenu", "M4_LootRun", "Tutorial", "Loadout" })
+                StringAssert.Contains($"Assets/Scenes/{scene}.unity", src, scene + " is in the web build");
+            var inBuild = System.Array.ConvertAll(EditorBuildSettings.scenes, s => s.path);
+            foreach (var scene in new[] { Roughlike.Rooms.GameSession.MenuScene, Roughlike.Rooms.GameSession.GameplayScene, Roughlike.Rooms.GameSession.TutorialScene, Roughlike.Rooms.GameSession.LoadoutScene })
+                CollectionAssert.Contains(inBuild, $"Assets/Scenes/{scene}.unity", scene + " is in the build settings");
         }
 
         [Test]

@@ -71,9 +71,37 @@ namespace Roughlike.Utils
 
         static float LoopVolume(SfxId id) => BusVolume(BusOf(id)) * (id == SfxId.FireLoop ? 0.35f : 0.5f);
 
+        static float _nextListenerCheck;
+
+        /// <summary>
+        /// Scenes built before sound existed have no AudioListener, and without one nothing is ever heard. If none is active
+        /// (checked every couple of seconds, which is cheap), the sound system supplies its own.
+        /// </summary>
+        /// <summary>Test seam: makes the next sound re-check for a listener straight away.</summary>
+        public static void RecheckListener() => _nextListenerCheck = 0f;
+
+        /// <summary>True when the sound system has had to supply its own listener (the scene has none).</summary>
+        public static bool UsingOwnListener => _root != null && _root.TryGetComponent<AudioListener>(out var l) && l.enabled;
+
+        static void EnsureListener()
+        {
+            if (Time.unscaledTime < _nextListenerCheck) return;
+            _nextListenerCheck = Time.unscaledTime + 2f;
+            var own = _root.GetComponent<AudioListener>();
+            foreach (var l in Object.FindObjectsByType<AudioListener>())
+            {
+                if (l == own || !l.enabled || !l.gameObject.activeInHierarchy) continue;
+                if (own != null) own.enabled = false;      // a scene camera has one: two listeners would only produce warnings
+                return;
+            }
+            if (own == null) own = _root.AddComponent<AudioListener>();
+            own.enabled = true;
+        }
+
         static void Ensure()
         {
-            if (_root != null) return;
+            if (_root != null) { EnsureListener(); return; }
+            _nextListenerCheck = 0f;
             _root = new GameObject("Sfx");
             _root.hideFlags = HideFlags.DontSave;
             if (Application.isPlaying) Object.DontDestroyOnLoad(_root);
@@ -85,6 +113,7 @@ namespace Roughlike.Utils
                 s.spatialBlend = 0f;
                 _pool[i] = s;
             }
+            EnsureListener();
         }
 
         public static AudioClip Clip(SfxId id)
@@ -103,7 +132,8 @@ namespace Roughlike.Utils
             if (Muted || !Application.isPlaying) return;
 
             float now = Time.unscaledTime;
-            if (LastPlayed.TryGetValue(id, out float last) && now - last < MinGap(id)) return;
+            // a negative gap means the clock restarted (a new play session without a domain reload): that entry is stale
+            if (LastPlayed.TryGetValue(id, out float last) && now >= last && now - last < MinGap(id)) return;
             LastPlayed[id] = now;
 
             float bus = BusVolume(BusOf(id));

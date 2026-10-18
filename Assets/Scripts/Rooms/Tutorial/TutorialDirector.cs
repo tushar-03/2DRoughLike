@@ -107,6 +107,9 @@ namespace Roughlike.Rooms
         void BuildHall()
         {
             var root = new GameObject("Tutorial Hall").transform;
+            var cells = new System.Collections.Generic.List<Vector2Int>();
+            for (int i = 0; i < Rooms; i++) cells.Add(new Vector2Int(i, 0));
+            TerrainFill.BuildFor(cells, root, biome);
             for (int i = 0; i < Rooms; i++)
             {
                 var cell = new LevelCell

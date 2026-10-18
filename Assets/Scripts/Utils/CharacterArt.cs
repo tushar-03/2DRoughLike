@@ -50,6 +50,8 @@ namespace Roughlike.Utils
         [Tooltip("Normalised pivot inside a frame; (0.5, 0) puts the feet at the bottom centre.")]
         public Vector2 pivot = new Vector2(0.5f, 0.06f);
         public Clip[] clips = new Clip[0];
+        [Tooltip("More sheets with the same frame size and pivot. Clips not found here are looked up in them (keeps each texture under the 4096 pixel limit).")]
+        public CharacterArt[] companions;
 
         readonly Dictionary<string, Sprite[]> _cache = new Dictionary<string, Sprite[]>();
 
@@ -57,10 +59,29 @@ namespace Roughlike.Utils
 
         public Clip Find(string clip)
         {
-            if (clips == null) return null;
-            for (int i = 0; i < clips.Length; i++)
-                if (clips[i].name == clip) return clips[i];
+            if (clips != null)
+                for (int i = 0; i < clips.Length; i++)
+                    if (clips[i].name == clip) return clips[i];
+            return Companion(clip)?.Find(clip);
+        }
+
+        /// <summary>The companion sheet that holds <paramref name="clip"/> (null when this sheet has it, or nobody does).</summary>
+        CharacterArt Companion(string clip)
+        {
+            if (companions == null) return null;
+            foreach (var c in companions)
+            {
+                if (c == null || c == this) continue;
+                if (c.Find(clip) != null) return c;
+            }
             return null;
+        }
+
+        bool Own(string clip)
+        {
+            if (clips == null) return false;
+            for (int i = 0; i < clips.Length; i++) if (clips[i].name == clip) return true;
+            return false;
         }
 
         /// <summary>The sprites of a clip (cached). Empty when the clip or the sheet is missing.</summary>
@@ -68,6 +89,11 @@ namespace Roughlike.Utils
         {
             if (_cache.TryGetValue(clip, out var cached) && cached != null && (cached.Length == 0 || cached[0] != null)) return cached;
 
+            if (!Own(clip))
+            {
+                var other = Companion(clip);
+                return _cache[clip] = other != null ? other.Frames(clip) : Array.Empty<Sprite>();
+            }
             Clip c = Find(clip);
             if (c == null || sheet == null) return _cache[clip] = Array.Empty<Sprite>();
 

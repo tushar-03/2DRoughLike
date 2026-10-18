@@ -113,6 +113,13 @@ Later enemies appear deeper in a level (`minProgress`), with per-room caps, so e
 - **Telegraphs** are animated dots: melee swings are one dotted arc, shots a dotted line with an arrowhead, blasts a ring.
 - Fixed: the tutorial's blue barrier after the chest, and the boss health bar lingering after you die and replay.
 
+**Animation and web fixes**
+- **Per-weapon combat animation.** Every hit of every combo has its own motion (sword slash, backhand and overhead cleave; dagger jabs and flurry; dual-sword cross and whirl; hammer smash and slam; greatsword sweep and overhead; boathook poke and sweep), each built from a slow anticipation, a fast strike, a follow-through and a recovery, and timed to land exactly when the hit does. Tower shield, buckler and parry have their own block poses. A **crawl** animation plays when a roll leaves you stuck under a low ceiling.
+- **Controller and keyboard navigation** stays inside the open menu; the screen behind it cannot be reached.
+- **Training dummy** is a painted wooden dummy with a target.
+- Rock now fills the space around the tutorial hall and the practice room (and further around levels), so floors never float in the void.
+- Fixed for the web build: the practice room scene was missing from the build (New Game hung at the menu), and sound needed an audio listener that the scenes did not have.
+
 **Browser, phone and controller support**
 - **Plays in a browser** (WebGL 2) on desktop and phones, hostable for free on Vercel; progress is saved locally in the browser. See [docs/WEB.md](docs/WEB.md).
 - **Touch controls** (stick and action buttons) appear automatically on phones and tablets; they drive a virtual gamepad so every binding and menu works.
@@ -198,7 +205,7 @@ Modules are separate assemblies (`Roughlike.*`) with a one-way dependency direct
 
 ## Tests
 
-173 PlayMode tests and 38 EditMode tests cover movement feel (jump height, roll distance, coyote time, wall-jump chains), combat (combos, parry, block, i-frames, telegraph timing), each of the eight enemy archetypes (dive, shield break, wall stun, summoning, explosions, sniper lock), level generation (determinism and structural validity across 1000 seeds, spawn rules), loot, status effects, skills, mutations, run flow, saves and loading, settings and rebinding, the menus, sprite animation, that painted levels have exactly the same solid geometry as graybox ones, that every generated level is traversable, the menu-stacking regression, haptics, touch controls, the tutorial flow, difficulty scaling, both bosses, multi-biome runs and saves, dotted telegraphs and the swap-drop fix.
+182 PlayMode tests and 38 EditMode tests cover movement feel (jump height, roll distance, coyote time, wall-jump chains), combat (combos, parry, block, i-frames, telegraph timing), each of the eight enemy archetypes (dive, shield break, wall stun, summoning, explosions, sniper lock), level generation (determinism and structural validity across 1000 seeds, spawn rules), loot, status effects, skills, mutations, run flow, saves and loading, settings and rebinding, the menus, sprite animation, that painted levels have exactly the same solid geometry as graybox ones, that every generated level is traversable, the menu-stacking regression, haptics, touch controls, the tutorial flow, difficulty scaling, both bosses, multi-biome runs and saves, dotted telegraphs and the swap-drop fix.
 
 Run them in the Unity Test Runner (`Window > General > Test Runner`), or from the command line with the Unity CLI:
 

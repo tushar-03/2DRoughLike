@@ -24,6 +24,7 @@ MonoBehaviour:
   dual: 0
   steps:
   - name: Shot
+    clip: shoot
     damage: 11
     windup: 0.2
     active: 0.04
@@ -38,6 +39,7 @@ MonoBehaviour:
     lunge: 0
     moveScale: 0.5
   - name: Shot
+    clip: shoot
     damage: 11
     windup: 0.2
     active: 0.04
@@ -52,6 +54,7 @@ MonoBehaviour:
     lunge: 0
     moveScale: 0.5
   - name: Heavy Shot
+    clip: shoot
     damage: 24
     windup: 0.4
     active: 0.05
@@ -78,3 +81,4 @@ MonoBehaviour:
     parryHitStop: 0.12
     parryShake: 0.5
     lowerTime: 0.08
+  blockClip: block_tower

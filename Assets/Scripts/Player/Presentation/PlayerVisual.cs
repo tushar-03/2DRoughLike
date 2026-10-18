@@ -112,7 +112,8 @@ namespace Roughlike.Player
             switch (controller.State)
             {
                 case PlayerState.Rolling:
-                    _anim.Scrub("roll", controller.RollProgress);
+                    if (controller.IsCrawling && _anim.Art.Has("crawl")) _anim.Loop("crawl");
+                    else _anim.Scrub("roll", controller.RollProgress);
                     break;
                 case PlayerState.Airborne:
                     _anim.Loop(controller.Velocity.y > 0.5f ? "jump" : "fall");

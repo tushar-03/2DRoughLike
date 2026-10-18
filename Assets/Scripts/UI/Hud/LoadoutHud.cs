@@ -44,7 +44,7 @@ namespace Roughlike.UI
             UiKit.Place(title.rectTransform, new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -18f), new Vector2(1200f, 56f));
 
             var opts = _director.Options;
-            float w = 420f, gap = 20f;
+            float w = 360f, gap = 12f;
             float total = opts.Count * w + (opts.Count - 1) * gap;
             for (int i = 0; i < opts.Count; i++)
             {
@@ -62,7 +62,7 @@ namespace Roughlike.UI
 
                 card.Name = UiKit.Label(b.transform, "Name", $"{i + 1}.  {opts[i].displayName}", 30, Color.white, TextAnchor.UpperLeft, true);
                 UiKit.Place(card.Name.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0.5f, 1f), new Vector2(54f, -12f), new Vector2(-124f, 44f));
-                card.Detail = UiKit.Label(b.transform, "Detail", opts[i].description, 21, UiKit.Muted, TextAnchor.UpperLeft);
+                card.Detail = UiKit.Label(b.transform, "Detail", opts[i].description, 19, UiKit.Muted, TextAnchor.UpperLeft);
                 UiKit.Place(card.Detail.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(0.5f, 0.5f), Vector2.zero, Vector2.zero);
                 card.Detail.rectTransform.offsetMin = new Vector2(112f, 10f);
                 card.Detail.rectTransform.offsetMax = new Vector2(-12f, -54f);

@@ -23,6 +23,7 @@ MonoBehaviour:
   dual: 0
   steps:
   - name: Poke
+    clip: poke
     damage: 10
     windup: 0.08
     active: 0.07
@@ -37,6 +38,7 @@ MonoBehaviour:
     lunge: 1.5
     moveScale: 0.5
   - name: Poke
+    clip: poke
     damage: 10
     windup: 0.08
     active: 0.07
@@ -51,6 +53,7 @@ MonoBehaviour:
     lunge: 1.5
     moveScale: 0.5
   - name: Hook
+    clip: sweep
     damage: 16
     windup: 0.12
     active: 0.09
@@ -77,3 +80,4 @@ MonoBehaviour:
     parryHitStop: 0.12
     parryShake: 0.5
     lowerTime: 0.08
+  blockClip: block_tower

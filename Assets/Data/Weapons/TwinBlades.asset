@@ -24,6 +24,7 @@ MonoBehaviour:
   dual: 1
   steps:
   - name: Slash
+    clip: dual_a
     damage: 8
     windup: 0.04
     active: 0.06
@@ -38,6 +39,7 @@ MonoBehaviour:
     lunge: 3
     moveScale: 0.5
   - name: Slash
+    clip: dual_b
     damage: 8
     windup: 0.04
     active: 0.06
@@ -52,6 +54,7 @@ MonoBehaviour:
     lunge: 3
     moveScale: 0.5
   - name: Cross
+    clip: dual_cross
     damage: 10
     windup: 0.05
     active: 0.07
@@ -66,6 +69,7 @@ MonoBehaviour:
     lunge: 3.5
     moveScale: 0.45
   - name: Whirl
+    clip: whirl
     damage: 16
     windup: 0.09
     active: 0.1
@@ -92,3 +96,4 @@ MonoBehaviour:
     parryHitStop: 0.12
     parryShake: 0.5
     lowerTime: 0.08
+  blockClip: block_tower

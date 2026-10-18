@@ -12,20 +12,28 @@ namespace Roughlike.Rooms
     public static class TerrainFill
     {
         /// <summary>How many empty cells of rock to draw beyond the outermost rooms.</summary>
-        public const int Margin = 2;
+        public const int Margin = 4;
 
         public static void Build(LevelLayout layout, Transform parent, BiomeData biome)
         {
             if (layout == null || layout.Cells.Count == 0) return;
+            var positions = new List<Vector2Int>();
+            foreach (var c in layout.Cells) positions.Add(c.Pos);
+            BuildFor(positions, parent, biome);
+        }
 
+        /// <summary>Rock around any set of room cells (the tutorial hall and the practice room are not generated layouts).</summary>
+        public static void BuildFor(IEnumerable<Vector2Int> cells, Transform parent, BiomeData biome)
+        {
             var rooms = new HashSet<Vector2Int>();
             int minX = int.MaxValue, minY = int.MaxValue, maxX = int.MinValue, maxY = int.MinValue;
-            foreach (var c in layout.Cells)
+            foreach (var pos in cells)
             {
-                rooms.Add(c.Pos);
-                minX = Mathf.Min(minX, c.Pos.x); maxX = Mathf.Max(maxX, c.Pos.x);
-                minY = Mathf.Min(minY, c.Pos.y); maxY = Mathf.Max(maxY, c.Pos.y);
+                rooms.Add(pos);
+                minX = Mathf.Min(minX, pos.x); maxX = Mathf.Max(maxX, pos.x);
+                minY = Mathf.Min(minY, pos.y); maxY = Mathf.Max(maxY, pos.y);
             }
+            if (rooms.Count == 0) return;
 
             var root = new GameObject("Rock").transform;
             root.SetParent(parent, false);

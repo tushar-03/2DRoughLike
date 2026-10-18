@@ -108,7 +108,14 @@ namespace Roughlike.Enemies
             var sr = spriteGo.AddComponent<SpriteRenderer>();
             sr.sortingOrder = 8;
             Color c = tint ?? new Color(0.85f, 0.7f, 0.4f);
-            if (sprite != null) { sr.sprite = sprite; sr.color = c; }
+            // the painted dummy from the world props sheet when there is one (it is already coloured, so no tint)
+            if (sprite == null && WorldArt.Props != null && WorldArt.Props.Has("dummy"))
+            {
+                sr.sprite = WorldArt.Props.Prop("dummy");
+                sr.color = Color.white;
+                spriteGo.transform.localScale = Vector3.one * 1.2f;
+            }
+            else if (sprite != null) { sr.sprite = sprite; sr.color = c; }
             else
             {
                 sr.sprite = ProceduralSprites.Square;

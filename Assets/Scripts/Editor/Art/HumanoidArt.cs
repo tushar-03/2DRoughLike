@@ -38,10 +38,16 @@ namespace Roughlike.Editor.Art
     {
         public Vector2 Hip, FootF, FootB, HandF, HandB, HeadOff;
         public float Lean, WeaponAngle, Sway, Lift, Draw;
+        /// <summary>Where the shield is held (frame-local) when the pose sets it; otherwise the default guard position.</summary>
+        public Vector2 ShieldPos;
+        public bool HasShieldPos;
+        /// <summary>Angle of the off-hand weapon (dual wielding); derived from the main hand when not set.</summary>
+        public float WeaponAngleB;
+        public bool HasAngleB;
         public bool EyesClosed, ShieldUp, MouthOpen;
     }
 
-    public static class HumanoidArt
+    public static partial class HumanoidArt
     {
         public const int FrameSize = 320;
         /// <summary>Anchors of the frame painted last (only meaningful for <see cref="HumanoidSpec.RuntimeGear"/> specs).</summary>
@@ -98,6 +104,7 @@ namespace Roughlike.Editor.Art
 
         public static Pose PoseFor(HumanoidSpec s, string clip, float t)
         {
+            if (TryMovePose(s, clip, t, out Pose moved)) return moved;
             Pose p = Stand(s);
             float hy = p.Hip.y;
             float phase = 2f * Mathf.PI * t;
@@ -411,9 +418,9 @@ namespace Roughlike.Editor.Art
                     hand = handF * s.Scale,
                     angle = p.WeaponAngle,
                     handB = handB * s.Scale,
-                    angleB = p.WeaponAngle * 0.75f - 25f,
+                    angleB = p.HasAngleB ? p.WeaponAngleB : p.WeaponAngle * 0.75f - 25f,
                     shieldUp = p.ShieldUp,
-                    shield = (O + new Vector2(60f, hipY + torso * 0.3f)) * s.Scale,
+                    shield = (p.HasShieldPos ? O + p.ShieldPos : O + new Vector2(60f, hipY + torso * 0.3f)) * s.Scale,
                     stow = (O + new Vector2(-36f, hipY + torso * 0.5f)) * s.Scale
                 };
                 HasAnchor = true;

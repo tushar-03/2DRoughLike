@@ -10,6 +10,8 @@ namespace Roughlike.Combat
     public class AttackStep
     {
         public string name = "Slash";
+        [Tooltip("Which player animation clip plays for this hit (empty = the generic swing).")]
+        public string clip = "";
         public float damage = 10f;
 
         [Header("Timing")]
@@ -97,5 +99,7 @@ namespace Roughlike.Combat
 
         [Header("Shield")]
         public ShieldSettings shield = new ShieldSettings();
+        [Tooltip("Animation played while this shield is raised.")]
+        public string blockClip = "block_tower";
     }
 }

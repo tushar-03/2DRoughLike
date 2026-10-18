@@ -20,8 +20,13 @@ namespace Roughlike.Editor
         {
             "Assets/Scenes/MainMenu.unity",
             "Assets/Scenes/M4_LootRun.unity",
-            "Assets/Scenes/Tutorial.unity"
+            "Assets/Scenes/Tutorial.unity",
+            "Assets/Scenes/Loadout.unity"
         };
+
+        /// <summary>The same build without the confirmation dialog, for scripted builds.</summary>
+        [MenuItem("Roughlike/Build/WebGL (no prompt)")]
+        public static void BuildNoPrompt() => Build(switchBack: true);
 
         [MenuItem("Roughlike/Build/WebGL (for hosting)")]
         public static void BuildFromMenu()
@@ -50,7 +55,12 @@ namespace Roughlike.Editor
                 ConfigurePlayerSettings();
 
                 string output = Path.GetFullPath(OutputFolder);
-                if (Directory.Exists(output)) Directory.Delete(output, true);
+                // empty the folder rather than deleting it: a terminal sitting in it (to run the hosting CLI) would block the delete
+                if (Directory.Exists(output))
+                {
+                    foreach (var file in Directory.GetFiles(output)) File.Delete(file);
+                    foreach (var dir in Directory.GetDirectories(output)) Directory.Delete(dir, true);
+                }
                 Directory.CreateDirectory(output);
 
                 var options = new BuildPlayerOptions
@@ -83,6 +93,7 @@ namespace Roughlike.Editor
             if (!File.Exists(Scenes[0])) MenuSceneBuilder.Build();
             if (!File.Exists(Scenes[1])) LootRunSceneBuilder.Build();
             if (!File.Exists(Scenes[2])) TutorialSceneBuilder.Build();
+            if (!File.Exists(Scenes[3])) LoadoutSceneBuilder.Build();
         }
 
         static void ConfigurePlayerSettings()

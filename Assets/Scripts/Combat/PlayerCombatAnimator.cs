@@ -59,8 +59,13 @@ namespace Roughlike.Combat
         {
             if (_combat == null) return null;
             ShieldPhase s = _combat.Shield;
-            return s == ShieldPhase.Parry || s == ShieldPhase.Block ? "block" : null;
+            if (s == ShieldPhase.Parry) return Pick("parry", "block_tower");
+            if (s != ShieldPhase.Block) return null;
+            WeaponData shield = _combat.HeldShield;
+            return Pick(shield != null && !string.IsNullOrEmpty(shield.blockClip) ? shield.blockClip : "block_tower", "block_tower");
         }
+
+        string Pick(string wanted, string fallback) => _anim != null && _anim.Art != null && _anim.Art.Has(wanted) ? wanted : fallback;
 
         void OnRoll() => Haptics.Play(HapticKind.Roll);
         void OnJump() => Haptics.Play(HapticKind.Jump);
@@ -71,9 +76,12 @@ namespace Roughlike.Combat
             if (weapon == null || weapon.kind != WeaponKind.Bow) Roughlike.Utils.Sfx.Play(step.damage >= 22f ? Roughlike.Utils.SfxId.SwingHeavy : Roughlike.Utils.SfxId.SwingLight, 0.8f);
             else Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.SwingBow, 0.8f);
             if (_anim == null) return;
-            string clip = weapon != null && weapon.kind == WeaponKind.Bow && _anim.Art.Has("shoot") ? "shoot" : "attack";
+            string clip = weapon != null && weapon.kind == WeaponKind.Bow ? "shoot" : (string.IsNullOrEmpty(step.clip) ? "attack" : step.clip);
+            if (!_anim.Art.Has(clip)) clip = "attack";
             if (!_anim.Art.Has(clip)) return;
-            _anim.PlayOnce(clip, Mathf.Max(0.12f, step.windup + step.active + step.recovery * 0.7f));
+            // the clip's impact sits about a third of the way in, so it is stretched to land exactly when the hitbox goes live
+            float duration = Mathf.Max(0.2f, step.windup / 0.32f, step.windup + step.active + step.recovery * 0.6f);
+            _anim.PlayOnce(clip, duration);
         }
 
         void OnHit(HitReport r)

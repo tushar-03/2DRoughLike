@@ -18,6 +18,13 @@ namespace Roughlike.Items
             return o;
         }
 
+        /// <summary>Assigns an animation clip to each step of a combo, in order.</summary>
+        static WeaponData Clips(WeaponData w, params string[] clips)
+        {
+            for (int i = 0; i < w.steps.Length && i < clips.Length; i++) w.steps[i].clip = clips[i];
+            return w;
+        }
+
         static AttackStep Step(string name, float dmg, float windup, float active, float recovery, float chain,
             Vector2 offset, Vector2 size, Vector2 kb, float stagger, float hitStop, float shake, float lunge, float moveScale)
             => new AttackStep
@@ -43,7 +50,7 @@ namespace Roughlike.Items
                 Step("Jab", 7f, 0.03f, 0.06f, 0.10f, 0.3f, new Vector2(0.75f, 0.85f), new Vector2(1.3f, 1.0f), new Vector2(3f, 1.5f), 5f, 0.035f, 0.12f, 3.5f, 0.6f),
                 Step("Flurry", 11f, 0.05f, 0.07f, 0.22f, 0.45f, new Vector2(0.85f, 0.85f), new Vector2(1.6f, 1.1f), new Vector2(6f, 3f), 9f, 0.06f, 0.22f, 5f, 0.5f)
             };
-            return w;
+            return Clips(w, "jab", "jab2", "flurry");
         }
 
         public static WeaponData Sword()
@@ -60,7 +67,7 @@ namespace Roughlike.Items
                 Step("Backslash", 14f, 0.08f, 0.08f, 0.22f, 0.4f, new Vector2(1.0f, 0.9f), new Vector2(1.9f, 1.3f), new Vector2(5f, 2f), 9f, 0.06f, 0.20f, 3f, 0.35f),
                 Step("Cleave", 24f, 0.14f, 0.10f, 0.38f, 0.5f, new Vector2(1.1f, 0.95f), new Vector2(2.3f, 1.5f), new Vector2(9f, 5f), 20f, 0.10f, 0.40f, 5f, 0.3f)
             };
-            return w;
+            return Clips(w, "slash1", "slash2", "overhead");
         }
 
         public static WeaponData Hammer()
@@ -76,7 +83,7 @@ namespace Roughlike.Items
                 Step("Smash", 30f, 0.28f, 0.10f, 0.50f, 0.55f, new Vector2(1.1f, 0.8f), new Vector2(2.0f, 1.6f), new Vector2(10f, 6f), 35f, 0.14f, 0.55f, 2f, 0.2f),
                 Step("Slam", 46f, 0.40f, 0.12f, 0.70f, 0.6f, new Vector2(1.2f, 0.8f), new Vector2(2.4f, 1.8f), new Vector2(12f, 8f), 50f, 0.18f, 0.7f, 2f, 0.15f)
             };
-            return w;
+            return Clips(w, "smash", "slam");
         }
 
         public static WeaponData Boathook()
@@ -93,7 +100,7 @@ namespace Roughlike.Items
                 Step("Poke", 10f, 0.08f, 0.07f, 0.16f, 0.35f, new Vector2(1.5f, 0.9f), new Vector2(2.8f, 0.7f), new Vector2(4f, 1f), 6f, 0.04f, 0.14f, 1.5f, 0.5f),
                 Step("Hook", 16f, 0.12f, 0.09f, 0.30f, 0.45f, new Vector2(1.7f, 0.9f), new Vector2(3.2f, 0.9f), new Vector2(8f, 2f), 14f, 0.07f, 0.25f, 2.5f, 0.4f)
             };
-            return w;
+            return Clips(w, "poke", "poke", "sweep");
         }
 
         public static WeaponData Bow()
@@ -112,7 +119,7 @@ namespace Roughlike.Items
                 Step("Shot", 11f, 0.2f, 0.04f, 0.2f, 0.45f, new Vector2(1f, 1.1f), Vector2.one, new Vector2(3f, 1f), 8f, 0.03f, 0.08f, 0f, 0.5f),
                 Step("Heavy Shot", 24f, 0.4f, 0.05f, 0.34f, 0.5f, new Vector2(1f, 1.1f), Vector2.one, new Vector2(8f, 2f), 22f, 0.07f, 0.2f, -1.5f, 0.3f)
             };
-            return w;
+            return Clips(w, "shoot", "shoot", "shoot");
         }
 
         public static WeaponData TwinBlades()
@@ -131,7 +138,7 @@ namespace Roughlike.Items
                 Step("Cross", 10f, 0.05f, 0.07f, 0.12f, 0.3f, new Vector2(1.0f, 0.9f), new Vector2(2.0f, 1.3f), new Vector2(4.5f, 2f), 8f, 0.04f, 0.14f, 3.5f, 0.45f),
                 Step("Whirl", 16f, 0.09f, 0.10f, 0.30f, 0.5f, new Vector2(0.4f, 0.9f), new Vector2(3.0f, 1.5f), new Vector2(7f, 4f), 16f, 0.08f, 0.3f, 2f, 0.4f)
             };
-            return w;
+            return Clips(w, "dual_a", "dual_b", "dual_cross", "whirl");
         }
 
         public static WeaponData Greatsword()
@@ -147,7 +154,7 @@ namespace Roughlike.Items
                 Step("Cleave", 26f, 0.22f, 0.10f, 0.40f, 0.5f, new Vector2(1.3f, 0.95f), new Vector2(2.8f, 1.7f), new Vector2(9f, 4f), 24f, 0.11f, 0.45f, 2.5f, 0.25f),
                 Step("Overhead", 40f, 0.34f, 0.11f, 0.55f, 0.55f, new Vector2(1.4f, 1.0f), new Vector2(3.0f, 2.1f), new Vector2(11f, 7f), 38f, 0.16f, 0.6f, 2f, 0.2f)
             };
-            return w;
+            return Clips(w, "great_sweep", "great_overhead");
         }
 
         public static WeaponData Shield()
@@ -160,6 +167,7 @@ namespace Roughlike.Items
             w.steps = new AttackStep[0];
             w.description = "Tap to parry, hold to block. Heavy and dependable.";
             w.shield = new ShieldSettings { lowerTime = 0.2f };
+            w.blockClip = "block_tower";
             return w;
         }
 
@@ -172,6 +180,7 @@ namespace Roughlike.Items
             w.affinity = StatColor.Brine;
             w.steps = new AttackStep[0];
             w.description = "A generous parry window, but it barely blocks.";
+            w.blockClip = "block_buckler";
             w.shield = new ShieldSettings
             {
                 parryWindow = 0.28f, blockDamageReduction = 0.55f, moveScale = 0.7f, parryStun = 1.0f,

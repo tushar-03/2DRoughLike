@@ -103,6 +103,10 @@ namespace Roughlike.Editor
             if (existing is WeaponData w && fresh is WeaponData f)
             {
                 if (w.affinity == Roughlike.Core.StatColor.None) w.affinity = f.affinity;
+                // animation assignments arrived after the first assets were saved
+                for (int i = 0; i < w.steps.Length && i < f.steps.Length; i++)
+                    if (string.IsNullOrEmpty(w.steps[i].clip)) w.steps[i].clip = f.steps[i].clip;
+                if (w.kind == Roughlike.Combat.WeaponKind.Shield && f.blockClip != "block_tower") w.blockClip = f.blockClip;
                 if (string.IsNullOrEmpty(w.description)) w.description = f.description;
                 EditorUtility.SetDirty(w);
             }

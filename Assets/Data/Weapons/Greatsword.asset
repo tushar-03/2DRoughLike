@@ -24,6 +24,7 @@ MonoBehaviour:
   dual: 0
   steps:
   - name: Cleave
+    clip: great_sweep
     damage: 26
     windup: 0.22
     active: 0.1
@@ -38,6 +39,7 @@ MonoBehaviour:
     lunge: 2.5
     moveScale: 0.25
   - name: Overhead
+    clip: great_overhead
     damage: 40
     windup: 0.34
     active: 0.11
@@ -64,3 +66,4 @@ MonoBehaviour:
     parryHitStop: 0.12
     parryShake: 0.5
     lowerTime: 0.08
+  blockClip: block_tower

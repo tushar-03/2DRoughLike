@@ -36,3 +36,4 @@ MonoBehaviour:
     fps: 9
     loop: 1
     anchors: []
+  companions: []

@@ -35,3 +35,4 @@ MonoBehaviour:
     parryHitStop: 0.12
     parryShake: 0.5
     lowerTime: 0.2
+  blockClip: block_tower

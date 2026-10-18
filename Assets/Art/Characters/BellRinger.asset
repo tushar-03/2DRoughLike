@@ -224,22 +224,176 @@ MonoBehaviour:
       shieldUp: 0
       shield: {x: 0, y: 0}
       stow: {x: 0, y: 0}
-  - name: block
+  - name: crawl
     row: 5
-    frames: 1
-    fps: 1
+    frames: 6
+    fps: 9
+    loop: 1
+    anchors:
+    - valid: 1
+      hand: {x: 225.85028, y: 110.00267}
+      angle: 215
+      handB: {x: 213.85028, y: 96.00267}
+      angleB: 136.25
+      shieldUp: 0
+      shield: {x: 200, y: 129.4906}
+      stow: {x: 104, y: 144.42459}
+    - valid: 1
+      hand: {x: 237.97464, y: 107.60074}
+      angle: 215
+      handB: {x: 201.72592, y: 98.60074}
+      angleB: 136.25
+      shieldUp: 0
+      shield: {x: 200, y: 132.08868}
+      stow: {x: 104, y: 147.02267}
+    - valid: 1
+      hand: {x: 237.97464, y: 102.60074}
+      angle: 215
+      handB: {x: 201.72592, y: 103.60074}
+      angleB: 136.25
+      shieldUp: 0
+      shield: {x: 200, y: 132.08868}
+      stow: {x: 104, y: 147.02267}
+    - valid: 1
+      hand: {x: 225.85028, y: 100.00267}
+      angle: 215
+      handB: {x: 213.85028, y: 106.00267}
+      angleB: 136.25
+      shieldUp: 0
+      shield: {x: 200, y: 129.4906}
+      stow: {x: 104, y: 144.42459}
+    - valid: 1
+      hand: {x: 213.72592, y: 102.60074}
+      angle: 215
+      handB: {x: 225.97464, y: 103.60074}
+      angleB: 136.25
+      shieldUp: 0
+      shield: {x: 200, y: 132.08868}
+      stow: {x: 104, y: 147.02267}
+    - valid: 1
+      hand: {x: 213.72592, y: 107.60074}
+      angle: 215
+      handB: {x: 225.97464, y: 98.60074}
+      angleB: 136.25
+      shieldUp: 0
+      shield: {x: 200, y: 132.08868}
+      stow: {x: 104, y: 147.02267}
+  - name: block_tower
+    row: 6
+    frames: 4
+    fps: 20
     loop: 0
     anchors:
     - valid: 1
-      hand: {x: 188, y: 194.97011}
-      angle: 80
-      handB: {x: 180, y: 184.97011}
-      angleB: 35
+      hand: {x: 164, y: 128.97011}
+      angle: 55
+      handB: {x: 122, y: 124.97011}
+      angleB: 16.25
       shieldUp: 1
-      shield: {x: 200, y: 177.37111}
+      shield: {x: 164, y: 150.97011}
       stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 155.43721, y: 154.65848}
+      angle: -4.9395313
+      handB: {x: 175.0893, y: 174.6343}
+      angleB: -28.704649
+      shieldUp: 1
+      shield: {x: 196.5386, y: 171.5208}
+      stow: {x: 104, y: 186.31116}
+    - valid: 1
+      hand: {x: 154.00108, y: 158.96686}
+      angle: -14.992439
+      handB: {x: 183.9933, y: 182.96384}
+      angleB: -36.24433
+      shieldUp: 1
+      shield: {x: 201.9959, y: 174.96751}
+      stow: {x: 104, y: 185.30586}
+    - valid: 1
+      hand: {x: 154, y: 158.97011}
+      angle: -15
+      handB: {x: 184, y: 182.97011}
+      angleB: -36.25
+      shieldUp: 1
+      shield: {x: 202, y: 174.97011}
+      stow: {x: 104, y: 185.30511}
+  - name: block_buckler
+    row: 7
+    frames: 4
+    fps: 22
+    loop: 0
+    anchors:
+    - valid: 1
+      hand: {x: 164, y: 128.97011}
+      angle: 55
+      handB: {x: 122, y: 124.97011}
+      angleB: 16.25
+      shieldUp: 1
+      shield: {x: 136, y: 126.97011}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 155.43721, y: 154.65848}
+      angle: 67.844185
+      handB: {x: 192.21487, y: 190.04732}
+      angleB: 25.883139
+      shieldUp: 1
+      shield: {x: 206.21487, y: 192.04732}
+      stow: {x: 104, y: 189.73627}
+    - valid: 1
+      hand: {x: 154.00108, y: 158.96686}
+      angle: 69.99838
+      handB: {x: 203.99115, y: 200.9619}
+      angleB: 27.498787
+      shieldUp: 1
+      shield: {x: 217.99115, y: 202.9619}
+      stow: {x: 104, y: 189.30542}
+    - valid: 1
+      hand: {x: 154, y: 158.97011}
+      angle: 70
+      handB: {x: 204, y: 200.97011}
+      angleB: 27.5
+      shieldUp: 1
+      shield: {x: 218, y: 202.97011}
+      stow: {x: 104, y: 189.30511}
+  - name: parry
+    row: 8
+    frames: 4
+    fps: 24
+    loop: 0
+    anchors:
+    - valid: 1
+      hand: {x: 154, y: 151.97011}
+      angle: -15
+      handB: {x: 184, y: 182.97011}
+      angleB: -36.25
+      shieldUp: 1
+      shield: {x: 202, y: 174.97011}
+      stow: {x: 104, y: 185.30511}
+    - valid: 1
+      hand: {x: 154, y: 151.97011}
+      angle: -15
+      handB: {x: 213.86111, y: 186.95158}
+      angleB: -36.25
+      shieldUp: 1
+      shield: {x: 237.83334, y: 182.93307}
+      stow: {x: 104, y: 185.30511}
+    - valid: 1
+      hand: {x: 154, y: 151.97011}
+      angle: -15
+      handB: {x: 208.37036, y: 186.2195}
+      angleB: -36.25
+      shieldUp: 1
+      shield: {x: 231.24445, y: 181.46887}
+      stow: {x: 104, y: 185.30511}
+    - valid: 1
+      hand: {x: 154, y: 151.97011}
+      angle: -15
+      handB: {x: 200.5, y: 185.1701}
+      angleB: -36.25
+      shieldUp: 1
+      shield: {x: 221.8, y: 179.3701}
+      stow: {x: 104, y: 185.30511}
   - name: attack
-    row: 6
+    row: 9
     frames: 6
     fps: 12
     loop: 0
@@ -293,7 +447,7 @@ MonoBehaviour:
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
   - name: shoot
-    row: 7
+    row: 10
     frames: 6
     fps: 12
     loop: 0
@@ -347,7 +501,7 @@ MonoBehaviour:
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
   - name: hurt
-    row: 8
+    row: 11
     frames: 2
     fps: 8
     loop: 0
@@ -368,3 +522,6 @@ MonoBehaviour:
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
+  companions:
+  - {fileID: 11400000, guid: 670ae157401a83c47aa789713612be53, type: 2}
+  - {fileID: 11400000, guid: a64d288e75b364943a08c8da2030b7a0, type: 2}
