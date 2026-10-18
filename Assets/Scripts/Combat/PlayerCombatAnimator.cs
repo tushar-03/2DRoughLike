@@ -16,6 +16,11 @@ namespace Roughlike.Combat
         Health _health;
         PlayerVisual _visual;
         PlayerController _controller;
+        string _clip;
+        AttackStep _step;
+        bool _tinted;
+        SpriteRenderer _sr;
+        const float WindFraction = 0.36f;
 
         void Awake()
         {
@@ -24,12 +29,13 @@ namespace Roughlike.Combat
             _combat = GetComponentInParent<PlayerCombat>();
             _health = GetComponentInParent<Health>();
             _controller = GetComponentInParent<PlayerController>();
+            _sr = GetComponent<SpriteRenderer>();
             if (GetComponent<HeldGear>() == null && GetComponentInParent<PlayerCombat>() != null) gameObject.AddComponent<HeldGear>();   // older scenes get it too
         }
 
         void OnEnable()
         {
-            if (_combat != null) _combat.AttackStarted += OnAttack;
+            if (_combat != null) { _combat.AttackStarted += OnAttack; _combat.ChargeStarted += OnChargeStarted; _combat.ChargeReleased += OnChargeReleased; }
             if (_health != null) _health.HitTaken += OnHit;
             if (_controller != null)
             {
@@ -43,7 +49,8 @@ namespace Roughlike.Combat
 
         void OnDisable()
         {
-            if (_combat != null) _combat.AttackStarted -= OnAttack;
+            if (_combat != null) { _combat.AttackStarted -= OnAttack; _combat.ChargeStarted -= OnChargeStarted; _combat.ChargeReleased -= OnChargeReleased; }
+            if (_visual != null) _visual.HoldClip = false;
             if (_health != null) _health.HitTaken -= OnHit;
             if (_controller != null)
             {
@@ -65,6 +72,44 @@ namespace Roughlike.Combat
             return Pick(shield != null && !string.IsNullOrEmpty(shield.blockClip) ? shield.blockClip : "block_tower", "block_tower");
         }
 
+        void OnChargeStarted() => Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.Charge, 0.6f, 1f, 0f);
+
+        void OnChargeReleased(float level)
+        {
+            if (_visual != null) _visual.HoldClip = false;
+            if (_anim == null || string.IsNullOrEmpty(_clip) || !_anim.Art.Has(_clip)) return;
+            // the strike carries on from the coiled pose rather than starting the swing again
+            float remaining = _step != null ? _step.active + _step.recovery * 0.6f : 0.3f;
+            _anim.PlayOnce(_clip, Mathf.Max(0.2f, remaining / (1f - WindFraction)), WindFraction);
+            if (level > 0.5f) Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.SwingHeavy, 0.9f);
+        }
+
+        void Update()
+        {
+            bool charging = _combat != null && _combat.Charging;
+            if (_visual != null) _visual.HoldClip = charging;
+            if (charging && _anim != null && !string.IsNullOrEmpty(_clip) && _anim.Art.Has(_clip))
+                _anim.Scrub(_clip, WindFraction);
+        }
+
+        void LateUpdate()
+        {
+            // a charging fighter glows warmer and shudders as the blow builds
+            if (_sr == null || _combat == null) return;
+            if (_combat.Charging)
+            {
+                float level = _combat.ChargeLevel;
+                float pulse = level >= 1f ? 0.5f + 0.5f * Mathf.Sin(Time.time * 30f) : 0f;
+                _sr.color = Color.Lerp(Color.white, new Color(1f, 0.72f, 0.4f), Mathf.Max(level * 0.8f, pulse));
+                _tinted = true;
+            }
+            else if (_tinted)
+            {
+                _sr.color = Color.white;
+                _tinted = false;
+            }
+        }
+
         string Pick(string wanted, string fallback) => _anim != null && _anim.Art != null && _anim.Art.Has(wanted) ? wanted : fallback;
 
         void OnRoll() => Haptics.Play(HapticKind.Roll);
@@ -76,8 +121,10 @@ namespace Roughlike.Combat
             if (weapon == null || weapon.kind != WeaponKind.Bow) Roughlike.Utils.Sfx.Play(step.damage >= 22f ? Roughlike.Utils.SfxId.SwingHeavy : Roughlike.Utils.SfxId.SwingLight, 0.8f);
             else Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.SwingBow, 0.8f);
             if (_anim == null) return;
-            string clip = weapon != null && weapon.kind == WeaponKind.Bow ? "shoot" : (string.IsNullOrEmpty(step.clip) ? "attack" : step.clip);
-            if (!_anim.Art.Has(clip)) clip = "attack";
+            string clip = string.IsNullOrEmpty(step.clip) ? (weapon != null && weapon.kind == WeaponKind.Bow ? "shoot" : "attack") : step.clip;
+            if (!_anim.Art.Has(clip)) clip = weapon != null && weapon.kind == WeaponKind.Bow && _anim.Art.Has("shoot") ? "shoot" : "attack";
+            _clip = clip;
+            _step = step;
             if (!_anim.Art.Has(clip)) return;
             // the clip's impact sits about a third of the way in, so it is stretched to land exactly when the hitbox goes live
             float duration = Mathf.Max(0.2f, step.windup / 0.32f, step.windup + step.active + step.recovery * 0.6f);

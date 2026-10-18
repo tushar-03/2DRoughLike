@@ -45,6 +45,7 @@ namespace Roughlike.Tests.PlayMode
         [SetUp]
         public void SetUp()
         {
+            PlayerCombat.ChargeAttacks = false;   // these tests press buttons and never let go
             _db = DefaultContent.CreateDatabase();
             _cfg = ScriptableObject.CreateInstance<MovementConfig>();
             _gruntDef = ScriptableObject.CreateInstance<EnemyDefinition>();
@@ -55,6 +56,7 @@ namespace Roughlike.Tests.PlayMode
         [TearDown]
         public void TearDown()
         {
+            PlayerCombat.ChargeAttacks = true;
             foreach (var go in UnityEngine.Object.FindObjectsByType<Collectible>()) UnityEngine.Object.DestroyImmediate(go.gameObject);
             foreach (var go in UnityEngine.Object.FindObjectsByType<WorldItem>()) UnityEngine.Object.DestroyImmediate(go.gameObject);
             foreach (var go in UnityEngine.Object.FindObjectsByType<Projectile>()) UnityEngine.Object.DestroyImmediate(go.gameObject);

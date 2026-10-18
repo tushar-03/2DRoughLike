@@ -39,7 +39,7 @@ MonoBehaviour:
     lunge: 0
     moveScale: 0.5
   - name: Shot
-    clip: shoot
+    clip: shoot_b
     damage: 11
     windup: 0.2
     active: 0.04
@@ -54,7 +54,7 @@ MonoBehaviour:
     lunge: 0
     moveScale: 0.5
   - name: Heavy Shot
-    clip: shoot
+    clip: shoot_c
     damage: 24
     windup: 0.4
     active: 0.05
@@ -70,6 +70,7 @@ MonoBehaviour:
     moveScale: 0.3
   comboResetTime: 0.5
   projectileSpeed: 28
+  range: 18
   pierce: 0
   shield:
     parryWindow: 0.18

@@ -15,6 +15,7 @@ namespace Roughlike.UI
         public static readonly string[] TabNames = { "Video", "Audio", "Gameplay", "Touch" };
 
         readonly RectTransform _rows;
+        readonly RectTransform _window;
         readonly List<Button> _tabs = new List<Button>();
         readonly List<Selectable> _first = new List<Selectable>();
         int _tab;
@@ -33,6 +34,7 @@ namespace Roughlike.UI
 
         SettingsView(RectTransform window, System.Action back)
         {
+            _window = window;
             // tab strip
             for (int i = 0; i < TabNames.Length; i++)
             {
@@ -41,6 +43,11 @@ namespace Roughlike.UI
                 UiKit.Place((RectTransform)b.transform, new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0.5f, 1f),
                     new Vector2((i - (TabNames.Length - 1) * 0.5f) * 256f, -70f), new Vector2(240f, 48f));
                 _tabs.Add(b);
+                // moving onto a tab with left/right shows it, so a controller never needs a separate confirm
+                var trigger = b.gameObject.AddComponent<UnityEngine.EventSystems.EventTrigger>();
+                var entry = new UnityEngine.EventSystems.EventTrigger.Entry { eventID = UnityEngine.EventSystems.EventTriggerType.Select };
+                entry.callback.AddListener(_ => { if (_tab != index) ShowTab(index); });
+                trigger.triggers.Add(entry);
             }
 
             // the rows live in a scrolling list, so any number of settings fits and a controller can reach all of them
@@ -102,6 +109,7 @@ namespace Roughlike.UI
             _rows.sizeDelta = new Vector2(0f, Mathf.Max(300f, _rows.childCount * (MenuKit.RowSize.y + 8f) + 20f));
             _rows.anchoredPosition = Vector2.zero;
             FirstSelectable = _first.Count > 0 ? _first[0] : _tabs[_tab];
+            MenuNav.AutoLink(_window);
         }
 
         static float RowY(int i) => -i * (MenuKit.RowSize.y + 8f);

@@ -118,6 +118,7 @@ namespace Roughlike.UI
             var w = new Window { Root = dim.gameObject, Cancel = cancel, Pauses = _pauseGame };
             _stack.Push(w);
             if (w.Pauses) PauseGate.Push();
+            if (_stack.Count == 1 && EventSystem.current != null) _backgroundSelection = EventSystem.current.currentSelectedGameObject;
             SetBackgroundInteractive(false);
             _openedAt = Time.unscaledTime;   // the key press that opened a menu must not also close it
             content = inner;
@@ -125,6 +126,7 @@ namespace Roughlike.UI
         }
 
         float _openedAt = -1f;
+        GameObject _backgroundSelection;
 
         /// <summary>
         /// While a menu is open the screen behind it (the main menu's buttons, the HUD) must not be reachable: automatic
@@ -140,6 +142,7 @@ namespace Roughlike.UI
 
         void Focus(Window w, Selectable first)
         {
+            MenuNav.AutoLink(w.Root.transform);
             w.First = first;
             if (EventSystem.current != null && first != null) EventSystem.current.SetSelectedGameObject(first.gameObject);
         }
@@ -153,7 +156,14 @@ namespace Roughlike.UI
             Destroy(w.Root);
             if (w.Pauses) PauseGate.Pop();
             InputGate.Block(3);
-            if (_stack.Count == 0) { LastEmptiedAt = Time.unscaledTime; SetBackgroundInteractive(true); }
+            if (_stack.Count == 0)
+            {
+                LastEmptiedAt = Time.unscaledTime;
+                SetBackgroundInteractive(true);
+                // hand the controller back to whatever was selected before the first menu opened
+                if (EventSystem.current != null && _backgroundSelection != null) EventSystem.current.SetSelectedGameObject(_backgroundSelection);
+                _backgroundSelection = null;
+            }
             if (_stack.Count > 0)
             {
                 Window prev = _stack.Peek();

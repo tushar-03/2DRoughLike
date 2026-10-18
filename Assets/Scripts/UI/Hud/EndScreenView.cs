@@ -56,7 +56,7 @@ namespace Roughlike.UI
             RectTransform inner = UiKit.Panel(dim.transform, "Window", size);
             UiKit.Place((RectTransform)inner.parent, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), Vector2.zero, size);
 
-            var title = UiKit.Label(inner, "Title", dead ? "YOU DIED" : "BIOME CLEARED", 56, dead ? new Color(1f, 0.45f, 0.4f) : new Color(0.5f, 1f, 0.7f), TextAnchor.MiddleCenter, true);
+            var title = UiKit.Label(inner, "Title", dead ? "YOU DIED" : "THE RELIQUARY IS YOURS", 56, dead ? new Color(1f, 0.45f, 0.4f) : new Color(0.5f, 1f, 0.7f), TextAnchor.MiddleCenter, true);
             UiKit.Place(title.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -22f), new Vector2(-30f, 70f));
 
             var s = _run.Stats;
@@ -70,14 +70,33 @@ namespace Roughlike.UI
             var text = UiKit.Label(inner, "Summary", summary, 30, Color.white, TextAnchor.UpperCenter);
             UiKit.Place(text.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -110f), new Vector2(-60f, 230f));
 
-            Button first = Add(inner, "New run  (new seed)", "R", 0, () => _run.StartRandomRun());
-            Add(inner, "Retry this seed", "T", 1, () => _run.RestartSameSeed());
-            Add(inner, "Main menu", "M", 2, () => ModalManager.LoadScene(GameSession.MenuScene));
+            Button first;
+            if (dead)
+            {
+                first = Add(inner, "New run  (new seed)", "R", 0, () => _run.StartRandomRun());
+                Add(inner, "Retry this seed", "T", 1, () => _run.RestartSameSeed());
+                Add(inner, "Main menu", "M", 2, () => ModalManager.LoadScene(GameSession.MenuScene));
+            }
+            else
+            {
+                // the game is over: start a whole new one (practice room, then a fresh seed), or leave
+                first = Add(inner, "New game", "R", 0, () => StartNewGame());
+                Add(inner, "Main menu", "M", 1, () => ModalManager.LoadScene(GameSession.MenuScene));
+            }
 
             var note = UiKit.Label(inner, "Note", "Permadeath: weapons, health and progress reset with a new run.", 20, UiKit.Muted, TextAnchor.MiddleCenter);
             UiKit.Place(note.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 0f), new Vector2(0.5f, 0f), new Vector2(0f, 18f), new Vector2(-40f, 30f));
 
+            MenuNav.AutoLink(inner);
             if (EventSystem.current != null) EventSystem.current.SetSelectedGameObject(first.gameObject);
+        }
+
+        /// <summary>The same path as New Game on the main menu once the questions are answered: practice room, then a run on a new seed.</summary>
+        public static void StartNewGame()
+        {
+            GameSession.StartNew(0, Roughlike.Core.DifficultyService.Current);
+            Roughlike.Items.LoadoutSelection.Index = -1;
+            ModalManager.LoadScene(GameSession.LoadoutScene);
         }
 
         static Button Add(RectTransform parent, string label, string key, int index, UnityEngine.Events.UnityAction onClick)

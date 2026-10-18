@@ -15,6 +15,9 @@ namespace Roughlike.Combat
 
         static Runner _runner;
         static float _remaining;
+        static float _lastEnd = -10f;
+        /// <summary>Freezes are never chained: after one ends there is a short gap, so a burst of effects cannot hold the game still.</summary>
+        const float MinGap = 0.08f;
 
         public static bool Active => _remaining > 0f;
 
@@ -22,6 +25,7 @@ namespace Roughlike.Combat
         {
             seconds = Mathf.Min(seconds * Scale, MaxDuration);
             if (seconds <= 0f) return;
+            if (_remaining <= 0f && Time.unscaledTime >= _lastEnd && Time.unscaledTime - _lastEnd < MinGap) return;
 
             if (_runner == null)
             {
@@ -37,6 +41,7 @@ namespace Roughlike.Combat
         public static void Cancel()
         {
             _remaining = 0f;
+            _lastEnd = -10f;
             Time.timeScale = BaseTimeScale;
         }
 
@@ -49,6 +54,7 @@ namespace Roughlike.Combat
                 if (_remaining <= 0f)
                 {
                     _remaining = 0f;
+                    _lastEnd = Time.unscaledTime;
                     Time.timeScale = BaseTimeScale;
                 }
             }

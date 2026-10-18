@@ -38,7 +38,7 @@ MonoBehaviour:
     lunge: 1.5
     moveScale: 0.5
   - name: Poke
-    clip: poke
+    clip: poke_b
     damage: 10
     windup: 0.08
     active: 0.07
@@ -69,6 +69,7 @@ MonoBehaviour:
     moveScale: 0.4
   comboResetTime: 0.45
   projectileSpeed: 26
+  range: 18
   pierce: 0
   shield:
     parryWindow: 0.18

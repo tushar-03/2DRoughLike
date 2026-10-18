@@ -62,6 +62,16 @@ namespace Roughlike.Rooms
             EventBus<ToastEvent>.Raise(new ToastEvent { Text = _boss.Definition.displayName, Colour = new Color(1f, 0.55f, 0.4f) });
         }
 
+        /// <summary>Loading a save made after the boss died: no boss, no sealed door, the exit is open.</summary>
+        public void RestoreDefeated()
+        {
+            Defeated = true;
+            _started = true;
+            if (_boss != null) { _boss.gameObject.SetActive(false); Destroy(_boss.gameObject); _boss = null; }
+            OpenDoor();
+            if (_exit != null) _exit.gameObject.SetActive(true);
+        }
+
         void OnDefeated(BossDefeatedEvent e)
         {
             if (_boss == null || e.Definition != _boss.Definition) return;

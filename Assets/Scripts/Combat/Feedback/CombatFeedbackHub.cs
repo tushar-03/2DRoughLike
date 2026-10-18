@@ -65,9 +65,10 @@ namespace Roughlike.Combat
 
         void OnExplosion(ExplosionEvent e)
         {
-            Haptics.Play(HapticKind.Explosion);
             Spark(e.Position, e.Radius * 1.8f, e.Colour);
             Spark(e.Position + new Vector2(0.3f, 0.2f), e.Radius, Color.white);
+            if (e.Cosmetic) return;
+            Haptics.Play(HapticKind.Explosion);
             ScreenShake.Shake(0.45f, Vector2.up);
             HitStop.Request(0.05f);
         }

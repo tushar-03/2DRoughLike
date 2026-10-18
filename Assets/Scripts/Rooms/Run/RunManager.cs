@@ -75,6 +75,10 @@ namespace Roughlike.Rooms
         public event Action<RunState> StateChanged;
 
         public PlayerInventory Inventory => _inventory;
+        public LootDirector Loot => lootDirector;
+        /// <summary>The boss of the current level has been beaten.</summary>
+        public bool BossDefeated { get; internal set; }
+        public bool IsFinalLevel => LevelIndex + 1 >= LevelCount;
 
         public void Bind(BiomeData[] levels, PlayerController p, Unity.Cinemachine.CinemachineCamera camera = null, LootDirector director = null)
         {
@@ -192,6 +196,7 @@ namespace Roughlike.Rooms
             HitStop.Cancel();
 
             Seed = seed;
+            BossDefeated = false;
             LevelIndex = restore != null ? Mathf.Clamp(restore.levelIndex, 0, LevelCount - 1) : 0;
             if (restore != null) DifficultyService.Current = (Difficulty)Mathf.Clamp(restore.difficulty, 0, 3);
             if (biomes != null && biomes.Length > 0) biome = biomes[LevelIndex];
@@ -262,6 +267,7 @@ namespace Roughlike.Rooms
         {
             Layout = LevelGenerator.Generate(LevelSeed(Seed, LevelIndex), biome.generator);
             Level = LevelBuilder.Build(Layout, biome, true, LevelIndex);
+            BossDefeated = false;
             Level.Exit.Activated += OnExitReached;
             if (biome.art != null)
             {
@@ -274,6 +280,7 @@ namespace Roughlike.Rooms
         void AdvanceLevel()
         {
             LevelIndex++;
+            BossDefeated = false;
             biome = biomes[LevelIndex];
             Level?.Destroy();
             HitStop.Cancel();
@@ -318,7 +325,37 @@ namespace Roughlike.Rooms
 
         void OnBossDefeated(BossDefeatedEvent e)
         {
-            if (State == RunState.Running) Stats.Bosses++;
+            if (State != RunState.Running) return;
+            Stats.Bosses++;
+            BossDefeated = true;
+            // a boss is a checkpoint: health is restored, everything else carries over, and the run is saved as the start of the next area
+            _health.ResetToFull();
+            StartCoroutine(CheckpointAfterBoss());
+        }
+
+        System.Collections.IEnumerator CheckpointAfterBoss()
+        {
+            yield return new WaitForSecondsRealtime(0.8f);   // the reward has dropped by now
+            if (State != RunState.Running) yield break;
+            _health.ResetToFull();   // anything that landed during the death scene is healed too
+            SaveNow();
+            EventBus<ToastEvent>.Raise(new ToastEvent
+            {
+                Text = IsFinalLevel ? "Checkpoint saved" : "Checkpoint saved - the way to the next area is open",
+                Colour = new Color(0.55f, 1f, 0.7f)
+            });
+        }
+
+        /// <summary>The boss's reward if it is still lying on the floor, otherwise null.</summary>
+        public ItemInstance PendingBossItem
+        {
+            get
+            {
+                var item = lootDirector != null ? lootDirector.LastBossItem : null;
+                if (item == null) return null;
+                foreach (var w in FindObjectsByType<WorldItem>()) if (w.Item == item) return item;
+                return null;
+            }
         }
 
         // =====================================================================
@@ -334,8 +371,11 @@ namespace Roughlike.Rooms
                 if (kb.f10Key.wasPressedThisFrame && State != RunState.Idle) RestartSameSeed();
                 if (EndScreenVisible)
                 {
-                    if (kb.rKey.wasPressedThisFrame) StartRandomRun();
-                    if (kb.tKey.wasPressedThisFrame) RestartSameSeed();
+                    if (kb.rKey.wasPressedThisFrame)
+                    {
+                        if (State == RunState.Complete) StartNewGameFromEnd(); else StartRandomRun();
+                    }
+                    if (kb.tKey.wasPressedThisFrame && State == RunState.Dead) RestartSameSeed();
                     if (kb.mKey.wasPressedThisFrame) UnityEngine.SceneManagement.SceneManager.LoadScene(GameSession.MenuScene);
                 }
             }
@@ -349,6 +389,14 @@ namespace Roughlike.Rooms
             {
                 _endTimer += Time.unscaledDeltaTime;
             }
+        }
+
+        /// <summary>After the game is won: a whole new game (practice room first, then a fresh seed).</summary>
+        public static void StartNewGameFromEnd()
+        {
+            GameSession.StartNew(0, DifficultyService.Current);
+            LoadoutSelection.Index = -1;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(GameSession.LoadoutScene);
         }
 
         /// <summary>Checks which room the player is in (runs each frame; public so tests can drive it).</summary>

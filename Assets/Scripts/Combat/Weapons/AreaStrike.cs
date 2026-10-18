@@ -9,6 +9,8 @@ namespace Roughlike.Combat
         public Vector2 Position;
         public float Radius;
         public Color Colour;
+        /// <summary>Only for show (a dying boss's fireworks): no shake, hit-stop or vibration.</summary>
+        public bool Cosmetic;
     }
 
     /// <summary>Circular area damage: grenades, traps, explosions. Knockback pushes away from the centre.</summary>

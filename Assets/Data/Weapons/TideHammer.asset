@@ -52,8 +52,24 @@ MonoBehaviour:
     shake: 0.7
     lunge: 2
     moveScale: 0.15
+  - name: Upswing
+    clip: uppercut
+    damage: 38
+    windup: 0.34
+    active: 0.12
+    recovery: 0.62
+    chainFraction: 0.55
+    hitOffset: {x: 1, y: 1.3}
+    hitSize: {x: 2.2, y: 2.4}
+    knockback: {x: 7, y: 13}
+    stagger: 40
+    hitStop: 0.16
+    shake: 0.6
+    lunge: 2
+    moveScale: 0.2
   comboResetTime: 0.6
   projectileSpeed: 26
+  range: 18
   pierce: 0
   shield:
     parryWindow: 0.18

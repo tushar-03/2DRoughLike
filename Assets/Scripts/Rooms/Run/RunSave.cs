@@ -51,8 +51,13 @@ namespace Roughlike.Rooms
         public List<int> usedAltars = new List<int>();
         public List<ShopSave> shops = new List<ShopSave>();
 
+        /// <summary>The level's boss is dead (final level only: earlier levels save as the start of the next one instead).</summary>
+        public bool bossDefeated;
+        /// <summary>The boss's reward that was still on the floor when this was saved; it is dropped again on loading.</summary>
+        public ItemSave pendingItem = ItemSave.Empty;
+
         // stats
-        public int kills, roomsVisited;
+        public int kills, bosses, roomsVisited;
         public float time, damageTaken;
 
         // shown on the Continue button

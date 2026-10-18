@@ -94,6 +94,8 @@ namespace Roughlike.Combat
         [Header("Bow")]
         [Tooltip("Arrow speed in units per second (bows only).")]
         public float projectileSpeed = 26f;
+        [Tooltip("How far a bow looks for something to aim at, and how far its arrows fly.")]
+        public float range = 18f;
         [Tooltip("How many enemies an arrow passes through before it stops.")]
         public int pierce;
 

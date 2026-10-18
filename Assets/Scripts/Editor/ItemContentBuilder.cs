@@ -104,8 +104,8 @@ namespace Roughlike.Editor
             {
                 if (w.affinity == Roughlike.Core.StatColor.None) w.affinity = f.affinity;
                 // animation assignments arrived after the first assets were saved
-                for (int i = 0; i < w.steps.Length && i < f.steps.Length; i++)
-                    if (string.IsNullOrEmpty(w.steps[i].clip)) w.steps[i].clip = f.steps[i].clip;
+                if (f.steps.Length > w.steps.Length) w.steps = f.steps;       // a weapon that gained a combo step
+                for (int i = 0; i < w.steps.Length && i < f.steps.Length; i++) w.steps[i].clip = f.steps[i].clip;   // animations are assigned by code
                 if (w.kind == Roughlike.Combat.WeaponKind.Shield && f.blockClip != "block_tower") w.blockClip = f.blockClip;
                 if (string.IsNullOrEmpty(w.description)) w.description = f.description;
                 EditorUtility.SetDirty(w);

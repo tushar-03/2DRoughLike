@@ -374,18 +374,23 @@ namespace Roughlike.Enemies
         {
             if (_react != null) _react.enabled = false;
             PlayOnce("hurt", 0.4f);
-            float t = 0f;
+            float t = 0f, nextBurst = 0f;
             Vector2 start = Position;
             while (t < 2.2f)
             {
-                t += Time.deltaTime;
-                if (Time.frameCount % 7 == 0)
+                // real time: a freeze (hit-stop, pause) must never be able to stall the death scene, and the show is only for looks
+                t += Time.unscaledDeltaTime;
+                if (t >= nextBurst)
+                {
+                    nextBurst = t + 0.12f;
                     EventBus<ExplosionEvent>.Raise(new ExplosionEvent
                     {
+                        Cosmetic = true,
                         Position = start + new Vector2(UnityEngine.Random.Range(-1.4f, 1.4f), UnityEngine.Random.Range(0.4f, 3.2f)),
                         Radius = UnityEngine.Random.Range(0.8f, 1.6f),
                         Colour = Color.Lerp(new Color(1f, 0.6f, 0.2f), new Color(0.8f, 0.4f, 1f), UnityEngine.Random.value)
                     });
+                }
                 SetAlpha(Mathf.Clamp01(1.4f - t / 1.6f));
                 transform.position = start + new Vector2(Mathf.Sin(t * 40f) * 0.08f, 0f);
                 yield return null;

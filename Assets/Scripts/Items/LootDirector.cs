@@ -26,11 +26,15 @@ namespace Roughlike.Items
         /// <summary>The loot tables of the current biome (a boss drops from them).</summary>
         public LootDatabase Loot { get; set; }
 
+        /// <summary>The reward the last boss dropped (so a checkpoint can keep it safe until it is picked up).</summary>
+        public ItemInstance LastBossItem { get; private set; }
+
         public void BeginRun(uint seed)
         {
             _seed = seed;
             _rng = new SeededRng(seed).Fork(777);
             Progress = 0f;
+            LastBossItem = null;
         }
 
         void OnEnable()
@@ -82,6 +86,7 @@ namespace Roughlike.Items
             if (Loot != null)
             {
                 var item = LootRoller.Roll(Loot, _rng, 1f, null, 1f);
+                LastBossItem = item;
                 if (item != null) LootFactory.DropItem(item, e.Position + new Vector2(0f, 0.5f));
             }
         }

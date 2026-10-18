@@ -227,7 +227,7 @@ namespace Roughlike.UI
             if (!Roughlike.Utils.WebBridge.IsWebGL && !Application.isMobilePlatform)
                 _quit = Add(column, "Quit", null, ref y, ModalManager.QuitApplication);
 
-            // keep the vertical order explicit so a disabled Continue is skipped by the controller
+            MenuNav.AutoLink(column);   // explicit order: a disabled Continue is skipped, up and down stay in the column
             var first = hasSave ? _continue : _newGame;
             if (EventSystem.current != null) EventSystem.current.SetSelectedGameObject(first.gameObject);
         }

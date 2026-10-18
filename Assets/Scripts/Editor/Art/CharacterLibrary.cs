@@ -82,7 +82,8 @@ namespace Roughlike.Editor.Art
             }
             yield return Make("Blades", ("slash1", 24f), ("slash2", 24f), ("overhead", 22f), ("jab", 30f), ("jab2", 30f), ("flurry", 28f),
                 ("dual_a", 26f), ("dual_b", 26f), ("dual_cross", 24f), ("whirl", 22f));
-            yield return Make("Heavy", ("smash", 18f), ("slam", 16f), ("great_sweep", 18f), ("great_overhead", 17f), ("poke", 24f), ("sweep", 20f));
+            yield return Make("Heavy", ("smash", 18f), ("slam", 16f), ("uppercut", 18f), ("great_sweep", 18f), ("great_overhead", 17f), ("great_slash3", 18f),
+                ("poke", 24f), ("poke_b", 24f), ("sweep", 20f), ("shoot_b", 14f), ("shoot_c", 12f));
         }
 
         static CharacterPlan Creature(string name, Func<string, float, Color32[]> paint, bool hasWalk)

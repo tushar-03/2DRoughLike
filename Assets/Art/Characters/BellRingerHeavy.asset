@@ -25,33 +25,33 @@ MonoBehaviour:
     loop: 0
     anchors:
     - valid: 1
-      hand: {x: 198.55684, y: 260.0367}
+      hand: {x: 195.5039, y: 257.4522}
       angle: 55
-      handB: {x: 187.08531, y: 243.65367}
+      handB: {x: 184.03238, y: 241.06918}
       angleB: 16.25
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
-      hand: {x: 135.45618, y: 273.27142}
+      hand: {x: 135.29126, y: 271.971}
       angle: 132.31322
-      handB: {x: 148.91985, y: 258.4819}
+      handB: {x: 148.75491, y: 257.1815}
       angleB: 74.23491
       shieldUp: 0
       shield: {x: 200, y: 167.95906}
       stow: {x: 104, y: 182.89307}
     - valid: 1
-      hand: {x: 107.20929, y: 267.46353}
+      hand: {x: 107.2473, y: 267.2493}
       angle: 163.74525
-      handB: {x: 126.40983, y: 261.86536}
+      handB: {x: 126.44783, y: 261.65112}
       angleB: 97.808945
       shieldUp: 0
       shield: {x: 200, y: 164.13255}
       stow: {x: 104, y: 179.06656}
     - valid: 1
-      hand: {x: 101.71137, y: 265.51306}
+      hand: {x: 101.71167, y: 265.5118}
       angle: 169.96332
-      handB: {x: 121.405304, y: 262.02747}
+      handB: {x: 121.405594, y: 262.02625}
       angleB: 102.47249
       shieldUp: 0
       shield: {x: 200, y: 163.37556}
@@ -95,34 +95,34 @@ MonoBehaviour:
     loop: 0
     anchors:
     - valid: 1
-      hand: {x: 200.08331, y: 261.32898}
-      angle: 55
-      handB: {x: 188.61179, y: 244.94592}
-      angleB: 16.25
+      hand: {x: 214.4421, y: 178.88861}
+      angle: -80
+      handB: {x: 210.96913, y: 198.58476}
+      angleB: -85
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
-      hand: {x: 129.27153, y: 273.00894}
-      angle: 137.6239
-      handB: {x: 144.04626, y: 259.52905}
-      angleB: 78.217926
+      hand: {x: 163.95538, y: 262.2777}
+      angle: 88.42565
+      handB: {x: 163.4059, y: 242.28526}
+      angleB: 41.319237
       shieldUp: 0
       shield: {x: 200, y: 165.93088}
       stow: {x: 104, y: 180.86487}
     - valid: 1
-      hand: {x: 94.803894, y: 262.80862}
-      angle: 174.76677
-      handB: {x: 114.72053, y: 260.98444}
-      angleB: 106.07507
+      hand: {x: 102.779274, y: 264.33374}
+      angle: 164.13995
+      handB: {x: 122.017914, y: 258.86795}
+      angleB: 98.104965
       shieldUp: 0
       shield: {x: 200, y: 160.78802}
       stow: {x: 104, y: 175.72202}
     - valid: 1
-      hand: {x: 86.01133, y: 258.46082}
-      angle: 184.62099
-      handB: {x: 105.94632, y: 260.07208}
-      angleB: 113.465744
+      hand: {x: 86.29829, y: 258.5555}
+      angle: 184.2274
+      handB: {x: 106.24387, y: 260.02982}
+      angleB: 113.17055
       shieldUp: 0
       shield: {x: 200, y: 159.42358}
       stow: {x: 104, y: 174.35757}
@@ -158,32 +158,102 @@ MonoBehaviour:
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
-  - name: great_sweep
+  - name: uppercut
     row: 2
     frames: 8
     fps: 18
     loop: 0
     anchors:
     - valid: 1
-      hand: {x: 201.60977, y: 262.62122}
+      hand: {x: 212.96608, y: 170.1218}
+      angle: -95
+      handB: {x: 214.7092, y: 190.04568}
+      angleB: -96.25
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 218.26604, y: 161.86852}
+      angle: -81.15982
+      handB: {x: 215.19246, y: 181.63094}
+      angleB: -85.869865
+      shieldUp: 0
+      shield: {x: 200, y: 164.91495}
+      stow: {x: 104, y: 179.84894}
+    - valid: 1
+      hand: {x: 220.16333, y: 159.03456}
+      angle: -75.86228
+      handB: {x: 215.27826, y: 178.42879}
+      angleB: -81.89671
+      shieldUp: 0
+      shield: {x: 200, y: 160.14716}
+      stow: {x: 104, y: 175.08116}
+    - valid: 1
+      hand: {x: 220.46376, y: 158.59021}
+      angle: -75.00035
+      handB: {x: 215.2875, y: 177.90875}
+      angleB: -81.25026
+      shieldUp: 0
+      shield: {x: 200, y: 159.37143}
+      stow: {x: 104, y: 174.30542}
+    - valid: 1
+      hand: {x: 173.31854, y: 270.3667}
+      angle: 96.94345
+      handB: {x: 175.73634, y: 250.51337}
+      angleB: 47.70759
+      shieldUp: 0
+      shield: {x: 200, y: 167.88231}
+      stow: {x: 104, y: 182.81631}
+    - valid: 1
+      hand: {x: 141.22298, y: 280.4629}
+      angle: 152.43617
+      handB: {x: 158.9529, y: 271.20816}
+      angleB: 89.32713
+      shieldUp: 0
+      shield: {x: 200, y: 173.80325}
+      stow: {x: 104, y: 188.73724}
+    - valid: 1
+      hand: {x: 148.25984, y: 283.90048}
+      angle: 143.98326
+      handB: {x: 164.43674, y: 272.14005}
+      angleB: 82.98744
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 198.55684, y: 260.0367}
       angle: 55
-      handB: {x: 190.13824, y: 246.23817}
+      handB: {x: 187.08531, y: 243.65367}
+      angleB: 16.25
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+  - name: great_sweep
+    row: 3
+    frames: 8
+    fps: 18
+    loop: 0
+    anchors:
+    - valid: 1
+      hand: {x: 195.5039, y: 257.4522}
+      angle: 55
+      handB: {x: 184.03238, y: 241.06918}
       angleB: 16.25
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
-      hand: {x: 134.05576, y: 281.61905}
+      hand: {x: 133.93327, y: 279.4972}
       angle: 139.44789
-      handB: {x: 149.25206, y: 268.61627}
+      handB: {x: 149.12958, y: 266.49442}
       angleB: 79.58592
       shieldUp: 0
       shield: {x: 200, y: 171.49648}
       stow: {x: 104, y: 186.43048}
     - valid: 1
-      hand: {x: 109.4804, y: 277.5995}
+      hand: {x: 109.51927, y: 277.417}
       angle: 167.31778
-      handB: {x: 128.99245, y: 273.20862}
+      handB: {x: 129.03133, y: 273.02612}
       angleB: 100.488335
       shieldUp: 0
       shield: {x: 200, y: 169.5577}
@@ -229,40 +299,40 @@ MonoBehaviour:
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
   - name: great_overhead
-    row: 3
+    row: 4
     frames: 8
     fps: 17
     loop: 0
     anchors:
     - valid: 1
-      hand: {x: 200.08331, y: 261.32898}
-      angle: 55
-      handB: {x: 188.61179, y: 244.94592}
-      angleB: 16.25
+      hand: {x: 219.54387, y: 202.13263}
+      angle: -40
+      handB: {x: 204.22298, y: 214.98837}
+      angleB: -55
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
-      hand: {x: 132.88458, y: 275.59265}
-      angle: 135.37904
-      handB: {x: 147.11996, y: 261.54437}
-      angleB: 76.53429
+      hand: {x: 156.53046, y: 268.81232}
+      angle: 102.46042
+      handB: {x: 160.84576, y: 249.28343}
+      angleB: 51.845314
       shieldUp: 0
       shield: {x: 200, y: 168.22227}
       stow: {x: 104, y: 183.15628}
     - valid: 1
-      hand: {x: 101.35276, y: 268.31073}
-      angle: 169.84349
-      handB: {x: 121.03935, y: 264.78397}
-      angleB: 102.382614
+      hand: {x: 106.146614, y: 268.95795}
+      angle: 163.54376
+      handB: {x: 125.32734, y: 263.29227}
+      angleB: 97.65782
       shieldUp: 0
       shield: {x: 200, y: 164.29948}
       stow: {x: 104, y: 179.23349}
     - valid: 1
-      hand: {x: 94.22429, y: 265.4295}
-      angle: 177.84872
-      handB: {x: 114.21019, y: 264.67874}
-      angleB: 108.38654
+      hand: {x: 94.31199, y: 265.45007}
+      angle: 177.73187
+      handB: {x: 114.29632, y: 264.65857}
+      angleB: 108.298904
       shieldUp: 0
       shield: {x: 200, y: 163.38832}
       stow: {x: 104, y: 178.32233}
@@ -298,32 +368,102 @@ MonoBehaviour:
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
+  - name: great_slash3
+    row: 5
+    frames: 8
+    fps: 18
+    loop: 0
+    anchors:
+    - valid: 1
+      hand: {x: 211.63075, y: 175.0474}
+      angle: -88
+      handB: {x: 210.93277, y: 195.03522}
+      angleB: -91
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 155.10167, y: 273.9641}
+      angle: 107.83857
+      handB: {x: 161.2284, y: 254.92564}
+      angleB: 55.87893
+      shieldUp: 0
+      shield: {x: 200, y: 170.45102}
+      stow: {x: 104, y: 185.38501}
+    - valid: 1
+      hand: {x: 94.59649, y: 271.4702}
+      angle: 182.79872
+      handB: {x: 114.57263, y: 272.44678}
+      angleB: 112.099045
+      shieldUp: 0
+      shield: {x: 200, y: 167.80225}
+      stow: {x: 104, y: 182.73624}
+    - valid: 1
+      hand: {x: 85.03915, y: 267.55737}
+      angle: 194.99504
+      handB: {x: 104.35811, y: 272.73206}
+      angleB: 121.24628
+      shieldUp: 0
+      shield: {x: 200, y: 167.37128}
+      stow: {x: 104, y: 182.30528}
+    - valid: 1
+      hand: {x: 242.16165, y: 231.12192}
+      angle: 14.459377
+      handB: {x: 222.79515, y: 226.12805}
+      angleB: -14.155467
+      shieldUp: 0
+      shield: {x: 200, y: 172.09955}
+      stow: {x: 104, y: 187.03355}
+    - valid: 1
+      hand: {x: 238.61461, y: 242.3778}
+      angle: 26.154264
+      handB: {x: 220.6624, y: 233.56201}
+      angleB: -5.3843017
+      shieldUp: 0
+      shield: {x: 200, y: 175.38896}
+      stow: {x: 104, y: 190.32297}
+    - valid: 1
+      hand: {x: 233.67093, y: 248.77618}
+      angle: 32.754185
+      handB: {x: 216.85092, y: 237.95546}
+      angleB: -0.43436146
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 201.60977, y: 262.62122}
+      angle: 55
+      handB: {x: 190.13824, y: 246.23817}
+      angleB: 16.25
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
   - name: poke
-    row: 4
+    row: 6
     frames: 8
     fps: 24
     loop: 0
     anchors:
     - valid: 1
-      hand: {x: 178.99796, y: 231.76155}
+      hand: {x: 204.37457, y: 243.59486}
       angle: 25
-      handB: {x: 160.87181, y: 223.30919}
+      handB: {x: 186.24843, y: 235.1425}
       angleB: -6.25
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
-      hand: {x: 163.5341, y: 220.59589}
+      hand: {x: 168.02008, y: 222.15698}
       angle: 19.18746
-      handB: {x: 144.64514, y: 214.02269}
+      handB: {x: 149.13112, y: 215.58379}
       angleB: -10.6094055
       shieldUp: 0
       shield: {x: 200, y: 170.7282}
       stow: {x: 104, y: 185.6622}
     - valid: 1
-      hand: {x: 160.30872, y: 218.34564}
+      hand: {x: 160.34148, y: 218.3563}
       angle: 18.00861
-      handB: {x: 141.28851, y: 212.16245}
+      handB: {x: 141.32127, y: 212.1731}
       angleB: -11.493543
       shieldUp: 0
       shield: {x: 200, y: 169.38095}
@@ -368,33 +508,103 @@ MonoBehaviour:
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
+  - name: poke_b
+    row: 7
+    frames: 8
+    fps: 24
+    loop: 0
+    anchors:
+    - valid: 1
+      hand: {x: 241.32666, y: 231.47621}
+      angle: 10
+      handB: {x: 221.63051, y: 228.00325}
+      angleB: -17.5
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 176.6657, y: 211.7445}
+      angle: 8.287442
+      handB: {x: 156.87454, y: 208.86172}
+      angleB: -18.784418
+      shieldUp: 0
+      shield: {x: 200, y: 166.23947}
+      stow: {x: 104, y: 181.17348}
+    - valid: 1
+      hand: {x: 165.7527, y: 208.5992}
+      angle: 8.000216
+      handB: {x: 145.94734, y: 205.81566}
+      angleB: -18.999838
+      shieldUp: 0
+      shield: {x: 200, y: 164.37251}
+      stow: {x: 104, y: 179.30652}
+    - valid: 1
+      hand: {x: 229.7113, y: 206.86385}
+      angle: -0.32987857
+      handB: {x: 209.71164, y: 206.97899}
+      angleB: -25.24741
+      shieldUp: 0
+      shield: {x: 200, y: 168.62529}
+      stow: {x: 104, y: 183.5593}
+    - valid: 1
+      hand: {x: 258.22382, y: 216.57948}
+      angle: 2.462556
+      handB: {x: 238.24228, y: 215.72015}
+      angleB: -23.153084
+      shieldUp: 0
+      shield: {x: 200, y: 174.23718}
+      stow: {x: 104, y: 189.17117}
+    - valid: 1
+      hand: {x: 255.94493, y: 222.53008}
+      angle: 4.1383224
+      handB: {x: 235.99707, y: 221.08678}
+      angleB: -21.896257
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 214.70108, y: 232.45845}
+      angle: 15.2494335
+      handB: {x: 195.40527, y: 227.19801}
+      angleB: -13.562925
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 178.99796, y: 231.76155}
+      angle: 25
+      handB: {x: 160.87181, y: 223.30919}
+      angleB: -6.25
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
   - name: sweep
-    row: 5
+    row: 8
     frames: 8
     fps: 20
     loop: 0
     anchors:
     - valid: 1
-      hand: {x: 212.2553, y: 245.58481}
-      angle: 25
-      handB: {x: 194.12914, y: 237.13245}
-      angleB: -6.25
+      hand: {x: 240.6762, y: 234.79175}
+      angle: 4
+      handB: {x: 220.72491, y: 233.39662}
+      angleB: -22
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
-      hand: {x: 152.62463, y: 278.5516}
-      angle: 114.763626
-      handB: {x: 161.00215, y: 260.39075}
-      angleB: 61.07272
+      hand: {x: 158.32498, y: 281.38336}
+      angle: 110.15524
+      handB: {x: 165.21628, y: 262.6081}
+      angleB: 57.616432
       shieldUp: 0
       shield: {x: 200, y: 171.12668}
       stow: {x: 104, y: 186.06068}
     - valid: 1
-      hand: {x: 132.35866, y: 279.46887}
-      angle: 138.98958
-      handB: {x: 147.45045, y: 266.34494}
-      angleB: 79.24219
+      hand: {x: 132.55005, y: 279.62534}
+      angle: 138.80505
+      handB: {x: 147.59952, y: 266.45288}
+      angleB: 79.10379
       shieldUp: 0
       shield: {x: 200, y: 169.44139}
       stow: {x: 104, y: 184.3754}
@@ -438,4 +648,144 @@ MonoBehaviour:
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
+  - name: shoot_b
+    row: 9
+    frames: 8
+    fps: 14
+    loop: 0
+    anchors:
+    - valid: 1
+      hand: {x: 166, y: 160.97011}
+      angle: 90
+      handB: {x: 120, y: 160.97011}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 222.14523, y: 212.98769}
+      angle: 90
+      handB: {x: 206.6158, y: 212.98769}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 224, y: 214.7061}
+      angle: 90
+      handB: {x: 164.48001, y: 214.7061}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 224, y: 214.7061}
+      angle: 90
+      handB: {x: 224, y: 214.7061}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 224, y: 214.7061}
+      angle: 90
+      handB: {x: 224, y: 214.7061}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 224, y: 214.7061}
+      angle: 90
+      handB: {x: 224, y: 214.7061}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 224, y: 214.7061}
+      angle: 90
+      handB: {x: 224, y: 214.7061}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 224, y: 214.7061}
+      angle: 90
+      handB: {x: 224, y: 214.7061}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+  - name: shoot_c
+    row: 10
+    frames: 8
+    fps: 12
+    loop: 0
+    anchors:
+    - valid: 1
+      hand: {x: 166, y: 160.97011}
+      angle: 90
+      handB: {x: 120, y: 160.97011}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 177.37111}
+      stow: {x: 104, y: 192.30511}
+    - valid: 1
+      hand: {x: 199.28818, y: 191.81102}
+      angle: 90
+      handB: {x: 179.56322, y: 191.81102}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 171.63176}
+      stow: {x: 104, y: 186.56577}
+    - valid: 1
+      hand: {x: 224, y: 214.7061}
+      angle: 90
+      handB: {x: 200.29951, y: 214.7061}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 167.37111}
+      stow: {x: 104, y: 182.30511}
+    - valid: 1
+      hand: {x: 224, y: 214.7061}
+      angle: 90
+      handB: {x: 168.03978, y: 214.7061}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 167.37111}
+      stow: {x: 104, y: 182.30511}
+    - valid: 1
+      hand: {x: 224, y: 214.7061}
+      angle: 90
+      handB: {x: 193.00002, y: 214.7061}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 167.37111}
+      stow: {x: 104, y: 182.30511}
+    - valid: 1
+      hand: {x: 224, y: 214.7061}
+      angle: 90
+      handB: {x: 224, y: 214.7061}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 167.37111}
+      stow: {x: 104, y: 182.30511}
+    - valid: 1
+      hand: {x: 224, y: 214.7061}
+      angle: 90
+      handB: {x: 224, y: 214.7061}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 167.37111}
+      stow: {x: 104, y: 182.30511}
+    - valid: 1
+      hand: {x: 224, y: 214.7061}
+      angle: 90
+      handB: {x: 224, y: 214.7061}
+      angleB: 42.5
+      shieldUp: 0
+      shield: {x: 200, y: 167.37111}
+      stow: {x: 104, y: 182.30511}
   companions: []

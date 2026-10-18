@@ -23,6 +23,7 @@ namespace Roughlike.Rooms
                 roomX = run.CurrentRoom.x,
                 roomY = run.CurrentRoom.y,
                 kills = run.Stats.Kills,
+                bosses = run.Stats.Bosses,
                 roomsVisited = run.Stats.RoomsVisited,
                 time = run.Stats.Time,
                 damageTaken = run.Stats.DamageTaken
@@ -54,6 +55,23 @@ namespace Roughlike.Rooms
                 var shop = new ShopSave { cellIndex = s.CellIndex };
                 foreach (var o in s.Stock.Offers) shop.sold.Add(o.Sold);
                 save.shops.Add(shop);
+            }
+
+            // after a boss: the save is the start of the next area (health full, a fresh level), or, after the last boss, the open arena
+            if (run.BossDefeated)
+            {
+                save.pendingItem = ItemSave.From(run.PendingBossItem);
+                save.health = run.PlayerHealth.Max;
+                if (!run.IsFinalLevel)
+                {
+                    save.levelIndex = run.LevelIndex + 1;
+                    save.biome = "";
+                    save.visited.Clear(); save.clearedRooms.Clear(); save.openedChests.Clear(); save.usedAltars.Clear(); save.shops.Clear();
+                    save.roomX = save.roomY = int.MinValue;     // not a room of the new level: Apply starts at the entrance
+                    save.summary = $"Seed {Roughlike.Core.SeedCode.Encode(run.Seed)}  -  next area unlocked  -  {run.Stats.Kills} kills  -  {save.gold} gold";
+                    return save;
+                }
+                save.bossDefeated = true;
             }
 
             string room = layout.TryGet(run.CurrentRoom, out var cur) ? cur.Role.ToString() : "?";
@@ -119,10 +137,25 @@ namespace Roughlike.Rooms
             run.Stats = new RunStats
             {
                 Kills = save.kills,
+                Bosses = save.bosses,
                 RoomsVisited = Mathf.Max(save.roomsVisited, run.Visited.Count),
                 Time = save.time,
                 DamageTaken = save.damageTaken
             };
+
+            run.BossDefeated = save.bossDefeated;
+            // the final boss was already beaten: the arena is open and the exit is waiting
+            if (save.bossDefeated && run.Level.Boss != null) run.Level.Boss.RestoreDefeated();
+            // the reward that was still on the floor comes back at the player's feet
+            if (db != null && save.pendingItem != null && save.pendingItem.kind >= 0)
+            {
+                var pending = save.pendingItem.ToInstance(db);
+                if (pending != null)
+                {
+                    Vector2 at = run.Level.Chunks.TryGetValue(room, out var dropChunk) ? (Vector2)dropChunk.PlayerSpawn : (Vector2)run.Level.PlayerSpawn;
+                    LootFactory.DropItem(pending, at + new Vector2(2.5f, 0f));
+                }
+            }
 
             // put the player at the entrance of the room they saved in, with the health they had
             run.PlayerHealth.SetCurrent(Mathf.Max(1f, save.health));

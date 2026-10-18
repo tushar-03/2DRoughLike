@@ -47,7 +47,7 @@ namespace Roughlike.Tests.EditMode
             Assert.IsFalse(idle.shieldUp);
             Assert.IsFalse(art.TryAnchor("roll", 0, out _));
             Assert.IsTrue(art.Has("shoot"), "the bow has its own draw-and-release animation");
-            foreach (var clip in new[] { "crawl", "block_buckler", "parry", "slash1", "slash2", "overhead", "jab", "jab2", "flurry", "dual_a", "dual_b", "dual_cross", "whirl", "smash", "slam", "great_sweep", "great_overhead", "poke", "sweep" })
+            foreach (var clip in new[] { "crawl", "block_buckler", "parry", "slash1", "slash2", "overhead", "jab", "jab2", "flurry", "dual_a", "dual_b", "dual_cross", "whirl", "smash", "slam", "uppercut", "great_sweep", "great_overhead", "great_slash3", "poke", "poke_b", "sweep", "shoot_b", "shoot_c" })
                 Assert.IsTrue(art.Has(clip), clip + " is reachable through the companion sheets");
             Assert.IsTrue(art.TryAnchor("whirl", 4, out var whirl));
             Assert.AreNotEqual(whirl.angle, whirl.angleB, "the two swords of a spin point different ways");
@@ -76,10 +76,11 @@ namespace Roughlike.Tests.EditMode
 
         [TestCase("RustedDagger", "jab", "jab2", "flurry")]
         [TestCase("BellringerSword", "slash1", "slash2", "overhead")]
-        [TestCase("TideHammer", "smash", "slam", null)]
-        [TestCase("Boathook", "poke", "poke", "sweep")]
+        [TestCase("TideHammer", "smash", "slam", "uppercut")]
+        [TestCase("Boathook", "poke", "poke_b", "sweep")]
         [TestCase("TwinBlades", "dual_a", "dual_b", "dual_cross")]
-        [TestCase("Greatsword", "great_sweep", "great_overhead", null)]
+        [TestCase("Greatsword", "great_sweep", "great_overhead", "great_slash3")]
+        [TestCase("HuntersBow", "shoot", "shoot_b", "shoot_c")]
         public void EveryComboStepHasItsOwnAnimation(string asset, string a, string b, string c)
         {
             var w = AssetDatabase.LoadAssetAtPath<WeaponData>($"Assets/Data/Weapons/{asset}.asset");
@@ -88,6 +89,8 @@ namespace Roughlike.Tests.EditMode
             Assert.AreEqual(b, w.steps[1].clip);
             if (c != null) Assert.AreEqual(c, w.steps[2].clip);
             foreach (var step in w.steps) Assert.IsTrue(art.Has(step.clip), asset + " " + step.name + " plays " + step.clip);
+            Assert.GreaterOrEqual(w.steps.Length, 3, asset + " has at least three attacks that flow into each other");
+            Assert.AreEqual(w.steps.Length, new System.Collections.Generic.HashSet<string>(System.Array.ConvertAll(w.steps, x => x.clip)).Count, asset + " uses a different animation for every hit");
         }
 
         [Test]

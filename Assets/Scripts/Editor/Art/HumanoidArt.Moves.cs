@@ -13,8 +13,9 @@ namespace Roughlike.Editor.Art
     {
         struct Move
         {
-            public float Rest, Wind, Hit, End;                // weapon angle at rest, end of anticipation, at impact, after follow-through
-            public float LeanWind, LeanHit, LeanEnd;
+            public float Start, Rest, Wind, Hit, End;         // weapon angle at the first frame, at the last (the ready stance), end of anticipation, at impact, after follow-through
+            public float LeanStart, LeanWind, LeanHit, LeanEnd;
+            public float ReachStart;
             public float Crouch, Lunge, Step;                 // hip drop at the coil, hip push at impact, front foot step at impact
             public float WindEnd, HitEnd, FollowEnd;          // phase boundaries within the clip
             public float Reach0, Reach1, Reach2;              // how far the hand is from the shoulder (a thrust reaches far)
@@ -25,9 +26,9 @@ namespace Roughlike.Editor.Art
         static float EaseIn(float u) { u = Mathf.Clamp01(u); return u * u * (0.6f + 0.4f * u); }
 
         /// <summary>Piecewise eased value through the four phases of a move.</summary>
-        static float Phased(Move m, float t, float rest, float wind, float hit, float end)
+        static float Phased(Move m, float t, float start, float wind, float hit, float end, float rest)
         {
-            if (t < m.WindEnd) return Mathf.Lerp(rest, wind, EaseOut(t / Mathf.Max(0.001f, m.WindEnd)));
+            if (t < m.WindEnd) return Mathf.Lerp(start, wind, EaseOut(t / Mathf.Max(0.001f, m.WindEnd)));
             if (t < m.HitEnd) return Mathf.Lerp(wind, hit, EaseIn((t - m.WindEnd) / Mathf.Max(0.001f, m.HitEnd - m.WindEnd)));
             if (t < m.FollowEnd) return Mathf.Lerp(hit, end, EaseOut((t - m.HitEnd) / Mathf.Max(0.001f, m.FollowEnd - m.HitEnd)));
             return Mathf.Lerp(end, rest, Smooth((t - m.FollowEnd) / Mathf.Max(0.001f, 1f - m.FollowEnd)));
@@ -53,10 +54,19 @@ namespace Roughlike.Editor.Art
 
         static Move Slash(float rest, float wind, float hit, float end) => new Move
         {
-            Rest = rest, Wind = wind, Hit = hit, End = end,
+            Start = rest, Rest = rest, Wind = wind, Hit = hit, End = end, LeanStart = 2f, ReachStart = 62f,
             LeanWind = -10f, LeanHit = 14f, LeanEnd = 9f, Crouch = 4f, Lunge = 10f, Step = 30f,
             WindEnd = 0.34f, HitEnd = 0.5f, FollowEnd = 0.76f, Reach0 = 62f, Reach1 = 62f, Reach2 = 62f
         };
+
+        /// <summary>Makes a move begin where the previous one ended, so a combo flows: the arm does not return to the guard between hits.</summary>
+        static Move After(Move m, Move previous)
+        {
+            m.Start = previous.End;
+            m.LeanStart = previous.LeanEnd;
+            m.ReachStart = previous.Reach2;
+            return m;
+        }
 
         static bool TryMove(string clip, out Move m, out Move off, out bool dual)
         {
@@ -69,11 +79,13 @@ namespace Roughlike.Editor.Art
                 case "slash2":
                     m = Slash(55f, -60f, 95f, 130f);
                     m.LeanWind = 8f; m.LeanHit = -8f; m.LeanEnd = -4f; m.Crouch = 9f; m.Lunge = 8f; m.Step = 24f;
+                    m = After(m, Slash(55f, 135f, -35f, -60f));
                     return true;
                 case "overhead":
                     m = Slash(55f, 175f, -70f, -85f);
                     m.LeanWind = -20f; m.LeanHit = 22f; m.LeanEnd = 14f; m.Crouch = 10f; m.Lunge = 16f; m.Step = 38f;
                     m.WindEnd = 0.42f; m.HitEnd = 0.56f; m.FollowEnd = 0.8f;
+                    m.Start = 130f; m.LeanStart = -4f;
                     return true;
                 case "jab":
                     m = Slash(30f, 24f, 6f, 12f);
@@ -86,10 +98,12 @@ namespace Roughlike.Editor.Art
                     m.Thrust = true; m.Reach0 = 40f; m.Reach1 = 98f; m.Reach2 = 80f;
                     m.LeanWind = 2f; m.LeanHit = 10f; m.LeanEnd = 6f; m.Crouch = 13f; m.Lunge = 12f;
                     m.WindEnd = 0.3f; m.HitEnd = 0.46f; m.FollowEnd = 0.7f;
+                    m.Start = 6f; m.LeanStart = 12f; m.ReachStart = 84f;
                     return true;
                 case "flurry":
                     m = Slash(55f, 120f, -20f, -35f);
                     m.Lunge = 16f; m.Step = 36f; m.WindEnd = 0.26f; m.HitEnd = 0.4f; m.FollowEnd = 0.7f;
+                    m.Start = 0f; m.LeanStart = 6f; m.ReachStart = 80f;
                     return true;
 
                 // ---- a sword in each hand
@@ -104,12 +118,14 @@ namespace Roughlike.Editor.Art
                     m = Slash(55f, 60f, 72f, 60f);
                     off = Slash(18f, 140f, -30f, -50f);
                     off.LeanWind = m.LeanWind = 8f; off.LeanHit = m.LeanHit = 12f; off.LeanEnd = m.LeanEnd = 8f;
+                    m.Start = -50f; m.LeanStart = -10f + 14f; off.Start = 22f;
                     return true;
                 case "dual_cross":
                     dual = true;
                     m = Slash(55f, 140f, -40f, -55f);
                     off = Slash(18f, -55f, 75f, 110f);
                     m.Crouch = 8f; m.Lunge = 14f;
+                    m.Start = 60f; off.Start = -50f; m.LeanStart = 8f;
                     return true;
                 case "whirl":
                     dual = true;
@@ -119,6 +135,7 @@ namespace Roughlike.Editor.Art
                     m.Crouch = 14f; m.Lunge = 6f; m.Step = 20f;
                     m.WindEnd = 0.24f; m.HitEnd = 0.62f; m.FollowEnd = 0.8f;
                     off.WindEnd = m.WindEnd; off.HitEnd = m.HitEnd; off.FollowEnd = m.FollowEnd;
+                    m.Start = -55f; off.Start = 110f; m.LeanStart = 8f;
                     return true;
 
                 // ---- two-handed
@@ -133,6 +150,15 @@ namespace Roughlike.Editor.Art
                     m.TwoHands = true; m.Reach0 = 68f; m.Reach1 = 68f; m.Reach2 = 68f;
                     m.LeanWind = -28f; m.LeanHit = 32f; m.LeanEnd = 20f; m.Crouch = 18f; m.Lunge = 20f; m.Step = 40f;
                     m.WindEnd = 0.5f; m.HitEnd = 0.62f; m.FollowEnd = 0.84f;
+                    m.Start = -80f; m.LeanStart = 16f;
+                    return true;
+                case "uppercut":
+                    // a rising blow that lifts the weapon back up: the third hit of the hammer
+                    m = Slash(55f, -75f, 125f, 155f);
+                    m.TwoHands = true; m.Reach0 = 66f; m.Reach1 = 70f; m.Reach2 = 66f;
+                    m.LeanWind = 22f; m.LeanHit = -14f; m.LeanEnd = -8f; m.Crouch = 18f; m.Lunge = 10f; m.Step = 30f;
+                    m.WindEnd = 0.44f; m.HitEnd = 0.58f; m.FollowEnd = 0.82f;
+                    m.Start = -95f; m.LeanStart = 20f;
                     return true;
                 case "great_sweep":
                     m = Slash(55f, 170f, -5f, -40f);
@@ -145,6 +171,15 @@ namespace Roughlike.Editor.Art
                     m.TwoHands = true; m.Reach0 = 68f; m.Reach1 = 68f; m.Reach2 = 68f;
                     m.LeanWind = -24f; m.LeanHit = 28f; m.LeanEnd = 16f; m.Crouch = 14f; m.Lunge = 18f; m.Step = 38f;
                     m.WindEnd = 0.48f; m.HitEnd = 0.6f; m.FollowEnd = 0.84f;
+                    m.Start = -40f; m.LeanStart = 12f;
+                    return true;
+                case "great_slash3":
+                    // a backhand sweep that finishes the greatsword combo
+                    m = Slash(55f, 195f, -15f, 30f);
+                    m.TwoHands = true; m.Reach0 = 70f; m.Reach1 = 72f; m.Reach2 = 70f;
+                    m.LeanWind = -22f; m.LeanHit = 20f; m.LeanEnd = 10f; m.Crouch = 10f; m.Lunge = 18f; m.Step = 36f;
+                    m.WindEnd = 0.44f; m.HitEnd = 0.58f; m.FollowEnd = 0.82f;
+                    m.Start = -88f; m.LeanStart = 16f;
                     return true;
                 case "poke":
                     m = Slash(25f, 18f, 4f, 10f);
@@ -152,11 +187,20 @@ namespace Roughlike.Editor.Art
                     m.LeanWind = -6f; m.LeanHit = 14f; m.LeanEnd = 8f; m.Crouch = 8f; m.Lunge = 14f;
                     m.WindEnd = 0.32f; m.HitEnd = 0.48f; m.FollowEnd = 0.72f;
                     return true;
+                case "poke_b":
+                    // a second, lower thrust that picks up from the first
+                    m = Slash(25f, 8f, -6f, 4f);
+                    m.Thrust = true; m.TwoHands = true; m.Reach0 = 34f; m.Reach1 = 98f; m.Reach2 = 88f;
+                    m.LeanWind = -2f; m.LeanHit = 16f; m.LeanEnd = 8f; m.Crouch = 13f; m.Lunge = 14f;
+                    m.WindEnd = 0.3f; m.HitEnd = 0.46f; m.FollowEnd = 0.7f;
+                    m.Start = 10f; m.LeanStart = 8f; m.ReachStart = 88f;
+                    return true;
                 case "sweep":
                     m = Slash(25f, 140f, 10f, -25f);
                     m.TwoHands = true; m.Reach0 = 70f; m.Reach1 = 72f; m.Reach2 = 70f;
                     m.LeanWind = -12f; m.LeanHit = 18f; m.LeanEnd = 10f; m.Crouch = 8f; m.Lunge = 12f; m.Step = 30f;
                     m.WindEnd = 0.36f; m.HitEnd = 0.52f; m.FollowEnd = 0.78f;
+                    m.Start = 4f; m.LeanStart = 8f; m.ReachStart = 88f;
                     return true;
             }
             m = default;
@@ -171,6 +215,9 @@ namespace Roughlike.Editor.Art
             if (clip == "block_tower") { pose = Guard(s, t, false); return true; }
             if (clip == "block_buckler") { pose = Guard(s, t, true); return true; }
             if (clip == "parry") { pose = ParryPose(s, t); return true; }
+            // the bow's three shots: the standard draw, a quick snap shot and a long full draw
+            if (clip == "shoot_b") { pose = Shoot(s, t, 0f, 0.16f, 0.28f, 4f, 0f); return true; }
+            if (clip == "shoot_c") { pose = Shoot(s, t, 0f, 0.26f, 0.5f, 10f, 10f); return true; }
             if (!TryMove(clip, out Move m, out Move off, out bool dual)) return false;
             pose = MovePose(s, m, off, dual, t, clip == "whirl");
             return true;
@@ -183,10 +230,10 @@ namespace Roughlike.Editor.Art
             float torso = TorsoLen(s);
             float coil = Coil(m, t), hit = Impact(m, t);
 
-            float angle = Phased(m, t, m.Rest, m.Wind, m.Hit, m.End);
-            float lean = Phased(m, t, 2f, m.LeanWind, m.LeanHit, m.LeanEnd);
-            float reach = Phased(m, t, m.Reach0, m.Reach0, m.Reach1, m.Reach2);
-            if (m.Thrust) reach = Phased(m, t, m.Reach0, m.Reach0 * 0.8f, m.Reach1, m.Reach2);
+            float angle = Phased(m, t, m.Start, m.Wind, m.Hit, m.End, m.Rest);
+            float lean = Phased(m, t, m.LeanStart, m.LeanWind, m.LeanHit, m.LeanEnd, 2f);
+            float reach = Phased(m, t, m.ReachStart, m.Reach0, m.Reach1, m.Reach2, m.Reach0);
+            if (m.Thrust) reach = Phased(m, t, m.ReachStart, m.Reach0 * 0.8f, m.Reach1, m.Reach2, m.Reach0);
 
             p.Lean = lean;
             p.WeaponAngle = angle;
@@ -212,7 +259,7 @@ namespace Roughlike.Editor.Art
             {
                 // the off hand swings its own sword, lagging a little behind
                 float tb = Mathf.Clamp01(t - 0.04f);
-                float angleB = spin ? Phased(off, tb, off.Rest, off.Wind, off.Hit, off.End) : Phased(off, tb, off.Rest, off.Wind, off.Hit, off.End);
+                float angleB = Phased(off, tb, off.Start, off.Wind, off.Hit, off.End, off.Rest);
                 p.WeaponAngleB = angleB;
                 p.HasAngleB = true;
                 Vector2 shoulderB = chest - up * 12f - fwd * 5f;

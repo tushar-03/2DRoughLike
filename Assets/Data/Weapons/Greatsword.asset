@@ -53,8 +53,24 @@ MonoBehaviour:
     shake: 0.6
     lunge: 2
     moveScale: 0.2
+  - name: Backhand
+    clip: great_slash3
+    damage: 34
+    windup: 0.3
+    active: 0.11
+    recovery: 0.5
+    chainFraction: 0.55
+    hitOffset: {x: 1.3, y: 0.95}
+    hitSize: {x: 3.2, y: 1.7}
+    knockback: {x: 12, y: 5}
+    stagger: 34
+    hitStop: 0.14
+    shake: 0.5
+    lunge: 2.5
+    moveScale: 0.22
   comboResetTime: 0.6
   projectileSpeed: 26
+  range: 18
   pierce: 0
   shield:
     parryWindow: 0.18

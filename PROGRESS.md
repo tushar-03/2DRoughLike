@@ -296,5 +296,27 @@ Built and verified: 122 PlayMode + 38 EditMode tests pass; the scene was played 
 3. Swing each loadout on the dummies and compare the combos; raise the tower shield and the buckler; roll into a low tunnel and keep going.
 4. Fight the Hag: the aim line arrow points at you.
 
+## M5.6 - Game flow, checkpoints, charge and auto aim (awaiting review)
+**Fixed**
+- Frozen game after a boss: `DeathSequence` counted scaled time while its own explosions kept requesting freeze-frames, so time never advanced. It now uses real time, its explosions are `Cosmetic` (no shake, hit-stop or vibration) and `HitStop` never chains freezes (80 ms gap).
+- Boss fight restarting after a continue: boss defeat is now saved (see below).
+- Controller left/right: menus use explicit navigation built by `MenuNav.AutoLink` (rows by screen position) instead of vertical-only navigation; tabs switch on selection; the background selection is restored when the last menu closes.
+
+**Added**
+- Checkpoints: `RunManager.OnBossDefeated` heals and, after the reward has dropped, saves. `RunSaver.Capture` after a boss produces the start of the next area (full health, fresh world state, `pendingItem` for an unclaimed reward) or, after the final boss, an open-arena save (`RunSave.bossDefeated`, restored with `BossEncounter.RestoreDefeated`).
+- Flow: tutorial and menu both lead to the practice room; the win screen offers New game (`RunManager.StartNewGameFromEnd`).
+- Hold to charge (`AttackPhase.Charging`, `PlayerCombat.ChargeLevel`; `PlayerCombat.ChargeAttacks` switches it off for tests) with a held coiled pose, warm tint and a charge sound; auto-facing and bow auto aim (`PlayerCombat.NearestEnemy`, `WeaponData.range`).
+- Animation flow: moves start where the previous step ended (`Move.Start`, `After`), a third step for the hammer (`uppercut`), greatsword (`great_slash3`), boathook (`poke_b`) and three bow shots.
+
+### How to test M5.6
+1. Beat the Hag (or use the dev probes), quit, Continue: you start Area 2 healed, and the reward is on the floor.
+2. Beat the Warden, quit, Continue: the arena is open and the boss is gone; step into the portal for the win screen, then New game.
+3. Hold the attack button: the character coils and glows; release for a big hit. Stand with your back to an enemy and swing: you turn.
+4. Bow: shoot at an enemy on a ledge above; it hits.
+5. Settings with a controller: left/right on tabs and sliders.
+
+### Notes
+- Dying is still permadeath: it deletes the save. Checkpoints protect against quitting, not against dying.
+
 ## Next
 M6 - content expansion: more weapons, special rooms and challenge doors, more mutations and status effects.

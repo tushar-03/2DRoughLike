@@ -45,7 +45,7 @@ namespace Roughlike.Utils
         }
 
         /// <summary>Plays a clip once over <paramref name="duration"/> seconds (0 = its natural length) and holds the last frame.</summary>
-        public void PlayOnce(string clip, float duration = 0f) => Begin(clip, true, false, duration);
+        public void PlayOnce(string clip, float duration = 0f, float startProgress = 0f) => Begin(clip, true, false, duration, startProgress);
 
         /// <summary>Shows the frame matching <paramref name="progress01"/> of the clip. Call every frame while it should show.</summary>
         public void Scrub(string clip, float progress01)
@@ -55,7 +55,7 @@ namespace Roughlike.Utils
             Show(_scrubValue);
         }
 
-        void Begin(string clip, bool once, bool scrub, float duration)
+        void Begin(string clip, bool once, bool scrub, float duration, float startProgress = 0f)
         {
             if (art == null) return;
             _frames = art.Frames(clip);
@@ -63,10 +63,11 @@ namespace Roughlike.Utils
             _clip = clip;
             _once = once;
             _scrub = scrub;
-            _time = 0f;
             _duration = duration > 0f ? duration : (_def != null ? _def.frames / Mathf.Max(1f, _def.fps) : 0.5f);
-            FrameIndex = 0;
-            if (_frames.Length > 0) Renderer.sprite = _frames[0];
+            _time = Mathf.Clamp01(startProgress) * _duration;
+            int first = _frames.Length > 0 ? Mathf.Min(_frames.Length - 1, Mathf.FloorToInt(Mathf.Clamp01(startProgress) * _frames.Length)) : 0;
+            FrameIndex = first;
+            if (_frames.Length > 0) Renderer.sprite = _frames[first];
         }
 
         void Update()

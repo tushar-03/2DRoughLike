@@ -179,13 +179,14 @@ namespace Roughlike.Editor.Art
         }
 
         /// <summary>Raise the bow, draw the string back, release. Used by archers and by the player's bow.</summary>
-        static Pose Shoot(HumanoidSpec s, float t, float shake)
+        static Pose Shoot(HumanoidSpec s, float t, float shake, float aimEnd = 0.2f, float drawEnd = 0.34f, float lean = 6f, float crouch = 0f)
         {
             Pose p = Stand(s);
             float hy = p.Hip.y;
-            float aim = Smooth(Mathf.Clamp01(t / 0.2f));
-            float draw = t < 0.34f ? Smooth(Mathf.Clamp01((t - 0.1f) / 0.24f)) : Mathf.Max(0f, 1f - (t - 0.34f) * 7f);
-            p.Lean = Mathf.Lerp(2f, 6f, aim);
+            float aim = Smooth(Mathf.Clamp01(t / aimEnd));
+            float draw = t < drawEnd ? Smooth(Mathf.Clamp01((t - aimEnd * 0.5f) / (drawEnd - aimEnd * 0.5f))) : Mathf.Max(0f, 1f - (t - drawEnd) * 7f);
+            p.Hip.y = hy - crouch * aim;
+            p.Lean = Mathf.Lerp(2f, lean, aim);
             p.HandF = new Vector2(Mathf.Lerp(26f, 84f, aim), Mathf.Lerp(hy + 6f, hy + TorsoLen(s) * 0.8f, aim));
             p.HandB = new Vector2(Mathf.Lerp(-20f, 84f - draw * 62f, aim), p.HandF.y + shake);
             p.Draw = draw;

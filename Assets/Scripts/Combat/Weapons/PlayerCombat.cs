@@ -6,7 +6,7 @@ using Roughlike.Player;
 
 namespace Roughlike.Combat
 {
-    public enum AttackPhase { None, Windup, Active, Recovery }
+    public enum AttackPhase { None, Windup, Charging, Active, Recovery }
     public enum ShieldPhase { None, Parry, Block, Lowering }
 
     /// <summary>Raised when a swing goes live so VFX/audio can react without knowing about weapons.</summary>
@@ -76,6 +76,26 @@ namespace Roughlike.Combat
         public AttackPhase Phase => _phase;
         public ShieldPhase Shield => _shieldPhase;
         public int ComboIndex => _combo;
+
+        /// <summary>Hold-to-charge can be switched off (the automated tests press buttons without ever releasing them).</summary>
+        public static bool ChargeAttacks = true;
+        /// <summary>Holding is worth nothing under this long; at <see cref="MaxCharge"/> the bonus is full.</summary>
+        public const float MinCharge = 0.25f, MaxCharge = 1.2f;
+        /// <summary>Extra damage at a full charge (1 = double).</summary>
+        public const float ChargeDamageBonus = 1.0f;
+
+        PlayerIntent _intent;
+        float _chargeTimer, _chargeLevel;
+
+        public bool Charging => _phase == AttackPhase.Charging;
+        /// <summary>0..1: how charged the current (or just released) blow is.</summary>
+        public float ChargeLevel => _phase == AttackPhase.Charging ? ChargeFor(_chargeTimer) : _chargeLevel;
+        public int AttackSlot => _slot;
+
+        static float ChargeFor(float seconds) => Mathf.Clamp01((seconds - MinCharge) / (MaxCharge - MinCharge));
+
+        public event Action ChargeStarted;
+        public event Action<float> ChargeReleased;
         public WeaponData Slot1 => slot1;
         public WeaponData Slot2 => slot2;
         public WeaponData GetWeapon(int slot) => slot == 0 ? slot1 : slot2;
@@ -166,6 +186,7 @@ namespace Roughlike.Combat
             if (_pc == null) return;
             dt = Mathf.Min(dt, 1f / 20f);
             PlayerIntent intent = _pc.LastIntent;
+            _intent = intent;
 
             bool canAct = !_pc.IsControlLocked &&
                           (_pc.State == PlayerState.Grounded || _pc.State == PlayerState.Airborne);
@@ -213,7 +234,22 @@ namespace Roughlike.Combat
                 {
                     _phaseTimer += dt;
                     AttackStep step = CurrentStep();
-                    if (_phaseTimer >= step.windup) EnterActive(step);
+                    if (_phaseTimer >= step.windup) BeginChargeOrStrike(step);
+                    break;
+                }
+
+                case AttackPhase.Charging:
+                {
+                    // the blow is drawn back and held; letting go (or holding too long) throws it
+                    AttackStep step = CurrentStep();
+                    _chargeTimer += dt;
+                    bool held = _slot == 0 ? _intent.Attack1Held : _intent.Attack2Held;
+                    if (!held || _chargeTimer >= MaxCharge)
+                    {
+                        _chargeLevel = ChargeFor(_chargeTimer);
+                        ChargeReleased?.Invoke(_chargeLevel);
+                        EnterActive(step);
+                    }
                     break;
                 }
 
@@ -277,8 +313,53 @@ namespace Roughlike.Combat
             StartAttack(_buffered, index);
         }
 
+        void BeginChargeOrStrike(AttackStep step)
+        {
+            bool held = _slot == 0 ? _intent.Attack1Held : _intent.Attack2Held;
+            if (ChargeAttacks && held)
+            {
+                _phase = AttackPhase.Charging;
+                _phaseTimer = 0f;
+                _chargeTimer = 0f;
+                ChargeStarted?.Invoke();
+                return;
+            }
+            _chargeLevel = 0f;
+            EnterActive(step);
+        }
+
+        /// <summary>The nearest living enemy within <paramref name="range"/>; enemies behind count as farther, so the one you face wins ties.</summary>
+        public Health NearestEnemy(float range)
+        {
+            Vector2 from = (Vector2)transform.position + Vector2.up;
+            var hits = Physics2D.OverlapCircleAll(from, range, _targetMask);
+            Health best = null;
+            float bestScore = float.MaxValue;
+            foreach (var c in hits)
+            {
+                var h = c.GetComponentInParent<Health>();
+                if (h == null || h.IsDead || h.Team != Team.Enemy) continue;
+                Vector2 to = h.Center - from;
+                float score = to.magnitude * (Mathf.Sign(to.x) == _pc.Facing || Mathf.Abs(to.x) < 0.5f ? 1f : 1.6f);
+                if (score < bestScore) { bestScore = score; best = h; }
+            }
+            return best;
+        }
+
+        /// <summary>Turns toward the nearest enemy when an attack starts, so a swing never whiffs at thin air behind you.</summary>
+        void AutoFace(float range)
+        {
+            var target = NearestEnemy(range);
+            if (target == null) return;
+            float dx = target.Center.x - transform.position.x;
+            if (Mathf.Abs(dx) > 0.4f) _pc.FaceToward(dx > 0f ? 1 : -1);
+        }
+
         void StartAttack(int slot, int index)
         {
+            _chargeLevel = 0f;
+            WeaponData starting = GetWeapon(slot);
+            if (starting != null) AutoFace(starting.kind == WeaponKind.Bow ? starting.range : 3.6f);
             _slot = slot;
             _combo = index;
             _buffered = -1;
@@ -323,14 +404,25 @@ namespace Roughlike.Combat
         {
             WeaponData w = GetWeapon(_slot);
             WeaponMods mods = Modifiers != null ? Modifiers.GetWeaponMods(_slot) : WeaponMods.Neutral;
-            float amount = step.damage * DamageMultiplier * mods.DamageMultiplier * _swingBonus;
+            float amount = step.damage * DamageMultiplier * mods.DamageMultiplier * _swingBonus * (1f + ChargeDamageBonus * _chargeLevel);
             bool crit = mods.CritChance > 0f && UnityEngine.Random.value < mods.CritChance;
             if (crit) amount *= mods.CritMultiplier;
 
             Vector2 from = (Vector2)transform.position + new Vector2(0.55f * _pc.Facing, 1.15f);
-            Projectile arrow = Projectile.Spawn(from, new Vector2(_pc.Facing * w.projectileSpeed, 0f), amount, Team.Player,
-                step.knockback.x, step.stagger, 1.4f, 0.22f, w.tint);
-            arrow.SetArrow(w.pierce + (step.damage >= 22f ? 1 : 0));
+            // auto aim: the arrow flies at the nearest enemy (up, down or ahead); with no target it goes straight forward
+            Vector2 dir = new Vector2(_pc.Facing, 0f);
+            var target = NearestEnemy(w.range);
+            if (target != null)
+            {
+                Vector2 to = target.Center - from;
+                if (to.sqrMagnitude > 0.25f) dir = to.normalized;
+                if (Mathf.Abs(to.x) > 0.4f) _pc.FaceToward(to.x > 0f ? 1 : -1);
+            }
+            float speed = w.projectileSpeed * (1f + 0.4f * _chargeLevel);
+            float flight = (w.range + 4f) / Mathf.Max(1f, speed);
+            Projectile arrow = Projectile.Spawn(from, dir * speed, amount, Team.Player,
+                step.knockback.x * (1f + 0.8f * _chargeLevel), step.stagger * (1f + 0.8f * _chargeLevel), flight, 0.22f + 0.08f * _chargeLevel, w.tint);
+            arrow.SetArrow(w.pierce + (step.damage >= 22f ? 1 : 0) + (_chargeLevel > 0.6f ? 1 : 0));
             Roughlike.Utils.Sfx.Play(Roughlike.Utils.SfxId.BowRelease, 0.85f);
         }
 
@@ -341,9 +433,10 @@ namespace Roughlike.Combat
             if (showHitboxes) MeleeStrike.DrawDebug(centre, step.hitSize, Color.red);
 
             WeaponMods mods = Modifiers != null ? Modifiers.GetWeaponMods(_slot) : WeaponMods.Neutral;
-            float amount = step.damage * DamageMultiplier * mods.DamageMultiplier * _swingBonus;
+            float amount = step.damage * DamageMultiplier * mods.DamageMultiplier * _swingBonus * (1f + ChargeDamageBonus * _chargeLevel);
             bool crit = mods.CritChance > 0f && UnityEngine.Random.value < mods.CritChance;
             if (crit) amount *= mods.CritMultiplier;
+            float power = 1f + 0.8f * _chargeLevel;
 
             var info = new DamageInfo
             {
@@ -351,10 +444,10 @@ namespace Roughlike.Combat
                 SourceTeam = Team.Player,
                 Attacker = this,
                 SourcePosition = transform.position,
-                Knockback = new Vector2(step.knockback.x * _pc.Facing, step.knockback.y),
-                Stagger = step.stagger,
-                HitStop = step.hitStop * (crit ? 1.5f : 1f),
-                Shake = step.shake * (crit ? 1.4f : 1f),
+                Knockback = new Vector2(step.knockback.x * _pc.Facing, step.knockback.y) * power,
+                Stagger = step.stagger * power,
+                HitStop = step.hitStop * (crit ? 1.5f : 1f) * power,
+                Shake = step.shake * (crit ? 1.4f : 1f) * power,
                 Tags = DamageTags.Melee,
                 IsCrit = crit,
                 OnHitStatus = mods.Status,
@@ -363,7 +456,7 @@ namespace Roughlike.Combat
                 StatusPotency = mods.StatusPotency
             };
 
-            MeleeStrike.Strike(centre, step.hitSize, _targetMask, info, _hitSet, (h, r) => StrikeLanded?.Invoke(h, r));
+            MeleeStrike.Strike(centre, step.hitSize * (1f + 0.3f * _chargeLevel), _targetMask, info, _hitSet, (h, r) => StrikeLanded?.Invoke(h, r));
         }
 
         void EndAttack(float comboResetTime)
@@ -479,6 +572,7 @@ namespace Roughlike.Combat
         /// <summary>Hit reaction, roll or ladder: drop whatever we were doing.</summary>
         public void Interrupt()
         {
+            _chargeLevel = 0f;
             _phase = AttackPhase.None;
             _phaseTimer = 0f;
             _combo = 0;
@@ -496,7 +590,7 @@ namespace Roughlike.Combat
             {
                 AttackStep step = _phase == AttackPhase.Recovery ? PreviousStep() : CurrentStep();
                 _pc.MoveSpeedScale = step.moveScale;
-                _pc.FacingLocked = _phase == AttackPhase.Windup || _phase == AttackPhase.Active;
+                _pc.FacingLocked = _phase == AttackPhase.Windup || _phase == AttackPhase.Charging || _phase == AttackPhase.Active;
             }
             else if (_shieldPhase == ShieldPhase.Parry || _shieldPhase == ShieldPhase.Block)
             {

@@ -69,6 +69,7 @@ MonoBehaviour:
     moveScale: 0.5
   comboResetTime: 0.4
   projectileSpeed: 26
+  range: 18
   pierce: 0
   shield:
     parryWindow: 0.18

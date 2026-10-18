@@ -114,6 +114,7 @@ namespace Roughlike.UI
             var done = MenuKit.Action(panel, "Done", new Vector2(250f, 50f), Close);
             UiKit.Place((RectTransform)done.transform, new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(-24f, -12f), new Vector2(250f, 50f));
 
+            MenuNav.AutoLink(panel);
             Select(TouchControls.Specs[1].Id);
             RefreshPreviewAlpha();
             _building = false;

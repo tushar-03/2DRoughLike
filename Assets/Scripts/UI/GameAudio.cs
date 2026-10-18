@@ -161,7 +161,9 @@ namespace Roughlike.UI
         }
 
         void OnEnemyDied(EnemyDiedEvent e) => Sfx.PlayAt(SfxId.EnemyDeath, e.Position, 0.9f);
-        void OnExplosion(ExplosionEvent e) => Sfx.PlayAt(SfxId.Explosion, e.Position, Mathf.Clamp01(e.Radius / 3f) * 0.6f + 0.4f);
+        void OnExplosion(ExplosionEvent e) { if (!e.Cosmetic) PlayExplosion(e); }
+
+        void PlayExplosion(ExplosionEvent e) => Sfx.PlayAt(SfxId.Explosion, e.Position, Mathf.Clamp01(e.Radius / 3f) * 0.6f + 0.4f);
 
         void OnBossSpawned(BossSpawnedEvent e)
         {

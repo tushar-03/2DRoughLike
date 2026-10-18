@@ -23,6 +23,9 @@ namespace Roughlike.Player
         /// <summary>Lets another system (combat) force a clip, e.g. the shield pose. Return null to leave the clip alone.</summary>
         public Func<string> ClipOverride;
 
+        /// <summary>While true the clip is held exactly as another system set it (a charging attack holds its coiled pose).</summary>
+        public bool HoldClip;
+
         Vector2 _squash = Vector2.one;
         float _spin;
 
@@ -104,6 +107,7 @@ namespace Roughlike.Player
 
         void PickClip()
         {
+            if (HoldClip) return;
             string over = ClipOverride?.Invoke();
             if (_anim.IsPlayingOnce && over == null) return;
 

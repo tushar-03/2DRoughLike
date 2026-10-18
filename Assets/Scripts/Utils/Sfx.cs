@@ -9,7 +9,7 @@ namespace Roughlike.Utils
         // player movement
         Jump, DoubleJump, WallJump, Land, Roll, Footstep, LedgeGrab,
         // combat
-        SwingLight, SwingHeavy, SwingBow, BowRelease, Hit, HitHeavy, Crit, Parry, Block, ShieldRaise, PlayerHurt, PlayerDeath,
+        SwingLight, SwingHeavy, SwingBow, BowRelease, Charge, Hit, HitHeavy, Crit, Parry, Block, ShieldRaise, PlayerHurt, PlayerDeath,
         EnemyDeath, EnemyTelegraph, EnemyShoot, Explosion, Burn, Poison,
         // bosses
         BossRoar, BossSlam, BossPhase, BossDeath, BossCharge,
@@ -103,7 +103,7 @@ namespace Roughlike.Utils
             if (_root != null) { EnsureListener(); return; }
             _nextListenerCheck = 0f;
             _root = new GameObject("Sfx");
-            _root.hideFlags = HideFlags.DontSave;
+
             if (Application.isPlaying) Object.DontDestroyOnLoad(_root);
             _pool = new AudioSource[PoolSize];
             for (int i = 0; i < PoolSize; i++)

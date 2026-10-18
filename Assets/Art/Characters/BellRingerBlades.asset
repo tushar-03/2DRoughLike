@@ -95,26 +95,26 @@ MonoBehaviour:
     loop: 0
     anchors:
     - valid: 1
-      hand: {x: 195.5039, y: 257.4522}
-      angle: 55
+      hand: {x: 212.80118, y: 191.70459}
+      angle: -60
       handB: {x: 124, y: 193.79851}
-      angleB: 16.25
+      angleB: -70
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
-      hand: {x: 210.3135, y: 197.75691}
-      angle: -37.581615
+      hand: {x: 207.91782, y: 184.67407}
+      angle: -60
       handB: {x: 124.80505, y: 191.38333}
-      angleB: -53.18621
+      angleB: -70
       shieldUp: 0
       shield: {x: 200, y: 170.1256}
       stow: {x: 104, y: 185.0596}
     - valid: 1
-      hand: {x: 206.8374, y: 183.26938}
-      angle: -59.531925
+      hand: {x: 206.75958, y: 183.00542}
+      angle: -60
       handB: {x: 124.995926, y: 190.81071}
-      angleB: -69.64894
+      angleB: -70
       shieldUp: 0
       shield: {x: 200, y: 168.40773}
       stow: {x: 104, y: 183.34174}
@@ -165,26 +165,26 @@ MonoBehaviour:
     loop: 0
     anchors:
     - valid: 1
-      hand: {x: 195.5039, y: 257.4522}
-      angle: 55
+      hand: {x: 150.77794, y: 279.22498}
+      angle: 130
       handB: {x: 124, y: 193.79851}
-      angleB: 16.25
+      angleB: 72.5
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
-      hand: {x: 130.38072, y: 272.0851}
-      angle: 140.52182
+      hand: {x: 115.72827, y: 271.0689}
+      angle: 162.07068
       handB: {x: 124.712685, y: 190.94778}
-      angleB: 80.391365
+      angleB: 96.55301
       shieldUp: 0
       shield: {x: 200, y: 170.2443}
       stow: {x: 104, y: 185.17828}
     - valid: 1
-      hand: {x: 105.03662, y: 266.56702}
-      angle: 171.07787
+      hand: {x: 103.41675, y: 266.14337}
+      angle: 173.5292
       handB: {x: 124.967316, y: 189.92924}
-      angleB: 103.308395
+      angleB: 105.146904
       shieldUp: 0
       shield: {x: 200, y: 167.69795}
       stow: {x: 104, y: 182.63196}
@@ -235,7 +235,7 @@ MonoBehaviour:
     loop: 0
     anchors:
     - valid: 1
-      hand: {x: 181.09247, y: 236.39253}
+      hand: {x: 201.87708, y: 248.39253}
       angle: 30
       handB: {x: 124, y: 193.79851}
       angleB: -2.5
@@ -243,7 +243,7 @@ MonoBehaviour:
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
-      hand: {x: 166.85294, y: 225.9775}
+      hand: {x: 169.98256, y: 227.42772}
       angle: 24.862326
       handB: {x: 124.85628, y: 193.79851}
       angleB: -6.3532557
@@ -251,7 +251,7 @@ MonoBehaviour:
       shield: {x: 200, y: 172.23343}
       stow: {x: 104, y: 187.16743}
     - valid: 1
-      hand: {x: 164.38739, y: 224.27206}
+      hand: {x: 164.38976, y: 224.27312}
       angle: 24.000648
       handB: {x: 124.99989, y: 193.79851}
       angleB: -6.9995136
@@ -305,26 +305,26 @@ MonoBehaviour:
     loop: 0
     anchors:
     - valid: 1
-      hand: {x: 182.82451, y: 237.39253}
-      angle: 30
+      hand: {x: 242.43855, y: 223.80354}
+      angle: 6
       handB: {x: 124, y: 193.79851}
-      angleB: -2.5
+      angleB: -20.5
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
-      hand: {x: 176.2185, y: 213.64716}
-      angle: 12.87442
+      hand: {x: 184.40579, y: 212.50012}
+      angle: 9.425116
       handB: {x: 124.85628, y: 187.80455}
-      angleB: -15.344185
+      angleB: -17.931164
       shieldUp: 0
       shield: {x: 200, y: 166.23947}
       stow: {x: 104, y: 181.17348}
     - valid: 1
-      hand: {x: 174.69852, y: 209.95201}
-      angle: 10.00216
+      hand: {x: 174.70464, y: 209.95128}
+      angle: 9.999568
       handB: {x: 124.99989, y: 186.79926}
-      angleB: -17.49838
+      angleB: -17.500324
       shieldUp: 0
       shield: {x: 200, y: 164.37251}
       stow: {x: 104, y: 179.30652}
@@ -375,18 +375,18 @@ MonoBehaviour:
     loop: 0
     anchors:
     - valid: 1
-      hand: {x: 195.5039, y: 257.4522}
-      angle: 55
+      hand: {x: 231.30255, y: 230.56148}
+      angle: 0
       handB: {x: 124, y: 193.79851}
-      angleB: 16.25
+      angleB: -25
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
-      hand: {x: 150.09251, y: 273.3844}
-      angle: 114.05515
+      hand: {x: 153.89415, y: 273.9964}
+      angle: 109.0249
       handB: {x: 124.90854, y: 195.61559}
-      angleB: 60.541367
+      angleB: 56.768677
       shieldUp: 0
       shield: {x: 200, y: 173.73694}
       stow: {x: 104, y: 188.67094}
@@ -515,26 +515,26 @@ MonoBehaviour:
     loop: 0
     anchors:
     - valid: 1
-      hand: {x: 195.5039, y: 257.4522}
-      angle: 55
-      handB: {x: 193.60748, y: 238.1992}
-      angleB: 18
+      hand: {x: 209.48747, y: 198.42517}
+      angle: -50
+      handB: {x: 194.97552, y: 240.4097}
+      angleB: 22
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
-      hand: {x: 195.12303, y: 255.11931}
-      angle: 59.025288
-      handB: {x: 164.54678, y: 268.60367}
-      angleB: 98.604485
+      hand: {x: 202.83295, y: 245.29204}
+      angle: 38.556328
+      handB: {x: 164.26802, y: 268.92047}
+      angleB: 99.961716
       shieldUp: 0
       shield: {x: 200, y: 174.15088}
       stow: {x: 104, y: 189.08487}
     - valid: 1
-      hand: {x: 195.01003, y: 254.49274}
-      angle: 59.97965
-      handB: {x: 143.39969, y: 273.56464}
-      angleB: 137.39828
+      hand: {x: 195.19177, y: 254.30423}
+      angle: 59.552277
+      handB: {x: 143.35962, y: 273.56787}
+      angleB: 137.48358
       shieldUp: 0
       shield: {x: 200, y: 173.38739}
       stow: {x: 104, y: 188.32138}
@@ -585,26 +585,26 @@ MonoBehaviour:
     loop: 0
     anchors:
     - valid: 1
-      hand: {x: 195.5039, y: 257.4522}
-      angle: 55
-      handB: {x: 193.60748, y: 238.1992}
-      angleB: 18
+      hand: {x: 200.0075, y: 258.47906}
+      angle: 60
+      handB: {x: 200.99365, y: 199.68373}
+      angleB: -50
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
-      hand: {x: 146.57756, y: 272.05963}
-      angle: 123.429886
-      handB: {x: 182.26418, y: 203.04965}
-      angleB: -30.230553
+      hand: {x: 147.2945, y: 272.21475}
+      angle: 124.4046
+      handB: {x: 180.54427, y: 190.3851}
+      angleB: -53.303463
       shieldUp: 0
       shield: {x: 200, y: 170.93065}
       stow: {x: 104, y: 185.86465}
     - valid: 1
-      hand: {x: 133.5506, y: 271.6706}
-      angle: 139.65404
-      handB: {x: 175.86118, y: 187.94226}
-      angleB: -53.443233
+      hand: {x: 133.56526, y: 271.67334}
+      angle: 139.67438
+      handB: {x: 175.60431, y: 187.1631}
+      angleB: -54.89337
       shieldUp: 0
       shield: {x: 200, y: 169.40367}
       stow: {x: 104, y: 184.33768}
@@ -655,18 +655,18 @@ MonoBehaviour:
     loop: 0
     anchors:
     - valid: 1
-      hand: {x: 195.5039, y: 257.4522}
-      angle: 55
-      handB: {x: 193.60748, y: 238.1992}
-      angleB: 18
+      hand: {x: 212.83145, y: 194.73592}
+      angle: -55
+      handB: {x: 163.79906, y: 274.28455}
+      angleB: 110
       shieldUp: 0
       shield: {x: 200, y: 177.37111}
       stow: {x: 104, y: 192.30511}
     - valid: 1
-      hand: {x: 165.5865, y: 258.97153}
-      angle: 92.34748
-      handB: {x: 82.046646, y: 246.32495}
-      angleB: 227.04666
+      hand: {x: 169.73576, y: 256.72058}
+      angle: 85.05305
+      handB: {x: 76.07562, y: 238.87909}
+      angleB: 244.21283
       shieldUp: 0
       shield: {x: 200, y: 164.29948}
       stow: {x: 104, y: 179.23349}

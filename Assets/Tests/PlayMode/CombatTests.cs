@@ -39,6 +39,7 @@ namespace Roughlike.Tests.PlayMode
         [SetUp]
         public void SetUp()
         {
+            PlayerCombat.ChargeAttacks = false;   // these tests press buttons and never let go
             _cfg = ScriptableObject.CreateInstance<MovementConfig>();
             _sword = MakeSword();
             _shield = ScriptableObject.CreateInstance<WeaponData>();
@@ -54,6 +55,7 @@ namespace Roughlike.Tests.PlayMode
         [TearDown]
         public void TearDown()
         {
+            PlayerCombat.ChargeAttacks = true;
             foreach (var p in Object.FindObjectsByType<Projectile>()) Object.DestroyImmediate(p.gameObject);
             foreach (var go in _spawned) if (go != null) Object.DestroyImmediate(go);
             _spawned.Clear();
@@ -460,7 +462,109 @@ namespace Roughlike.Tests.PlayMode
             Assert.Less(grunt.transform.position.x, 3f);
             Assert.GreaterOrEqual(grunt.transform.position.y, -0.1f, "enemy fell off the ledge");
         }
+        // ------------------------------------------------------------------ hold to charge and auto aim
+
+        [Test]
+        public void HoldingAttackChargesAndReleasingHitsHarder()
+        {
+            PlayerCombat.ChargeAttacks = true;
+            Floor();
+            SpawnPlayer();
+            var dummy = SpawnDummy(1.6f);
+            Tick(0.3f);
+            _in.PressAttack(0);                    // pressed and held
+            Tick(1.0f);
+            Assert.IsTrue(_combat.Charging, "the blow is drawn back and held");
+            Assert.Greater(_combat.ChargeLevel, 0.5f);
+            Assert.AreEqual(0, dummy.Hits, "nothing has landed yet");
+
+            _in.ReleaseAttack(0);
+            Tick(0.6f);
+            Assert.AreEqual(1, dummy.Hits);
+            Assert.Greater(dummy.TotalDamage, 14f * 1.5f, "a charged hit does much more than the base 14");
+        }
+
+        [Test]
+        public void TappingAttackIsInstantAndNotCharged()
+        {
+            PlayerCombat.ChargeAttacks = true;
+            Floor();
+            SpawnPlayer();
+            var dummy = SpawnDummy(1.6f);
+            Tick(0.3f);
+            _in.PressAttack(0);
+            _in.ReleaseAttack(0);
+            Tick(0.6f);
+            Assert.AreEqual(1, dummy.Hits);
+            Assert.AreEqual(14f, dummy.TotalDamage, 0.01f, "a quick tap is a normal hit");
+        }
+
+        [Test]
+        public void ANeverReleasedChargeThrowsItselfAtFullPower()
+        {
+            PlayerCombat.ChargeAttacks = true;
+            Floor();
+            SpawnPlayer();
+            var dummy = SpawnDummy(1.6f);
+            Tick(0.3f);
+            _in.PressAttack(0);
+            Tick(2.2f);
+            Assert.AreEqual(1, dummy.Hits);
+            Assert.AreEqual(28f, dummy.TotalDamage, 0.5f, "a full charge doubles the damage");
+        }
+
+        [Test]
+        public void MeleeSwingsTurnTowardTheNearestEnemy()
+        {
+            Floor();
+            SpawnPlayer();
+            var dummy = SpawnDummy(-1.6f);         // behind a player who faces right
+            Tick(0.3f);
+            Assert.AreEqual(1, _pc.Facing);
+            _in.PressAttack(0);
+            _in.ReleaseAttack(0);
+            Tick(0.6f);
+            Assert.AreEqual(1, dummy.Hits, "the swing turned around instead of cutting empty air");
+        }
+
+        [Test]
+        public void ArrowsAutoAimAtTheNearestEnemyEvenWhenItIsAbove()
+        {
+            Floor();
+            var bow = ScriptableObject.CreateInstance<WeaponData>();
+            bow.kind = WeaponKind.Bow;
+            bow.range = 18f;
+            bow.projectileSpeed = 28f;
+            bow.steps = new[] { new AttackStep { damage = 10f, windup = 0.05f, active = 0.02f, recovery = 0.1f, knockback = Vector2.zero, stagger = 0f, hitStop = 0f, shake = 0f } };
+            SpawnPlayer(bow, null);
+            var high = SpawnDummy(9f);
+            high.transform.position = new Vector3(9f, 3.5f, 0f);       // well above where a straight arrow would fly
+            Physics2D.SyncTransforms();
+            Tick(0.3f);
+            _in.PressAttack(0);
+            _in.ReleaseAttack(0);
+            Tick(1.2f);
+            Assert.AreEqual(1, high.Hits, "the arrow bent toward its target");
+            Object.DestroyImmediate(bow);
+        }
+
+        [Test]
+        public void ABowSeesFartherThanAMeleeWeaponAndStopsBeyondItsRange()
+        {
+            Floor();
+            var bow = ScriptableObject.CreateInstance<WeaponData>();
+            bow.kind = WeaponKind.Bow;
+            bow.range = 12f;
+            bow.projectileSpeed = 28f;
+            bow.steps = new[] { new AttackStep { damage = 10f, windup = 0.05f, active = 0.02f, recovery = 0.1f, knockback = Vector2.zero, stagger = 0f, hitStop = 0f, shake = 0f } };
+            SpawnPlayer(bow, null);
+            var far = SpawnDummy(25f);
+            Tick(0.3f);
+            _in.PressAttack(0);
+            _in.ReleaseAttack(0);
+            Tick(1.6f);
+            Assert.AreEqual(0, far.Hits, "beyond the bow's range the arrow runs out");
+            Object.DestroyImmediate(bow);
+        }
     }
 }
-
-

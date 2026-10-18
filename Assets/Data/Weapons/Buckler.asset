@@ -24,6 +24,7 @@ MonoBehaviour:
   steps: []
   comboResetTime: 0.45
   projectileSpeed: 26
+  range: 18
   pierce: 0
   shield:
     parryWindow: 0.28

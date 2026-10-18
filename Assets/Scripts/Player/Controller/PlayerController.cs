@@ -58,6 +58,13 @@ namespace Roughlike.Player
         /// <summary>When true the facing direction does not follow input (during attack windups and swings).</summary>
         public bool FacingLocked { get; set; }
 
+        /// <summary>Turns to face a direction (an attack turning toward its target). Ignored while facing is locked or mid-roll.</summary>
+        public void FaceToward(int dir)
+        {
+            if (dir == 0 || FacingLocked || State == PlayerState.Rolling) return;
+            Facing = dir > 0 ? 1 : -1;
+        }
+
         // ---- hooks (audio / VFX / combat subscribe) ----
         public event Action<PlayerState, PlayerState> StateChanged;
         public event Action Jumped;

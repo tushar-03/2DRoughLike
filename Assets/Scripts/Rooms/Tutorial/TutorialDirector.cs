@@ -147,7 +147,7 @@ namespace Roughlike.Rooms
                 done: () => _rolls > 0 && player.transform.position.x > 83f, gate: 88f);
 
             // 3 attack
-            Add("Attack", () => $"{InputDevices.PressVerb} {P("Attack1")} to swing your sword. Press it again in rhythm for a three-hit combo. Hit the dummy: {Mathf.Min(_dummyHits, 3)} / 3.",
+            Add("Attack", () => $"{InputDevices.PressVerb} {P("Attack1")} to swing your sword. Press it again in rhythm for a three-hit combo, or HOLD it and let go for one big charged blow. Hit the dummy: {Mathf.Min(_dummyHits, 3)} / 3.",
                 begin: () => { _dummyHits = 0; _dummy = EnemyFactory.BuildDummy(new Vector2(105f, Floor)); },
                 done: () => _dummyHits >= 3, gate: 118f);
 
@@ -294,7 +294,8 @@ namespace Roughlike.Rooms
         {
             GameSession.StartNew(0, (Difficulty)Mathf.Clamp(SettingsService.Current.difficulty, 0, 3));
             if (StartGameOverride != null) { StartGameOverride(); return; }
-            UnityEngine.SceneManagement.SceneManager.LoadScene(GameSession.GameplayScene);
+            Roughlike.Items.LoadoutSelection.Index = -1;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(GameSession.LoadoutScene);   // after the tutorial: pick a loadout, then the run
         }
 
         /// <summary>Gone this frame (colliders included), not at the end of it.</summary>
