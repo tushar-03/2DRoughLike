@@ -155,6 +155,17 @@ namespace Roughlike.Items
             return true;
         }
 
+        /// <summary>Swaps the mutation in <paramref name="slot"/> for <paramref name="m"/> (the old one is gone for the run).</summary>
+        public bool ReplaceMutation(int slot, MutationData m)
+        {
+            if (m == null || slot < 0 || slot >= Mutations.Count || Mutations.Contains(m)) return false;
+            MutationData old = Mutations[slot];
+            Mutations[slot] = m;
+            Changed?.Invoke();
+            EventBus<ToastEvent>.Raise(new ToastEvent { Text = $"{old.displayName} replaced by {m.displayName}", Colour = m.tint });
+            return true;
+        }
+
         /// <summary>
         /// Picks an item up. Gear equips straight away (the old piece drops at <paramref name="dropAt"/>); weapons and skills
         /// fill an empty slot, or ask which slot to replace. <paramref name="onResolved"/> reports whether the item was taken.

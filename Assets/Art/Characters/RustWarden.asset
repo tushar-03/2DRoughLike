@@ -48,4 +48,5 @@ MonoBehaviour:
     fps: 8
     loop: 0
     anchors: []
-  companions: []
+  companions:
+  - {fileID: 11400000, guid: 67c3d32212df389468a23cebb2dbca6b, type: 2}

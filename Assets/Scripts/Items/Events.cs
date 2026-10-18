@@ -43,6 +43,8 @@ namespace Roughlike.Items
         public PlayerInventory Inventory;
         /// <summary>Choose an option (index) or -1 to cancel.</summary>
         public Action<int> Resolve;
+        /// <summary>Used when every slot is full: the chosen option (index) and the slot it replaces (-1 cancels).</summary>
+        public Action<int, int> ResolveReplace;
     }
 
     /// <summary>All enemies in a combat room are dead.</summary>

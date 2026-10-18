@@ -36,15 +36,18 @@ namespace Roughlike.Editor
         {
             var def = LoadOrCreateBoss("RustWarden", d =>
             {
-                d.displayName = "The Rust Warden";
+                d.displayName = "The Storm Warden";
                 d.kind = BossKind.Warden;
-                d.maxHealth = 1400f;
+                d.maxHealth = 2100f;                      // three bars of 700
+                d.healthBars = 3;
                 d.size = new Vector2(2.4f, 3.0f);
                 d.damage = 22f;
-                d.phaseThresholds = new[] { 0.66f, 0.33f };
-                d.goldReward = 220;
+                d.phaseThresholds = new[] { 1f / 3f * 2f, 1f / 3f };
+                d.goldReward = 320;
             });
             def.art = CharacterSheetBuilder.Load("RustWarden");
+            var winged = CharacterSheetBuilder.Load("StormWarden");
+            def.phaseArt = new[] { null, null, winged };
             EditorUtility.SetDirty(def);
             return def;
         }
@@ -70,6 +73,7 @@ namespace Roughlike.Editor
             EnvironmentBuilder.Apply(biome);
             biome.loot = db;
             biome.boss = LoadOrCreateWitch();
+            biome.levelsBeforeBoss = 2;
             biome.minEnemies = 2;
             biome.maxEnemies = 5;
             biome.accent = new Color(0.35f, 0.85f, 0.85f);
@@ -86,6 +90,7 @@ namespace Roughlike.Editor
             biome.art = art;
             biome.loot = db;
             biome.boss = LoadOrCreateWarden();
+            biome.levelsBeforeBoss = 4;
             biome.minEnemies = 3;
             biome.maxEnemies = 6;
             biome.generator.minExitColumn = 6;

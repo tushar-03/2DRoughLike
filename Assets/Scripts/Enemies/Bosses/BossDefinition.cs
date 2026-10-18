@@ -23,6 +23,10 @@ namespace Roughlike.Enemies
         public float damage = 18f;
         [Tooltip("Health fractions at which it enters its next phase (more and faster attacks).")]
         public float[] phaseThresholds = { 0.66f, 0.33f };
+        [Tooltip("How many health bars the fight has. Each bar is one phase: emptying it starts the next, and no hit can skip a bar.")]
+        [Min(1)] public int healthBars = 1;
+        [Tooltip("Optional look per phase (index = phase); an empty slot keeps the current look. The Warden grows wings in the last one.")]
+        public CharacterArt[] phaseArt;
         [Tooltip("Minions the witch calls.")]
         public EnemyDefinition minion;
 

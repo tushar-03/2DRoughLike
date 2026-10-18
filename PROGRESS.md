@@ -327,3 +327,9 @@ Built and verified: 122 PlayMode + 38 EditMode tests pass; the scene was played 
 
 ## Next
 M6 - content expansion: more weapons, special rooms and challenge doors, more mutations and status effects.
+
+## Warden rework, level plan and mutation swap
+- Each biome now plays `levelsBeforeBoss` ordinary generated levels before its boss level (Catacombs 2 + witch, Promenade 4 + warden); `RunManager.Plan` lists the stages and the minimap shows e.g. "Ashen Promenade 5/5 - Boss".
+- The Storm Warden (white-robed, bearded, Zeus-style) has three health bars (`BossDefinition.healthBars`; a hit cannot skip a bar). Bar 1: Slam, Sweep, Leap Slam, Charge, Sky Thrust, chained attacks, block and dodge-dash. Bar 2 adds Quake, combo, Dash Strike. Bar 3: winged (art swapped via `phaseArt`), Feather Volley, Spread Burst, Storm Call, Aerial Lunge.
+- Altar mutations can be swapped when all slots are full (`PlayerInventory.ReplaceMutation`, "Replace which mutation?" window).
+- Verified live in Play Mode (all three bars, wing phase, no console errors). PlayMode test suite could not be run through the CLI this session; EditMode 62/62.

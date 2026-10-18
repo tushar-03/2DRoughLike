@@ -12,7 +12,7 @@ namespace Roughlike.Enemies
 
         public static EnemyScaling One => new EnemyScaling { Health = 1f, Damage = 1f, Speed = 1f, Telegraph = 1f, Cooldown = 1f };
 
-        public static EnemyScaling Create(float progress01, int levelIndex)
+        public static EnemyScaling Create(float progress01, float levelIndex)
         {
             DifficultyScaling d = DifficultyService.Scaling;
             return new EnemyScaling

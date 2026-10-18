@@ -39,6 +39,7 @@ MonoBehaviour:
   minEnemies: 3
   maxEnemies: 6
   boss: {fileID: 11400000, guid: e427d91f165b630469f08bdec9d5b9fc, type: 2}
+  levelsBeforeBoss: 4
   windyAmbience: 1
   art: {fileID: 11400000, guid: ba6154ffd069e7247bf13a022510f89e, type: 2}
   ground: {r: 0.3, g: 0.22, b: 0.22, a: 1}

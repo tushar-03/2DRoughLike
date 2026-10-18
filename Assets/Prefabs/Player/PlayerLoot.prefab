@@ -218,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Roughlike.Combat::Roughlike.Combat.PlayerCombat
   slot1: {fileID: 11400000, guid: e6a7800316360b648af553b684e5a0a1, type: 2}
   slot2: {fileID: 11400000, guid: 50df0fe6c359efa409d60f604019b49d, type: 2}
-  attackBufferTime: 0.25
+  attackBufferTime: 0.35
   showHitboxes: 0
   autoTick: 1
 --- !u!114 &6746048772417167378
@@ -423,6 +423,7 @@ MonoBehaviour:
   squashRecovery: 14
   breatheAmount: 0.02
   breatheSpeed: 2.4
+  HoldClip: 0
 --- !u!114 &6448825226743088186
 MonoBehaviour:
   m_ObjectHideFlags: 0

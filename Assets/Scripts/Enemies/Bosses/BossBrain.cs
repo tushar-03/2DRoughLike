@@ -31,6 +31,12 @@ namespace Roughlike.Enemies
         /// <summary>The boss just entered a new phase: a roar, minions, a rage. Runs between attacks.</summary>
         public virtual IEnumerator PhaseShout(int phase) { yield return B.WaitSeconds(0.8f); }
 
+        /// <summary>
+        /// A blow is about to land. Return a result to override it (Ignored = dodged, Blocked = reduced damage after changing
+        /// <paramref name="info"/>), or null to take it normally. <paramref name="busy"/> is true mid-attack.
+        /// </summary>
+        public virtual Roughlike.Combat.HitResult? OnIncomingHit(ref Roughlike.Combat.DamageInfo info, bool busy) => null;
+
         /// <summary>Called when the boss dies (clean up anything it created).</summary>
         public virtual void OnDied() { }
     }

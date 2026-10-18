@@ -41,7 +41,7 @@ namespace Roughlike.Rooms
         /// <summary>Progress points along the main path where a mutation altar appears.</summary>
         public static readonly float[] AltarProgress = { 0.25f, 0.5f, 0.75f };
 
-        public static BuiltLevel Build(LevelLayout layout, BiomeData biome, bool spawnEnemies = true, int levelIndex = 0)
+        public static BuiltLevel Build(LevelLayout layout, BiomeData biome, bool spawnEnemies = true, float levelIndex = 0f, bool bossLevel = true)
         {
             WorldArt.Props = biome.art != null ? biome.art.worldProps : null;   // painted set pieces for this level, or graybox
             var built = new BuiltLevel { Layout = layout, Root = new GameObject($"Level {layout.Seed}") };
@@ -63,7 +63,7 @@ namespace Roughlike.Rooms
                         break;
                     case RoomRole.Exit:
                         built.Exit = ExitDoor.Create(chunk.transform, chunk.ExitAnchor, biome.accent);
-                        if (biome.boss != null)
+                        if (biome.boss != null && bossLevel)
                         {
                             // the way on stays hidden until the boss is dead
                             built.Exit.gameObject.SetActive(false);
@@ -134,7 +134,7 @@ namespace Roughlike.Rooms
             built.Altars.Add(altar);
         }
 
-        static void SpawnEnemies(SeededRng rng, LevelCell cell, RoomChunk chunk, BiomeData biome, BuiltLevel built, Vector2? keepClear, int levelIndex)
+        static void SpawnEnemies(SeededRng rng, LevelCell cell, RoomChunk chunk, BiomeData biome, BuiltLevel built, Vector2? keepClear, float levelIndex)
         {
             if (biome.enemyPool == null || biome.enemyPool.Length == 0) return;
 

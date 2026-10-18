@@ -1,0 +1,468 @@
+fileFormatVersion: 2
+guid: 90d3e88f3de7b2f48b570f2fce17fa51
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4455691675136972233
+    second: RustWardenMoves_0
+  - first:
+      213: 1663149625973787846
+    second: RustWardenMoves_1
+  - first:
+      213: -1937213547407834647
+    second: RustWardenMoves_2
+  - first:
+      213: 7544718377699125533
+    second: RustWardenMoves_3
+  - first:
+      213: -4624535419549653180
+    second: RustWardenMoves_4
+  - first:
+      213: 5043605891570356794
+    second: RustWardenMoves_5
+  - first:
+      213: -3213405690845646722
+    second: RustWardenMoves_6
+  - first:
+      213: 402234122436778180
+    second: RustWardenMoves_7
+  - first:
+      213: 2428349544918626040
+    second: RustWardenMoves_8
+  - first:
+      213: -8807274416312872161
+    second: RustWardenMoves_9
+  - first:
+      213: -384647426290357378
+    second: RustWardenMoves_10
+  - first:
+      213: 6997935721459065539
+    second: RustWardenMoves_11
+  - first:
+      213: 4724958747266910871
+    second: RustWardenMoves_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RustWardenMoves_0
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 1683
+        width: 336
+        height: 451
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c55435a8fbc5dd30800000000000000
+      internalID: 4455691675136972233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustWardenMoves_1
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 1683
+        width: 284
+        height: 493
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cccd78e5c1b41710800000000000000
+      internalID: 1663149625973787846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustWardenMoves_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1139
+        width: 394
+        height: 389
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e18eacda82ad15e0800000000000000
+      internalID: -1937213547407834647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustWardenMoves_3
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 1139
+        width: 395
+        height: 389
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d192e11146934b860800000000000000
+      internalID: 7544718377699125533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustWardenMoves_4
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 595
+        width: 303
+        height: 494
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 447e78aa98952dfb0800000000000000
+      internalID: -4624535419549653180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustWardenMoves_5
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 595
+        width: 304
+        height: 494
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a325e1216dc7ef540800000000000000
+      internalID: 5043605891570356794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustWardenMoves_6
+      rect:
+        serializedVersion: 2
+        x: 1180
+        y: 595
+        width: 453
+        height: 427
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e703dedac80b763d0800000000000000
+      internalID: -3213405690845646722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustWardenMoves_7
+      rect:
+        serializedVersion: 2
+        x: 1724
+        y: 595
+        width: 453
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c89260adc5059500800000000000000
+      internalID: 402234122436778180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustWardenMoves_8
+      rect:
+        serializedVersion: 2
+        x: 2268
+        y: 595
+        width: 424
+        height: 494
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fe2b5f8b0b33b120800000000000000
+      internalID: 2428349544918626040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustWardenMoves_9
+      rect:
+        serializedVersion: 2
+        x: 2812
+        y: 595
+        width: 272
+        height: 494
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f131940d49646c580800000000000000
+      internalID: -8807274416312872161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustWardenMoves_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 51
+        width: 360
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7be138243579aaf0800000000000000
+      internalID: -384647426290357378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustWardenMoves_11
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 85
+        width: 223
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c2a5964679ad1160800000000000000
+      internalID: 6997935721459065539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RustWardenMoves_12
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 92
+        width: 230
+        height: 452
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79a083d52fc629140800000000000000
+      internalID: 4724958747266910871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      RustWardenMoves_0: 4455691675136972233
+      RustWardenMoves_1: 1663149625973787846
+      RustWardenMoves_10: -384647426290357378
+      RustWardenMoves_11: 6997935721459065539
+      RustWardenMoves_12: 4724958747266910871
+      RustWardenMoves_2: -1937213547407834647
+      RustWardenMoves_3: 7544718377699125533
+      RustWardenMoves_4: -4624535419549653180
+      RustWardenMoves_5: 5043605891570356794
+      RustWardenMoves_6: -3213405690845646722
+      RustWardenMoves_7: 402234122436778180
+      RustWardenMoves_8: 2428349544918626040
+      RustWardenMoves_9: -8807274416312872161
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

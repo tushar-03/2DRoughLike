@@ -12,15 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fbafeb33a4961b4e8193f7127e514bd, type: 3}
   m_Name: RustWarden
   m_EditorClassIdentifier: Roughlike.Enemies::Roughlike.Enemies.BossDefinition
-  displayName: The Rust Warden
+  displayName: The Storm Warden
   kind: 1
-  maxHealth: 1400
+  maxHealth: 2100
   size: {x: 2.4, y: 3}
   art: {fileID: 11400000, guid: 3bf6740200e3a9e4b9854594d173b21b, type: 2}
   tint: {r: 1, g: 1, b: 1, a: 1}
   damage: 22
   phaseThresholds:
-  - 0.66
-  - 0.33
+  - 0.6666667
+  - 0.33333334
+  healthBars: 3
+  phaseArt:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: a0846ad00577a0947b13120ecbcd8867, type: 2}
   minion: {fileID: 0}
-  goldReward: 220
+  goldReward: 320

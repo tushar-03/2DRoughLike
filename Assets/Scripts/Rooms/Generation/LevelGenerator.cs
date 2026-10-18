@@ -8,6 +8,18 @@ namespace Roughlike.Rooms
     [Serializable]
     public class GeneratorSettings
     {
+        /// <summary>A shorter layout for a boss level: a few rooms of warm-up, then the arena.</summary>
+        public GeneratorSettings ForBossLevel()
+        {
+            var g = (GeneratorSettings)MemberwiseClone();
+            g.minMainPath = Mathf.Min(minMainPath, 4);
+            g.maxMainPath = Mathf.Min(maxMainPath, 5);
+            g.minExitColumn = Mathf.Min(minExitColumn, 3);
+            g.minBranches = Mathf.Min(minBranches, 1);
+            g.maxBranches = Mathf.Min(maxBranches, 2);
+            return g;
+        }
+
         [Header("Grid")]
         public int width = 8;
         public int height = 4;

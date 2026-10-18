@@ -22,5 +22,7 @@ MonoBehaviour:
   phaseThresholds:
   - 0.66
   - 0.33
+  healthBars: 1
+  phaseArt: []
   minion: {fileID: 11400000, guid: 9fac620efc817f8449cb197a11218abc, type: 2}
   goldReward: 140

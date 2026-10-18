@@ -1,0 +1,780 @@
+fileFormatVersion: 2
+guid: e99cc7764e7323f4cb9aea91069ffccf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1132544457637045403
+    second: StormWarden_0
+  - first:
+      213: 7863934797111062644
+    second: StormWarden_1
+  - first:
+      213: 3580865408525726762
+    second: StormWarden_2
+  - first:
+      213: -894430790204242656
+    second: StormWarden_3
+  - first:
+      213: -1833882014088655642
+    second: StormWarden_4
+  - first:
+      213: -2370667820001321995
+    second: StormWarden_5
+  - first:
+      213: -4323250060175790459
+    second: StormWarden_6
+  - first:
+      213: -5357666463339227664
+    second: StormWarden_7
+  - first:
+      213: 5737337455693993474
+    second: StormWarden_8
+  - first:
+      213: -8310337238519395361
+    second: StormWarden_9
+  - first:
+      213: 1831616106902259385
+    second: StormWarden_10
+  - first:
+      213: 7122937622360704790
+    second: StormWarden_11
+  - first:
+      213: -4407847801218791846
+    second: StormWarden_12
+  - first:
+      213: 6269569231738454363
+    second: StormWarden_13
+  - first:
+      213: 9443329472669785
+    second: StormWarden_14
+  - first:
+      213: -4536547414940252904
+    second: StormWarden_15
+  - first:
+      213: -3297142669425017709
+    second: StormWarden_16
+  - first:
+      213: 1308041424449943087
+    second: StormWarden_17
+  - first:
+      213: 8097730010616214366
+    second: StormWarden_18
+  - first:
+      213: 5824479509497806594
+    second: StormWarden_19
+  - first:
+      213: -3167449614873590705
+    second: StormWarden_20
+  - first:
+      213: -5998233140328870855
+    second: StormWarden_21
+  - first:
+      213: -5038962417077147668
+    second: StormWarden_22
+  - first:
+      213: -1571050611753640328
+    second: StormWarden_23
+  - first:
+      213: -3836424438515271167
+    second: StormWarden_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: StormWarden_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 3339
+        width: 436
+        height: 469
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b942bc90f2b97bf00800000000000000
+      internalID: 1132544457637045403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_1
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 3339
+        width: 409
+        height: 469
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47073a6780f422d60800000000000000
+      internalID: 7863934797111062644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_2
+      rect:
+        serializedVersion: 2
+        x: 1123
+        y: 3339
+        width: 409
+        height: 469
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a24f8a7ed1ac1b130800000000000000
+      internalID: 3580865408525726762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_3
+      rect:
+        serializedVersion: 2
+        x: 1648
+        y: 3339
+        width: 436
+        height: 469
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02544b96fe75693f0800000000000000
+      internalID: -894430790204242656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_4
+      rect:
+        serializedVersion: 2
+        x: 2181
+        y: 3339
+        width: 455
+        height: 443
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ec8446460ebc86e0800000000000000
+      internalID: -1833882014088655642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_5
+      rect:
+        serializedVersion: 2
+        x: 2725
+        y: 3339
+        width: 455
+        height: 443
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fb1f549d22b91fd0800000000000000
+      internalID: -2370667820001321995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_6
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 2795
+        width: 450
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58e2900d9fab004c0800000000000000
+      internalID: -4323250060175790459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_7
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 2795
+        width: 409
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f554abdcbeb5a5b0800000000000000
+      internalID: -5357666463339227664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_8
+      rect:
+        serializedVersion: 2
+        x: 1123
+        y: 2795
+        width: 409
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2061f2ba40e1f9f40800000000000000
+      internalID: 5737337455693993474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_9
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 2795
+        width: 450
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdbc956cf40cbac80800000000000000
+      internalID: -8310337238519395361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_10
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 2795
+        width: 483
+        height: 447
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b60bc815253b6910800000000000000
+      internalID: 1831616106902259385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_11
+      rect:
+        serializedVersion: 2
+        x: 2728
+        y: 2795
+        width: 483
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61743125702c9d260800000000000000
+      internalID: 7122937622360704790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_12
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 2227
+        width: 394
+        height: 494
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a560e5057cd24d2c0800000000000000
+      internalID: -4407847801218791846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_13
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 2227
+        width: 339
+        height: 494
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b514d78affbf10750800000000000000
+      internalID: 6269569231738454363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_14
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 2227
+        width: 356
+        height: 494
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95827ba78ac812000800000000000000
+      internalID: 9443329472669785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_15
+      rect:
+        serializedVersion: 2
+        x: 1631
+        y: 2227
+        width: 357
+        height: 494
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81505c96922fa01c0800000000000000
+      internalID: -4536547414940252904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1683
+        width: 356
+        height: 494
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39c732f06323e32d0800000000000000
+      internalID: -3297142669425017709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_17
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 1683
+        width: 494
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f26b5d7ceb8172210800000000000000
+      internalID: 1308041424449943087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_18
+      rect:
+        serializedVersion: 2
+        x: 1119
+        y: 1683
+        width: 483
+        height: 461
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e53bcc18a8ae06070800000000000000
+      internalID: 8097730010616214366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1139
+        width: 371
+        height: 494
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20f78252145b4d050800000000000000
+      internalID: 5824479509497806594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_20
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 1139
+        width: 372
+        height: 494
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f44038d6b55fa04d0800000000000000
+      internalID: -3167449614873590705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_21
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 595
+        width: 422
+        height: 491
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93cc8b62dbef1cca0800000000000000
+      internalID: -5998233140328870855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_22
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 595
+        width: 360
+        height: 494
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce7a2951162021ab0800000000000000
+      internalID: -5038962417077147668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 51
+        width: 394
+        height: 413
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87e934adac1823ae0800000000000000
+      internalID: -1571050611753640328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StormWarden_24
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 51
+        width: 395
+        height: 413
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10a7ba6ac4842cac0800000000000000
+      internalID: -3836424438515271167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      StormWarden_0: 1132544457637045403
+      StormWarden_1: 7863934797111062644
+      StormWarden_10: 1831616106902259385
+      StormWarden_11: 7122937622360704790
+      StormWarden_12: -4407847801218791846
+      StormWarden_13: 6269569231738454363
+      StormWarden_14: 9443329472669785
+      StormWarden_15: -4536547414940252904
+      StormWarden_16: -3297142669425017709
+      StormWarden_17: 1308041424449943087
+      StormWarden_18: 8097730010616214366
+      StormWarden_19: 5824479509497806594
+      StormWarden_2: 3580865408525726762
+      StormWarden_20: -3167449614873590705
+      StormWarden_21: -5998233140328870855
+      StormWarden_22: -5038962417077147668
+      StormWarden_23: -1571050611753640328
+      StormWarden_24: -3836424438515271167
+      StormWarden_3: -894430790204242656
+      StormWarden_4: -1833882014088655642
+      StormWarden_5: -2370667820001321995
+      StormWarden_6: -4323250060175790459
+      StormWarden_7: -5357666463339227664
+      StormWarden_8: 5737337455693993474
+      StormWarden_9: -8310337238519395361
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

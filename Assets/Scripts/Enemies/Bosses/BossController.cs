@@ -28,6 +28,24 @@ namespace Roughlike.Enemies
         public bool Engaged { get; private set; }
         public bool Dead { get; private set; }
         public bool Stunned => _stun > 0f;
+        /// <summary>True while an attack coroutine is running.</summary>
+        public bool Busy => _busy;
+        /// <summary>True during a dodge or block reaction.</summary>
+        public bool Reacting => _reacting;
+        public int BarCount => Definition != null ? Mathf.Max(1, Definition.healthBars) : 1;
+        public int BarIndex => Mathf.Min(Phase, BarCount - 1);
+        /// <summary>How full the bar being fought is (0..1); with a single bar it is simply the health fraction.</summary>
+        public float BarFraction
+        {
+            get
+            {
+                if (BarCount <= 1 || Definition.phaseThresholds == null) return Health.Fraction;
+                var th = Definition.phaseThresholds;
+                float upper = BarIndex == 0 ? 1f : th[BarIndex - 1];
+                float lower = BarIndex < th.Length ? th[BarIndex] : 0f;
+                return Mathf.Clamp01((Health.Fraction - lower) / Mathf.Max(0.001f, upper - lower));
+            }
+        }
         /// <summary>True while she has dropped to the ground and is open to attack.</summary>
         public bool Exposed => _exposed > 0f;
         public Vector2 Position => transform.position;
@@ -45,7 +63,7 @@ namespace Roughlike.Enemies
         SpriteAnimator _anim;
         HitReactionVisual _react;
         Coroutine _loop, _attack;
-        bool _attackDone, _busy, _parryable, _phaseCue, _invulnerable;
+        bool _attackDone, _busy, _parryable, _phaseCue, _invulnerable, _reacting;
         float _stun, _vyGround;
         Vector2 _vel;
         readonly List<TelegraphIndicator> _telegraphs = new List<TelegraphIndicator>();
@@ -120,11 +138,11 @@ namespace Roughlike.Enemies
             if (_exposed > 0f) _exposed -= dt;
 
             Vector2 v = _vel;
-            if (!_busy && !Stunned && Engaged) v = Brain.IdleVelocity(dt);
+            if (!_busy && !_reacting && !Stunned && Engaged) v = Brain.IdleVelocity(dt);
             else if (Stunned) v = Vector2.zero;
             Step(v, dt);
 
-            if (_sr != null && !_busy && !Stunned && _anim != null && _anim.Art != null)
+            if (_sr != null && !_busy && !_reacting && !Stunned && _anim != null && _anim.Art != null)
                 _anim.Loop(Mathf.Abs(v.x) > 0.5f && _anim.Art.Has("walk") ? "walk" : "idle");
         }
 
@@ -164,7 +182,7 @@ namespace Roughlike.Enemies
 
                 yield return WaitSeconds(Brain.Rest(Phase));
                 if (Dead) yield break;
-                while (Stunned) yield return null;
+                while (Stunned || _reacting) yield return null;
                 if (!HasTarget) { yield return null; continue; }
 
                 FaceTarget();
@@ -227,6 +245,22 @@ namespace Roughlike.Enemies
         {
             transform.position = p;
             _vyGround = 0f;
+        }
+
+        /// <summary>Runs a short reaction (a dodge, a block) beside the attack loop; the next attack waits for it to end.</summary>
+        public bool React(IEnumerator routine)
+        {
+            if (Dead || _reacting || _busy || Stunned) return false;
+            StartCoroutine(RunReaction(routine));
+            return true;
+        }
+
+        IEnumerator RunReaction(IEnumerator routine)
+        {
+            _reacting = true;
+            yield return StartCoroutine(routine);
+            _vel = Vector2.zero;
+            _reacting = false;
         }
 
         /// <summary>While true, a successful parry of this boss's melee stuns it.</summary>
@@ -330,7 +364,18 @@ namespace Roughlike.Enemies
         public HitResult Filter(ref DamageInfo info)
         {
             if (_invulnerable) return HitResult.Ignored;
+            if (!Stunned && !Exposed && Brain != null)
+            {
+                var reaction = Brain.OnIncomingHit(ref info, _busy);
+                if (reaction.HasValue) return reaction.Value;
+            }
             if (Stunned || Exposed) info.Amount *= 1.5f;
+            // a bar cannot be skipped: a blow that would empty it takes the boss to the edge of the next phase and no further
+            if (BarCount > 1 && Definition.phaseThresholds != null && Phase < Definition.phaseThresholds.Length)
+            {
+                float floor = Definition.phaseThresholds[Phase] * Health.Max - 0.5f;
+                info.Amount = Mathf.Min(info.Amount, Mathf.Max(0f, Health.Current - floor));
+            }
             return HitResult.Hit;
         }
 
@@ -345,9 +390,18 @@ namespace Roughlike.Enemies
             if (target > Phase)
             {
                 Phase = target;
+                ApplyPhaseArt();
                 _phaseCue = true;
                 PhaseChanged?.Invoke(Phase);
             }
+        }
+
+        void ApplyPhaseArt()
+        {
+            var arts = Definition.phaseArt;
+            if (_anim == null || arts == null || Phase >= arts.Length || arts[Phase] == null || _anim.Art == arts[Phase]) return;
+            _anim.Bind(arts[Phase]);
+            _anim.Loop("idle");
         }
 
         void OnDestroy()

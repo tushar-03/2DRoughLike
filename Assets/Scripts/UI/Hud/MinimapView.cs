@@ -92,7 +92,7 @@ namespace Roughlike.UI
 
         void Refresh()
         {
-            _label.text = $"{_run.Biome.displayName}  -  {DifficultyService.Name(_run.Difficulty)}\nSeed {SeedCode.Encode(_run.Seed)}   Room {_run.CurrentRoom.x},{_run.CurrentRoom.y}";
+            _label.text = $"{_run.LevelLabel}  -  {DifficultyService.Name(_run.Difficulty)}\nSeed {SeedCode.Encode(_run.Seed)}   Room {_run.CurrentRoom.x},{_run.CurrentRoom.y}";
 
             foreach (var e in _edges)
             {

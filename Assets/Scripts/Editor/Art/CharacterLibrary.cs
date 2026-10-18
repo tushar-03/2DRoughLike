@@ -236,13 +236,17 @@ namespace Roughlike.Editor.Art
                 Trim = new Color(0.55f, 1f, 0.45f), Glow = new Color(0.62f, 1f, 0.42f), Boot = new Color(0.16f, 0.1f, 0.24f), Rim = new Color(0.85f, 0.7f, 1f),
                 Metal = new Color(0.55f, 0.4f, 0.3f), Outline = 3.6f
             };
+            // the Storm Warden: a bearded sky-king in white robes; the same spec with wings is his last phase
             var warden = new HumanoidSpec
             {
-                Name = "RustWarden", Height = 262f, HeadR = 30f, Scale = BossScale, Bulk = 1.75f, Helmet = true, Weapon = "greatsword", WeaponLen = 165f,
-                Skin = new Color(0.55f, 0.4f, 0.35f), Cloth = new Color(0.52f, 0.28f, 0.2f), Cloth2 = new Color(0.28f, 0.15f, 0.13f),
-                Trim = new Color(0.95f, 0.72f, 0.3f), Metal = new Color(0.72f, 0.7f, 0.74f), Glow = new Color(1f, 0.5f, 0.2f),
-                Boot = new Color(0.2f, 0.14f, 0.12f), Rim = new Color(1f, 0.75f, 0.5f), Outline = 3.8f
+                Name = "RustWarden", Height = 238f, HeadR = 28f, Scale = BossScale, Bulk = 1.5f, Robe = true, Beard = true, Weapon = "greatsword", WeaponLen = 138f,
+                Skin = new Color(0.93f, 0.8f, 0.7f), Cloth = new Color(0.96f, 0.96f, 0.99f), Cloth2 = new Color(0.76f, 0.82f, 0.94f),
+                Trim = new Color(1f, 0.82f, 0.3f), Metal = new Color(0.86f, 0.92f, 1f), Glow = new Color(0.5f, 0.82f, 1f),
+                Boot = new Color(0.72f, 0.58f, 0.35f), Rim = new Color(0.8f, 0.92f, 1f), Outline = 3.8f
             };
+            var stormWarden = warden.Copy();
+            stormWarden.Name = "StormWarden";
+            stormWarden.Wings = true;
 
             var list = new List<CharacterPlan>
             {
@@ -270,7 +274,9 @@ namespace Roughlike.Editor.Art
             list.AddRange(CombatPlans(player));
             list.AddRange(IconPlans());
 
-            foreach (var boss in new[] { Humanoid(witch, false), Humanoid(warden, false) })
+            var wardenPlan = Humanoid(warden, false);
+            var stormPlan = Humanoid(stormWarden, false);
+            foreach (var boss in new[] { Humanoid(witch, false), wardenPlan, stormPlan })
             {
                 int canvas = Mathf.RoundToInt(HumanoidArt.FrameSize * BossScale);
                 boss.FrameW = canvas; boss.FrameH = canvas;
@@ -278,6 +284,16 @@ namespace Roughlike.Editor.Art
                 foreach (var c in boss.Clips) if (c.Frames > 6) c.Frames = 6;
                 list.Add(boss);
             }
+            // his extra moves: the grounded sheet carries them on a companion, the winged one has room for guard and dash itself
+            var moves = new CharacterPlan { Name = "RustWardenMoves", FrameW = wardenPlan.FrameW, FrameH = wardenPlan.FrameH };
+            moves.Add("block", 2, 10f, false, (i, n) => HumanoidArt.Render(warden, "block", TEnd(i, n)));
+            moves.Add("dash", 2, 10f, false, (i, n) => HumanoidArt.Render(warden, "dash", TEnd(i, n)));
+            moves.Add("charge", 6, 14f, true, (i, n) => HumanoidArt.Render(warden, "charge", T(i, n)));
+            moves.Add("sky", 3, 1f, false, (i, n) => HumanoidArt.Render(warden, "sky", TEnd(i, n)));
+            list.Add(moves);
+            wardenPlan.Companions = new[] { "RustWardenMoves" };
+            stormPlan.Add("block", 2, 10f, false, (i, n) => HumanoidArt.Render(stormWarden, "block", TEnd(i, n)));
+            stormPlan.Add("dash", 2, 10f, false, (i, n) => HumanoidArt.Render(stormWarden, "dash", TEnd(i, n)));
 
             // the guard's shield is a separate prop so it can break
             list[4].Add("shield", 1, 1f, false, (i, n) => CreatureArt.ShieldProp(false));

@@ -253,12 +253,6 @@ namespace Roughlike.Items
         public override void Interact(PlayerInventory inventory, PlayerController player)
         {
             if (_used) return;
-            if (inventory.Mutations.Count >= PlayerInventory.MaxMutations)
-            {
-                EventBus<ToastEvent>.Raise(new ToastEvent { Text = "Mutation slots are full", Colour = new Color(1f, 0.6f, 0.5f) });
-                return;
-            }
-
             var options = new List<MutationData>();
             foreach (var m in _choices) if (!inventory.Mutations.Contains(m)) options.Add(m);
             if (options.Count == 0) return;
@@ -271,15 +265,21 @@ namespace Roughlike.Items
                 {
                     if (idx < 0 || idx >= options.Count) return;
                     if (inventory.AddMutation(options[idx])) _used = true;
+                },
+                ResolveReplace = (idx, slot) =>
+                {
+                    if (idx < 0 || idx >= options.Count || slot < 0) return;
+                    if (inventory.ReplaceMutation(slot, options[idx])) _used = true;
                 }
             });
         }
 
         /// <summary>For tests and tools: choose without UI.</summary>
-        public bool Choose(PlayerInventory inventory, int index)
+        public bool Choose(PlayerInventory inventory, int index, int replaceSlot = -1)
         {
             if (_used || index < 0 || index >= _choices.Count) return false;
-            if (!inventory.AddMutation(_choices[index])) return false;
+            bool ok = replaceSlot >= 0 ? inventory.ReplaceMutation(replaceSlot, _choices[index]) : inventory.AddMutation(_choices[index]);
+            if (!ok) return false;
             _used = true;
             return true;
         }

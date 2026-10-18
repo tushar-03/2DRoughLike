@@ -50,10 +50,51 @@ namespace Roughlike.Rooms
         SpriteRenderer _playerSprite;
         float _endTimer;
 
+        /// <summary>One level of a run: which biome, whether it ends in the boss, and where it sits in its biome.</summary>
+        public readonly struct Stage
+        {
+            public readonly BiomeData Biome;
+            public readonly int Area, Number, Total;     // area index, 1-based level number within the biome, levels in the biome
+            public readonly bool Boss;
+            public Stage(BiomeData biome, int area, int number, int total, bool boss) { Biome = biome; Area = area; Number = number; Total = total; Boss = boss; }
+        }
+
+        readonly List<Stage> _plan = new List<Stage>();
+
+        /// <summary>The levels of the run in order: each biome plays its ordinary levels, then its boss level.</summary>
+        public IReadOnlyList<Stage> Plan { get { if (_plan.Count == 0) BuildPlan(); return _plan; } }
+
+        void BuildPlan()
+        {
+            _plan.Clear();
+            var all = biomes != null && biomes.Length > 0 ? biomes : new[] { biome };
+            for (int a = 0; a < all.Length; a++)
+            {
+                if (all[a] == null) continue;
+                int ordinary = all[a].boss != null ? Mathf.Max(0, all[a].levelsBeforeBoss) : 0;
+                for (int i = 0; i <= ordinary; i++) _plan.Add(new Stage(all[a], a, i + 1, ordinary + 1, i == ordinary));
+            }
+        }
+
+        public Stage CurrentStage => Plan[Mathf.Clamp(LevelIndex, 0, Plan.Count - 1)];
+        public bool IsBossLevel => CurrentStage.Boss && CurrentStage.Biome != null && CurrentStage.Biome.boss != null;
+        /// <summary>"Ember Catacombs  2/3" (and "Boss" on the last).</summary>
+        public string LevelLabel
+        {
+            get
+            {
+                var s = CurrentStage;
+                string name = s.Biome != null ? s.Biome.displayName : "";
+                return s.Total <= 1 ? name : $"{name}  {s.Number}/{s.Total}" + (IsBossLevel ? "  -  Boss" : "");
+            }
+        }
+        /// <summary>How deep into the game this level is, for scaling enemies: the area, plus a fraction for how far through it.</summary>
+        public float Depth => CurrentStage.Area + (CurrentStage.Total <= 1 ? 0f : 0.6f * (CurrentStage.Number - 1) / CurrentStage.Total);
+
         public BiomeData Biome => biome;
         /// <summary>0 for the first level; each biome cleared moves it up.</summary>
         public int LevelIndex { get; private set; }
-        public int LevelCount => biomes != null && biomes.Length > 0 ? biomes.Length : 1;
+        public int LevelCount => Plan.Count;
         public Difficulty Difficulty => DifficultyService.Current;
 
         /// <summary>The seed of a given level of a run: the first level uses the run seed itself.</summary>
@@ -84,12 +125,14 @@ namespace Roughlike.Rooms
         {
             Bind(levels != null && levels.Length > 0 ? levels[0] : null, p, camera, director);
             biomes = levels;
+            _plan.Clear();
         }
 
         public void Bind(BiomeData biomeData, PlayerController p, Unity.Cinemachine.CinemachineCamera camera = null, LootDirector director = null)
         {
             biome = biomeData;
             biomes = null;
+            _plan.Clear();
             player = p;
             vcam = camera;
             lootDirector = director;
@@ -199,7 +242,7 @@ namespace Roughlike.Rooms
             BossDefeated = false;
             LevelIndex = restore != null ? Mathf.Clamp(restore.levelIndex, 0, LevelCount - 1) : 0;
             if (restore != null) DifficultyService.Current = (Difficulty)Mathf.Clamp(restore.difficulty, 0, 3);
-            if (biomes != null && biomes.Length > 0) biome = biomes[LevelIndex];
+            biome = Plan[LevelIndex].Biome;
             BuildCurrentLevel();
             if (biome.art != null && _atmosphere == null) _atmosphere = LevelAtmosphere.Create(biome.art, player.transform);
 
@@ -265,8 +308,12 @@ namespace Roughlike.Rooms
         /// <summary>Generates and builds the current biome's level from the run seed.</summary>
         void BuildCurrentLevel()
         {
-            Layout = LevelGenerator.Generate(LevelSeed(Seed, LevelIndex), biome.generator);
-            Level = LevelBuilder.Build(Layout, biome, true, LevelIndex);
+            biome = Plan[LevelIndex].Biome;
+            bool bossLevel = IsBossLevel;
+            // every level is generated fresh from its own seed; the boss level is a shorter walk to the arena
+            var settings = bossLevel ? biome.generator.ForBossLevel() : biome.generator;
+            Layout = LevelGenerator.Generate(LevelSeed(Seed, LevelIndex), settings);
+            Level = LevelBuilder.Build(Layout, biome, true, Depth, bossLevel);
             BossDefeated = false;
             Level.Exit.Activated += OnExitReached;
             if (biome.art != null)
@@ -281,7 +328,7 @@ namespace Roughlike.Rooms
         {
             LevelIndex++;
             BossDefeated = false;
-            biome = biomes[LevelIndex];
+            biome = Plan[LevelIndex].Biome;
             Level?.Destroy();
             HitStop.Cancel();
             BuildCurrentLevel();
@@ -298,7 +345,7 @@ namespace Roughlike.Rooms
             player.ResetTo(Level.PlayerSpawn);
             if (_defense != null) _defense.GrantInvulnerability(1.5f);
             if (vcam != null) vcam.PreviousStateIsValid = false;
-            EventBus<ToastEvent>.Raise(new ToastEvent { Text = biome.displayName, Colour = new Color(1f, 0.85f, 0.5f) });
+            EventBus<ToastEvent>.Raise(new ToastEvent { Text = LevelLabel, Colour = new Color(1f, 0.85f, 0.5f) });
             SaveNow();
         }
 

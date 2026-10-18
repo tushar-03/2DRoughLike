@@ -11,6 +11,7 @@ namespace Roughlike.UI
         BossController _boss;
         RectTransform _panel, _fill, _lag;
         Text _name;
+        Image _fillImage;
         float _lagValue = 1f;
         readonly System.Collections.Generic.List<Image> _ticks = new System.Collections.Generic.List<Image>();
 
@@ -46,6 +47,7 @@ namespace Roughlike.UI
 
             _lag = Bar(back.transform, "Lag", new Color(1f, 0.92f, 0.85f, 0.85f));
             _fill = Bar(back.transform, "Fill", new Color(0.82f, 0.14f, 0.16f, 1f));
+            _fillImage = _fill.GetComponent<Image>();
             _panel.gameObject.SetActive(false);
         }
 
@@ -66,14 +68,16 @@ namespace Roughlike.UI
         void OnBoss(BossSpawnedEvent e)
         {
             _boss = e.Boss;
-            _name.text = _boss.Definition.displayName;
+            _bar = -1;
             _lagValue = 1f;
             SetFill(_fill, 1f);
             SetFill(_lag, 1f);
+            ShowBar();
 
             foreach (var t in _ticks) if (t != null) Destroy(t.gameObject);
             _ticks.Clear();
             var back = _fill.parent;
+            if (_boss.BarCount <= 1)
             foreach (float threshold in _boss.Definition.phaseThresholds)
             {
                 var tick = UiKit.Image(back, "Phase", new Color(1f, 1f, 1f, 0.8f));
@@ -84,6 +88,26 @@ namespace Roughlike.UI
                 _ticks.Add(tick);
             }
             _panel.gameObject.SetActive(true);
+        }
+
+        int _bar = -1;
+        static readonly Color[] BarColours =
+        {
+            new Color(0.82f, 0.14f, 0.16f, 1f),   // red
+            new Color(0.95f, 0.55f, 0.15f, 1f),   // amber
+            new Color(0.45f, 0.62f, 1f, 1f),      // storm blue
+            new Color(0.8f, 0.5f, 1f, 1f)
+        };
+
+        /// <summary>The name with one pip per bar (filled ones still to go), and the bar's colour.</summary>
+        void ShowBar()
+        {
+            int bars = _boss.BarCount, idx = _boss.BarIndex;
+            string pips = bars > 1 ? $"   {idx + 1}/{bars}" : "";
+            _name.text = _boss.Definition.displayName + pips;
+            if (_fillImage != null) _fillImage.color = BarColours[Mathf.Clamp(idx, 0, BarColours.Length - 1)];
+            if (_bar >= 0 && idx > _bar) { _lagValue = 1f; }   // a new bar starts full: the pale trail must not linger from the last one
+            _bar = idx;
         }
 
         static void SetFill(RectTransform r, float value) => r.anchorMax = new Vector2(Mathf.Clamp01(value), 1f);
@@ -109,7 +133,8 @@ namespace Roughlike.UI
                 return;
             }
             if (!_panel.gameObject.activeSelf) _panel.gameObject.SetActive(true);
-            float f = _boss.Health.Fraction;
+            if (_boss.BarIndex != _bar) ShowBar();
+            float f = _boss.BarFraction;
             SetFill(_fill, f);
             _lagValue = Mathf.MoveTowards(_lagValue, f, Time.unscaledDeltaTime * 0.35f);
             if (_lagValue < f) _lagValue = f;

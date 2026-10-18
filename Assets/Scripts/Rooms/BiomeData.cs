@@ -25,6 +25,8 @@ namespace Roughlike.Rooms
         [Header("Boss")]
         [Tooltip("The boss waiting in the final room. Leave empty for a plain exit.")]
         public BossDefinition boss;
+        [Min(0), Tooltip("Ordinary levels played in this biome before the boss level. 0 means the biome is a single level ending in its boss.")]
+        public int levelsBeforeBoss;
         [Tooltip("Ambient sound: false is the low cavern drone, true is wind over open ruins.")]
         public bool windyAmbience;
 

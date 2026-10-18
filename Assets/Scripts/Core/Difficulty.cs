@@ -64,7 +64,7 @@ namespace Roughlike.Core
         /// Enemies get tougher deeper into a level and in later biomes, on top of the chosen difficulty.
         /// <paramref name="progress01"/> is the room's position along the level; <paramref name="levelIndex"/> is 0 for the first biome.
         /// </summary>
-        public static float DepthHealth(float progress01, int levelIndex) => (1f + 0.5f * Mathf.Clamp01(progress01)) * (1f + 0.6f * levelIndex);
-        public static float DepthDamage(float progress01, int levelIndex) => (1f + 0.25f * Mathf.Clamp01(progress01)) * (1f + 0.3f * levelIndex);
+        public static float DepthHealth(float progress01, float levelIndex) => (1f + 0.5f * Mathf.Clamp01(progress01)) * (1f + 0.6f * levelIndex);
+        public static float DepthDamage(float progress01, float levelIndex) => (1f + 0.25f * Mathf.Clamp01(progress01)) * (1f + 0.3f * levelIndex);
     }
 }

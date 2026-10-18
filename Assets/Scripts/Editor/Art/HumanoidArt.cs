@@ -30,7 +30,11 @@ namespace Roughlike.Editor.Art
         public float Scale = 1f;          // bosses are drawn bigger on a bigger canvas
         public bool Hat;                  // a tall pointed witch's hat
         public bool RuntimeGear;          // the player: weapon and shield are separate sprites; record hand anchors instead of painting them
-        public bool EnemyShield;          // a heater shield strapped to the off arm, always up
+        public bool EnemyShield;
+        public bool Beard;                // long white hair and beard with a gold circlet
+        public bool Wings;                // feathered wings behind the back
+
+        public HumanoidSpec Copy() => (HumanoidSpec)MemberwiseClone();          // a heater shield strapped to the off arm, always up
     }
 
     /// <summary>A pose in frame-local pixels, origin at the centre of the feet on the floor, +x forward.</summary>
@@ -45,6 +49,8 @@ namespace Roughlike.Editor.Art
         public float WeaponAngleB;
         public bool HasAngleB;
         public bool EyesClosed, ShieldUp, MouthOpen;
+        /// <summary>Wing position: +1 raised, -1 swept down.</summary>
+        public float Flap;
     }
 
     public static partial class HumanoidArt
@@ -104,6 +110,24 @@ namespace Roughlike.Editor.Art
 
         public static Pose PoseFor(HumanoidSpec s, string clip, float t)
         {
+            Pose p = PoseCore(s, clip, t);
+            if (s.Wings)
+            {
+                bool flaps = clip == "idle" || clip == "walk" || clip == "telegraph";
+                p.Flap = flaps ? Mathf.Sin(2f * Mathf.PI * t) : (clip == "hurt" ? -1f : (clip == "dash" || clip == "attack" ? -0.6f : 0.7f));
+                if (clip == "idle" || clip == "walk")
+                {
+                    // hovering: the legs hang loose
+                    p.FootF = new Vector2(14f, Ankle + 22f); p.FootB = new Vector2(-10f, Ankle + 12f);
+                    p.Hip.y += 12f; p.Lift += 14f;
+                }
+            }
+            return p;
+        }
+
+        static Pose PoseCore(HumanoidSpec s, string clip, float t)
+        {
+            if (TryBossPose(s, clip, t, out Pose boss)) return boss;
             if (TryMovePose(s, clip, t, out Pose moved)) return moved;
             Pose p = Stand(s);
             float hy = p.Hip.y;
@@ -239,7 +263,7 @@ namespace Roughlike.Editor.Art
             float windUp = Smooth(Mathf.Clamp01(t / 0.3f));
             float swing = Smooth(Mathf.Clamp01((t - 0.3f) / 0.3f));
             float settle = Smooth(Mathf.Clamp01((t - 0.6f) / 0.4f));
-            float wa = Mathf.Lerp(55f, 150f, windUp);
+            float wa = Mathf.Lerp(55f, s.Beard ? 158f : 150f, windUp);
             wa = Mathf.Lerp(wa, -35f, swing);
             wa = Mathf.Lerp(wa, -50f, settle);
             float lean = Mathf.Lerp(2f, -10f, windUp);
@@ -317,6 +341,8 @@ namespace Roughlike.Editor.Art
             Vector2 handF = O + p.HandF, handB = O + p.HandB;
             Vector2 elbowF = Ik(shF, handF, armL, armL, -1f);
             Vector2 elbowB = Ik(shB, handB, armL, armL, -1f);
+
+            if (s.Wings) Wings(pt, s, p, chest, up, fwd);
 
             // ---- back arm
             Limb(pt, shB, elbowB, handB, limb * 0.9f, sleeveBack, skinDark);
@@ -471,10 +497,12 @@ namespace Roughlike.Editor.Art
             }
             else
             {
+                if (s.Beard) HairBack(pt, s, head);
                 pt.Circle(head, R, skin);
-                if (s.Weapon != "bow")
+                if (s.Weapon != "bow" && !s.Beard)
                     pt.Ellipse(head + new Vector2(-R * 0.25f, R * 0.35f), R * 0.95f, R * 0.7f, 10f, clothDark);   // hair / cap
             }
+            if (s.Beard) Beard(pt, s, head);
             if (s.Hat)
             {
                 Mat hat = Mat.Of(new Color(0.2f, 0.12f, 0.32f), new Color(0.8f, 0.6f, 1f), 5f);

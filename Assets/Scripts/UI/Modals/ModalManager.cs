@@ -304,7 +304,10 @@ namespace Roughlike.UI
             Window w = null;
             w = Push("Choose a Mutation", new Vector2(900f, 620f), () => { Pop(); e.Resolve(-1); }, out RectTransform content);
 
-            var hint = UiKit.Label(content, "Hint", $"A permanent perk for this run  ({e.Inventory.Mutations.Count}/{PlayerInventory.MaxMutations} slots used)", 22, UiKit.Muted, TextAnchor.MiddleCenter);
+            bool full = e.Inventory.Mutations.Count >= PlayerInventory.MaxMutations;
+            var hint = UiKit.Label(content, "Hint", full
+                ? "All slots are full: choose one, then pick which mutation it replaces"
+                : $"A permanent perk for this run  ({e.Inventory.Mutations.Count}/{PlayerInventory.MaxMutations} slots used)", 22, UiKit.Muted, TextAnchor.MiddleCenter);
             UiKit.Place(hint.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -66f), new Vector2(-40f, 32f));
 
             Selectable first = null;
@@ -312,7 +315,12 @@ namespace Roughlike.UI
             {
                 int index = i;
                 MutationData m = e.Choices[i];
-                var b = UiKit.Button(content, "Choice", new Vector2(820f, 110f), () => { Pop(); e.Resolve(index); });
+                var b = UiKit.Button(content, "Choice", new Vector2(820f, 110f), () =>
+                {
+                    Pop();
+                    if (full && e.ResolveReplace != null) OpenReplaceMutation(e, index);
+                    else e.Resolve(index);
+                });
                 UiKit.Place((RectTransform)b.transform, new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -110f - i * 124f), new Vector2(820f, 110f));
 
                 var swatch = UiKit.Image(b.transform, "Swatch", m.tint);
@@ -341,6 +349,46 @@ namespace Roughlike.UI
             var ct = UiKit.Label(cancel.transform, "Text", $"Not now  ({InputDevices.BackName})", 22, Color.white, TextAnchor.MiddleCenter, true);
             UiKit.Stretch(ct.rectTransform);
 
+            Focus(w, first != null ? first : cancel);
+        }
+
+        /// <summary>With every mutation slot full, asks which one the new mutation takes the place of.</summary>
+        void OpenReplaceMutation(OpenMutationEvent e, int choice)
+        {
+            MutationData incoming = e.Choices[choice];
+            Window w = null;
+            w = Push("Replace which mutation?", new Vector2(900f, 620f), () => { Pop(); e.ResolveReplace(-1, -1); }, out RectTransform content);
+
+            var hint = UiKit.Label(content, "Hint", $"{incoming.displayName} takes the place of one of yours for the rest of the run", 22, incoming.tint, TextAnchor.MiddleCenter);
+            UiKit.Place(hint.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -66f), new Vector2(-40f, 32f));
+
+            Selectable first = null;
+            for (int i = 0; i < e.Inventory.Mutations.Count; i++)
+            {
+                int slot = i;
+                MutationData m = e.Inventory.Mutations[i];
+                var b = UiKit.Button(content, "Slot", new Vector2(820f, 110f), () => { Pop(); e.ResolveReplace(choice, slot); });
+                UiKit.Place((RectTransform)b.transform, new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -110f - i * 124f), new Vector2(820f, 110f));
+                var icon = UiKit.Image(b.transform, "Icon", m.tint);
+                icon.preserveAspect = true;
+                var art = Roughlike.Utils.GameIcons.Sprite("mut_" + m.name);
+                if (art != null) { icon.sprite = art; icon.color = Color.white; }
+                UiKit.Place(icon.rectTransform, new Vector2(0f, 0.5f), new Vector2(0f, 0.5f), new Vector2(0f, 0.5f), new Vector2(12f, 0f), new Vector2(88f, 88f));
+                var name = UiKit.Label(b.transform, "Name", m.displayName, 32, m.tint, TextAnchor.UpperLeft, true);
+                UiKit.Place(name.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(0.5f, 0.5f), Vector2.zero, Vector2.zero);
+                name.rectTransform.offsetMin = new Vector2(112f, 12f);
+                name.rectTransform.offsetMax = new Vector2(-16f, -10f);
+                var desc = UiKit.Label(b.transform, "Desc", m.description, 22, Color.white, TextAnchor.LowerLeft);
+                UiKit.Place(desc.rectTransform, new Vector2(0f, 0f), new Vector2(1f, 1f), new Vector2(0.5f, 0.5f), Vector2.zero, Vector2.zero);
+                desc.rectTransform.offsetMin = new Vector2(112f, 10f);
+                desc.rectTransform.offsetMax = new Vector2(-16f, -48f);
+                if (first == null) first = b;
+            }
+
+            var cancel = UiKit.Button(content, "Cancel", new Vector2(240f, 52f), () => { Pop(); e.ResolveReplace(-1, -1); });
+            UiKit.Place((RectTransform)cancel.transform, new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0f, 18f), new Vector2(240f, 52f));
+            var ct = UiKit.Label(cancel.transform, "Text", $"Keep mine  ({InputDevices.BackName})", 22, Color.white, TextAnchor.MiddleCenter, true);
+            UiKit.Stretch(ct.rectTransform);
             Focus(w, first != null ? first : cancel);
         }
 
